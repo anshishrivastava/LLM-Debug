@@ -1,0 +1,4 @@
+{
+  "instruction": "Develop an interactive text-based RPG game in Python that gives the player options to move around in an environment and battle monsters.",
+  "output": "class Player(object):\n def __init__(self):\n self.health = 100\n self.location = 'room one'\n self.monsters_killed = 0\n\nclass Room(object):\n def __init__(self):\n self.name = ''\n self.description = ''\n self.monsters = []\n\n def add_monster(self, monster):\n self.monsters.append(monster)\n\nclass Monster(object):\n def __init__(self):\n self.name = ''\n self.health = 100\n\n def attack(self, player):\n player.health -= 10\n\ndef start_game():\n player = Player()\n\nwhile True:\n print(f'You are in {player.location}.')\n print('Available actions: move, fight')\n response = input('What would you like to do? ').lower()\n\n if response == 'move':\n\n if response == 'fight':\n\n if player.health <= 0:\n print ('You have been defeated!')\n break\n\nif __name__ == '__main__':\n start_game()"
+}

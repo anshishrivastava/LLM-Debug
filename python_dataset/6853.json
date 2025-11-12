@@ -1,0 +1,4 @@
+{
+  "instruction": "Build a web application using Django and React that displays a list of products and provides user authentication.",
+  "output": "django-admin startproject myproject\n\ncd myproject\npython manage.py startapp products\n\nINSTALLED_APPS = [\n    'products.apps.ProductsConfig',\n]\n\nINSTALLED_APPS = [\n    'django.contrib.auth',\n]\n\n\ncreate-react-app myapp\n\ncd myapp\nnpm install react-router-dom\nnpm install axios\nnpm install react-bootstrap\n\n\n\naxios.defaults.baseURL = 'http://localhost:8000/'"
+}

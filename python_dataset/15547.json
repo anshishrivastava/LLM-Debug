@@ -1,0 +1,4 @@
+{
+  "instruction": "Construct a linked list from the following array.",
+  "output": "class Node: \n  \n    def __init__(self, data): \n        self.data = data # Assign data \n        self.next = None # Initialize next as null \n  \nclass LinkedList: \n  \n    def __init__(self): \n        self.head = None\n  \n    def push(self, new_data): \n  \n        new_node = Node(new_data) \n  \n        new_node.next = self.head \n  \n        self.head = new_node \n  \n    def printList(self): \n        temp = self.head \n        while(temp): \n            print (temp.data) \n            temp = temp.next\n  \nif __name__=='__main__': \n  \n    llist = LinkedList() \n  \n    arr = [1, 4, 9, 6, 5, 11]\n    for x in arr:\n        llist.push(x) \n        \n    llist.printList()"
+}

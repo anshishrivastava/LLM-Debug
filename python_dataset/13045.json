@@ -1,0 +1,4 @@
+{
+  "instruction": "Create a program in Python using pygame library to build a simple game",
+  "output": "import pygame\n \nBLACK = (0, 0, 0)\nWHITE = (255, 255, 255)\n \npygame.init()\n \nscreen = pygame.display.set_mode([800, 600])\n \npygame.display.set_caption('My Game')\n \nclock = pygame.time.Clock()\n \nbackground_position = [0, 0]\n \nbackground_image = pygame.image.load(\"image.jpg\").convert()\n \nplayer_image = pygame.image.load(\"player.jpg\").convert()\nplayer_position = [100,100]\n \ndone = False\n \nwhile not done:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            done = True\n \n    screen.fill(WHITE)\n \n    screen.blit(background_image, background_position)\n \n    screen.blit(player_image, player_position)\n \n    pygame.display.flip()\n \n    clock.tick(60)\n \npygame.quit()"
+}

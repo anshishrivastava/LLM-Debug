@@ -1,0 +1,4 @@
+{
+  "instruction": "Write a Python program to delete a node from a linked list",
+  "output": "class Node: \n    def __init__(self, data): \n        self.data = data # Assign data \n        self.next = None # Initialize next as null \n  \n  \nclass LinkedList: \n  \n    def __init__(self):  \n        self.head = None\n  \n    def deleteNode(self, position): \n  \n        if self.head == None: \n            return \n  \n        temp = self.head \n  \n        if position == 0: \n            self.head = temp.next\n            temp = None\n            return \n  \n        for i in range(position-1): \n            temp = temp.next\n            if temp is None: \n                break\n  \n        if temp is None: \n            return \n        if temp.next is None: \n            return \n  \n        next = temp.next.next\n  \n        temp.next = None\n  \n        temp.next = next"
+}
