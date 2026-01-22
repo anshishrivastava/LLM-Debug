@@ -1,0 +1,22 @@
+{
+  "instruction": "Check if there's a pending operation that needs fast retry.",
+  "output": "    def has_pending_retry(self) -> bool:\n        \"\"\"\n        Check if there's a pending operation that needs fast retry.\n\n        Returns True if:\n        - We have partial positions that need completing (missing legs)\n        - We have a long straddle but no short strangle (incomplete position)\n        - We have consecutive failures that need immediate retry\n        - We're in a transient state (recentering, rolling, etc.)\n        \"\"\"\n        # Check for partial straddle (missing one leg)\n        if self.long_straddle and not self.long_straddle.is_complete:\n            logger.info(\"Fast retry needed: Partial straddle detected\")\n            return True\n\n        # Check for partial strangle (missing one leg)\n        if self.short_strangle and not self.short_strangle.is_complete:\n            logger.info(\"Fast retry needed: Partial strangle detected\")\n            return True\n\n        # Check for incomplete position (straddle without strangle)\n        if self.long_straddle and not self.short_strangle:\n            # Only trigger fast retry if we're not just waiting for entry time\n            if self.state == StrategyState.LONG_STRADDLE_ACTIVE:\n                return True\n\n        # Check for recent failures\n        if hasattr(self, '_consecutive_failures') and self._consecutive_failures > 0:\n            return True\n\n        # Check for transient states\n        if self.state in [StrategyState.RECENTERING, StrategyState.ROLLING_SHORTS, StrategyState.EXITING]:\n            return True\n\n        return False",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "has_pending_retry",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 35,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

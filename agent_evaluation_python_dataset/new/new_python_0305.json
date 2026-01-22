@@ -1,0 +1,22 @@
+{
+  "instruction": "Merge Strategy",
+  "output": "def merge_strategy(can_fit: CanFit, words: List[str]) -> List[str]:\n    rem = words[can_fit[\"cut_off_index\"] :]\n    rolling_diff = can_fit[\"diff\"]\n    extra_words = []\n\n    for word in rem:\n        word_len = len(word)\n        if word_len < rolling_diff:\n            extra_words.append(word)\n            rolling_diff = rolling_diff - word_len\n\n        if rolling_diff < 0:\n            break\n    \n    chosen = cast(list, words[can_fit[\"cut_off_index\"] :])\n    chosen.extend(extra_words)\n    return chosen",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "pb-96/crossword-generator",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "cw_generator_uv/cw_generator/cw_gen/pre_validate_utils.py",
+    "function_name": "merge_strategy",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 17,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

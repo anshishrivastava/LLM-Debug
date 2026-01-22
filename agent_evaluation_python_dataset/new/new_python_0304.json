@@ -1,0 +1,22 @@
+{
+  "instruction": "Check Can Fit Estimate",
+  "output": "def check_can_fit_estimate(dim: int, words: List[str]) -> CanFit:\n    # Would need to add the general config file here\n    words.sort()\n    total_space: int = dim * dim\n    total_chars = sum((len(word) for word in words))\n\n    no_fit = total_space < total_chars\n    diff = max(total_space, total_chars) - min(total_space, total_chars)\n    cutoff_index = -1\n\n    if no_fit:\n        count = 0\n        index = len(words) - 1\n\n        for index, word in enumerate(words):\n            if count + len(word) > total_space:\n                break\n            count += len(word)\n        cutoff_index = index\n\n    return_dict: CanFit = {\n        \"no_fit\": no_fit,\n        \"diff\": diff,\n        \"cut_off_index\": cutoff_index,\n    }\n\n    return return_dict",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "pb-96/crossword-generator",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "cw_generator_uv/cw_generator/cw_gen/pre_validate_utils.py",
+    "function_name": "check_can_fit_estimate",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 27,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

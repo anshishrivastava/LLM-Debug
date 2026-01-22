@@ -1,0 +1,22 @@
+{
+  "instruction": "Search Insert",
+  "output": "    public int searchInsert(int[] nums, int target) {\n        int start = 0;\n        int end = nums.length - 1;\n\n        while (start <= end) {\n            int mid = (start + end) / 2;\n\n            if (nums[mid] == target) {\n\n                return mid;\n            } else if (nums[mid] < target) {\n\n                start = mid + 1;\n            } else {\n\n                end = mid - 1;\n            }\n        }\n\n        return start;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "bishal7448/LeetCode_DSA_100_Question_Challenge",
+    "repo_created_date": "2024-12-28",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0035-search-insert-position/0035-search-insert-position.java",
+    "function_name": "searchInsert",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 21,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

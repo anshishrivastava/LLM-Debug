@@ -1,0 +1,22 @@
+{
+  "instruction": "Contains Duplicate",
+  "output": "    public boolean ContainsDuplicate(int[] nums){\r\n        HashSet<Integer> set = new HashSet<>();\r\n        for (Integer num : nums) {\r\n            if (!set.add(num)) {\r\n                return true;\r\n            }\r\n        }\r\n        return false;\r\n    }\r",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "AnanyaVishwakarma/Java_Practice01",
+    "repo_created_date": "2024-06-15",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "ContainsDuplicate.java",
+    "function_name": "ContainsDuplicate",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 9,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

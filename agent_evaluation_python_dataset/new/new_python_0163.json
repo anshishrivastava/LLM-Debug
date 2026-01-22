@@ -1,0 +1,22 @@
+{
+  "instruction": "Returns tuple (low_edge, high_edge) of graph",
+  "output": "def get_graph_edges(graph):\n  '''Returns tuple (low_edge, high_edge) of graph\n\n  @params\n  graph - TGraph to check\n  '''\n  lo_edge = 999999.9\n  hi_edge = -999999.9\n  for point in range(graph.GetN()):\n    x = graph.GetPointX(point)\n    exlo = graph.GetErrorXlow(point)\n    exhi = graph.GetErrorXhigh(point)\n    if (x-exlo)<lo_edge:\n      lo_edge = x-exlo\n    if (x+exhi)>hi_edge:\n      hi_edge = x+exhi\n  return (lo_edge, hi_edge)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/root_plot_lib.py",
+    "function_name": "get_graph_edges",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 17,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

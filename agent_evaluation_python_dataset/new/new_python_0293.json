@@ -1,0 +1,22 @@
+{
+  "instruction": "Attempt to place a word randomly in the grid.",
+  "output": "    def place_randomly(self, word: str) -> Optional[Tuple[Tuple[int, int], Tuple[int, int]]]:\n        \"\"\"Attempt to place a word randomly in the grid.\n        \n        Args:\n            word: The word to place\n            \n        Returns:\n            Tuple of (start_position, direction) if placement successful, None otherwise\n        \"\"\"\n        if not self.available_start_points:\n            return None\n            \n        random_index = randint(0, len(self.available_start_points) - 1)\n        given_keys = list(self.available_start_points.keys())\n        random_start = given_keys[random_index]\n        ptr = int(random_index)\n\n        while ptr != (random_index - 1):\n            for direction in self.directions:\n                starting_point = self.search_chunk(word, direction, random_start)\n                if starting_point:\n                    return random_start, direction\n            ptr = (ptr + 1) % len(self.available_start_points)\n            if ptr == 0:\n                break\n            random_start = given_keys[ptr]\n        return None",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "pb-96/crossword-generator",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "cw_generator_uv/cw_generator/cw_gen/cw_base_class.py",
+    "function_name": "place_randomly",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 27,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

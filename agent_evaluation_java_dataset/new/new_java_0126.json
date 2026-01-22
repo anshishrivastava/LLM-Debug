@@ -1,0 +1,22 @@
+{
+  "instruction": "Longest Palindrome",
+  "output": "    public String longestPalindrome(String s) {\n        int n = s.length();\n        if (n < 2) return s;\n        int start = 0, max = 1;\n\n        for (int i = 0; i < n; i++) {\n            int left = i, right = i;\n            while (left >= 0 && right < n && s.charAt(left) == s.charAt(right)) {\n                if (right - left + 1 > max) { \n                    start = left; \n                    max = right - left + 1; \n                }\n                left--; \n                right++;\n            }\n            \n            left = i; right = i + 1;\n            while (left >= 0 && right < n && s.charAt(left) == s.charAt(right)) {\n                if (right - left + 1 > max) { \n                    start = left; \n                    max = right - left + 1; \n                }\n                left--; \n                right++;\n            }\n        }\n        return s.substring(start, start + max);\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Amit-S-Sahu/My-LeetCode",
+    "repo_created_date": "2024-09-29",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "0005-longest-palindromic-substring/0005-longest-palindromic-substring.java",
+    "function_name": "longestPalindrome",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 28,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Spiral Order",
+  "output": "    public List<Integer> spiralOrder(int[][] matrix) {\n        List<Integer> ans = new ArrayList<>();\n        int left = 0, top = 0;\n        int right = matrix[0].length - 1;\n        int bottom = matrix.length - 1;\n\n        while (left <= right && top <= bottom) {\n\n            // left -> right\n            for (int i = left; i <= right; i++) {\n                ans.add(matrix[top][i]);\n            }\n            top++;\n            // top -> bottom\n            for (int i = top; i <= bottom; i++) {\n                ans.add(matrix[i][right]);\n            }\n            right--;\n            // Right -> left\n            if (top <= bottom)\n                for (int i = right; i >= left; i--) {\n                    ans.add(matrix[bottom][i]);\n                }\n            bottom--;\n            // Bottom -> top\n            if (left <= right)\n                for (int i = bottom; i >= top; i--) {\n                    ans.add(matrix[i][left]);\n                }\n            left++;\n        }\n        return ans;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "bishal292/LeetCodeProblems",
+    "repo_created_date": "2024-11-30",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0054-spiral-matrix/0054-spiral-matrix.java",
+    "function_name": "spiralOrder",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 33,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Brace Expansion I I",
+  "output": "    public List<String> braceExpansionII(String expression) {\n        stack.push(expression);\n        iter_dfs();\n        Collections.sort(res);\n        return res;\n    }void iter_dfs(){\n        while(!stack.isEmpty()){\n            String s = stack.pop();\n            if(s.indexOf('}') == -1){\n                if(!res.contains(s)){\n                    res.add(s);\n                }continue;\n            }\n            int index = 0, left = 0, right = 0;\n            while(s.charAt(index) != '}'){\n                if(s.charAt(index++) == '{'){\n                    left = index - 1;\n                }\n            }right = index;\n\n            String bef = s.substring(0, left);\n            String aft = s.substring(right+1, s.length());\n            String[] args = s.substring(left+1, right).split(\",\");\n            for(String dam: args){\n                sb.setLength(0);\n                sb.append(bef);\n                sb.append(dam);\n                sb.append(aft);\n                stack.push(sb.toString());\n            }\n        }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "R-Shailesh-varma/code-contributions",
+    "repo_created_date": "2024-08-14",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "brace-expansion-ii.java",
+    "function_name": "braceExpansionII",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 31,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

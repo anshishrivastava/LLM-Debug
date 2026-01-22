@@ -1,0 +1,22 @@
+{
+  "instruction": "Get Coords Pdb Rdf Full Openmm",
+  "output": "def get_coords_PDB_rdf_full_openmm(\n    folder,\n):\n    atom_names = []\n    frames = 0\n    with open(f\"{folder}/xyz_unwrapped_rdf_all.txt\", \"w\") as outfile:\n        with open(f\"{folder}/simu_output.pdb\", \"r\") as f:\n            exclude_tags = [\"TER\", \"ENDMDL\", \"TITLE\", \"REMARK\", \"CRYST1\", \"MODEL\"]\n            for ind, line in enumerate(f):\n                if 'CONECT' in line:\n                    break\n                if \"MODEL\" in line:\n                    frames += 1\n                    continue\n\n                if not any(ext in line for ext in exclude_tags):\n                    values = line.split()\n                    try:\n                        x = float(line[30:38])\n                        y = float(line[38:46])\n                        z = float(line[46:54])\n                        outfile.write(f\"{x},{y},{z}\\n\")\n                    except:\n                        print('current line number and line:', ind)\n                        print(line)\n                        print(values)\n                        raise ValueError('could not convert string to float:', line[30:38])\n                    if frames < 2:\n                        # Harcoding CA1 as the only cation\n                        if values[3] == \"CA1\":\n                            atom_names.append(\n                                \"Li\" + f\",{line[17:20]},{line[23:26].strip()}\"\n                            )\n                        else:\n                            atom_names.append(\n                                values[-1] + f\",{line[17:20]},{line[23:26].strip()}\"\n                            )\n    with open(f\"{folder}/atom_names_rdf_all.txt\", \"w\") as f:\n        for i in atom_names:\n            f.write(f\"{i}\\n\")\n    print(\n        f\"{frames} PDB frames have been saved at {folder} for xyz_unwrapped_rdf_all.txt\"\n    )",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/analysis/trajectory_analysis.py",
+    "function_name": "get_coords_PDB_rdf_full_openmm",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 43,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

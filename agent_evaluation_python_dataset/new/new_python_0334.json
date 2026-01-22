@@ -1,0 +1,22 @@
+{
+  "instruction": "Unwrap All",
+  "output": "def unwrap_all(ion_pos, cell):\n    ion_pos_new = np.full_like(ion_pos, 0)\n    ion_pos_new[0, :, :] = ion_pos[0, :, :]\n    for indi, i in enumerate(ion_pos[1:]):\n        ion_pos_new[indi + 1] = unwrap(ion_pos[indi + 1], ion_pos_new[indi], cell)\n    return ion_pos_new",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/analysis/trajectory_analysis.py",
+    "function_name": "unwrap_all",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 6,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

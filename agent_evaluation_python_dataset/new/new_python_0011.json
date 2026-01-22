@@ -1,0 +1,22 @@
+{
+  "instruction": "This method creates a JobData object from a HDF5 dataset that describes a job.",
+  "output": "    def from_dataset(job_name: str, slurm_id: str, dataset: h5py.Dataset, categories: dict) -> JobData:\n        \"\"\"\n        This method creates a JobData object from a HDF5 dataset that describes a job.\n        :arguments:\n\n            :job_name: The unique command name to execute under slurm.\n            :slurm_id: The slurm job id assigned by the sceduler for a job run.\n            :dataset: The HDF5 dataset used to populate numerics, memory and runtime information of the job.\n        \"\"\"\n\n        runtime = dataset.get(\"runtime\", None)\n        if runtime is not None:\n            runtime = runtime[()]\n        memory = dataset.get(\"memory\", None)\n        if memory is not None:\n            memory = memory[()]\n        numerics = {key: value[()] for key, value in dataset.items() if key not in (\"runtime\", \"memory\")}\n        categories = dict(**categories)\n\n        return JobData(\n            job_name=job_name,\n            slurm_id=slurm_id,\n            numerics=numerics,\n            categories=categories,\n            memory=memory,\n            runtime=runtime,\n        )",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "PrincetonUniversity/slurmise",
+    "repo_created_date": "2024-06-21",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "src/slurmise/job_data.py",
+    "function_name": "from_dataset",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 27,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

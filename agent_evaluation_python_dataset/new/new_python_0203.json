@@ -1,0 +1,22 @@
+{
+  "instruction": "Reads a variable from a ROOT file that was saved with the",
+  "output": "def read_variable_from_root_file(file, var_name):\n  '''\n  Reads a variable from a ROOT file that was saved with the\n\n  write_variable_to_root_file method\n  file      TFile to read from\n  var_name  string, name of variable (TTree) in file\n  '''\n  dummy_tree = file.Get(var_name)\n  var = 0\n  for event in dummy_tree: \n    var = event.var\n  return var",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_utils.py",
+    "function_name": "read_variable_from_root_file",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 13,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

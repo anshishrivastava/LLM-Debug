@@ -1,0 +1,22 @@
+{
+  "instruction": "Sleep for the specified duration, but check for shutdown signal periodically.",
+  "output": "def interruptible_sleep(seconds: int, check_interval: int = 5) -> bool:\n    \"\"\"\n    Sleep for the specified duration, but check for shutdown signal periodically.\n\n    Args:\n        seconds: Total seconds to sleep\n        check_interval: How often to check for shutdown (default 5 seconds)\n\n    Returns:\n        bool: True if sleep completed, False if interrupted by shutdown\n    \"\"\"\n    remaining = seconds\n    while remaining > 0 and not shutdown_requested:\n        time.sleep(min(check_interval, remaining))\n        remaining -= check_interval\n    return not shutdown_requested",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/main.py",
+    "function_name": "interruptible_sleep",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 16,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

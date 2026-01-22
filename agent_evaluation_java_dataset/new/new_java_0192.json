@@ -1,0 +1,22 @@
+{
+  "instruction": "Max Level Sum",
+  "output": "    public int maxLevelSum(TreeNode root) {\n        Queue<TreeNode> q = new LinkedList<>();\n        q.add(root);\n        int max = Integer.MIN_VALUE;\n        int ans = 1;\n        int curr = 1;\n        while (!q.isEmpty()) {\n            int c = 0;\n            int size = q.size();\n            for (int i = 0; i < size; i++) {\n                TreeNode temp = q.remove();\n                c += temp.val;\n                if (temp.left != null)\n                    q.add(temp.left);\n                if (temp.right != null) \n                    q.add(temp.right);\n            }    \n            if (c > max) {\n                max = c;\n                ans = curr;\n            }\n            curr += 1;\n        }\n        return ans;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "GAURAV-SENGAR-14/LEETCODE-PROBLEMS",
+    "repo_created_date": "2025-01-13",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "1116-maximum-level-sum-of-a-binary-tree/maximum-level-sum-of-a-binary-tree.java",
+    "function_name": "maxLevelSum",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 25,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

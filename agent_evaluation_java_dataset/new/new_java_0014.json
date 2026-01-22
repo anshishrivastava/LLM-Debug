@@ -1,0 +1,22 @@
+{
+  "instruction": "Update all visual effects",
+  "output": "    private void updateVisualEffects(float delta) {\n        // Update all visuals and remove inactive ones\n        for (int i = activeVisuals.size() - 1; i >= 0; i--) {\n            AbilityVisual visual = activeVisuals.get(i);\n            visual.update(delta);\n            if (!visual.isActive()) {\n                visual.dispose();\n                activeVisuals.remove(i);\n            }\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/AbilityManager.java",
+    "function_name": "updateVisualEffects",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 11,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

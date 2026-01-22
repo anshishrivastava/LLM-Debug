@@ -1,0 +1,22 @@
+{
+  "instruction": "Produce histograms. Performs one loop over data files for efficiency",
+  "output": "  def produce_histograms(self):\n    '''Produce histograms. Performs one loop over data files for efficiency\n    '''\n    if not os.path.isdir('out'):\n      os.mkdir('out')\n    nomdat_name = self.name+'_data_nom'\n    altsig_name = self.name+'_data_altsig'\n    altbkg_name = self.name+'_data_altbkg'\n    altsnb_name = self.name+'_data_altsigbkg'\n    nomsim_name = self.name+'_mc_nom'\n    altsim_name = self.name+'_mc_alt'\n    if (os.path.isdir('out/'+altsig_name) or\n        os.path.isdir('out/'+altbkg_name) or\n        os.path.isdir('out/'+nomdat_name) or\n        os.path.isdir('out/'+nomsim_name) or\n        os.path.isdir('out/'+altsim_name) or\n        os.path.isdir('out/'+altsnb_name)):\n      raise RuntimeError('Output folders exist, aborting to avoid overwrite.')\n    self.data_nom_tnp_analyzer.produce_histograms()\n    os.mkdir('out/'+altsig_name)\n    os.mkdir('out/'+altbkg_name)\n    os.mkdir('out/'+altsnb_name)\n    self.data_nom_tnp_analyzer.close_file()\n    os.system('cp out/'+nomdat_name+'/'+nomdat_name+'.root '\n              +'out/'+altsig_name+'/'+altsig_name+'.root')\n    os.system('cp out/'+nomdat_name+'/'+nomdat_name+'.root '\n              +'out/'+altbkg_name+'/'+altbkg_name+'.root')\n    os.system('cp out/'+nomdat_name+'/'+nomdat_name+'.root '\n              +'out/'+altsnb_name+'/'+altsnb_name+'.root')\n    self.mc_nom_tnp_analyzer.produce_histograms()\n    self.mc_alt_tnp_analyzer.produce_histograms()\n    self.mc_nom_tnp_analyzer.close_file()\n    self.mc_alt_tnp_analyzer.close_file()",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/rms_sf_analyzer.py",
+    "function_name": "produce_histograms",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 33,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

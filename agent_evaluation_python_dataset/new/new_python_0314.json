@@ -1,0 +1,22 @@
+{
+  "instruction": "Save all valid configs as a single Base64-encoded string.",
+  "output": "def save_to_file_as_base64(configs, file_name):\n    \"\"\"Save all valid configs as a single Base64-encoded string.\"\"\"\n    try:\n        # Combine all configs into one string, then encode to Base64\n        combined_configs = \"\\n\".join(configs)\n        base64_encoded_configs = base64.b64encode(combined_configs.encode(\"utf-8\")).decode(\"utf-8\")\n\n        # Ensure the output directory exists\n        os.makedirs(os.path.dirname(file_name), exist_ok=True)\n        with open(file_name, \"w\", encoding=\"utf-8\") as f:\n            f.write(base64_encoded_configs)\n\n        logger.info(f\"Configs saved to {file_name} as a single Base64-encoded string.\")\n    except Exception as e:\n        logger.error(f\"Failed to save configs to file: {e}\")",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "3yed-61/Shadowsocks",
+    "repo_created_date": "2025-01-21",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "config-cleaner.py",
+    "function_name": "save_to_file_as_base64",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 15,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

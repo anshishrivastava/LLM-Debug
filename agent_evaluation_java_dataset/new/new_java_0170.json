@@ -1,0 +1,22 @@
+{
+  "instruction": "Max Profit",
+  "output": "    public int maxProfit(int[] prices) {\n        int buyPrice = prices[0];\n        int profit = 0;\n        for(int i = 1; i < prices.length; i++){\n            if(buyPrice > prices[i]){\n                buyPrice = prices[i];\n            }\n            profit = Math.max(profit, prices[i] - buyPrice);\n        }\n        return profit;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "R-Shailesh-varma/code-contributions",
+    "repo_created_date": "2024-08-14",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "best-time-to-buy-and-sell-stock.java",
+    "function_name": "maxProfit",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 11,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

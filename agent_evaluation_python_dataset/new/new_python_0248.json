@@ -1,0 +1,22 @@
+{
+  "instruction": "Handle preset selection from listbox.",
+  "output": "    def on_preset_select(self, event):\r\n        \"\"\"Handle preset selection from listbox.\"\"\"\r\n        selection = self.preset_listbox.curselection()\r\n        if selection:\r\n            preset_name = self.preset_listbox.get(selection[0])\r\n            self.select_preset(preset_name)\r",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "misutesu-desu/MudaRemote",
+    "repo_created_date": "2024-10-12",
+    "repo_stars": 34,
+    "repo_forks": 5,
+    "file_path": "mudae_preset_editor.py",
+    "function_name": "on_preset_select",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 6,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

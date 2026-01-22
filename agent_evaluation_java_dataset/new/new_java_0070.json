@@ -1,0 +1,22 @@
+{
+  "instruction": "Climb Stairs",
+  "output": "    public int climbStairs(int n) {\n        int p2 = 1;\n        int p1 = 1;\n        for(int i=2;i<=n;i++){\n            int curr = p2+p1;\n            p2=p1;\n            p1=curr;\n        }\n        return p1;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "ASHWIKA1/Leetcode",
+    "repo_created_date": "2024-08-12",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0070-climbing-stairs/0070-climbing-stairs.java",
+    "function_name": "climbStairs",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 10,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

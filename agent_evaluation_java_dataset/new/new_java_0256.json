@@ -1,0 +1,22 @@
+{
+  "instruction": "Num Tile Possibilities",
+  "output": "    public int numTilePossibilities(String tiles) {\n        arr=new int[26];\n        for(char i:tiles.toCharArray())\n        arr[i-'A']++;\n        return check(arr);\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "rithishnv/Problem-Solving",
+    "repo_created_date": "2024-08-07",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "1079-Letter-Tile-Possibilities.java",
+    "function_name": "numTilePossibilities",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 6,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

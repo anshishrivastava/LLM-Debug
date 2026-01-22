@@ -1,0 +1,22 @@
+{
+  "instruction": "Copy To N2P",
+  "output": "def copy_to_n2p():\n  years = years_run2 + years_run3\n  for year in years:\n    for measurement in measurements:\n      meas_name = measurement\n      if meas_name=='muid':\n        if not year in ['2023','2023BPix']:\n          continue\n      elif meas_name=='eltrig27':\n        meas_name = singleel_names[year]\n      elif meas_name=='mutrig24':\n        meas_name = singlemu_names[year]\n      corr_type = 'efficiencies'\n      if meas_name in ['elid','muid']:\n        corr_type = 'scalefactors'\n      cmd = (('cp out/hzg_{0}_{1}/hzg_{0}_{1}_{2}.json '\n             +'../nano2pico/data/zgamma/{3}/')\n             .format(meas_name,year,corr_type,pico_years[year]))\n      subprocess.run(cmd.split())\n  #BPixHole\n  year = '2023BPixHole'\n  for measurement in measurements:\n    if not 'el' in measurement:\n      continue\n    meas_name = measurement\n    if meas_name=='eltrig27':\n      meas_name = singleel_names[year]\n    corr_type = 'efficiencies'\n    if meas_name in ['elid','muid']:\n      corr_type = 'scalefactors'\n    cmd = (('cp out/hzg_{0}_{1}/hzg_{0}_{1}_{2}.json '\n           +'../nano2pico/data/zgamma/{3}/')\n           .format(meas_name,year,corr_type,pico_years[year]))\n    subprocess.run(cmd.split())",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "scripts/copy_util.py",
+    "function_name": "copy_to_n2p",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 34,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

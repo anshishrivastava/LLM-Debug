@@ -1,0 +1,22 @@
+{
+  "instruction": "Longest Palindrome",
+  "output": "    public String longestPalindrome(String s) {\n        char[] input = s.toCharArray();\n        if(s.length() < 2) {\n            return s;\n        }\n        \n        for(int i = 0; i<input.length; i++) {\n            expandPalindrome(input, i, i);\n            expandPalindrome(input, i, i+1);\n        }\n        return s.substring(lo, lo+maxLen);\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Rithesh05/LeetCode-Codes",
+    "repo_created_date": "2024-12-29",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0005-longest-palindromic-substring/0005-longest-palindromic-substring.java",
+    "function_name": "longestPalindrome",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 12,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

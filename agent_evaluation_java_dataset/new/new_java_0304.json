@@ -1,0 +1,22 @@
+{
+  "instruction": "Letter Combinations",
+  "output": "    public List<String> letterCombinations(String digits) {\n        List<String> res = new ArrayList<>();\n        \n        if (digits == null || digits.length() == 0) {\n            return res;\n        }\n        \n        Map<Character, String> digitToLetters = new HashMap<>();\n        digitToLetters.put('2', \"abc\");\n        digitToLetters.put('3', \"def\");\n        digitToLetters.put('4', \"ghi\");\n        digitToLetters.put('5', \"jkl\");\n        digitToLetters.put('6', \"mno\");\n        digitToLetters.put('7', \"pqrs\");\n        digitToLetters.put('8', \"tuv\");\n        digitToLetters.put('9', \"wxyz\");\n        \n        backtrack(digits, 0, new StringBuilder(), res, digitToLetters);\n        \n        return res;        \n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "vaibhavisno-one/leetcode",
+    "repo_created_date": "2024-10-28",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "0017-letter-combinations-of-a-phone-number/0017-letter-combinations-of-a-phone-number.java",
+    "function_name": "letterCombinations",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 21,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

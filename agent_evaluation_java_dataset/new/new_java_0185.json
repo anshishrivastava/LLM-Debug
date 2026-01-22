@@ -1,0 +1,22 @@
+{
+  "instruction": "Repeated N Times",
+  "output": "\n    public int repeatedNTimes(int[] nums) {\n        HashMap<Integer,Integer> myHashMap = new HashMap<>();\n        for(int num:nums){\n            myHashMap.put(num,myHashMap.getOrDefault(num,0)+1);\n        }\n        int value = 0;\n        int nkey = 0;\n        for(int key : myHashMap.keySet()){\n            int val = myHashMap.get(key);\n            if(val>value){\n                value=val;\n                nkey = key;\n            }\n\n\n        }\n        return nkey;\n\n\n\n        \n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "nishank23/Dsa_prep",
+    "repo_created_date": "2024-11-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "1001-n-repeated-element-in-size-2n-array/n-repeated-element-in-size-2n-array.java",
+    "function_name": "repeatedNTimes",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 23,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

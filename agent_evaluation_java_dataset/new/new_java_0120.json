@@ -1,0 +1,22 @@
+{
+  "instruction": "Print List",
+  "output": "    void printList(Node head) {\n        // add code here.\n        Node temp = head;\n        while(temp != null){\n            System.out.print(temp.data + \" \");\n            temp = temp.next;\n        }\n        \n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "VinayKishore25/Geeks-For-Geeks",
+    "repo_created_date": "2024-07-18",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "Difficulty: Basic/Print Linked List/print-linked-list.java",
+    "function_name": "printList",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 9,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

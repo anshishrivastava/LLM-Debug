@@ -1,0 +1,22 @@
+{
+  "instruction": "Add a text entry field.",
+  "output": "    def add_text_field(self, parent, key, label, show=None, pack_side=None):\r\n        \"\"\"Add a text entry field.\"\"\"\r\n        container = ttk.Frame(parent)\r\n        if pack_side:\r\n            container.pack(side=pack_side, fill=tk.X, expand=True, padx=5, pady=5)\r\n        else:\r\n            container.pack(fill=tk.X, pady=5)\r\n        \r\n        ttk.Label(container, text=label).pack(anchor=tk.W)\r\n        entry = ttk.Entry(container, show=show)\r\n        entry.pack(fill=tk.X)\r\n        self.widgets[key] = entry\r",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "misutesu-desu/MudaRemote",
+    "repo_created_date": "2024-10-12",
+    "repo_stars": 34,
+    "repo_forks": 5,
+    "file_path": "mudae_preset_editor.py",
+    "function_name": "add_text_field",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 12,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

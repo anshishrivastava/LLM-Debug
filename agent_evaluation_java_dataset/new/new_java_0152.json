@@ -1,0 +1,22 @@
+{
+  "instruction": "Kadanes Algo",
+  "output": "    private static void kadanesAlgo(int[] arr, int n) \n    {\n        int sum=0,max=Integer.MIN_VALUE;\n        int tempsum=0;\n        for(int i=0;i<n;i++)\n        {\n            \n            if(i<n)\n            {\n                sum+=arr[i];\n                if(sum>max)\n                {\n                    max=sum;\n                }\n            }\n            tempsum=sum;\n            for(int j=0;j<i;j++)\n            {\n                tempsum-=arr[j];\n                if(tempsum>max)\n                {\n                    max=tempsum;\n                }\n            }\n            \n        }\n        if(max>tempsum)\n            System.out.println(max);\n        else\n            System.out.println(tempsum);\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "manishswain/CodingJava",
+    "repo_created_date": "2024-07-12",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "src/Array/KadanesAlgoBrute.java",
+    "function_name": "kadanesAlgo",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 31,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

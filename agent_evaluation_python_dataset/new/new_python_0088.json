@@ -1,0 +1,22 @@
+{
+  "instruction": "Calculate total Greeks across all positions.",
+  "output": "    def get_total_greeks(self) -> Dict[str, float]:\n        \"\"\"\n        Calculate total Greeks across all positions.\n\n        Returns:\n            dict: Total delta, gamma, theta, vega\n        \"\"\"\n        total_delta = 0.0\n        total_gamma = 0.0\n        total_theta = 0.0\n        total_vega = 0.0\n\n        if self.long_straddle:\n            if self.long_straddle.call:\n                total_delta += self.long_straddle.call.delta\n                total_gamma += getattr(self.long_straddle.call, 'gamma', 0)\n                total_theta += getattr(self.long_straddle.call, 'theta', 0)\n                total_vega += getattr(self.long_straddle.call, 'vega', 0)\n            if self.long_straddle.put:\n                total_delta += self.long_straddle.put.delta\n                total_gamma += getattr(self.long_straddle.put, 'gamma', 0)\n                total_theta += getattr(self.long_straddle.put, 'theta', 0)\n                total_vega += getattr(self.long_straddle.put, 'vega', 0)\n\n        if self.short_strangle:\n            if self.short_strangle.call:\n                total_delta += self.short_strangle.call.delta\n                total_gamma -= getattr(self.short_strangle.call, 'gamma', 0)  # Short = negative gamma\n                total_theta -= getattr(self.short_strangle.call, 'theta', 0)  # Short = positive theta (earns)\n                total_vega -= getattr(self.short_strangle.call, 'vega', 0)    # Short = negative vega\n            if self.short_strangle.put:\n                total_delta += self.short_strangle.put.delta\n                total_gamma -= getattr(self.short_strangle.put, 'gamma', 0)\n                total_theta -= getattr(self.short_strangle.put, 'theta', 0)\n                total_vega -= getattr(self.short_strangle.put, 'vega', 0)\n\n        return {\n            \"delta\": total_delta,\n            \"gamma\": total_gamma,\n            \"theta\": total_theta,\n            \"vega\": total_vega\n        }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "get_total_greeks",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 42,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Render ability visual effects (called from world coordinates)",
+  "output": "    public void renderAbilityEffects(SpriteBatch batch) {\n        for (AbilityVisual visual : activeVisuals) {\n            visual.render(batch);\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/AbilityManager.java",
+    "function_name": "renderAbilityEffects",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 5,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

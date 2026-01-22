@@ -1,0 +1,22 @@
+{
+  "instruction": "Zeros the bins of a histogram outside of a given range",
+  "output": "def zero_outside_range(hist, lower, upper):\n  '''\n  Zeros the bins of a histogram outside of a given range\n\n  hist   TH1, histogram to modify\n  lower  float, lower bound\n  upper  float, upper bound\n  '''\n  for ibin in range(hist.GetXaxis().GetNbins()+1):\n    if ((hist.GetXaxis().GetBinCenter(ibin) < lower) or\n        (hist.GetXaxis().GetBinCenter(ibin) > upper)):\n      hist.SetBinContent(ibin, 0.0)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_utils.py",
+    "function_name": "zero_outside_range",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 12,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

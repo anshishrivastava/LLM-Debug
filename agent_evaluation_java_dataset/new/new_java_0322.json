@@ -1,0 +1,22 @@
+{
+  "instruction": "Number To Words",
+  "output": "    public static String numberToWords(int num) {\n        if (num == 0)\n            return \"Zero\";\n\n        String[] bigString = new String[]{\"Thousand\", \"Million\", \"Billion\"};\n        String result = numberToWordsHelper(num % 1000);\n        num = num / 1000;\n\n        for (int i = 0; i < 3; i++) {\n            if (num > 0 && num % 1000 > 0) {\n                result = numberToWordsHelper(num % 1000) + bigString[i] + \" \" + result;\n            }\n            num = num / 1000;\n        }\n\n        return result.trim();\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "VivekLpu/LeetCode-Solutions",
+    "repo_created_date": "2024-08-17",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "IntegerToEnglishWords.java",
+    "function_name": "numberToWords",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 17,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

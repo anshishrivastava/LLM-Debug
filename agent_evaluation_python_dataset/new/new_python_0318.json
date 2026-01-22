@@ -1,0 +1,22 @@
+{
+  "instruction": "Repeatedntimes",
+  "output": "    def repeatedNTimes(self, nums: List[int]) -> int:\n        n=len(nums)//2\n        from collections import Counter\n        X=Counter(nums)\n        for i in X:\n            if X[i]>1:\n                return i",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Mohammad-Adilkhan3/leetcode",
+    "repo_created_date": "2024-10-15",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "1001-n-repeated-element-in-size-2n-array/n-repeated-element-in-size-2n-array.py",
+    "function_name": "repeatedNTimes",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 7,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

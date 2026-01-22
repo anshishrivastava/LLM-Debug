@@ -1,0 +1,22 @@
+{
+  "instruction": "Delete jobs with matching job name and categories.",
+  "output": "    def delete(self, job_data: JobData, delete_all_children: bool = False) -> None:\n        \"\"\"\n        Delete jobs with matching job name and categories.\n\n        :arguments:\n\n            :job_data: JobData object with name and categories which should be removed.\n            :delete_all_children: When true, will delete recursively any matching jobs\n        \"\"\"\n        group_name = JobDatabase.get_group_name(job_data)\n\n        if group_name in self.db:\n            if delete_all_children:\n                del self.db[group_name]\n            else:\n                # Traverse and delete only Datasets\n                job_group = self.db.get(group_name, default={})\n                for slurm_id, slurm_data in job_group.items():\n                    if JobDatabase.is_slurm_job(slurm_data):\n                        del job_group[slurm_id]",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "PrincetonUniversity/slurmise",
+    "repo_created_date": "2024-06-21",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "src/slurmise/job_database.py",
+    "function_name": "delete",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 20,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

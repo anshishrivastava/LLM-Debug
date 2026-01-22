@@ -1,0 +1,22 @@
+{
+  "instruction": "Count Complete Days",
+  "output": "    public static int countCompleteDays(int[] hours) {\r\n        HashMap<Integer, Integer> remainderMap = new HashMap<>();\r\n        int count = 0;\r\n\r\n        for (int time : hours) {\r\n            int rem = time % 24;\r\n            int complement = (24 - rem) % 24;  // Calculate the complement remainder\r\n\r\n            // Check if the complement exists in the HashMap\r\n            if (remainderMap.containsKey(complement)) {\r\n                count += remainderMap.get(complement);  // Add the frequency of complement\r\n            }\r\n\r\n            // Update the frequency of the current remainder\r\n            remainderMap.put(rem, remainderMap.getOrDefault(rem, 0) + 1);\r\n        }\r\n\r\n        return count;\r\n    }\r",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "AnanyaVishwakarma/Java_Practice01",
+    "repo_created_date": "2024-06-15",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "CountThatFormsACompleteDay01.java",
+    "function_name": "countCompleteDays",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 19,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

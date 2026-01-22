@@ -1,0 +1,22 @@
+{
+  "instruction": "Return Distance Coordination",
+  "output": "def return_distance_coordination(data, folder):\n    len_datapoints = 0\n    for i in range(len(data)):\n        val_len = len(data[i])\n        len_datapoints += val_len\n\n    distance_coord = np.zeros((len_datapoints, 2))\n    counter = 0\n    for i in range(len(data)):\n        for ind in data[i].keys():\n            spec_list = [str(i.specie) for i in data[i][ind][\"nlist\"]]\n            distance_coord[counter] = [int(len(spec_list)), data[i][ind][\"dist\"]]\n            counter += 1\n\n    with open(f\"{folder}/coordination_environments.pkl\", \"wb\") as f:\n        pkl.dump(distance_coord, f)\n\n    return distance_coord",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/analysis/coordination_analysis.py",
+    "function_name": "return_distance_coordination",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 18,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

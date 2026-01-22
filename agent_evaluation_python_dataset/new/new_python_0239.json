@@ -1,0 +1,22 @@
+{
+  "instruction": "Is Kakera Reaction Allowed",
+  "output": "    def is_kakera_reaction_allowed() -> bool:\n        try:\n            now_utc = datetime.datetime.now(datetime.timezone.utc)\n            if client.kakera_react_available:\n                return True\n            if client.kakera_react_cooldown_until_utc and now_utc >= client.kakera_react_cooldown_until_utc:\n                client.kakera_react_available = True\n                client.kakera_react_cooldown_until_utc = None\n                return True\n            return False\n        except Exception:\n            return True",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "misutesu-desu/MudaRemote",
+    "repo_created_date": "2024-10-12",
+    "repo_stars": 34,
+    "repo_forks": 5,
+    "file_path": "mudae_bot.py",
+    "function_name": "is_kakera_reaction_allowed",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 12,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Retreiving the LJ parameters for the prediction and simulation",
+  "output": "    def get_lj_params(self, path):\n        \"\"\"\n        Retreiving the LJ parameters for the prediction and simulation\n        from the geometry specific folder\n        \"\"\"\n        params = (\n            pd.read_csv(f\"{path}/{self.species_id}/atom_parameters.csv\")\n            .reset_index()\n            .to_numpy()\n        )\n\n        if not (params[:, 0] == self.atom_idxs).all():\n            raise ValueError(\n                f\"The indexes for {self.smiles} (spec_id - {self.species_id}) is not the same as read from atom_parameters file\"\n            )\n        if not (params[:, 2] == self.atomic_nums).all():\n            raise ValueError(\n                f\"The atomic nums for {self.smiles} (spec_id - {self.species_id}) is not the same as read from atom_parameters file\"\n            )\n\n        return torch.tensor(\n            params[:, -3:].astype(\"float32\")\n        )  # Loads the last 3 elements of the file - charge, epsilon, sigma",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/data/builder.py",
+    "function_name": "get_lj_params",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 23,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

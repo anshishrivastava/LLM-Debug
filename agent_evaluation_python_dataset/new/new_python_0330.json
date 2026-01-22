@@ -1,0 +1,22 @@
+{
+  "instruction": "Find Slope1 Indeces",
+  "output": "def find_slope1_indeces(timesteps_delTs, total_corr):\n    slope_list = []\n    iteration_window = 15\n    steps_to_skip = len(timesteps_delTs) // 5  # Skip the first 20%\n    for ind, i in enumerate(range(len(timesteps_delTs))):\n        if ind < steps_to_skip or ind > len(timesteps_delTs) - iteration_window:\n            continue\n        # Iterates through windows of lenght {iteration_window}\n        diffu_inx = np.arange(i, i + iteration_window)\n        if np.any(np.round(total_corr[diffu_inx], decimals=8)):\n            if np.all(total_corr[diffu_inx] > 0):\n                popt, pcov = curve_fit(\n                    lin_func,\n                    np.log10(timesteps_delTs[diffu_inx]),\n                    np.log10(total_corr[diffu_inx]),\n                    p0=[0.0, 1.0],\n                )\n            elif np.all(total_corr[diffu_inx] < 0):\n                popt, pcov = curve_fit(\n                    lin_func,\n                    np.log10(timesteps_delTs[diffu_inx]),\n                    np.log10(-1 * total_corr[diffu_inx]),\n                    p0=[0.0, 1.0],\n                )\n            else:\n                print(\"both pos and negative for loglog, so assign 1e5\")\n                slope_list.append(1e5)\n                continue\n        else:\n            popt, pcov = curve_fit(\n                lin_func,\n                np.log10(timesteps_delTs[diffu_inx]),\n                np.zeros_like(total_corr[diffu_inx]),\n                p0=[0.0, 1.0],\n            )\n        slope_list.append(popt[0])\n    slope_val = min(slope_list, key=lambda x: abs(x - 1))\n    slope_ind = slope_list.index(slope_val)\n    diffu_inx = np.arange(\n        slope_ind + steps_to_skip, slope_ind + steps_to_skip + iteration_window\n    )\n    return diffu_inx, slope_list[slope_ind]",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/analysis/trajectory_analysis.py",
+    "function_name": "find_slope1_indeces",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 42,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

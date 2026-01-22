@@ -1,0 +1,22 @@
+{
+  "instruction": "Add Two Numbers",
+  "output": "    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {\n        ListNode dummynode=new ListNode(-1);int carry=0;int sum;\n        ListNode temp1=l1;\n        ListNode temp2=l2;\n        ListNode curr=dummynode;\n        while(temp1!=null||temp2!=null)\n        {\n            sum=carry;\n            if(temp1!=null)\n            sum=sum+temp1.val;\n            if(temp2!=null)\n            sum=sum+temp2.val;\n            ListNode newnode=new ListNode(sum%10);\n            carry=sum/10;\n            curr.next=newnode;\n            curr=curr.next;\n            if(temp1!=null)\n            temp1=temp1.next;\n            if(temp2!=null)\n            temp2=temp2.next;\n        }\n         if(carry>0)\n            {\n                ListNode newnode=new ListNode(carry);\n                curr.next=newnode;\n            }\n            return dummynode.next;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Dishagoel1804/DSA",
+    "repo_created_date": "2024-11-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0002-add-two-numbers/0002-add-two-numbers.java",
+    "function_name": "addTwoNumbers",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 28,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

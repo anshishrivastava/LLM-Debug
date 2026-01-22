@@ -1,0 +1,22 @@
+{
+  "instruction": "Modifies binning to include gap bins",
+  "output": "def add_gap_eta_bins(original_bins: list[float]) -> tuple[list[float],int,int]:\n  '''Modifies binning to include gap bins\n\n  Modifies eta binning to include EB-EE gap bins (-1.566,-1.4442) and \n  (1.4442,1.566). Original_bins MUST include -1.5 and 1.5\n\n  Args:\n    original_bins: ordered bin edges\n\n  Returns: \n    (new_bins, -gap_index, +gap_index)\n  '''\n  new_bins = original_bins.copy()\n  neg_gap_location = -1\n  pos_gap_location = -1\n  for i in range(len(original_bins)-1):\n    if new_bins[i]>-1.566 and new_bins[i]<-1.4442:\n      neg_gap_location = i\n    if new_bins[i]>1.4442 and new_bins[i]<1.566:\n      pos_gap_location = i\n  if neg_gap_location==-1 or pos_gap_location==-1:\n    raise ValueError('Input binning must have borders in gap region.')\n  new_bins.insert(neg_gap_location,-1.566)\n  new_bins[neg_gap_location+1] = -1.4442\n  new_bins.insert(pos_gap_location+1,1.4442)\n  new_bins[pos_gap_location+2] = 1.566\n  return (new_bins, neg_gap_location, pos_gap_location+1)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/rms_sf_analyzer.py",
+    "function_name": "add_gap_eta_bins",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 27,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

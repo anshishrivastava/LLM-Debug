@@ -1,0 +1,22 @@
+{
+  "instruction": "Expand Palindrome",
+  "output": "    \n    public void expandPalindrome(char[] s, int j, int k) {\n        while(j >= 0 && k < s.length && s[j] == s[k]) {\n            j--;\n            k++;\n        }\n        if(maxLen < k - j - 1) {\n            maxLen = k - j - 1;\n            lo = j+1;\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Rithesh05/LeetCode-Codes",
+    "repo_created_date": "2024-12-29",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0005-longest-palindromic-substring/0005-longest-palindromic-substring.java",
+    "function_name": "expandPalindrome",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 11,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

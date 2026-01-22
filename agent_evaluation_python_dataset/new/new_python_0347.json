@@ -1,0 +1,22 @@
+{
+  "instruction": "Cross Ion Msd Fft",
+  "output": "    def cross_ion_msd_fft(r1, r2, dt_indices):\n        n_step, dim = r1.shape\n\n        # Compute the cross-term S1\n\n        r3_square = r1 * r2\n        r3_square = np.append(r3_square, np.zeros((1, dim)), axis=0)  # (n_step+1)\n        S1_component = np.zeros((dim, n_step))  # (dim, n_step)\n        r3_square_sum = 2 * np.sum(r3_square, axis=0)\n        for i in range(n_step):\n            r3_square_sum = r3_square_sum - r3_square[i - 1] - r3_square[n_step - i]\n            S1_component[:, i] = r3_square_sum / (n_step - i)\n\n        S1 = np.sum(S1_component, axis=0)\n        # Cross-correlation S2 using FFT\n        S2_component1 = np.array(\n            [crosscorrelation_fft(r1[:, i], r2[:, i]) for i in range(r1.shape[1])]\n        )  # (dim, N)\n        S2_component2 = np.array(\n            [crosscorrelation_fft(r2[:, i], r1[:, i]) for i in range(r1.shape[1])]\n        )  # (dim, N)\n        S2_1 = np.sum(S2_component1, axis=0)\n        S2_2 = np.sum(S2_component2, axis=0)\n\n        return (S1 - S2_1 - S2_2)[dt_indices], (\n            S1_component - S2_component1 - S2_component2\n        )[:, dt_indices]",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/analysis/trajectory_analysis.py",
+    "function_name": "cross_ion_msd_fft",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 27,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

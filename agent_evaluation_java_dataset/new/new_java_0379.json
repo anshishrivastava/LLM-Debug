@@ -1,0 +1,22 @@
+{
+  "instruction": "Minimum Total",
+  "output": "  public int minimumTotal(List<List<Integer>> triangle) {\n    for (int i = triangle.size() - 2; i >= 0; --i)\n      for (int j = 0; j <= i; ++j)\n        triangle.get(i).set(j, triangle.get(i).get(j) + Math.min(triangle.get(i + 1).get(j),\n                                                                 triangle.get(i + 1).get(j + 1)));\n    return triangle.get(0).get(0);\n  }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Apoo-28/Leetcode-Problems",
+    "repo_created_date": "2024-08-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0120-triangle/0120-triangle.java",
+    "function_name": "minimumTotal",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 7,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

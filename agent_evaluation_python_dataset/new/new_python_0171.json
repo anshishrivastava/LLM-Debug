@@ -1,0 +1,22 @@
+{
+  "instruction": "adds a ratio of two plot elements to the plot",
+  "output": "  def add_ratio(self, numerator_name, denominator_name, switch_colors=False, \n                multinumerator=None):\n    '''adds a ratio of two plot elements to the plot\n\n    @params\n    numerator_name    name of plot element to use as numerator\n    denominator_name  name of plot element to use as denominator\n    switch_colors     bool switch colors of numerator and denominator\n    multinumerator    bool uses numerators for ratio errors\n    ''' \n    if (multinumerator==None):\n      multinumerator = switch_colors\n    numerator_hist = None\n    denominator_hist = None\n    numerator_color = 1\n    denominator_color = 1\n    for hist, color in zip(self.hists, self.hist_color):\n      if (hist.GetName()==numerator_name):\n        numerator_hist = hist\n        numerator_color = color\n      if (hist.GetName()==denominator_name):\n        denominator_hist = hist\n        denominator_color = color\n    if (numerator_hist != None and denominator_hist != None):\n      #add uncertainties for reference on first plot\n      if len(self.bottom_plots)==0:\n        if not multinumerator:\n          self.bottom_plots.append(hist_simpledivide(numerator_hist, \n                                                     numerator_hist))\n        else: \n          self.bottom_plots.append(hist_simpledivide_num(numerator_hist, \n                                                         numerator_hist))\n        if not switch_colors:\n          self.bottom_plot_color.append(numerator_color)\n        else:\n          self.bottom_plot_color.append(denominator_color)\n      if not multinumerator:\n        self.bottom_plots.append(hist_simpledivide(numerator_hist,\n                                                   denominator_hist))\n      else:\n        self.bottom_plots.append(hist_simpledivide_num(numerator_hist,\n                                                       denominator_hist))\n      if not switch_colors:\n        self.bottom_plot_color.append(denominator_color)\n      else:\n        self.bottom_plot_color.append(numerator_color)\n      self.plot_bottom = True\n    else:\n      raise ValueError('Could not find numerator and denominator plots requested for ratio.')\n    #TODO implement ratios of graphs\n    return self",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/root_plot_lib.py",
+    "function_name": "add_ratio",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 51,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

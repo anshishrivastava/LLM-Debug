@@ -1,0 +1,22 @@
+{
+  "instruction": "This function calculates the top predictions for the specified value of k",
+  "output": "    def top_accuracy(self, output, target, batch_size, topk=(1,)):\n        \"\"\"\n        This function calculates the top predictions for the specified value of k\n        :param output: the predictions\n        :param target: the ground truth labels\n        :param topk: topk to choose\n        :return: topk accuracy\n        \"\"\"\n        with torch.no_grad():\n            maxk = max(topk)  # choose the maximum value of topk\n\n            _, pred = output.topk(maxk, 1, True, True)  # return two tensors, values and indices\n            pred = pred.t()  # transpose\n            correct = pred.eq(target.view(1, -1).expand_as(pred))\n            # eq for output bool values, expand_as for extending to the size of tensor, view for reshaping\n\n            res = []\n            for k in topk:\n                correct_k = correct[:k].reshape(-1).float().sum(0, keepdim=True)\n                res.append(correct_k.mul_(100.0 / batch_size))\n            return res",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "98haiting/General-or-Medical-CLIP-Which-one-Shall-We-Choose",
+    "repo_created_date": "2024-10-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "biomed_clip/metrices.py",
+    "function_name": "top_accuracy",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 21,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

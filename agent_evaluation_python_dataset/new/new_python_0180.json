@@ -1,0 +1,22 @@
+{
+  "instruction": "Add fitting model",
+  "output": "  def add_model(self, model_name: str, model_initializer: Callable):\n    '''Add fitting model\n\n    Adds an initializer for a RooWorkspace, i.e. signal and background shapes\n    with appropriate Parameters. See below for examples of model initializers\n    The model must take as an argument the fitting variable (as a RooRealVar)\n    as well as the bin number and include RooRealVars nSig and nBkg \n    representing the norm of signal and background as well as a RooRealVar \n    fit_var representing the fit variable and a RooAbsPdf pdf_sb representing \n    the S+B model\n\n    Args:\n      model_name: string, name for this model\n      model_initializer: function that returns RooWorkspace, see examples\n    '''\n    self.model_initializers[model_name] = model_initializer",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_analyzer.py",
+    "function_name": "add_model",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 16,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

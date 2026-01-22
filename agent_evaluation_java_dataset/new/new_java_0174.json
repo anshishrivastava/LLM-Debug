@@ -1,0 +1,22 @@
+{
+  "instruction": "Do Something",
+  "output": "\n        public String doSomething(HttpServletRequest request, String param)\n                throws ServletException, IOException {\n\n            String bar = \"\";\n            if (param != null) {\n                java.util.List<String> valuesList = new java.util.ArrayList<String>();\n                valuesList.add(\"safe\");\n                valuesList.add(param);\n                valuesList.add(\"moresafe\");\n\n                valuesList.remove(0); // remove the 1st safe value\n\n                bar = valuesList.get(0); // get the param value\n            }\n\n            return bar;\n        }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "racheli-test-org/2test",
+    "repo_created_date": "2024-07-28",
+    "repo_stars": 0,
+    "repo_forks": 4,
+    "file_path": "010725.java",
+    "function_name": "doSomething",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 18,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Draws a simple plot for debugging fits",
+  "output": "  def make_simple_tnp_plot(self, workspace: ROOT.RooWorkspace, \n                           canvas: ROOT.TCanvas):\n    '''Draws a simple plot for debugging fits\n\n    Args:\n      workspace: T&P workspace\n      canvas: canvas to draw plot on\n    '''\n    pdf_sb = workspace.pdf('pdf_sb')\n    fit_range_lower, fit_range_upper = self.get_fit_range()\n    plot = workspace.var('fit_var').frame(fit_range_lower, fit_range_upper)\n    workspace.data('data').plotOn(plot)\n    pdf_sb.plotOn(plot,ROOT.RooFit.Name('fit_sb'),\n                  ROOT.RooFit.NormRange('fitMassRange'))\n    pdf_sb.plotOn(plot,ROOT.RooFit.Name('fit_b'),\n                  ROOT.RooFit.Components('pdf_b'),\n                  ROOT.RooFit.NormRange('fitMassRange'))\n    canvas.cd()\n    plot.Draw()\n    canvas.Update()",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_analyzer.py",
+    "function_name": "make_simple_tnp_plot",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 20,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

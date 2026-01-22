@@ -1,0 +1,22 @@
+{
+  "instruction": "This function calculates the accuracy",
+  "output": "    def accuracy(self, output, target):\n        \"\"\"\n        This function calculates the accuracy\n        :param output: ground truth, 1d array-like or label indicator array / sparse matrix\n        :param target: prediction, 1d array-like or label indicator array / sparse matrix\n        :return: accuracy\n        \"\"\"\n        acc = accuracy_score(output, target)\n        return acc",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "98haiting/General-or-Medical-CLIP-Which-one-Shall-We-Choose",
+    "repo_created_date": "2024-10-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "biomed_clip/metrices.py",
+    "function_name": "accuracy",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 9,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

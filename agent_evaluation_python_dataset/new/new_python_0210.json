@@ -1,0 +1,22 @@
+{
+  "instruction": "Calculates Wilson approximation to Bernoulli mean confidence interval",
+  "output": "def bin_wilson_ci(n_pass: float, n_fail: float) -> tuple[float,float]:\n  '''Calculates Wilson approximation to Bernoulli mean confidence interval\n\n  Calculates a confidence interval for the pass probability of a Bernoulli\n  random variable following the Wilson approximation\n\n  Args:\n    n_pass: number of passes\n    n_fail: number of fails\n\n  Returns:\n    (lower CI bound, upper CI bound)\n  '''\n  z = 1.0\n  n_total = n_pass+n_fail\n  p_est = n_pass/n_total\n  a = (1.0+(z**2)/n_total)\n  b = -2.0*p_est-(z**2)/n_total\n  c = p_est**2\n  lower = (-1.0*b-sqrt(b**2-4.0*a*c))/2.0/a\n  upper = (-1.0*b+sqrt(b**2-4.0*a*c))/2.0/a\n  return (lower, upper)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_utils.py",
+    "function_name": "bin_wilson_ci",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 22,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

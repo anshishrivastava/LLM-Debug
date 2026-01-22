@@ -1,0 +1,22 @@
+{
+  "instruction": "Same logic as set_bond_type. This is first called with molecule=None to assign dihedral types",
+  "output": "    def set_dihedral_type(self, molecule=None):\n        \"\"\"\n        Same logic as set_bond_type. This is first called with molecule=None to assign dihedral types\n        to all the possible dihedrals in the entire dataset. Then, it is called again with each molecule in the dataset\n        (for molecule in dataset.data) to assign the dihedral types according to the parent dataset.\n        Also, since angle types have now been assigned, the code will reorder the atom indices within each dihedral\n        to ensure permutation invariance if cross-terms containing dihedrals are needed (for class 2 force fields)\n        \"\"\"\n        if self.dihedrals.shape[0] == 0:\n            return torch.tensor([])\n        if molecule is not None and molecule.dihedrals.shape[0] == 0:\n            return torch.tensor([])\n\n        # change dihderal indices to maintain canonical ordering for cross-terms\n        if molecule is not None:\n            angles_in_dihedrals = get_angles_in_dihedrals(molecule)\n            angle_types = molecule.angle_type\n            all_angle_types = angle_types[angles_in_dihedrals].squeeze()\n            mask = all_angle_types[:, 0] > all_angle_types[:, 1]\n            molecule.dihedrals[mask] = molecule.dihedrals[mask].flip(dims=(1,))\n        else:\n            angles_in_dihedrals = get_angles_in_dihedrals(self)\n            angle_types = self.angle_type\n            all_angle_types = angle_types[angles_in_dihedrals].squeeze()\n            mask = all_angle_types[:, 0] > all_angle_types[:, 1]\n            self.dihedrals[mask] = self.dihedrals[mask].flip(dims=(1,))\n\n        # actually set dihedral types\n        if molecule is not None:\n            node_types = molecule.atom_type.view(-1)\n            top_types = node_types[molecule.dihedrals]\n        else:\n            node_types = self.atom_type.view(-1)\n            top_types = node_types[self.dihedrals]\n        top_types = (\n            torch.eye(self.num_node_types)\n            .to(device=self.train_args.device)[top_types]\n            .to(torch.long)\n        )\n        # top_types after the stack is of dimension (# topologies, 2, 2*num_node_types)\n        top_types = torch.stack(\n            [\n                torch.cat([top_types[:, 1], top_types[:, 0]], dim=1),\n                torch.cat([top_types[:, 2], top_types[:, 3]], dim=1),\n            ],\n            dim=1,\n        )\n        # pair_types is this stack but now the 0-1 and 3-2 bonds are all in sequence instead of being stacked together in the 1st dimension\n        # pair_types shape is now (2*(# topologies), 2*num_node_types))\n        pair_types = top_types.view(-1, top_types.shape[2])\n        cur_unique_pair_values, cur_unique_pair_types = pair_types.unique(\n            dim=0, return_inverse=True\n        )\n        if molecule is not None:\n            molecule.pair_unique_values = cur_unique_pair_values\n        else:\n            self.pair_unique_values = cur_unique_pair_values\n        pair_types = self.index_of2(input=pair_types, source=self.pair_unique_values)\n        pair_types = pair_types.view(-1, 2)\n\n        if molecule is not None:\n            molecule.num_pair_types = pair_types.max().item() + 1\n        else:\n            self.num_pair_types = pair_types.max().item() + 1\n        top_types = (\n            torch.eye(self.num_pair_types)\n            .to(device=self.train_args.device)[pair_types]\n            .to(torch.long)\n        )\n        top_types = top_types.sum(1)\n        cur_unique_values = top_types.unique(dim=0, return_inverse=True)[0]\n        if molecule is not None:\n            molecule.dihedral_unique_values = cur_unique_values\n        else:\n            self.dihedral_unique_values = cur_unique_values\n        top_types = self.index_of2(input=top_types, source=self.dihedral_unique_values)\n        return top_types",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/data/builder.py",
+    "function_name": "set_dihedral_type",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 77,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

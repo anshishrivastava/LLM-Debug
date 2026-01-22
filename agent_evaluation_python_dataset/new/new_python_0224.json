@@ -1,0 +1,22 @@
+{
+  "instruction": "Function that outputs a grout truth reference spectra of the same size as the data",
+  "output": "def CompareSpectra(Wavelengths_sorted, GroundTruthWavelengths, GroundTruthSpectrum, **kwargs):\n\t\"\"\"\n\tFunction that outputs a grout truth reference spectra of the same size as the data \n\tAllows to plot both on the same x data list. \n\tAssumes that the ground truth has more wavelengths than the dataset\n\n\tInputs:\n\t\t- Wavelengths_sorted: list of wavelengths (data)\n\t\t- GroundTruthWavelengths: list of wavelengths (ground truth/reference)\n\t\t- GroundTruthSpectrum: Spectra of the ground truth/reference (same length as GroundTruthWavelengths)\n\t\t- kwargs:\n\t\t\t- Help\n\n\tOutput:\n\t\t- Comparable_GroundTruthSpectrum\n\n\n\t\"\"\"\n\tHelp = kwargs.get('Help', False)\n\tif Help:\n\t\tprint(inspect.getdoc(CompareSpectra))\n\n\tComparableSpectra = []\n\tfor i in range(0,len(Wavelengths_sorted)):\n\t\twav=Wavelengths_sorted[i]\n\t\tindex=find_closest(GroundTruthWavelengths, wav)\n\t\tComparableSpectra.append(GroundTruthSpectrum[index])\n\treturn np.array(ComparableSpectra)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "YzaboRa/HySE_HypercubeFunctions",
+    "repo_created_date": "2024-08-22",
+    "repo_stars": 0,
+    "repo_forks": 2,
+    "file_path": "HySE/UserTools.py",
+    "function_name": "CompareSpectra",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 28,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Build Tree",
+  "output": "\n    static Node buildTree(String str) {\n\n        if (str.length() == 0 || str.charAt(0) == 'N') {\n            return null;\n        }\n\n        String ip[] = str.split(\" \");\n        // Create the root of the tree\n        Node root = new Node(Integer.parseInt(ip[0]));\n        // Push the root to the queue\n\n        Queue<Node> queue = new LinkedList<>();\n\n        queue.add(root);\n        // Starting from the second element\n\n        int i = 1;\n        while (queue.size() > 0 && i < ip.length) {\n\n            // Get and remove the front of the queue\n            Node currNode = queue.peek();\n            queue.remove();\n\n            // Get the current node's value from the string\n            String currVal = ip[i];\n\n            // If the left child is not null\n            if (!currVal.equals(\"N\")) {\n\n                // Create the left child for the current node\n                currNode.left = new Node(Integer.parseInt(currVal));\n                // Push it to the queue\n                queue.add(currNode.left);\n            }\n\n            // For the right child\n            i++;\n            if (i >= ip.length) break;\n\n            currVal = ip[i];\n\n            // If the right child is not null\n            if (!currVal.equals(\"N\")) {\n\n                // Create the right child for the current node\n                currNode.right = new Node(Integer.parseInt(currVal));\n\n                // Push it to the queue\n                queue.add(currNode.right);\n            }\n            i++;\n        }\n\n        return root;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Apoo-28/GFG-Problems",
+    "repo_created_date": "2024-12-08",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "Difficulty: Easy/Check for BST/check-for-bst.java",
+    "function_name": "buildTree",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 56,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Find and kill any existing bot instances before starting a new one.",
+  "output": "def kill_existing_bot_instances() -> int:\n    \"\"\"\n    Find and kill any existing bot instances before starting a new one.\n\n    This prevents multiple bot instances from running simultaneously,\n    which could cause duplicate trades and circuit breaker issues.\n\n    Returns:\n        int: Number of processes killed\n    \"\"\"\n    current_pid = os.getpid()\n    killed_count = 0\n\n    try:\n        # Find all Python processes running main.py\n        # Use broader pattern to catch python, python3, and full paths\n        result = subprocess.run(\n            [\"pgrep\", \"-f\", \"main.py\"],\n            capture_output=True,\n            text=True\n        )\n\n        if result.returncode == 0 and result.stdout.strip():\n            pids = result.stdout.strip().split('\\n')\n\n            for pid_str in pids:\n                try:\n                    pid = int(pid_str.strip())\n                    # Don't kill ourselves\n                    if pid != current_pid:\n                        logger.info(f\"Found existing bot instance (PID: {pid}), terminating...\")\n                        os.kill(pid, signal.SIGTERM)\n                        killed_count += 1\n                        # Give it a moment to shut down gracefully\n                        time.sleep(1)\n                except (ValueError, ProcessLookupError):\n                    pass  # Process already terminated or invalid PID\n\n        if killed_count > 0:\n            logger.info(f\"Terminated {killed_count} existing bot instance(s)\")\n            # Extra wait for graceful cleanup\n            time.sleep(2)\n\n    except FileNotFoundError:\n        # pgrep not available (Windows or unusual system)\n        logger.warning(\"pgrep not available - cannot check for existing instances\")\n    except Exception as e:\n        logger.warning(f\"Error checking for existing instances: {e}\")\n\n    return killed_count",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/main.py",
+    "function_name": "kill_existing_bot_instances",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 50,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

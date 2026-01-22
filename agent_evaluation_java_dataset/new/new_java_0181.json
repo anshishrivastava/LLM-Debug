@@ -1,0 +1,22 @@
+{
+  "instruction": "Longest Common Prefix",
+  "output": "\n    public static String longestCommonPrefix(String[] strs) {\n        if (strs == null || strs.length == 0) return \"\";\n\n        String prefix = strs[0];\n\n        for (int i = 1; i < strs.length; i++) {\n            while (!strs[i].startsWith(prefix)) {\n                prefix = prefix.substring(0, prefix.length() - 1);\n                if (prefix.isEmpty()) return \"\";\n            }\n        }\n\n        return prefix;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "nchhillar2004/dsa-cp",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "leetcode/easy/0014. Longest Common Prefix/Solution.java",
+    "function_name": "longestCommonPrefix",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 15,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

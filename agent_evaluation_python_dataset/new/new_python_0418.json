@@ -1,0 +1,22 @@
+{
+  "instruction": "Sync the Positions sheet with current strategy positions.",
+  "output": "    def sync_positions_sheet(self):\n        \"\"\"\n        Sync the Positions sheet with current strategy positions.\n\n        Call this on startup to ensure the sheet reflects actual state.\n        \"\"\"\n        if not self.trade_logger:\n            return\n\n        positions = self.get_current_positions_for_sync()\n        self.trade_logger.sync_positions_with_saxo(positions)\n        logger.info(f\"Synced Positions sheet with {len(positions)} current positions\")",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "sync_positions_sheet",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 12,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

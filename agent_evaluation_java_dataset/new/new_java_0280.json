@@ -1,0 +1,22 @@
+{
+  "instruction": "Back Track",
+  "output": "    private static void backTrack(int idx, int sumScore, int sumCalories) {\n        if (sumCalories > L) {\n            return;\n        } else if (sumCalories == L){\n            result = Math.max(result, sumScore);\n            return;\n        } else {\n            result = Math.max(result, sumScore);\n        }\n\n        for (int i = idx; i < N; i++) {\n            sumScore += material[i][0];\n            sumCalories += material[i][1];\n            backTrack(i + 1, sumScore, sumCalories);\n            sumScore -= material[i][0];\n            sumCalories -= material[i][1];\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "xabinM/algorithm-record-Java",
+    "repo_created_date": "2024-09-19",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "src/SSAFY/backTrack/HamBergerDiet.java",
+    "function_name": "backTrack",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 18,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Get a human-readable summary of missing legs.",
+  "output": "    def get_missing_legs_summary(self) -> str:\n        \"\"\"Get a human-readable summary of missing legs.\"\"\"\n        missing = []\n        if self.needs_straddle_call():\n            strike = self.long_straddle.initial_strike\n            missing.append(f\"Straddle CALL @${strike:.0f}\")\n        if self.needs_straddle_put():\n            strike = self.long_straddle.initial_strike\n            missing.append(f\"Straddle PUT @${strike:.0f}\")\n        if self.needs_strangle_call():\n            missing.append(\"Strangle CALL (need to find strike)\")\n        if self.needs_strangle_put():\n            missing.append(\"Strangle PUT (need to find strike)\")\n\n        if missing:\n            return \"Missing: \" + \", \".join(missing)\n        return \"All legs complete\"",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "get_missing_legs_summary",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 17,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

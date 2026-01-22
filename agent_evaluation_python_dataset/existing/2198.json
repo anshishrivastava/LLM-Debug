@@ -1,0 +1,4 @@
+{
+  "instruction": "Write a code to subtract two 8-bit integers.",
+  "output": "def subtractTwoBits(a, b): \n\tif (a >= b): \n\t\t\n\t\tdiff = [0] * 8\n\t\t\n\t\tfor i in range(8): \n\t\t\t\n\t\t\tif (b % 2 == 0): \n\t\t\t\n\t\t\t\tdiff[i] = (int)(a % 2) \n\t\t\t\n\t\t\telse: \n\t\t\t\n\t\t\t\tdiff[i] = (int)(a % 2) ^ 1\n\t\t\t\n\t\t\ta = int(a / 2) \n\t\t\tb = int(b / 2) \n\t\t\n\t\treturn diffToDecimal(diff) \n\t\n\telse: \n\t\tprint(\"Error: a is smaller\") \n\t\treturn -1\n\ndef diffToDecimal(diff): \n\t\n\tval = 0\n\t\n\tp = 1\n\t\n\tfor i in range (7, -1, -1): \n\t\n\t\tval = (val + (diff[i] * p))\t \n\t\tp = p * 2\n\t\t\n\treturn val \n\t\nx = 15\ny = 6\nres = subtractTwoBits(x, y) \nprint(res)"
+}

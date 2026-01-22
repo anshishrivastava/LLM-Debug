@@ -1,0 +1,22 @@
+{
+  "instruction": "Check if a and b are equal, even if they are numpy arrays.",
+  "output": "def array_safe_eq(a, b) -> bool:\n    \"\"\"\n    Check if a and b are equal, even if they are numpy arrays.\n    When a and be are dictionaries call recursively for all key, value pairs.\n    \"\"\"\n\n    if a is b:\n        return True\n    if isinstance(a, np.ndarray) and isinstance(b, np.ndarray):\n        return a.shape == b.shape and (a == b).all()\n    if isinstance(a, dict) and isinstance(b, dict):\n        return a.keys() == b.keys() and all(array_safe_eq(a[key], b[key]) for key in a.keys())\n    try:\n        return a == b\n    except TypeError:  # pragma: no cover\n        return NotImplemented",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "PrincetonUniversity/slurmise",
+    "repo_created_date": "2024-06-21",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "src/slurmise/job_data.py",
+    "function_name": "array_safe_eq",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 16,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Add Two Numbers",
+  "output": "    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {\n        if(l1 == null && l2 == null && carry == 0){\n            return null;\n        }\n\n        int sum = (l1==null? 0 : l1.val) + (l2== null ? 0 : l2.val) + carry;\n        carry = sum / 10;\n        ListNode answer = new ListNode(sum % 10, addTwoNumbers(l1!=null?l1.next:null, l2!=null?l2.next:null));\n        return answer;  \n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "alikhan0616/DSA",
+    "repo_created_date": "2024-09-28",
+    "repo_stars": 1,
+    "repo_forks": 1,
+    "file_path": "0002-add-two-numbers/0002-add-two-numbers.java",
+    "function_name": "addTwoNumbers",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 10,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

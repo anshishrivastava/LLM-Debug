@@ -1,0 +1,22 @@
+{
+  "instruction": "Repeated N Times",
+  "output": "    public int repeatedNTimes(int[] nums) \n    {\n\n        for(int i=0;i<nums.length-1;i++)\n        {\n            if(nums[i] == nums[i+1]) return nums[i];\n            if(i+2 < nums.length && nums[i] == nums[i+2]) return nums[i];\n            if(i+3 < nums.length && nums[i] == nums[i+3]) return nums[i];\n\n        }\n        return -1;\n        \n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "TONYPRIYAN/DSA-Problem-Solving-",
+    "repo_created_date": "2025-01-17",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "1001-n-repeated-element-in-size-2n-array/n-repeated-element-in-size-2n-array.java",
+    "function_name": "repeatedNTimes",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 13,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Deal Damage In Area",
+  "output": "\n    private void dealDamageInArea(Player player, int damage, GameProj gameProj) {\n        Vector2 playerPos = player.getPosition();\n\n        Vector3 mousePos3D = gameProj.getCamera().unproject(\n                new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0)\n        );\n        Vector2 mousePos = new Vector2(mousePos3D.x, mousePos3D.y);\n        Vector2 attackDir = new Vector2(mousePos.x - playerPos.x, mousePos.y - playerPos.y).nor();\n\n        // Check overworld enemies\n        for (Chunk chunk : gameProj.getChunks().values()) {\n            for (Enemy enemy : new ArrayList<>(chunk.getEnemies())) {\n                if (enemy.getBody() != null) {\n                    Vector2 enemyPos = enemy.getBody().getPosition();\n                    Vector2 toEnemy = new Vector2(enemyPos.x - playerPos.x, enemyPos.y - playerPos.y);\n\n                    if (toEnemy.len() < distance && toEnemy.nor().dot(attackDir) > 0.5f) {\n                        enemy.takeDamage(damage);\n                    }\n                }\n            }\n\n            for (BossKitty boss : new ArrayList<>(chunk.getBossKitty())) {\n                if (boss.getBody() != null) {\n                    Vector2 enemyPos = boss.getBody().getPosition();\n                    Vector2 toEnemy = new Vector2(enemyPos.x - playerPos.x, enemyPos.y - playerPos.y);\n\n                    if (toEnemy.len() < distance && toEnemy.nor().dot(attackDir) > 0.5f) {\n                        boss.takeDamage(damage);\n                    }\n                }\n            }\n\n            for (Cyclops cyclops : new ArrayList<>(chunk.getCyclopsList())) {\n                if (cyclops.getBody() != null) {\n                    Vector2 enemyPos = cyclops.getBody().getPosition();\n                    Vector2 toEnemy = new Vector2(enemyPos.x - playerPos.x, enemyPos.y - playerPos.y);\n\n                    if (toEnemy.len() < distance && toEnemy.nor().dot(attackDir) > 0.5f) {\n                        cyclops.takeDamage(damage);\n                    }\n                }\n            }\n        }\n\n        // Check dungeon enemies\n        if (gameProj.getCurrentDungeon() != null) {\n            for (DungeonEnemy enemy : new ArrayList<>(gameProj.getCurrentDungeon().getEnemies())) {\n                if (enemy.getBody() != null) {\n                    Vector2 enemyPos = enemy.getBody().getPosition();\n                    Vector2 toEnemy = new Vector2(enemyPos.x - playerPos.x, enemyPos.y - playerPos.y);\n\n                    if (toEnemy.len() < distance && toEnemy.nor().dot(attackDir) > 0.5f) {\n                        enemy.takeDamage(damage);\n                    }\n                }\n            }\n        }\n\n        // Check boss room bosses\n        if (gameProj.getCurrentBossRoom() != null) {\n            BossKitty bossRoomBoss = gameProj.getCurrentBossRoom().getBoss();\n            if (bossRoomBoss != null && bossRoomBoss.getBody() != null) {\n                Vector2 enemyPos = bossRoomBoss.getBody().getPosition();\n                Vector2 toEnemy = new Vector2(enemyPos.x - playerPos.x, enemyPos.y - playerPos.y);\n\n                if (toEnemy.len() < distance && toEnemy.nor().dot(attackDir) > 0.5f) {\n                    bossRoomBoss.takeDamage(damage);\n                }\n            }\n\n            Cyclops cyclopsRoomBoss = gameProj.getCurrentBossRoom().getCyclops();\n            if (cyclopsRoomBoss != null && cyclopsRoomBoss.getBody() != null) {\n                Vector2 enemyPos = cyclopsRoomBoss.getBody().getPosition();\n                Vector2 toEnemy = new Vector2(enemyPos.x - playerPos.x, enemyPos.y - playerPos.y);\n\n                if (toEnemy.len() < distance && toEnemy.nor().dot(attackDir) > 0.5f) {\n                    cyclopsRoomBoss.takeDamage(damage);\n                }\n            }\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/MercenaryAbilities.java",
+    "function_name": "dealDamageInArea",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 83,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

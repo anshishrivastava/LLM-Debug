@@ -1,0 +1,22 @@
+{
+  "instruction": "Prime_ Sum",
+  "output": "\n    public int prime_Sum(int n) {\n        // code here\n\n        long sum=0;\n\n        for(int i=1;i<=n;i++){\n            int count=0;\n            if(i<=1)continue;\n\n            for(int j=1;j*j<=i;j++){\n                if(i%j==0){\n                    count++;\n                    if((i/j)!=j){\n                        count++;\n\n                    }\n                }\n            }\n            if(count==2){\n                sum=sum+i;\n            }\n        }\n\n        return (int)sum;\n\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "dheerajkr8287/DSA",
+    "repo_created_date": "2024-09-12",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "src/BasicInterviewAsked/Sumof_the_first_N_Primenumbers.java",
+    "function_name": "prime_Sum",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 27,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

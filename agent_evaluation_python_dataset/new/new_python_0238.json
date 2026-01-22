@@ -1,0 +1,22 @@
+{
+  "instruction": "Parse Hours Minutes",
+  "output": "    def parse_hours_minutes(match_obj):\n        if not match_obj: return 0, 0\n        groups = match_obj.groups(default=\"\")\n        h_str = groups[0] if len(groups) >= 1 else \"\"\n        m_str = groups[1] if len(groups) >= 2 else \"\"\n        \n        def get_val(s):\n            d = re.sub(r\"\\D\", \"\", s or \"\")\n            return int(d) if d else 0\n        return get_val(h_str), get_val(m_str)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "misutesu-desu/MudaRemote",
+    "repo_created_date": "2024-10-12",
+    "repo_stars": 34,
+    "repo_forks": 5,
+    "file_path": "mudae_bot.py",
+    "function_name": "parse_hours_minutes",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 10,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

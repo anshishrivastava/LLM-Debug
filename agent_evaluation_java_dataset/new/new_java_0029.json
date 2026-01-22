@@ -1,0 +1,22 @@
+{
+  "instruction": "Render cone using texture (static, full cone)",
+  "output": "        private void renderTexturedConeStatic(SpriteBatch batch, Vector2 playerPos, float facingAngle) {\n            // Draw the full cone texture\n            float coneWidth = range;\n            float coneHeight = range * 0.8f; // Adjust aspect ratio as needed\n\n            batch.setColor(indicatorColor.r, indicatorColor.g, indicatorColor.b, 0.5f);\n\n            // Draw cone with origin at left center (tip of cone)\n            batch.draw(coneTexture,\n                    playerPos.x, playerPos.y - coneHeight / 2f,  // position\n                    0, coneHeight / 2f,                           // origin (left center - cone tip)\n                    coneWidth, coneHeight,                        // size\n                    1f, 1f,                                       // scale\n                    facingAngle,                                  // rotation\n                    0, 0,                                         // src position\n                    coneTexture.getWidth(), coneTexture.getHeight(), // src size\n                    false, false);                                // flip\n\n            batch.setColor(1f, 1f, 1f, 1f);\n        }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/AbilityVisual.java",
+    "function_name": "renderTexturedConeStatic",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 20,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

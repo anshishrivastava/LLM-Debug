@@ -1,0 +1,22 @@
+{
+  "instruction": "Remove Element",
+  "output": "    public int removeElement(int[] nums, int val) {\n        int l = 0;\n        int p = 0;\n\n        int n = nums.length;\n\n        while(p < n) {\n            if(nums[p] != val) {\n                nums[l++] = nums[p++];\n            } else {\n                p++;\n            }\n        }\n\n        return l;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "bishal7448/LeetCode_DSA_100_Question_Challenge",
+    "repo_created_date": "2024-12-28",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0027-remove-element/0027-remove-element.java",
+    "function_name": "removeElement",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 16,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

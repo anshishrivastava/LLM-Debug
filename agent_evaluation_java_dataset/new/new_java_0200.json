@@ -1,0 +1,22 @@
+{
+  "instruction": "Missing Number",
+  "output": "    public int missingNumber(int[] nums) {\n        int n = nums.length;\n\n        int expectedSum = (n*(n+1))/2;\n\n        int sum = 0;\n\n        for(int i=0; i<n; i++){\n            sum += nums[i];\n        }\n\n        int missingNumber = expectedSum - sum;\n\n        return missingNumber;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "utkrshydv/learningLeetCode",
+    "repo_created_date": "2025-01-15",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0268-missing-number/0268-missing-number.java",
+    "function_name": "missingNumber",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 15,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

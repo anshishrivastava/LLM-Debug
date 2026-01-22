@@ -1,0 +1,22 @@
+{
+  "instruction": "Find Median Sorted Arrays",
+  "output": "    public double findMedianSortedArrays(int[] nums1, int[] nums2) {\n        int n=nums1.length, m=nums2.length;\n        if(n>m) return findMedianSortedArrays(nums2, nums1);\n\n        int low=0, high=n;\n        while(low<=high){\n            int mid1= (low+high)/2;\n            int mid2= (n+m+1)/2 - mid1; //+1 is done because both array start with 0.. so we are short of +1 value for overall array representation.\n\n            int l1= (mid1==0) ? Integer.MIN_VALUE : nums1[mid1-1];\n            int r1= (mid1==n) ? Integer.MAX_VALUE : nums1[mid1];\n\n            int l2= (mid2==0) ? Integer.MIN_VALUE : nums2[mid2-1];\n            int r2= (mid2==m) ? Integer.MAX_VALUE : nums2[mid2];\n\n            if(l1<=r2 && l2<=r1){\n                if((n+m)%2 != 0) return Math.max(l1,l2);\n                else return (Math.max(l1,l2)+Math.min(r1,r2))/2.0;\n            }\n            \n            if(l1>r2){\n                high=mid1-1;\n            }else{\n                low=mid1+1;\n            }\n        }\n        return 0;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Braj111/DSA-Practice",
+    "repo_created_date": "2024-08-24",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0004-median-of-two-sorted-arrays/0004-median-of-two-sorted-arrays.java",
+    "function_name": "findMedianSortedArrays",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 28,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

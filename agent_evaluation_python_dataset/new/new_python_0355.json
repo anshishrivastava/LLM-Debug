@@ -1,0 +1,22 @@
+{
+  "instruction": "iterate through all the molecules in the dataset and assign their atom environments based on the",
+  "output": "    def set_molecule_topology_types(self):\n        \"\"\"\n        iterate through all the molecules in the dataset and assign their atom environments based on the\n        available environments from the dataset. This is needed because all the parameters have to be referenced from\n        ONE base location (dataset.params) in order for backpropagation to work.\n        \"\"\"\n        for molecule in self.data:\n            # each molecule is a TopologyBuilder object\n            neighbors = [\n                molecule.bonds[\n                    np.where(molecule.bonds.cpu() == i)[0],\n                    ~np.where(molecule.bonds.cpu() == i)[1],\n                ].tolist()\n                for i in range(molecule.atom_num)\n            ]\n            molecule.atom_type = self.set_atom_type(neighbors, molecule=molecule)\n            molecule.num_node_types = (\n                self.atom_type.max().item() + 1\n            )  # always use the full possible node types for onehot encoding\n\n            molecule.bond_type = self.set_bond_type(molecule=molecule)\n            molecule.angle_type = self.set_angle_type(molecule=molecule)\n            molecule.dihedral_type = self.set_dihedral_type(molecule=molecule)\n\n            molecule.improper_type = self.set_improper_type(molecule=molecule)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/data/builder.py",
+    "function_name": "set_molecule_topology_types",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 25,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

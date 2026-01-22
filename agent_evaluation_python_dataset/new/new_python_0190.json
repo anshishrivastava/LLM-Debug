@@ -1,0 +1,22 @@
+{
+  "instruction": "Performs interactive fit to data",
+  "output": "  def fit_histogram(self, ibin: int, pass_probe: str, model: str, \n                    param_initializer: str='') -> int:\n    \"\"\"Performs interactive fit to data\n\n    Args:\n      ibin: bin to fit\n      pass_probe: pass or fail\n      model: model name\n      param_initializer: parameter initializer name\n\n    Returns:\n      0 to exit, 1 to go to next fit\n    \"\"\"\n\n    self.check_initialization()\n    self.initialize_files_directories()\n    #do initial checks\n    pass_bool = False\n    pass_fail = 'fail'\n    if pass_probe in ['pass','p','P']:\n      pass_bool = True\n      pass_fail = 'pass'\n    hist_name = 'hist_'+pass_fail+'_bin{}'.format(ibin)\n    if not self.temp_file.GetListOfKeys().Contains(hist_name):\n      print('ERROR: Please produce histograms before calling fit.')\n      return 0\n\n    #initialize workspace\n    fit_range_lower, fit_range_upper = self.get_fit_range()\n    var_range_lower, var_range_upper = self.get_var_range()\n    fit_var = ROOT.RooRealVar('fit_var', self.fit_var_name, \n                              var_range_lower, var_range_upper)\n    #fit_var.setBins(10000,\"cache\")\n    #fit_var.setMin(\"cache\",(self.fit_var_range[0]+fit_range_lower)/2.0)\n    #fit_var.setMax(\"cache\",(self.fit_var_range[1]+fit_range_upper)/2.0)\n    #fit_var.setRange(self.fit_var_range[0], self.fit_var_range[1])\n    fit_var.setRange('fitMassRange', fit_range_lower, fit_range_upper)\n    workspace = self.model_initializers[model](fit_var, ibin, pass_bool)\n    fit_hist = extend_hist(self.temp_file.Get(hist_name), var_range_lower,\n                           var_range_upper)\n    #zero_outside_range(fit_hist, fit_range_lower, fit_range_upper)\n    data = ROOT.RooDataHist('data','fit variable', ROOT.RooArgList(fit_var), \n                            fit_hist)\n    getattr(workspace,'import')(data)\n    if not param_initializer=='':\n      self.param_initializers[param_initializer](ibin, pass_bool, workspace)\n\n    #run interactive fit\n    canvas = ROOT.TCanvas()\n    print('Fitting '+pass_fail+' bin {}'.format(ibin))\n    plot_callback = partial(self.make_simple_tnp_plot,workspace,canvas)\n    output_filename = 'out/{}/fitinfo_bin{}_{}.json'.format(self.temp_name,\n                                                            str(ibin),\n                                                            pass_fail)\n    help_str = (('This is an interactive fitting session for bin {} '\n                 +'category {}.').format(ibin, pass_probe))\n    fit_session = InteractiveFit(workspace, plot_callback, canvas.SaveAs,\n                                 output_filename, model, help_str)\n    fit_session.interactive_fit(['f'])\n    return fit_session.run_interactive()",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_analyzer.py",
+    "function_name": "fit_histogram",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 60,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

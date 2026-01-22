@@ -1,0 +1,22 @@
+{
+  "instruction": "Save Gromacs Params",
+  "output": "def save_gromacs_params(folder):\n    cell = None\n    with open(f\"{folder}/simu_output.pdb\", \"r\") as f:\n        for line in f:\n            if \"CRYST\" in line:\n                cell = line\n            if \"MODEL\" in line:\n                break\n    if not cell:\n        raise ValueError(\"Cell dimensions were not found\")\n\n    cell = np.diag(np.array(cell.split()[1:4], dtype=np.float32))\n    np.save(f\"{folder}/cell_dimensions\", cell)\n    with open(f\"{folder}/box_len.txt\", 'w') as outfile:\n        outfile.write(str(cell[0][0]))\n    return cell",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/analysis/trajectory_analysis.py",
+    "function_name": "save_gromacs_params",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 16,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

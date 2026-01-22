@@ -1,0 +1,22 @@
+{
+  "instruction": "Minimum Total",
+  "output": "    public int minimumTotal(List<List<Integer>> tri) {\n        for (int i = tri.size() - 2; i >= 0; i--)\n            for (int j = 0; j < tri.get(i).size(); j++)\n                tri.get(i).set(j, tri.get(i).get(j) + Math.min(\n                    tri.get(i + 1).get(j),\n                    tri.get(i + 1).get(j + 1)\n                ));\n        return tri.get(0).get(0);\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Himanshi-Saini-0277/Leetcode_Streak",
+    "repo_created_date": "2024-08-24",
+    "repo_stars": 4,
+    "repo_forks": 0,
+    "file_path": "0120-triangle/0120-triangle.java",
+    "function_name": "minimumTotal",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 9,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

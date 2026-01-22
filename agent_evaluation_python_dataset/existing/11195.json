@@ -1,0 +1,4 @@
+{
+  "instruction": "Develop an algorithm to find the shortest path between two points in a given grid",
+  "output": "def find_shortest_path(grid,m,n): \n  \n    queue = [] \n  \n    queue.append([0, 0]) \n    visited = set((0, 0)) \n  \n    while queue: \n        i, j = queue.pop(0) \n  \n        if i == n - 1 and j == n - 1: \n            break\n  \n        for x, y in [[-1, 0], [0, -1], [1, 0], [0, 1]]: \n            if 0 <= x + i < m and 0 <= y + j < n and grid[x + i][y + j] and (x + i, y + j) not in visited: \n                queue.append([x + i, y + j]) \n  \n                visited.add((x + i, y + j)) \n  \n    return visited \n  \ngrid = [[1, 0, 0], \n        [1, 1, 0], \n        [1, 1, 1]] \n  \nif find_shortest_path(grid, 3, 3): \n    print('Yes') \nelse: \n    print('No')"
+}

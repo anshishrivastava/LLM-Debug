@@ -1,0 +1,22 @@
+{
+  "instruction": "Is Palindrome",
+  "output": "    public boolean isPalindrome(int x) {\n        if(x < 0) return false;\n        String str = String.valueOf(x);\n        int start=0, end=str.length()-1;\n        while(start < end) {\n            char ch1 = str.charAt(start);\n            char ch2 = str.charAt(end);\n            if(ch1 != ch2) return false;\n            start++; end--;\n        }\n        return true;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "RohanKumarJha/LeetCode",
+    "repo_created_date": "2024-07-07",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0009-palindrome-number/0009-palindrome-number.java",
+    "function_name": "isPalindrome",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 12,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

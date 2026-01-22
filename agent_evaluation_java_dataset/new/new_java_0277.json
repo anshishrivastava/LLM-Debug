@@ -1,0 +1,22 @@
+{
+  "instruction": "Is Palindrome",
+  "output": "    public boolean isPalindrome(int x) {\n        int temp=x;\n        int reverse=0;\n        while(x>0){\n            int digit=x%10;\n            reverse=(reverse *10)+digit;\n            x/=10;\n        }\n        return reverse==temp;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "hariharan1009/leetcode",
+    "repo_created_date": "2024-09-23",
+    "repo_stars": 8,
+    "repo_forks": 0,
+    "file_path": "0009-palindrome-number/0009-palindrome-number.java",
+    "function_name": "isPalindrome",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 10,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

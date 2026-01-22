@@ -1,0 +1,22 @@
+{
+  "instruction": "Status Effect",
+  "output": "\n    public StatusEffect(String name, float duration, EffectType type) {\n        this.name = name;\n        this.duration = duration;\n        this.type = type;\n        this.elapsed = 0f;\n        this.isActive = true;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/StatusEffect.java",
+    "function_name": "StatusEffect",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 8,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

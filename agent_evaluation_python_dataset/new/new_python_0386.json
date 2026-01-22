@@ -1,0 +1,22 @@
+{
+  "instruction": "Calculate number of days the position has been held.",
+  "output": "    def days_held(self) -> int:\n        \"\"\"Calculate number of days the position has been held.\"\"\"\n        if not self.entry_date:\n            return 0\n        try:\n            entry = datetime.strptime(self.entry_date, \"%Y-%m-%d\")\n            return (datetime.now() - entry).days\n        except ValueError:\n            return 0",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/models/positions.py",
+    "function_name": "days_held",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 9,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

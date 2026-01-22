@@ -1,0 +1,22 @@
+{
+  "instruction": "Construct Arr",
+  "output": "    public ArrayList<Integer> constructArr(int[] arr) {\n        // code here\n        ArrayList<Integer> res = new ArrayList<>();\n        int m = arr.length;\n        if (m == 0) return res;\n        \n        long disc = 1L + 8L * m;\n        long s = (long) Math.sqrt(disc);\n        int n = (int) ((1 + s) / 2);\n\n        if (n == 2) {\n            res.add(0);\n            res.add(arr[0]);\n            return res;\n        }\n\n        long s01 = arr[0];\n        long s02 = arr[1];\n        long s12 = arr[n - 1];\n\n        long r0 = (s01 + s02 - s12) / 2L;\n\n        res.add((int) r0);\n        for (int i = 1; i < n; i++) {\n            long val = (long) arr[i - 1] - r0;\n            res.add((int) val);\n        }\n\n        return res;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Himanshi-Saini-0277/GFG_Streak",
+    "repo_created_date": "2024-08-24",
+    "repo_stars": 4,
+    "repo_forks": 0,
+    "file_path": "Difficulty: Easy/Construct an array from its pair-sum array/construct-an-array-from-its-pairsum-array.java",
+    "function_name": "constructArr",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 30,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

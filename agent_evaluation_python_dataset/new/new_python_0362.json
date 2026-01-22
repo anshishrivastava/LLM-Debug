@@ -1,0 +1,22 @@
+{
+  "instruction": "Load Angle Params",
+  "output": "    def load_angle_params(self):\n        angle_counter = 0\n        for key, val in self.order_dict.items():\n            if self.mol_dic[val][\"Angles\"].size != 0:\n                self.mol_dic[val][\"Angles\"][:, -3:] = (\n                    self.mol_dic[val][\"Angles\"][:, -3:] + angle_counter\n                )\n\n            for i in self.mol_dic[val][\"Angles\"]:\n                for ind, j in enumerate(self.molecule.angles.numpy()):\n                    if ((i[2:] - 1).astype(int) == j).all() or (\n                        (i[2:][::-1] - 1).astype(int) == j\n                    ).all():\n                        self.molecule.angle_params[ind] = torch.tensor(\n                            self.mol_dic[val][\"Angle Coeffs\"][int(i[1])]\n                        )\n            if self.mol_dic[val][\"Angles\"].size != 0:\n                angle_counter += self.mol_dic[val][\"Angles\"][:, -3:].max()\n            else:\n                angle_counter += 1",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/data/ff_file_reader.py",
+    "function_name": "load_angle_params",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 20,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

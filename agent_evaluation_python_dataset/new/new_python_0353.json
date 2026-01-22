@@ -1,0 +1,22 @@
+{
+  "instruction": "Building the LJ parameters from a lookup table.",
+  "output": "    def lj_from_lookup(self):\n        \"\"\"\n        Building the LJ parameters from a lookup table.\n        \"\"\"\n        sigmas = torch.tensor([SIGMA_ATOMS[i] for i in self.atomic_nums]).view(-1, 1)\n        epsilons = torch.tensor([EPSILON_ATOMS[i] for i in self.atomic_nums]).view(\n            -1, 1\n        )\n        charges = torch.tensor([CHARGES[i] for i in self.atomic_nums]).view(-1, 1)\n        return torch.cat([charges, epsilons, sigmas], axis=1).type(torch.float32)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/data/builder.py",
+    "function_name": "lj_from_lookup",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 10,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

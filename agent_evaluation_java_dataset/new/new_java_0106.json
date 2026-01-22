@@ -1,0 +1,22 @@
+{
+  "instruction": "Post Order",
+  "output": "    public static void postOrder(TreeNode node){\n        if(node==null) return;\n        postOrder(node.left);\n        postOrder(node.right);\n        System.out.print(node.val+\" \");\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Victor5H/Java-CP",
+    "repo_created_date": "2024-10-08",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "src/Tree.java",
+    "function_name": "postOrder",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 6,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

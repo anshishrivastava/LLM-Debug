@@ -1,0 +1,22 @@
+{
+  "instruction": "Cancel Cast",
+  "output": "    public void cancelCast() {\n        super.cancelCast();\n        if (prayerVisual != null) {\n            prayerVisual.dispose();\n            prayerVisual = null;\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/MercenaryAbilities.java",
+    "function_name": "cancelCast",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 7,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

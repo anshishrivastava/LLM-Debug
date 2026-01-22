@@ -1,0 +1,22 @@
+{
+  "instruction": "Construct L L",
+  "output": "\n    public static Node constructLL(int arr[]) {\n        Node head = new Node(arr[0]);\n        Node temp = head;\n        for (int i = 1; i < arr.length; i++) {\n            temp.next = new Node(arr[i]);\n            temp = temp.next;\n        }\n        return head;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Rajeshkuruva2003/competitive-program",
+    "repo_created_date": "2025-01-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "AddOne to LL.java",
+    "function_name": "constructLL",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 10,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Adds Bernstein polynomial of degree 4 as background model",
+  "output": "def add_background_model_bernstein(workspace, ibin, is_pass):\n  '''Adds Bernstein polynomial of degree 4 as background model\n\n  workspace    workspace to add model to; must have variable fit_var\n  ibin         int bin number\n  is_pass      bool, indicates if passing or failing leg\n  '''\n  fit_var = workspace.var('fit_var')\n  a0 = ROOT.RooRealVar('a0', '0th Bernstein coefficient', 0.0, 1.0)\n  a1 = ROOT.RooRealVar('a1', '1st Bernstein coefficient', 0.0, 1.0)\n  a2 = ROOT.RooRealVar('a2', '2nd Bernstein coefficient', 0.0, 1.0)\n  a3 = ROOT.RooRealVar('a3', '2nd Bernstein coefficient', 0.0, 1.0)\n  a4 = ROOT.RooRealVar('a4', '3rd Bernstein coefficient', 0.0, 1.0)\n  a0.setVal(0.8)\n  a1.setVal(0.7)\n  a2.setVal(0.3)\n  a3.setVal(0.1)\n  a4.setVal(0.1)\n  getattr(workspace,'import')(a0)\n  getattr(workspace,'import')(a1)\n  getattr(workspace,'import')(a2)\n  getattr(workspace,'import')(a3)\n  getattr(workspace,'import')(a4)\n  pdf_b = ROOT.RooBernstein('pdf_b', 'pdf_b', fit_var, ROOT.RooArgList(a0, a1, a2, a3, a4))\n  getattr(workspace,'import')(pdf_b)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/model_initializers.py",
+    "function_name": "add_background_model_bernstein",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 25,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

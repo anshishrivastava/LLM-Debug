@@ -1,0 +1,22 @@
+{
+  "instruction": "Largest Magic Square",
+  "output": "    public int largestMagicSquare(int[][] grid) {\n        int row = grid.length;\n        int col = grid[0].length;\n        int maxSize = 1;\n\n        for(int i = 0; i < row; i++){\n            for(int j = 0; j < col; j++){\n                for(int k = 2; k + i <= row && k + j <= col; k++){\n                    if(k > maxSize && isMagic(grid, i, j, k)){\n                        maxSize = Math.max(maxSize, k);\n                    }\n                }\n            }\n        }\n        return maxSize;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "GAURAV-SENGAR-14/LEETCODE-PROBLEMS",
+    "repo_created_date": "2025-01-13",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "1311-largest-magic-square/largest-magic-square.java",
+    "function_name": "largestMagicSquare",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 16,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

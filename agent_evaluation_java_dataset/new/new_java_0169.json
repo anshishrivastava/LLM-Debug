@@ -1,0 +1,22 @@
+{
+  "instruction": "Count Battleships",
+  "output": "    public int countBattleships(char[][] board) {\n        int ans = 0;\n        for(int i = 0; i < board.length; i++){\n            for(int j = 0; j < board[0].length; j++){\n                if(board[i][j] == 'X' && !isStart(board, i, j)) ans++;\n            }\n        }return ans;\n    }private boolean isStart(char[][] board, int x, int y){\n        return ( (x-1 >= 0 && board[x-1][y] == 'X') || (y-1 >= 0 && board[x][y-1] == 'X'));\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "R-Shailesh-varma/code-contributions",
+    "repo_created_date": "2024-08-14",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "battleships-in-a-board.java",
+    "function_name": "countBattleships",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 10,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

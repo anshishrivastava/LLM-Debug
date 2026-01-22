@@ -1,0 +1,22 @@
+{
+  "instruction": "Length Of L I S",
+  "output": "    public int lengthOfLIS(int[] nums) {\n        int n=nums.length;\n        int dp[][]=new int[n][n+1];\n        for (int i = 0; i < n; i++) {\n            Arrays.fill(dp[i], -1);\n        }\n        return f(0,-1,n,nums,dp);\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Ananthu191030/Leetcode",
+    "repo_created_date": "2024-10-30",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0300-longest-increasing-subsequence/0300-longest-increasing-subsequence.java",
+    "function_name": "lengthOfLIS",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 8,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

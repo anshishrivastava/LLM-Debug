@@ -1,0 +1,22 @@
+{
+  "instruction": "Merge Two Lists",
+  "output": "    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {\n        if (list1 != null && list2 != null){\n            if(list1.val<list2.val){\n                list1.next = mergeTwoLists(list1.next, list2);\n                return list1;\n            }else{\n                list2.next = mergeTwoLists(list1, list2.next);\n                return list2;\n            }\n        } else if (list1 == null && list2 != null){\n            return list2;\n        } else if (list1 != null && list2 == null){\n            return list1;\n        } else{\n            return list1;\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "nchhillar2004/dsa-cp",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "leetcode/easy/0021. Merge Two Sorted Lists/Solution.java",
+    "function_name": "mergeTwoLists",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 17,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

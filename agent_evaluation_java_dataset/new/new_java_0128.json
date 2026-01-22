@@ -1,0 +1,22 @@
+{
+  "instruction": "Int To Roman",
+  "output": "    public String intToRoman(int num) {\n        StringBuilder sb = new StringBuilder();\n        while (num > 0) {\n            if (num >= 1000) {\n                num -= 1000;\n                sb.append(\"M\");\n            }\n            else if (num >= 900) {\n                num -= 900;\n                sb.append(\"CM\");\n            }\n            else if (num >= 500) {\n                num -= 500;\n                sb.append(\"D\");\n            }\n            else if (num >= 400) {\n                num -= 400;\n                sb.append(\"CD\");\n            }\n            else if (num >= 100) {\n                num -= 100;\n                sb.append(\"C\");\n            }\n            else if (num >= 90) {\n                num -= 90;\n                sb.append(\"XC\");\n            }\n            else if (num >= 50) {\n                num -= 50;\n                sb.append(\"L\");\n            }\n            else if (num >= 40) {\n                num -= 40;\n                sb.append(\"XL\");\n            }\n            else if (num >= 10) {\n                num -= 10;\n                sb.append(\"X\");\n            }\n            else if (num >= 9) {\n                num -= 9;\n                sb.append(\"IX\");\n            }\n            else if (num >= 5) {\n                num -= 5;\n                sb.append(\"V\");\n            }\n            else if (num >= 4) {\n                num -= 4;\n                sb.append(\"IV\");\n            }\n            else if (num >= 1) {\n                num--;\n                sb.append(\"I\");\n            }\n        }\n        return sb.toString();\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Amit-S-Sahu/My-LeetCode",
+    "repo_created_date": "2024-09-29",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "0012-integer-to-roman/0012-integer-to-roman.java",
+    "function_name": "intToRoman",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 58,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

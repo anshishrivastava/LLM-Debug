@@ -1,0 +1,22 @@
+{
+  "instruction": "Merge Lora",
+  "output": "def merge_lora(model, state_dict_lora):\n    for key in state_dict_lora.keys():\n        if \"lora_A\" in key:\n            lora_a = state_dict_lora[key]   # (4, 768)\n            lora_b = state_dict_lora[key.replace(\"lora_A\", \"lora_B\")]   # (2304, 4)\n            if \".lora_A\" in key:\n                base_name = key.replace(\".lora_A\", \"\")\n            elif \"_lora_A\" in key:\n                base_name = key.replace(\"_lora_A\", \"\")\n            if \"weight\" in base_name:\n                state_dict_lora[base_name] += (lora_b @ lora_a).view(state_dict_lora[base_name].shape)\n            else:\n                state_dict_lora[base_name+\".weight\"] += (lora_b @ lora_a).view(state_dict_lora[base_name+\".weight\"].shape)\n\n    model.load_state_dict(state_dict_lora, strict=False)\n    return model",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "98haiting/General-or-Medical-CLIP-Which-one-Shall-We-Choose",
+    "repo_created_date": "2024-10-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "biomed_clip/classification.py",
+    "function_name": "merge_lora",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 16,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

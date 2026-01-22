@@ -1,0 +1,22 @@
+{
+  "instruction": "Calculate total premium collected from selling the strangle.",
+  "output": "    def premium_collected(self) -> float:\n        \"\"\"Calculate total premium collected from selling the strangle.\"\"\"\n        call_premium = (self.call.entry_price * self.call.quantity * 100) if self.call else 0\n        put_premium = (self.put.entry_price * self.put.quantity * 100) if self.put else 0\n        return call_premium + put_premium",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/models/positions.py",
+    "function_name": "premium_collected",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 5,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Parse Args",
+  "output": "def parse_args():\n    parser = argparse.ArgumentParser(description='CLIP used for classifiction with MedMNIST')\n    parser.add_argument('--dataset', type=str, default=None, \n                        help='Dataset to be used for classification: chestmnist, pneumoniamnist, breastmnist, organamnist, organcmnist')\n    parser.add_argument('--combination', action='store_true', default=False, help='If the combination of datasets is used')\n    parser.add_argument('--datasets_list', type=str, default='chestmnist,pneumoniamnist,breastmnist,organamnist,organcmnist')\n    parser.add_argument('--download', action='store_true', default=False, help='Download the datasets')\n    parser.add_argument('--threshold', type=float, default=0.9, help='Threshold for multi-label, binary-class task')\n\n    parser.add_argument('--checkpoint_path', action=\"store_true\", default=False, help='Load the checkpoint')\n    parser.add_argument('--checkpoint', type=str, default=None, help='Checkpoint path')\n    parser.add_argument(\"--lora_rank\", type=int, default=4, help=\"Rank of the LoRA matrix\")\n    parser.add_argument(\"--wandbName\", type=str, default=None, help=\"Wandb name for the run\")\n    return parser.parse_args()",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "98haiting/General-or-Medical-CLIP-Which-one-Shall-We-Choose",
+    "repo_created_date": "2024-10-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "biomed_clip/classification.py",
+    "function_name": "parse_args",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 14,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

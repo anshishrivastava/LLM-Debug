@@ -1,0 +1,22 @@
+{
+  "instruction": "Parse Playlist",
+  "output": "def parse_playlist(file_path):\n    with open(file_path, 'r', encoding='utf-8') as file:\n        lines = file.readlines()\n\n    entries = []\n    entry = []\n    for line in lines:\n        if line.startswith('#EXTINF'):\n            channel_name = line.split(',')[1]\n            translated_name = translator.translate(channel_name, src='zh-CN', dest='en').text\n            translated_line = f\"{line.split(',')[0]}, {translated_name}\"\n            if entry:\n                entries.append(entry)\n            entry = [translated_line]\n        elif line.strip():\n            entry.append(line)\n\n    if entry:\n        entries.append(entry)\n\n    return entries",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Love4vn/Test",
+    "repo_created_date": "2024-06-07",
+    "repo_stars": 36,
+    "repo_forks": 5,
+    "file_path": "cn2en.py",
+    "function_name": "parse_playlist",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 21,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

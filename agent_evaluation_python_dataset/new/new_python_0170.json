@@ -1,0 +1,22 @@
+{
+  "instruction": "plots a TH2 as a heatmap",
+  "output": "  def plot_colormap(self,hist):\n    '''plots a TH2 as a heatmap\n    hist  TH2 to plot\n    '''\n    if len(self.hists) != 0 or len(self.graphs) != 0:\n      raise RuntimeError('Cannot add both 2D and 1D plots')\n    self.hists.append(hist)\n    self.is_2d = True\n    self.hist_color.append(0)\n    self.hist_style.append('colormap')\n    if self.n_plots == 0:\n      xaxis_title = hist.GetXaxis().GetTitle()\n      if self.x_title == 'x variable' and xaxis_title != '':\n        self.x_title = xaxis_title\n      yaxis_title = hist.GetYaxis().GetTitle()\n      if self.y_title == 'Events/bin' and yaxis_title != '':\n        self.y_title = yaxis_title\n      zaxis_title = hist.GetZaxis().GetTitle()\n      if self.z_title == 'Events/bin' and zaxis_title != '':\n        self.z_title = zaxis_title\n    self.n_plots += 1",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/root_plot_lib.py",
+    "function_name": "plot_colormap",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 21,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

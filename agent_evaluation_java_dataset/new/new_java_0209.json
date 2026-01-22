@@ -1,0 +1,22 @@
+{
+  "instruction": "Roman To Int",
+  "output": "   public int romanToInt(String s) {\n         int ans = 0, num = 0;\n        for (int i = s.length()-1; i >= 0; i--) {\n            switch(s.charAt(i)) {\n                case 'I': num = 1; break;\n                case 'V': num = 5; break;\n                case 'X': num = 10; break;\n                case 'L': num = 50; break;\n                case 'C': num = 100; break;\n                case 'D': num = 500; break;\n                case 'M': num = 1000; break;\n            }\n            if (4 * num < ans) ans -= num;\n            else ans += num;\n        }\n        return ans;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Dishagoel1804/DSA",
+    "repo_created_date": "2024-11-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0013-roman-to-integer/0013-roman-to-integer.java",
+    "function_name": "romanToInt",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 17,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

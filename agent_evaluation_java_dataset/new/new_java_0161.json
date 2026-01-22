@@ -1,0 +1,22 @@
+{
+  "instruction": "Count And Say",
+  "output": "    public String countAndSay(int n) {\n        if (n == 1) return \"1\";\n        \n        String prev = countAndSay(n - 1);\n        StringBuilder res = new StringBuilder();\n        \n        int i = 0;\n        while (i < prev.length()) {\n            int count = 1;\n            while (i + 1 < prev.length() && prev.charAt(i) == prev.charAt(i + 1)) {\n                i++;\n                count++;\n            }\n            res.append(count).append(prev.charAt(i));\n            i++;\n        }\n        \n        return res.toString();\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "YeshwanthrajG/Leetcode-Solutions",
+    "repo_created_date": "2025-01-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "P0038_CountAndSay.java",
+    "function_name": "countAndSay",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 19,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

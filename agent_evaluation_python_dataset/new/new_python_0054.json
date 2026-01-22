@@ -1,0 +1,22 @@
+{
+  "instruction": "Manually reset the circuit breaker.",
+  "output": "    def reset_circuit_breaker(self) -> None:\n        \"\"\"\n        Manually reset the circuit breaker.\n\n        This should only be called after manual verification that:\n        1. All positions are correct in Saxo\n        2. No orphaned orders are pending\n        3. The issue that caused the failures has been resolved\n        \"\"\"\n        if self._circuit_breaker_open:\n            logger.info(\"=\" * 50)\n            logger.info(\"Circuit breaker manually reset\")\n            logger.info(f\"Previous reason: {self._circuit_breaker_reason}\")\n            logger.info(\"=\" * 50)\n\n        self._circuit_breaker_open = False\n        self._circuit_breaker_reason = \"\"\n        self._circuit_breaker_opened_at = None\n        self._consecutive_failures = 0\n        self._orphaned_orders = []",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "reset_circuit_breaker",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 20,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

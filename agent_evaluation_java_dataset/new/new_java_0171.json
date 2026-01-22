@@ -1,0 +1,22 @@
+{
+  "instruction": "Read Binary Watch",
+  "output": "    public List<String> readBinaryWatch(int num) {\n    List<String> times = new ArrayList<>();\n    for (int h=0; h<12; h++)\n        for (int m=0; m<60; m++)\n            if (Integer.bitCount(h * 64 + m) == num)\n                times.add(String.format(\"%d:%02d\", h, m));\n    return times;        \n}",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "R-Shailesh-varma/code-contributions",
+    "repo_created_date": "2024-08-14",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "binary-watch.java",
+    "function_name": "readBinaryWatch",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 8,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

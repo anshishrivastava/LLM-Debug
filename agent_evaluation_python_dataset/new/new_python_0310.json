@@ -1,0 +1,22 @@
+{
+  "instruction": "Works for both dev and PyInstaller.",
+  "output": "def resource_path(relative_path):\r\n    \"\"\"Works for both dev and PyInstaller.\"\"\"\r\n    try:\r\n        base_path = sys._MEIPASS\r\n    except Exception:\r\n        base_path = os.path.abspath(\".\")\r\n    return os.path.join(base_path, relative_path)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Dechrissen/teamgen",
+    "repo_created_date": "2024-11-14",
+    "repo_stars": 4,
+    "repo_forks": 0,
+    "file_path": "util.py",
+    "function_name": "resource_path",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 7,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

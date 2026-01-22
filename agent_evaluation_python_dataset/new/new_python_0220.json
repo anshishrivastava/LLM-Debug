@@ -1,0 +1,22 @@
+{
+  "instruction": "Function that extracts the average spectrum in each patch region, as defined by the output from the GetPatchPos() function.",
+  "output": "def GetPatchesSpectrum(Hypercube, Sample_size, Positions, CropCoordinates, **kwargs):\n\t\"\"\"\n\tFunction that extracts the average spectrum in each patch region, as defined by the output from the GetPatchPos() function.\n\n\tInputs:\n\t\t- Hypercube\n\t\t- Sample_size: size of a patch\n\t\t- Positions: Positions of each patch, output from GetPatchPos()\n\t\t- CropCoordingates: For the full image\n\t\t- kwargs:\n\t\t\t- Help\n\n\tOutput:\n\t\t- Spectra: Array containing the average spectra for all patches\n\n\t\"\"\"\n\tHelp = kwargs.get('Help', False)\n\tif Help:\n\t\tprint(inspect.getdoc(GetPatchesSpectrum))\n\n\tSpectrum = []\n\t(NN, YY, XX) = Hypercube.shape\n\tfor n in range(0,NN):\n\t\tim_sub = Hypercube[n,:,:]\n\t\tIntensities = GetPatchesIntensity(im_sub[CropCoordinates[2]:CropCoordinates[3], CropCoordinates[0]:CropCoordinates[1]], Sample_size, Positions)\n\t\tSpectrum.append(Intensities)\n\treturn np.array(Spectrum)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "YzaboRa/HySE_HypercubeFunctions",
+    "repo_created_date": "2024-08-22",
+    "repo_stars": 0,
+    "repo_forks": 2,
+    "file_path": "HySE/UserTools.py",
+    "function_name": "GetPatchesSpectrum",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 27,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

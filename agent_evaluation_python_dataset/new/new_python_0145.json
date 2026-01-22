@@ -1,0 +1,22 @@
+{
+  "instruction": "Creates custom bins for TnP analysis",
+  "output": "  def add_custom_binning(self, bin_selections: list[str], \n                         bin_names: list[str], is_high_pt: list[bool]):\n    '''Creates custom bins for TnP analysis\n\n    Args:\n      bin_selections: describes selection for each bin\n      bin_names: names of each bin that appear in plots\n      is_high_pt: indicates whether each bin is high pT\n    '''\n    self.data_nom_tnp_analyzer.add_custom_binning(bin_selections, bin_names)\n    self.data_altsig_tnp_analyzer.add_custom_binning(bin_selections, bin_names)\n    self.data_altbkg_tnp_analyzer.add_custom_binning(bin_selections, bin_names)\n    self.data_altsigbkg_tnp_analyzer.add_custom_binning(bin_selections, \n                                                        bin_names)\n    self.mc_nom_tnp_analyzer.add_custom_binning(bin_selections, bin_names)\n    self.mc_alt_tnp_analyzer.add_custom_binning(bin_selections, bin_names)\n    self.highpt_bins = []\n    for ibin in range(len(is_high_pt)):\n      if is_high_pt[ibin]:\n        self.highpt_bins.append(ibin)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/rms_sf_analyzer.py",
+    "function_name": "add_custom_binning",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 20,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

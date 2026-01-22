@@ -1,0 +1,22 @@
+{
+  "instruction": "Data Type Size",
+  "output": "        static int dataTypeSize(String str) {\n            // code here\n\n\n\n// The .BYTES constants provide a convenient way to determine the memory size of primitive types in Java.\n// They are particularly useful for developers who need to manage memory efficiently or understand the data structure sizes in their applications.\n\n\n            //------------BestCase----------\n            //  switch(str){\n            //      case \"Character\":\n            //          return Character.BYTES;\n            //      case \"Integer\":\n            //          return Integer.BYTES;\n            //      case \"Long\":\n            //          return Long.BYTES;\n            //      case \"Float\":\n            //          return Float.BYTES;\n            //      case \"Double\":\n            //          return Double.BYTES;\n            //      default:\n            //       return -1;\n            //  }\n\n\n//            //--------brute approch-------\n            switch (str.toLowerCase()) {\n                case \"character\":\n                    return 2; // In Java, the size of char is 2 bytes (16-bit Unicode character)\n                case \"integer\":\n                    return 4; // In Java, the size of int is 4 bytes\n                case \"long\":\n                    return 8; // In Java, the size of long is 8 bytes\n                case \"float\":\n                    return 4; // In Java, the size of float is 4 bytes\n                case \"double\":\n                    return 8; // In Java, the size of double is 8 bytes\n                default:\n                    return -1; // Invalid data type\n            }\n        }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "dheerajkr8287/DSA",
+    "repo_created_date": "2024-09-12",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "src/BasicInterviewAsked/Datatype/dataTypeSize.java",
+    "function_name": "dataTypeSize",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 42,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

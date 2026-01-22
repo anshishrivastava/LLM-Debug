@@ -1,0 +1,22 @@
+{
+  "instruction": "Count Divisors",
+  "output": "\n    public int countDivisors(int n) {\n        int sum = 0;\n        int count = 0;\n\n        for (int i = 1; i <= Math.sqrt(n); i++) {\n            if (n % i == 0) {\n                sum += i;\n                count++;\n\n                if (n / i != i) {\n                    sum += n / i;\n                    count++;\n                }\n            }\n            if (count > 4)\n                return 0;\n        }\n\n        if (count == 4)\n            return sum;\n\n        return 0;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "GAURAV-SENGAR-14/LEETCODE-PROBLEMS",
+    "repo_created_date": "2025-01-13",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "1284-four-divisors/four-divisors.java",
+    "function_name": "countDivisors",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 24,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

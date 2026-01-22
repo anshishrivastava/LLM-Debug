@@ -1,0 +1,22 @@
+{
+  "instruction": "Plotmixingmatrix",
+  "output": "def PlotMixingMatrix(MixingMatrix, Wavelengths, Title, SavingPath):\n\tNwavs_ = len(Wavelengths)\n\tNims, Nwavs = MixingMatrix.shape\n\tif Nwavs!=Nwavs:\n\t\tprint(f'Error: There number of wavelengths does not match between Wavelengths list {Nwavs_} and the mixing matrix {MixingMatrix.shape}')\n\txx = [i for i in range(0,Nwavs)]\n\tbin_labels = [f'im {i+1}' for i in range(0,Nims)]\n\n\tfig, ax = plt.subplots(nrows=1, ncols=1, figsize=(5,5))\n\tax.imshow(MixingMatrix, cmap='magma')\n\tax.set_xticks(xx)\n\tax.set_yticks(xx)\n\tax.set_xticklabels(Wavelengths, rotation=90)\n\tax.set_yticklabels(bin_labels)\n\n\tax.set_xlabel(f'Individual Wavelengths [nm]')\n\tax.set_ylabel(f'Combined Wavelengths [nm]')\n\t\n\tax.set_title(f'Mixing Matrix - {Title}')\n\tplt.tight_layout()\n#     plt.savefig(SavingPath)\n\tplt.show()",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "YzaboRa/HySE_HypercubeFunctions",
+    "repo_created_date": "2024-08-22",
+    "repo_stars": 0,
+    "repo_forks": 2,
+    "file_path": "HySE/UserTools.py",
+    "function_name": "PlotMixingMatrix",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 22,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

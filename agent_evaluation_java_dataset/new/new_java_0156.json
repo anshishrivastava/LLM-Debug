@@ -1,0 +1,22 @@
+{
+  "instruction": "Roman To Int",
+  "output": "    public int romanToInt(String s) {\n        int res=0;\n        int curr=0;\n        int prev=Integer.MAX_VALUE;\n        for(char ch:s.toCharArray()){\n            curr=value(ch);\n            res+=curr;\n            if(prev<curr){\n                res-=prev*2;\n            }\n            prev=curr;\n        }\n        return res;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "YeshwanthrajG/Leetcode-Solutions",
+    "repo_created_date": "2025-01-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "P0013_RomanToInteger.java",
+    "function_name": "romanToInt",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 14,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

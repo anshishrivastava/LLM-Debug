@@ -1,0 +1,22 @@
+{
+  "instruction": "Sets input file",
+  "output": "  def set_input_files(self, filenames: list[str], tree_name: str):\n    '''Sets input file\n\n    Args:\n      filenames: list of strings, name of input files\n      tree_name: string, name of TTree in file\n    '''\n    self.input_filenames = filenames\n    self.tree_name = tree_name\n    self.flag_set_input = True",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_analyzer.py",
+    "function_name": "set_input_files",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 10,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

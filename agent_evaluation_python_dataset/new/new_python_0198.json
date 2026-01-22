@@ -1,0 +1,22 @@
+{
+  "instruction": "Begin interactive T&P analysis run",
+  "output": "  def run_interactive(self):\n    '''Begin interactive T&P analysis run\n    '''\n\n    self.check_initialization()\n    self.initialize_files_directories()\n\n    #run main interactive loop\n    exit_loop = False\n    print('Welcome to tnp_tools interactive analysis. Type [h]elp for more information.')\n    while not exit_loop:\n      user_input = input('>:')\n      user_input = user_input.split()\n      if len(user_input)<1:\n        continue\n      elif (user_input[0] == 'h' or user_input[0] == 'help'):\n        print('Available commands:')\n        print('h(elp)                                     print help information')\n        print('p(roduce)                                  produce histograms to fit')\n        print('f(it) <bin> <pass> <model> [<initializer>] perform interactive fit to histograms')\n        print('i(nfo)                                     list info about available bins/models/initializers')\n        print('c(utncount)                                generate output based on cut & count')\n        print('o(utput)                                   generate final output from fits (not yet implemented)')\n        print('q(uit)                                     exit the interactive session')\n      elif (user_input[0] == 'p' or user_input[0] == 'produce'):\n        self.produce_histograms()\n      elif (user_input[0] == 'i' or user_input[0] == 'info'):\n        self.print_info()\n      elif (user_input[0] == 'f' or user_input[0] == 'fit'):\n        print('Beginning interactive fitting session.')\n        if len(user_input)>=5:\n          self.fit_histogram_wrapper(user_input[1],user_input[2],user_input[3],\n                                     user_input[4])\n        elif len(user_input)==4:\n          self.fit_histogram_wrapper(user_input[1],user_input[2],user_input[3])\n        else:\n          print('ERROR: (f)it requires at least 3 arguments')\n      elif (user_input[0] == 'o' or user_input[0] == 'output'):\n        self.generate_final_output()\n      elif (user_input[0] == 'c' or user_input[0] == 'cutncount'):\n        self.generate_cut_and_count_output()\n      elif (user_input[0] == 'q' or user_input[0] == 'quit'):\n        print('Exiting interactive session and saving temp file')\n        exit_loop = True\n        self.temp_file.Close()",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_analyzer.py",
+    "function_name": "run_interactive",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 45,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

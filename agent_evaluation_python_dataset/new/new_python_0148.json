@@ -1,0 +1,22 @@
+{
+  "instruction": "Creates standard binning including specialized pt bins for gap region",
+  "output": "  def add_standard_gap_highpt_binning(self, pt_bins: list[float], \n                                     eta_bins: list[float], \n                                     gap_pt_bins: list[float], \n                                     pt_var_name: str, \n                                     eta_var_name: str):\n    '''Creates standard binning including specialized pt bins for gap region\n\n    Args:\n      pt_bins: pt bin edges\n      eta_bins: eta bin edges\n      gap_pt_bins: gap region pt bin edges\n      pt_var_name: name of pt variable\n      eta_var_name: name of eta variable\n    '''\n    bin_selections = []\n    bin_names = []\n    is_high_pt = []\n    for ipt in range(len(pt_bins)-1):\n      for ieta in range(len(eta_bins)-1):\n        bin_selections.append('{}<{}&&{}<{}&&{}<{}&&{}<{}'.format(\n            pt_bins[ipt],pt_var_name,pt_var_name,pt_bins[ipt+1],\n            eta_bins[ieta],eta_var_name,eta_var_name,eta_bins[ieta+1]))\n        bin_names.append('{}<p_{{T}}<{} GeV, {}<#eta<{}'.format(\n            pt_bins[ipt],pt_bins[ipt+1],eta_bins[ieta],eta_bins[ieta+1]))\n        if (pt_bins[ipt]>70.0):\n          is_high_pt.append(True)\n        else:\n          is_high_pt.append(False)\n    for ipt in range(len(gap_pt_bins)-1):\n      bin_selections.append('{}<{}&&{}<{}&&-1.566<{}&&{}<-1.4442'.format(\n          gap_pt_bins[ipt],pt_var_name,pt_var_name,gap_pt_bins[ipt+1],\n          eta_var_name,eta_var_name))\n      bin_names.append('{}<p_{{T}}<{} GeV, -1.566<#eta<-1.4442'.format(\n          gap_pt_bins[ipt],gap_pt_bins[ipt+1]))\n      bin_selections.append('{}<{}&&{}<{}&&1.4442<{}&&{}<1.566'.format(\n          gap_pt_bins[ipt],pt_var_name,pt_var_name,gap_pt_bins[ipt+1],\n          eta_var_name,eta_var_name))\n      bin_names.append('{}<p_{{T}}<{} GeV, 1.4442<#eta<1.566'.format(\n          gap_pt_bins[ipt],gap_pt_bins[ipt+1]))\n      if (pt_bins[ipt]>70.0):\n        is_high_pt.append(True)\n        is_high_pt.append(True)\n      else:\n        is_high_pt.append(False)\n        is_high_pt.append(False)\n    bin_selections.append(f'100<{pt_var_name}&&{pt_var_name}<500'\n        +f'&&0.0<fabs({eta_var_name})&&fabs({eta_var_name})<1.5')\n    bin_names.append('100<p_{T}<500, 0<|#eta|<1.5')\n    bin_selections.append(f'100<{pt_var_name}&&{pt_var_name}<500'\n        +f'&&1.5<fabs({eta_var_name})&&fabs({eta_var_name})<2.5')\n    bin_names.append('100<p_{T}<500, 1.5<|#eta|<2.5')\n    is_high_pt.append(True)\n    is_high_pt.append(True)\n    self.binning_type = 'std_gap_highpt'\n    self.add_custom_binning(bin_selections, bin_names, is_high_pt)\n    self.pt_bins = pt_bins\n    self.eta_bins = eta_bins\n    self.gap_pt_bins = gap_pt_bins",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/rms_sf_analyzer.py",
+    "function_name": "add_standard_gap_highpt_binning",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 58,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Reset Parameters",
+  "output": "    def reset_parameters(self):\n        nn.Conv2d.reset_parameters(self)\n        if hasattr(self, 'lora_A'):\n            # initialize A the same way as the default for nn.Linear and B to zero\n            nn.init.kaiming_uniform_(self.lora_A, a=math.sqrt(5))\n            nn.init.zeros_(self.lora_B)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "98haiting/General-or-Medical-CLIP-Which-one-Shall-We-Choose",
+    "repo_created_date": "2024-10-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "biomed_clip/loralib/layers.py",
+    "function_name": "reset_parameters",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 6,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Extract and validate Shadowsocks configs.",
+  "output": "def filter_valid_configs(content):\n    \"\"\"Extract and validate Shadowsocks configs.\"\"\"\n    seen_configs = set()  # Avoid testing duplicate configs\n    lines = content.splitlines()\n    valid_configs = []\n    for line in lines:\n        if line.startswith(\"ss://\"):\n            config = line.strip()\n            if config in seen_configs:\n                continue\n            seen_configs.add(config)\n\n            validated_config = validate_and_reencode_config(config)\n            if validated_config:\n                valid_configs.append(validated_config)\n    logger.info(f\"Extracted {len(valid_configs)} valid configs.\")\n    return valid_configs",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "3yed-61/Shadowsocks",
+    "repo_created_date": "2025-01-21",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "config-cleaner.py",
+    "function_name": "filter_valid_configs",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 17,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

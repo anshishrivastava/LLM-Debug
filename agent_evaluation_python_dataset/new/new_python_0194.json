@@ -1,0 +1,22 @@
+{
+  "instruction": "Generates web-friendly fit plots and efficiencies",
+  "output": "  def generate_web_output(self, webdir: str):\n    '''Generates web-friendly fit plots and efficiencies\n\n    Args:\n      webdir: output directory\n    '''\n    #do checks\n    self.initialize_files_directories()\n    file_keys = self.temp_file.GetListOfKeys()\n    for ibin in range(0,self.nbins):\n      for pass_fail in ('pass','fail'):\n        param_filename = ('out/'+self.temp_name+'/fitinfo_bin'+str(ibin)+\n                          '_'+pass_fail+'.json')\n        if not os.path.exists(param_filename):\n          print('ERROR:'+param_filename+' not found.')\n          return\n\n    #make png plots\n    file_extension = '.png'\n    for ibin in range(0,self.nbins):\n      fragment_name = '{0}/{1}_fit{2}.png'.format(webdir,self.temp_name,ibin)\n      self.draw_fit_set(ibin,fragment_name,640)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_analyzer.py",
+    "function_name": "generate_web_output",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 22,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

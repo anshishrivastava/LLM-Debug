@@ -1,0 +1,22 @@
+{
+  "instruction": "Singular Only",
+  "output": "def singular_only(words: Set[str]) -> Tuple[bool, Set[str]]:\n    # This deals with simple plurals\n    # Irregular ones would need to dealt with lev distance\n    # For now this is good enough\n    plurals_set = set()\n    to_remove = set()\n\n    for _, word in enumerate(words):\n        found = re.search(plurals, word)\n        if found:\n            key = found.group()\n            to_remove.add(key)\n            singular = word[: found.start()] + swops_dict[key]\n            plurals_set.add(singular)\n        else:\n            # APPLY LEV DISTANCE HERE\n            continue\n\n    duplicates = plurals_set.union(words)\n    singular_only = to_remove.difference(words)\n    return len(duplicates) > 1, singular_only",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "pb-96/crossword-generator",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "cw_generator_uv/cw_generator/cw_gen/pre_validate_utils.py",
+    "function_name": "singular_only",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 21,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

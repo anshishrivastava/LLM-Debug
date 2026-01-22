@@ -1,0 +1,22 @@
+{
+  "instruction": "Count Pairs",
+  "output": "\n    int countPairs(int arr[], int target) {\n        // Your code here\n         HashMap<Integer, Integer> map = new HashMap<>();\n        int count = 0;\n\n        for (int num : arr) {\n            count += map.getOrDefault(target - num, 0); \n            map.put(num, map.getOrDefault(num, 0) + 1); \n        }\n\n        return count;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Apoo-28/GFG-Problems",
+    "repo_created_date": "2024-12-08",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "Difficulty: Easy/Count pairs with given sum/count-pairs-with-given-sum.java",
+    "function_name": "countPairs",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 13,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

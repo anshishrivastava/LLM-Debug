@@ -1,0 +1,22 @@
+{
+  "instruction": "Generate Cw",
+  "output": "def generate_cw(to_place: List[str]) -> Tuple[Dict[str, Dict[str, Tuple[int, int]]], MATRIX_TYPE]:\n    unique, unique_set = all_words_are_unique(to_place)\n    if not unique:\n        raise ValueError(\"Words to place must be unique\")\n\n    changes, singular_only_set = singular_only(unique_set)\n    if changes:\n        logging.warning(\"Clashes between singular and non singular words present\")\n\n    singular_list = [*singular_only_set]\n\n    can_fit = check_can_fit_estimate(15, singular_list)\n    # Need to do an and check on the config to tell if this is wanted\n    if can_fit[\"no_fit\"]:\n        singular_list = merge_strategy(can_fit, singular_list)\n\n    cross_word_cls = CWTreeGenerator(singular_list)\n    return cross_word_cls.words_by_locations, cross_word_cls.cw_matrix",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "pb-96/crossword-generator",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "cw_generator_uv/cw_generator/cw_gen/generate.py",
+    "function_name": "generate_cw",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 18,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

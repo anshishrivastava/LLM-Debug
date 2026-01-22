@@ -1,0 +1,22 @@
+{
+  "instruction": "Add fit model parameter initializer",
+  "output": "  def add_param_initializer(self, name: str, param_initializer: Callable):\n    '''Add fit model parameter initializer\n\n    Adds a parameter initializer for a RooWorkspace, i.e. a function that\n    takes in the bin number, a bool representing probe pass/fail, and a \n    workspace that sets the parameter values for the workspace\n\n    Args:\n      name: name for the parameter initializer\n      param_initializer: function that sets Workspace parameters\n    '''\n    self.param_initializers[name] = param_initializer",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_analyzer.py",
+    "function_name": "add_param_initializer",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 12,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

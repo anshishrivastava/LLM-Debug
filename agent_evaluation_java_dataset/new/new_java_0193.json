@@ -1,0 +1,22 @@
+{
+  "instruction": "Num Tile Possibilities",
+  "output": "    public int numTilePossibilities(String tiles) {\n          int[] freq = new int[26];// Frequency array for letters A-Z\n        for (char c : tiles.toCharArray()) //loop iterates over each character c in the input string tiles.\n        {\n            freq[c - 'A']++;\n//c - 'A' converts the character c to an index.freq[c - 'A']++ increments the count of that letter.\n        }\n        return backtrack(freq);\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "GAURAV-SENGAR-14/LEETCODE-PROBLEMS",
+    "repo_created_date": "2025-01-13",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "1160-letter-tile-possibilities/letter-tile-possibilities.java",
+    "function_name": "numTilePossibilities",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 9,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

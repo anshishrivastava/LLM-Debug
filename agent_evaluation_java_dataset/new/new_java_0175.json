@@ -1,0 +1,22 @@
+{
+  "instruction": "Injectable Query",
+  "output": "\n  protected AttackResult injectableQuery(String query) {\n    try (var connection = dataSource.getConnection()) {\n      Statement statement = connection.createStatement(TYPE_SCROLL_INSENSITIVE, CONCUR_READ_ONLY);\n      ResultSet results = statement.executeQuery(query);\n      StringBuilder output = new StringBuilder();\n\n      results.first();\n\n      if (results.getString(\"department\").equals(\"Marketing\")) {\n        output.append(\"<span class='feedback-positive'>\" + query + \"</span>\");\n        output.append(SqlInjectionLesson8.generateTable(results));\n        return success(this).feedback(\"sql-injection.2.success\").output(output.toString()).build();\n      } else {\n        return failed(this).feedback(\"sql-injection.2.failed\").output(output.toString()).build();\n      }\n    } catch (SQLException sqle) {\n      return failed(this).feedback(\"sql-injection.2.failed\").output(sqle.getMessage()).build();\n    }\n  }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "racheli-test-org/2test",
+    "repo_created_date": "2024-07-28",
+    "repo_stars": 0,
+    "repo_forks": 4,
+    "file_path": "070725-41.java",
+    "function_name": "injectableQuery",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 20,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

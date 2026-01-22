@@ -1,0 +1,22 @@
+{
+  "instruction": "Closes temp file",
+  "output": "  def close_file(self):\n    '''Closes temp file\n    '''\n    if (self.temp_file != None):\n      self.temp_file.Close()\n      self.temp_file = None",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_analyzer.py",
+    "function_name": "close_file",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 6,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

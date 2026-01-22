@@ -1,0 +1,22 @@
+{
+  "instruction": "Get Character Owner",
+  "output": "def get_character_owner(embed):\n    if not embed or not embed.footer or not embed.footer.text:\n        return None\n    \n    footer_text = embed.footer.text\n    # Patterns for: English, Portuguese, Spanish, French\n    belongs_pattern = r'(?:[Bb]elongs to|[Pp]ertence a|[Pp]ertenece a|[Aa]ppartient [\u00e0a])\\s+(.+?)$'\n    match = re.search(belongs_pattern, footer_text)\n    \n    if match:\n        return match.group(1).strip().rstrip().lower()\n    \n    return None",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "misutesu-desu/MudaRemote",
+    "repo_created_date": "2024-10-12",
+    "repo_stars": 34,
+    "repo_forks": 5,
+    "file_path": "mudae_bot.py",
+    "function_name": "get_character_owner",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 13,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Generates a dimension for an even ND binning",
+  "output": "  def make_nd_bin_dimension(name: str, description: str, edges: list[float]):\n    '''Generates a dimension for an even ND binning\n\n    Args:\n      name: name of branch in TTree or C++ expression\n      description: name used in plots (with TLaTeX)\n      edges: bin edges\n\n    Returns:\n      tuple (name, description, edges)\n    '''\n    return (name, description, edges)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_analyzer.py",
+    "function_name": "make_nd_bin_dimension",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 12,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

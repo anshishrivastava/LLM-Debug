@@ -1,0 +1,22 @@
+{
+  "instruction": "Sets the value of a parameter",
+  "output": "  def interactive_set(self, user_input: list[str]) -> bool:\n    \"\"\"Sets the value of a parameter\n\n    Args:\n      user_input: user input\n\n    Returns:\n      true if user should exit interactive session\n    \"\"\"\n    if len(user_input)<3:\n      print('ERROR: (s)et takes two arguments: set <var> <value>')\n      return False\n    if not (user_input[1] in self.param_names):\n      print('ERROR: unknown parameter '+user_input[1])\n      return False\n    try:\n      float(user_input[2])\n      self.workspace.var(user_input[1]).setVal(float(user_input[2]))\n      self.plot_callback()\n    except ValueError:\n      print('ERROR: Unable to cast value, skipping input.')\n    return False",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/interactive_fit.py",
+    "function_name": "interactive_set",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 22,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

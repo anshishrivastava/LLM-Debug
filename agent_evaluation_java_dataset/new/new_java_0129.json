@@ -1,0 +1,22 @@
+{
+  "instruction": "Max Profit",
+  "output": "    public int maxProfit(int[] prices) {\n        int minPrice = Integer.MAX_VALUE;\n        int maxProfit = 0;\n        for (int price : prices) {\n            if (price < minPrice) {\n                minPrice = price;\n            } else if (price - minPrice > maxProfit) {\n                maxProfit = price - minPrice;\n            }\n        }\n        return maxProfit;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "vhnguyenx/LeetCode-Problems",
+    "repo_created_date": "2024-10-14",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "src/Array/BestTimeToBuyAndSellStock.java",
+    "function_name": "maxProfit",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 12,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

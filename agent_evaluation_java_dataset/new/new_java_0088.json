@@ -1,0 +1,22 @@
+{
+  "instruction": "Min Camera",
+  "output": "\n    public int minCamera(TreeNode root){\n        if(root==null)   return 0;\n\n        int left=minCamera(root.left);\n        int right=minCamera(root.right);\n\n        if(left==-1||right==-1)\n        { //this node needs a camera\n            camera++;\n            return 1; //camera set kra iss node pr \n        }\n\n// inme s \n        else if(left==1||right==1){\n            return 0; //covered node\n        }\n        else{\n            return -1; //need a camera\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "itsakshitasaxena/Data-Structures-and-Algorithms",
+    "repo_created_date": "2024-11-16",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "1008-binary-tree-cameras/binary-tree-cameras.java",
+    "function_name": "minCamera",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 21,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

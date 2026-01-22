@@ -1,0 +1,22 @@
+{
+  "instruction": "Set Zeroes",
+  "output": "  public void setZeroes(int[][] matrix) {\n    final int m = matrix.length;\n    final int n = matrix[0].length;\n    boolean shouldFillFirstRow = false;\n    boolean shouldFillFirstCol = false;\n\n    for (int j = 0; j < n; ++j)\n      if (matrix[0][j] == 0) {\n        shouldFillFirstRow = true;\n        break;\n      }\n\n    for (int i = 0; i < m; ++i)\n      if (matrix[i][0] == 0) {\n        shouldFillFirstCol = true;\n        break;\n      }\n\n    // Store the information in the first row and the first column.\n    for (int i = 1; i < m; ++i)\n      for (int j = 1; j < n; ++j)\n        if (matrix[i][j] == 0) {\n          matrix[i][0] = 0;\n          matrix[0][j] = 0;\n        }\n\n    // Fill 0s for the matrix except the first row and the first column.\n    for (int i = 1; i < m; ++i)\n      for (int j = 1; j < n; ++j)\n        if (matrix[i][0] == 0 || matrix[0][j] == 0)\n          matrix[i][j] = 0;\n\n    // Fill 0s for the first row if needed.\n    if (shouldFillFirstRow)\n      for (int j = 0; j < n; ++j)\n        matrix[0][j] = 0;\n\n    // Fill 0s for the first column if needed.\n    if (shouldFillFirstCol)\n      for (int i = 0; i < m; ++i)\n        matrix[i][0] = 0;\n  }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Apoo-28/Leetcode-Problems",
+    "repo_created_date": "2024-08-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0073-set-matrix-zeroes/0073-set-matrix-zeroes.java",
+    "function_name": "setZeroes",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 42,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Provides range for fitting variable",
+  "output": "  def get_var_range(self) -> tuple[float,float]:\n    '''Provides range for fitting variable\n    '''\n    var_range_lower = self.fit_var_range[0]\n    var_range_upper = self.fit_var_range[1]\n    if not (self.template_range == None):\n      var_range_lower = self.template_range[0]\n      var_range_upper = self.template_range[1]\n    return (var_range_lower,var_range_upper)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_analyzer.py",
+    "function_name": "get_var_range",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 9,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

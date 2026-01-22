@@ -1,0 +1,22 @@
+{
+  "instruction": "Validates that a Mudae $tu response is addressed to the bot's own user.",
+  "output": "        def is_tu_response_for_self(message_content: str) -> bool:\n            \"\"\"\n            Validates that a Mudae $tu response is addressed to the bot's own user.\n            Mudae formats responses as: **Username**, your rolls: ... or **Username**, you __can__ claim...\n            Returns True if the username in the response matches client.user.\n            \"\"\"\n            if not message_content:\n                return False\n            \n            # Extract the bolded username at the start of the message\n            # Pattern matches: **Username** at the beginning (with optional leading whitespace)\n            username_match = re.match(r\"^\\s*\\*\\*([^*]+)\\*\\*\", message_content)\n            if not username_match:\n                # Fallback: some Mudae responses may use different formatting\n                # If we can't extract a username, be conservative and reject\n                return False\n            \n            response_username = username_match.group(1).strip().lower()\n            \n            # Compare against both the bot's username and display name\n            bot_username = (client.user.name or \"\").strip().lower()\n            bot_display_name = (client.user.display_name or \"\").strip().lower()\n            \n            # Match if either the username or display name matches\n            return response_username == bot_username or response_username == bot_display_name",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "misutesu-desu/MudaRemote",
+    "repo_created_date": "2024-10-12",
+    "repo_stars": 34,
+    "repo_forks": 5,
+    "file_path": "mudae_bot.py",
+    "function_name": "is_tu_response_for_self",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 25,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

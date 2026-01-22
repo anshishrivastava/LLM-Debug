@@ -1,0 +1,22 @@
+{
+  "instruction": "Use in context manager to automatically open and close db file.",
+  "output": "    def get_database(db_file: str, max_retries: int = 5) -> JobDatabase:  # type: ignore\n        \"\"\"\n        Use in context manager to automatically open and close db file.\n\n        :arguments:\n\n            :db_file: HDF5 file to use as database\n\n        :yields:\n\n            JobDatabase with opened db file\n\n        :finally:\n\n            Closes h5py database\n        \"\"\"\n\n        db = JobDatabase(db_file, max_retries)\n        try:\n            yield db\n        finally:\n            db._close()",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "PrincetonUniversity/slurmise",
+    "repo_created_date": "2024-06-21",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "src/slurmise/job_database.py",
+    "function_name": "get_database",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 22,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Generates simple output file via cut-and-count method i.e. assuming",
+  "output": "  def generate_cut_and_count_output(self):\n    '''Generates simple output file via cut-and-count method i.e. assuming \n    100% of events are signal, as is the case in signal MC\n    '''\n\n    #do checks\n    self.initialize_files_directories()\n    if not self.temp_file.GetListOfKeys().Contains('hist_pass_bin0'):\n      print('ERROR: Please produce histograms before calling fit.')\n      return\n    effi_filename = 'out/'+self.temp_name+'/cnc_efficiencies.json'\n    if os.path.exists(effi_filename):\n      print('ERROR: output files already exist')\n      return\n\n    #calculate efficiencies\n    effs = []\n    for ibin in range(0,self.nbins):\n      eff = 0.0\n      unc = 1.0\n      npass, npass_unc = get_hist_integral_and_error(\n           self.temp_file.Get('hist_pass_bin{}'.format(ibin)))\n      nfail, nfail_unc = get_hist_integral_and_error(\n           self.temp_file.Get('hist_fail_bin{}'.format(ibin)))\n      ntotal = npass+nfail\n      #ntotal_unc = math.hypot(npass_unc, nfail_unc)\n      if (npass > 0.0):\n        eff = npass/ntotal\n        #unc = eff*math.hypot(npass_unc/npass, ntotal_unc/ntotal)\n        unc = ((eff/npass-eff**2/npass)*npass_unc-(eff**2/npass)*nfail_unc)\n      else:\n        print('WARNING: no passing signal in bin '+str(ibin))\n        unc = 1.5/ntotal\n      effs.append([eff,unc])\n    with open(effi_filename,'w') as output_file:\n      output_file.write(json.dumps(effs))\n    print('Wrote '+effi_filename)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_analyzer.py",
+    "function_name": "generate_cut_and_count_output",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 37,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

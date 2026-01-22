@@ -1,0 +1,22 @@
+{
+  "instruction": "Find Median Sorted Arrays",
+  "output": "    public double findMedianSortedArrays(int[] nums1, int[] nums2) {\n        int[] arr = new int[nums1.length+nums2.length];\n\n        int pointer = 0;\n        for(int i=0; i<nums1.length; i++) {\n            arr[pointer++] = nums1[i];\n        }\n        for(int i=0; i<nums2.length; i++) {\n            arr[pointer++] = nums2[i];\n        }\n        Arrays.sort(arr);\n\n        if(arr.length % 2 == 0) {\n            return (double) (arr[arr.length/2-1]+arr[arr.length/2])/2;\n        } \n        return (double) arr[arr.length/2];\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "RohanKumarJha/LeetCode",
+    "repo_created_date": "2024-07-07",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0004-median-of-two-sorted-arrays/0004-median-of-two-sorted-arrays.java",
+    "function_name": "findMedianSortedArrays",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 17,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

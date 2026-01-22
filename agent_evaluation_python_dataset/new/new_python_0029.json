@@ -1,0 +1,22 @@
+{
+  "instruction": "Run administrative tasks.",
+  "output": "def main():\n    \"\"\"Run administrative tasks.\"\"\"\n    os.environ.setdefault(\"DJANGO_SETTINGS_MODULE\", \"authproxy.settings\")\n    try:\n        from django.core.management import execute_from_command_line\n    except ImportError as exc:\n        raise ImportError(\n            \"Couldn't import Django. Are you sure it's installed and \"\n            \"available on your PYTHONPATH environment variable? Did you \"\n            \"forget to activate a virtual environment?\"\n        ) from exc\n    execute_from_command_line(sys.argv)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "FAU-CDI/open_gdb",
+    "repo_created_date": "2024-06-10",
+    "repo_stars": 4,
+    "repo_forks": 0,
+    "file_path": "authproxy/manage.py",
+    "function_name": "main",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 12,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

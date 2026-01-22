@@ -1,0 +1,22 @@
+{
+  "instruction": "Convert an av.VideoFrame to a numpy array in `format`.",
+  "output": "def av_frame_to_ndarray_fast(\n    av_frame: av.VideoFrame, pixel_format: PixelFormat | None\n) -> npt.NDArray[np.uint8]:\n    \"\"\"Convert an av.VideoFrame to a numpy array in `format`.\n\n    Skipping conversion by using buffers directly if possible for performance.\n    \"\"\"\n    if pixel_format == \"gray\":\n        if av_frame.format.name == \"gray\":\n            result = np.frombuffer(\n                cast(memoryview, av_frame.planes[0]), np.uint8\n            ).reshape(av_frame.height, av_frame.width)\n        elif av_frame.format.name.startswith(\"yuv\"):\n            plane = av_frame.planes[0]\n            plane_data = np.frombuffer(cast(memoryview, plane), np.uint8)\n            if av_frame.height * av_frame.width == len(plane_data):\n                gray = plane_data\n                gray.shape = plane.height, plane.width\n            else:\n                gray_padded = plane_data\n                gray_padded = gray_padded.reshape(-1, plane.line_size)\n                gray = gray_padded[:, : plane.width]\n                # gray = np.ascontiguousarray(gray)\n\n            if av_frame.format.name == \"yuv420p\":\n                warnings.warn(\n                    \"using Y plane for yuv420p gray images, range is 16-235 instead \"\n                    \"of 0-255. Use .av_frame.to_ndarray(format='gray') for full range \"\n                    \"(4x slower)\",\n                    stacklevel=2,\n                )\n                # av.to_ndarray(format='gray') returns 0-255 for gray values\n                # but here reading the Y from planes for yuv420p the output\n                # is limited from 16-235 instead of converted to full range 0-255\n                # this is done for performance reasons\n                # gray = limited_yuv420p_to_full(gray)\n            result = gray  # type: ignore\n\n    elif pixel_format in (\"bgr24\", \"rgb24\") and av_frame.format.name == pixel_format:\n        plane = av_frame.planes[0]\n\n        # TODO(dan): find out why np.frombuffer(plane) didn't work here\n        # for bgr, frombuffer is faster than array\n        image = np.array(plane, dtype=np.uint8)\n\n        if 3 * av_frame.height * av_frame.width != len(image):\n            image = image.reshape(-1, plane.line_size)\n            image = image[:, : 3 * av_frame.width]\n            # image = np.ascontiguousarray(image)\n            result = image.reshape(av_frame.height, av_frame.width, 3)  # type: ignore\n        else:\n            buf = np.frombuffer(cast(memoryview, av_frame.planes[0]), np.uint8)\n            result = buf.reshape(av_frame.height, av_frame.width, 3)  # type: ignore\n    else:\n        result = av_frame.to_ndarray(format=pixel_format)  # type: ignore\n\n    return result",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "pupil-labs/pl-video",
+    "repo_created_date": "2024-10-16",
+    "repo_stars": 2,
+    "repo_forks": 0,
+    "file_path": "src/pupil_labs/video/frame.py",
+    "function_name": "av_frame_to_ndarray_fast",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 57,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Saves a variable to a ROOT file by saving a single entry TTree. Overwrites",
+  "output": "def write_variable_to_root_file(var, var_type, var_name, file):\n  '''\n  Saves a variable to a ROOT file by saving a single entry TTree. Overwrites\n  existing value\n\n  var       int or float style variable to save\n  var_type  char to denote variable type, possible values: bBhHiIlLfd\n  var_name  string, name to save in file\n  file      TFile in which to save\n  '''\n  file_keys = file.GetListOfKeys()\n  if file_keys.Contains(var_name):\n    file.Delete(var_name)\n  if not var_type in ARRAY_TO_ROOT_TYPE:\n    raise ValueError('Unsupported variable type to write to ROOT file.')\n  dummy_tree = ROOT.TTree('tree','')\n  var_pointer = array(var_type, [var])\n  dummy_tree.Branch('var',var_pointer,'var/'+ARRAY_TO_ROOT_TYPE[var_type])\n  dummy_tree.Fill()\n  file.WriteObject(dummy_tree, var_name)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_utils.py",
+    "function_name": "write_variable_to_root_file",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 20,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

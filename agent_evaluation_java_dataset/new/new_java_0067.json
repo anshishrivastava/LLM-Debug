@@ -1,0 +1,22 @@
+{
+  "instruction": "Remove Duplicates",
+  "output": "    public int removeDuplicates(int[] nums) {\n        int n=nums.length;\n         int c=1;\n        for(int i=1;i<n;i++){\n           \n            if(nums[i]!=nums[i-1]){\n            nums[c]=nums[i];\n            c++;\n            }\n          \n        }\n          return c;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "ASHWIKA1/Leetcode",
+    "repo_created_date": "2024-08-12",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0026-remove-duplicates-from-sorted-array/0026-remove-duplicates-from-sorted-array.java",
+    "function_name": "removeDuplicates",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 13,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

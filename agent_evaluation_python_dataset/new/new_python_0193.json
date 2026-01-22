@@ -1,0 +1,22 @@
+{
+  "instruction": "Cleans output directories",
+  "output": "  def clean_output(self):\n    '''Cleans output directories\n    '''\n    plot_filename = 'out/'+self.temp_name+'/allfits.pdf'\n    effi_filename = 'out/'+self.temp_name+'/efficiencies.json'\n    cnce_filename = 'out/'+self.temp_name+'/cnc_efficiencies.json'\n    for remv_filename in [plot_filename, effi_filename, cnce_filename]:\n      if os.path.exists(remv_filename):\n        os.remove(remv_filename)\n    for ibin in range(0,self.nbins):\n      fragment_name = 'out/'+self.temp_name+'/allfits_fragment'+str(ibin)+'.pdf'\n      if os.path.exists(fragment_name):\n        os.remove(fragment_name)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_analyzer.py",
+    "function_name": "clean_output",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 13,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

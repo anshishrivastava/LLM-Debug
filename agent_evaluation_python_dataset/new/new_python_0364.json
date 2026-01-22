@@ -1,0 +1,22 @@
+{
+  "instruction": "Load Improper Params",
+  "output": "    def load_improper_params(self):\n        improper_counter = 0\n        for key, val in self.order_dict.items():\n            if self.mol_dic[val][\"Impropers\"].size != 0:\n                self.mol_dic[val][\"Impropers\"][:, -4:] = (\n                    self.mol_dic[val][\"Impropers\"][:, -4:] + improper_counter\n                )\n\n            for i in self.mol_dic[val][\"Impropers\"]:\n                for ind, j in enumerate(self.molecule.impropers.numpy()):\n                    if ((i[2:] - 1).astype(int) == j).all() or (\n                        (i[2:][::-1] - 1).astype(int) == j\n                    ).all():\n                        self.molecule.improper_params[ind][1] = torch.tensor(\n                            [self.mol_dic[val][\"Improper Coeffs\"][int(i[1])][0]]\n                        )\n                    # Sometimes the ordering of the impropers can be wonky\n                    #  so this is added as an extra check\n                    elif i[3] == j[0]:\n                        if np.isin(i[3:], j[1:]):\n                            self.molecule.improper_params[ind][1] = torch.tensor(\n                                [self.mol_dic[val][\"Improper Coeffs\"][int(i[1])][0]]\n                            )\n            if self.mol_dic[val][\"Impropers\"].size != 0:\n                improper_counter += self.mol_dic[val][\"Impropers\"][:, -4:].max()\n            else:\n                improper_counter += 1",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/data/ff_file_reader.py",
+    "function_name": "load_improper_params",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 27,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

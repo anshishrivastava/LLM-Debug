@@ -1,0 +1,22 @@
+{
+  "instruction": "Last Occurence",
+  "output": "\n    public int lastOccurence(int[] nums, int target) {\n        int start = 0;\n        int end = nums.length - 1;\n\n        int ans = -1;\n\n        while (start <= end) {\n            int mid = (start + end) / 2;\n\n            if (nums[mid] == target) {\n                start = mid + 1;\n                ans = mid;\n            } else if (nums[mid] < target) {\n                start = mid + 1;\n            } else {\n                end = mid - 1;\n            }\n\n        }\n\n        return ans;\n\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "bishal7448/LeetCode_DSA_100_Question_Challenge",
+    "repo_created_date": "2024-12-28",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0034-find-first-and-last-position-of-element-in-sorted-array/0034-find-first-and-last-position-of-element-in-sorted-array.java",
+    "function_name": "lastOccurence",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 24,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

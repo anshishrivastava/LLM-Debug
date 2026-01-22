@@ -1,0 +1,22 @@
+{
+  "instruction": "Returns yields and associated uncertainties",
+  "output": "  def get_yields(self) -> list[list[float]]:\n    '''Returns yields and associated uncertainties\n\n    Returns:\n      list of passing signal yields, associated uncertainties, failing signal\n      yields, and their associated uncertainties each of which is a list\n      indexed by bins\n    '''\n    nsig_pass = []\n    nsig_fail = []\n    nsig_pass_unc = []\n    nsig_fail_unc = []\n    for ibin in range(0,self.nbins):\n      pass_param_filename = 'out/{}/fitinfo_bin{}_pass.json'.format(\n          self.temp_name,ibin)\n      fail_param_filename = 'out/{}/fitinfo_bin{}_fail.json'.format(\n          self.temp_name,ibin)\n      pass_param_dict = None\n      fail_param_dict = None\n      with open(pass_param_filename,'r') as input_file:\n        pass_param_dict = json.loads(input_file.read())\n      with open(fail_param_filename,'r') as input_file:\n        fail_param_dict = json.loads(input_file.read())\n      nsig_pass.append(pass_param_dict['nSig'])\n      nsig_fail.append(fail_param_dict['nSig'])\n      nsig_pass_unc.append(pass_param_dict['nSig_unc'])\n      nsig_fail_unc.append(fail_param_dict['nSig_unc'])\n    return [nsig_pass, nsig_pass_unc, nsig_fail, nsig_fail_unc]",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_analyzer.py",
+    "function_name": "get_yields",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 28,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

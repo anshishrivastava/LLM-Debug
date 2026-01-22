@@ -1,0 +1,22 @@
+{
+  "instruction": "Render Filled Circle",
+  "output": "\n        private void renderFilledCircle(SpriteBatch batch, float radius, float alpha) {\n            batch.setColor(1f, 1f, 1f, alpha);\n\n            float angleStep = 360f / CIRCLE_SEGMENTS;\n\n            for (int i = 0; i < CIRCLE_SEGMENTS; i++) {\n                float angle = i * angleStep;\n                float rad = (float) Math.toRadians(angle);\n\n                float x = position.x + (float) Math.cos(rad) * radius;\n                float y = position.y + (float) Math.sin(rad) * radius;\n\n                drawLine(batch, position.x, position.y, x, y, 2f);\n            }\n\n            batch.setColor(1f, 1f, 1f, 1f);\n        }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/AbilityVisual.java",
+    "function_name": "renderFilledCircle",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 18,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

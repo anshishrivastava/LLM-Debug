@@ -1,0 +1,22 @@
+{
+  "instruction": "Provides range for fit",
+  "output": "  def get_fit_range(self) -> tuple[float,float]:\n    '''Provides range for fit\n    '''\n    fit_range_lower = self.fit_var_range[0]\n    fit_range_upper = self.fit_var_range[1]\n    if not (self.custom_fit_range == None):\n      fit_range_lower = self.custom_fit_range[0]\n      fit_range_upper = self.custom_fit_range[1]\n    return (fit_range_lower,fit_range_upper)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_analyzer.py",
+    "function_name": "get_fit_range",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 9,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

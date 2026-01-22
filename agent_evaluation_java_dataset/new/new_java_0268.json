@@ -1,0 +1,22 @@
+{
+  "instruction": "Min Deletion Size",
+  "output": "    public int minDeletionSize(String[] strs) {\r\n        int count = 0;\r\n        for (int col = 0; col < strs[0].length(); col++) {\r\n          boolean isUnsorted = false;\r\n            for (int row = 1; row < strs.length; row++) {\r\n                if (strs[row].charAt(col) < strs[row - 1].charAt(col))\r\n                isUnsorted = true;\r\n                break;\r\n            }\r\n        }\r\n      if(isUnsorted){\r\n        count++;\r\n      }\r\n        return count;\r\n    }    \r",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "AnanyaVishwakarma/Java_Practice01",
+    "repo_created_date": "2024-06-15",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "DeleteColumnsToMakeSorted.java",
+    "function_name": "minDeletionSize",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 15,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

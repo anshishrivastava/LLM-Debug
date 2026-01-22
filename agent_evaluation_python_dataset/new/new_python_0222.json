@@ -1,0 +1,22 @@
+{
+  "instruction": "Function that plots the automatic patch position estimates over an image of the macbeth chart (from the data)",
+  "output": "def PlotPatchesDetection(macbeth, Positions, Sample_size):\n\t\"\"\"\n\tFunction that plots the automatic patch position estimates over an image of the macbeth chart (from the data)\n\tUse this to make sure that the patches have been properly identified and that all the pixels included \n\tare indeed part of the patch, to avoid corrupted spectra\n\n\tInputs:\n\t\t- macbeth: monochromatic image of the macbeth chart (from the data, same dimensions)\n\t\t- Positions: Positions of each patches, output of GetPatchPos()\n\t\t- Sample_size: estimated size of a patch (smaller than real patch to avoid unwanted pixels)\n\n\tOutputs:\n\t\t- (plots figure)\n\n\n\t\"\"\"\n\tfig, ax = plt.subplots(nrows=1, ncols=1, figsize=(5,5))\n\tim = ax.imshow(macbeth, cmap='gray')\n\tfor i in range(0, 30):  \n\t\tax.scatter(Positions[i,1], Positions[i,2], color='cornflowerblue', s=15)\n\t\tax.text(Positions[i,1]-10, Positions[i,2]-8, f'{Positions[i,0]+1:.0f}', color='red')\n\t\tarea = patches.Rectangle((Positions[i,1]-Sample_size/2, Positions[i,2]-Sample_size/2), Sample_size, Sample_size, edgecolor='none', facecolor='cornflowerblue', alpha=0.4)\n\t\tax.add_patch(area)\n\tplt.tight_layout()\n\tplt.show()",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "YzaboRa/HySE_HypercubeFunctions",
+    "repo_created_date": "2024-08-22",
+    "repo_stars": 0,
+    "repo_forks": 2,
+    "file_path": "HySE/UserTools.py",
+    "function_name": "PlotPatchesDetection",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 25,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

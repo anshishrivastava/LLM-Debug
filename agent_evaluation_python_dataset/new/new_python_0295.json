@@ -1,0 +1,22 @@
+{
+  "instruction": "Try to place a word by connecting it to existing letters.",
+  "output": "    def compare_to_existing(self, word: str) -> Optional[Tuple[Tuple[int, int], Tuple[int, int]]]:\n        \"\"\"Try to place a word by connecting it to existing letters.\n        \n        Args:\n            word: The word to place\n            \n        Returns:\n            Tuple of (start_position, direction) if placement successful, None otherwise\n        \"\"\"\n        for idx, letter in enumerate(word):\n            if letter not in self.tree:\n                continue\n                \n            for node in self.tree[letter]:\n                if node.consumed:\n                    continue\n                    \n                for direction in ALL_DIRECTIONS:\n                    can_fit = self.can_fit_word(word, node.pos, direction, idx)\n                    if can_fit is not None:\n                        node.consumed = True\n                        return can_fit\n        return None",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "pb-96/crossword-generator",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "cw_generator_uv/cw_generator/cw_gen/cw_gen_with_tree.py",
+    "function_name": "compare_to_existing",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 23,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

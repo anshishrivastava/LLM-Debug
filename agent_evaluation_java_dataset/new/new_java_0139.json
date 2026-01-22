@@ -1,0 +1,22 @@
+{
+  "instruction": "Binary Exp",
+  "output": "\n    private double binaryExp(double x, long n) {\n        if (n == 0) {\n            return 1;\n        }\n       \n        if (n < 0) {\n            return 1.0 / binaryExp(x, -n);\n        }\n       \n        if (n % 2 == 1) {\n            return x * binaryExp(x * x, (n - 1) / 2);\n        } else {\n            return binaryExp(x * x, n / 2);\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Madhurima-R04/LeetCode_Solutions",
+    "repo_created_date": "2025-01-08",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0050-powx-n/0050-powx-n.java",
+    "function_name": "binaryExp",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 16,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

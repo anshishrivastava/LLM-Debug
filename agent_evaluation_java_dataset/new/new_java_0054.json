@@ -1,0 +1,22 @@
+{
+  "instruction": "Update the effect (called every frame) @return true if effect should continue, false if it should be removed",
+  "output": "    public boolean update(float delta) {\n        if (!isActive) return false;\n\n        elapsed += delta;\n\n        // Call the update logic for the specific effect\n        onUpdate(delta);\n\n        if (elapsed >= duration) {\n            onExpire();\n            isActive = false;\n            return false;\n        }\n\n        return true;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/StatusEffect.java",
+    "function_name": "update",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 16,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Recover From Preorder",
+  "output": "    public TreeNode recoverFromPreorder(String traversal) {\n        int i=0,c=0;\n        StringBuilder sb=new StringBuilder();\n        Stack<TreeNode> stack=new Stack<>();\n        while(i<traversal.length()){\n            while(i<traversal.length() && traversal.charAt(i)=='-'){\n            i++;\n            c++;\n            }\n            while(i<traversal.length() && traversal.charAt(i)!='-'){\n                sb.append(traversal.charAt(i));\n                i++;\n            }\n            int n=Integer.parseInt(sb.toString());\n            TreeNode t=new TreeNode(n);\n            while(stack.size()>c){\n                stack.pop();\n            }\n            if(!stack.isEmpty()){\n            TreeNode t1=stack.peek();\n            if(t1.left==null)\n            t1.left=t;\n            else\n            t1.right=t;\n            }\n            stack.push(t);\n            c=0;\n            sb.setLength(0);\n            }\n            while(stack.size()>1)\n            stack.pop();\n        return stack.pop();\n        }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "rithishnv/Problem-Solving",
+    "repo_created_date": "2024-08-07",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "1028-Recover-a-Tree-From-Preorder-Traversal.java",
+    "function_name": "recoverFromPreorder",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 33,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

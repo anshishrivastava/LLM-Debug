@@ -1,0 +1,22 @@
+{
+  "instruction": "Is Palindrome",
+  "output": "    public boolean isPalindrome(String s) {\n        int start = 0;\n        int end = s.length() - 1;\n\n        while (start < end){\n            while(start < end && !Character.isLetterOrDigit(s.charAt(start))){\n                start++;\n            }\n\n            while(start < end && !Character.isLetterOrDigit(s.charAt(end))){\n                end--;\n            }\n\n            if(Character.toLowerCase(s.charAt(start)) != Character.toLowerCase(s.charAt(end))){\n                return false;\n            }\n            start++;\n            end--;\n        }\n        return true;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "utkrshydv/learningLeetCode",
+    "repo_created_date": "2025-01-15",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "125-valid-palindrome/valid-palindrome.java",
+    "function_name": "isPalindrome",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 21,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

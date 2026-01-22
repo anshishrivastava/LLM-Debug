@@ -1,0 +1,22 @@
+{
+  "instruction": "Count Chaos Keys",
+  "output": "def count_chaos_keys(embed):\n    # Extracts key count from description. Format: <:key:ID> (**N**)\n    if not embed or not embed.description:\n        return 0\n    \n    desc = embed.description\n    key_pattern = r'<:(?:chaos)?key:\\d+>\\s*\\(\\*\\*([\\d,.]+)\\*\\*\\)'\n    matches = re.findall(key_pattern, desc, re.IGNORECASE)\n    \n    chaos_count = 0\n    for match in matches:\n        try:\n            val = int(re.sub(r\"[^\\d]\", \"\", match))\n            if val >= 10:\n                chaos_count += 1\n        except ValueError:\n            continue\n    \n    return chaos_count",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "misutesu-desu/MudaRemote",
+    "repo_created_date": "2024-10-12",
+    "repo_stars": 34,
+    "repo_forks": 5,
+    "file_path": "mudae_bot.py",
+    "function_name": "count_chaos_keys",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 19,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

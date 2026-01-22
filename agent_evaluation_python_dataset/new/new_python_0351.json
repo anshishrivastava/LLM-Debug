@@ -1,0 +1,22 @@
+{
+  "instruction": "Initializes the force field parameters for calculating",
+  "output": "    def initialize_ff_params(self):\n        \"\"\"\n        Initializes the force field parameters for calculating\n        forces and energies on the geometries\n\n        If the train_args argument warm_start is set to true, then the first round of\n        parameters are initialized to data from a lammps file that has to be specified.\n        \"\"\"\n        if self.train_args.ff_type == \"opls\":\n            self.train_args.bond_output = 2\n            self.train_args.angle_output = 2\n            self.train_args.dihedral_output = 4\n            self.train_args.improper_output = 4\n            self.train_args.pair_output = (\n                1  # The LJ parameters are taken from tabulated data\n            )\n            # it has been seen (by Pablo) that predicting them\n            # from DFT calculations is unfeasible (to test more)\n        else:\n            raise ValueError(f\"{self.train_args.ff_type} not available, only 'opls'\")\n\n        # Linear basis parameterization 2 pred params, 2 boundaries\n        if self.bonds.numel():\n            self.bond_params = torch.empty(\n                self.bonds.shape[0], self.train_args.bond_output\n            ).to(self.train_args.device)\n        else:\n            self.bond_params = torch.zeros((0, 0)).to(self.train_args.device)\n\n        # Linear basis parameterization 2 pred params, 2 boundaries\n        if self.angles.numel():\n            self.angle_params = torch.empty(\n                self.angles.shape[0], self.train_args.angle_output\n            ).to(self.train_args.device)\n        else:\n            self.angle_params = torch.zeros((0, 0)).to(self.train_args.device)\n\n        if self.dihedrals.numel():\n            self.dihedral_params = torch.empty(\n                self.dihedrals.shape[0], self.train_args.dihedral_output\n            ).to(self.train_args.device)\n        else:\n            self.dihedral_params = torch.zeros((0, 0)).to(self.train_args.device)\n\n        if self.impropers.numel():\n            self.improper_params = torch.zeros(\n                self.impropers.shape[0], self.train_args.improper_output\n            ).to(self.train_args.device)\n        else:\n            self.improper_params = torch.zeros((0, 0)).to(self.train_args.device)\n        # Since only charges are prediced from Pairnet\n        self.pair_params = torch.empty(\n            self.atom_num, 3 * self.train_args.pair_output\n        ).to(self.train_args.device)\n        # Pair params are ordered as charge, epsilon, sigma\n\n        # Since only charges are prediced from Pairnet\n        self.true_charge = torch.empty(self.atom_num, 1).to(self.train_args.device)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/data/builder.py",
+    "function_name": "initialize_ff_params",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 58,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

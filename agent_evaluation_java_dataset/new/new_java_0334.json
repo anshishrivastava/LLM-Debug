@@ -1,0 +1,22 @@
+{
+  "instruction": "Is Palindrone",
+  "output": "    public boolean isPalindrone(int i,int j,String s){\n        int left=i;\n        int right=j-1;\n        while(left<right){\n            if(s.charAt(left)!=s.charAt(right)){\n                return false;\n            }\n            left++;right--;\n           \n        }\n         return true;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "sarans-h/sam",
+    "repo_created_date": "2024-12-23",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "0005-longest-palindromic-substring/0005-longest-palindromic-substring.java",
+    "function_name": "isPalindrone",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 12,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

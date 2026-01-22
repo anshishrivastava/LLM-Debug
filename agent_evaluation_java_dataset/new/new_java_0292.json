@@ -1,0 +1,22 @@
+{
+  "instruction": "Min Deletion Size",
+  "output": "    public int minDeletionSize(String[] strs) {\n        int n = strs.length;\n        int m = strs[0].length();\n        int[] dp = new int[m];\n        int maxKept = 0;\n        \n        for (int i = 0; i < m; i++) {\n            dp[i] = 1;\n            for (int j = 0; j < i; j++) {\n                if (canAppend(strs, j, i)) {\n                    dp[i] = Math.max(dp[i], dp[j] + 1);\n                }\n            }\n            maxKept = Math.max(maxKept, dp[i]);\n        }\n        \n        return m - maxKept;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "vishalbharath/leetcode",
+    "repo_created_date": "2025-01-03",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "1000-delete-columns-to-make-sorted-iii/delete-columns-to-make-sorted-iii.java",
+    "function_name": "minDeletionSize",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 18,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

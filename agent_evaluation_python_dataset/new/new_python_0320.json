@@ -1,0 +1,22 @@
+{
+  "instruction": "Powerfulintegers",
+  "output": "    def powerfulIntegers(self, x: int, y: int, bound: int) -> List[int]:\n        res , i , j = set() , 0 , 0\n        tempx , tempy= x**i , y**j\n        while tempx<bound:\n            while tempx + tempy <= bound:\n                res.add(tempx+tempy)\n                j+=1\n                tempy = y**j\n                if y==1:  break\n            i+=1\n            tempx = x**i\n            j = 0\n            tempy = y**j\n            if x==1: break\n        return list(res)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Mohammad-Adilkhan3/leetcode",
+    "repo_created_date": "2024-10-15",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "1010-powerful-integers/powerful-integers.py",
+    "function_name": "powerfulIntegers",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 15,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

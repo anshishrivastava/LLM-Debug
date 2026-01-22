@@ -1,0 +1,22 @@
+{
+  "instruction": "Non Rec Dfs",
+  "output": "    def non_rec_dfs(\n        self,\n        next_point: Point,\n        potential_positions: Tuple[int, int],\n        search_word: str,\n        ptr: int,\n    ) -> Union[Point, None]:\n        built = search_word[ptr]\n        while ptr < len(search_word) - 1:\n            T = self.peek_next(next_point, potential_positions)\n            if T is None:\n                return None\n\n            next_point, next_char = T\n            if next_char is None or next_char != search_word[ptr + 1]:\n                return None\n            ptr += 1\n            built += next_char\n            if built == search_word:\n                return next_point\n        return None",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "pb-96/crossword-generator",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "cw_generator_uv/cw_generator/cw_gen/cw_validator.py",
+    "function_name": "non_rec_dfs",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 21,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

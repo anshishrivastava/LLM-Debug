@@ -1,0 +1,22 @@
+{
+  "instruction": "Find Median Sorted Arrays",
+  "output": "    public double findMedianSortedArrays(int[] nums1, int[] nums2) {\n        double mid;\n        int[] merged=new int[nums1.length+nums2.length];\n        int i=0, j=0,k=0;\n        while((i<nums1.length) && (j<nums2.length))\n        {\n            if(nums1[i]>nums2[j]){\n                merged[k]=nums2[j];\n                j++;\n                k++;\n            }\n            else{\n                merged[k]=nums1[i];\n                i++;\n                k++;\n            }\n        }\n        while(i<nums1.length){\n          merged[k]=nums1[i];\n            i++;\n            k++;\n        }\n        while(j<nums2.length){\n            merged[k]=nums2[j];\n                j++;\n            k++;\n        }\n        if(merged.length%2!=0){\n            mid=merged[merged.length/2];\n        }else{\n            mid=(merged[merged.length/2-1]+merged[merged.length/2])/2.0;\n        }\n        return mid;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "MaskeV/Leetcode",
+    "repo_created_date": "2024-10-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0004-median-of-two-sorted-arrays/0004-median-of-two-sorted-arrays.java",
+    "function_name": "findMedianSortedArrays",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 34,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

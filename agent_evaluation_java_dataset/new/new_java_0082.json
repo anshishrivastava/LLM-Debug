@@ -1,0 +1,22 @@
+{
+  "instruction": "Add Two Numbers",
+  "output": "    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {\n        ListNode t1 = l1;\n        ListNode t2 = l2;\n        ListNode dummy = new ListNode(-1);  // use ListNode, not Node\n        ListNode current = dummy;\n        int carry = 0;\n        \n        while (t1 != null || t2 != null) {  // use OR (||), not AND (&&)\n            int sum = carry;\n            if (t1 != null) {\n                sum += t1.val;\n                t1 = t1.next;\n            }\n            if (t2 != null) {\n                sum += t2.val;\n                t2 = t2.next;\n            }\n            ListNode newNode = new ListNode(sum % 10);  // use ListNode\n            carry = sum / 10;\n            current.next = newNode;\n            current = current.next;\n        }\n        \n        if (carry > 0) {\n            ListNode temp = new ListNode(carry);\n            current.next = temp;  // fix carry node attachment\n        }\n        \n        return dummy.next;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Rajeshkuruva2003/competitive-program",
+    "repo_created_date": "2025-01-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "Add Two numbers.java",
+    "function_name": "addTwoNumbers",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 30,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

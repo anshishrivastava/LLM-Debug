@@ -1,0 +1,22 @@
+{
+  "instruction": "Prefixesdivby5",
+  "output": "    def prefixesDivBy5(self, nums: List[int]) -> List[bool]:\n        val = 0\n        for i in range(len(nums)):\n            val = ((val << 1) + nums[i]) % 5\n            nums[i] = val == 0\n        return nums",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Mohammad-Adilkhan3/leetcode",
+    "repo_created_date": "2024-10-15",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "1071-binary-prefix-divisible-by-5/binary-prefix-divisible-by-5.py",
+    "function_name": "prefixesDivBy5",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 6,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

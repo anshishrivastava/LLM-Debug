@@ -1,0 +1,22 @@
+{
+  "instruction": "Int To Roman",
+  "output": "    public String intToRoman(int num) {\n        \n        int[] arr= {1,4,5,9,10,40,50,90,100,400,500,900,1000};\n        String[] roman = {\"I\",\"IV\",\"V\",\"IX\",\"X\",\"XL\",\"L\",\"XC\",\"C\",\"CD\",\"D\",\"CM\",\"M\"};\n        StringBuilder sb = new StringBuilder();\n        \n\n        //while (num>0){\n           // int i=0;\n           // while(i<arr.length-1){\n             //   if(arr[i]==num){\n                    //num=num-arr[i];\n                    //sb.append(roman[i]);\n                   // break;\n                 //}if(arr[i]>num){\n                    //num-=arr[i-1];\n                  //  sb.append(roman[i-1]);\n                //}\n              //  i++;\n            //}\n            //if(i==arr.length-1){\n              //  sb.append(roman[i]);\n            //    num-=arr[i];\n          //  }\n        //}\n\n\n        for(int i=arr.length-1;i>=0;i--){\n            while(num>=arr[i]){\n                sb.append(roman[i]);\n                num-=arr[i];\n            }\n        }\n           return sb.toString();       \n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "MaskeV/Leetcode",
+    "repo_created_date": "2024-10-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0012-integer-to-roman/0012-integer-to-roman.java",
+    "function_name": "intToRoman",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 35,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

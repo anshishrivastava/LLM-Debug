@@ -1,0 +1,22 @@
+{
+  "instruction": "Remove Element",
+  "output": "    public int removeElement(int[] nums, int val) {\n\n        // Solution 1 : O(n)\n        // int left=0,right=nums.length-1;\n        // while(left<=right){\n        //     if(nums[left]==val){\n        //         int temp=nums[left];\n        //         nums[left]=nums[right];\n        //         nums[right]=temp;\n        //         right--;\n        //     }\n        //     else{\n        //         left++;\n        //     }\n        // }\n        // return left;\n\n\n        // Solution 2 : O(n) (More optimised)\n        int k=0;\n        for(int i=0;i<nums.length;i++){\n            if(nums[i]!=val){\n                nums[k]=nums[i];\n                k++;\n            }\n        }\n        return k;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "YeshwanthrajG/Leetcode-Solutions",
+    "repo_created_date": "2025-01-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "P0027_RemoveElement.java",
+    "function_name": "removeElement",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 28,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

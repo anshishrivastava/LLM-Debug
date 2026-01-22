@@ -1,0 +1,22 @@
+{
+  "instruction": "Build the main UI.",
+  "output": "    def build_ui(self):\r\n        \"\"\"Build the main UI.\"\"\"\r\n        # Main container\r\n        main_frame = ttk.Frame(self.root)\r\n        main_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)\r\n        \r\n        # Left sidebar - Preset list\r\n        sidebar = ttk.Frame(main_frame, width=200)\r\n        sidebar.pack(side=tk.LEFT, fill=tk.Y, padx=(0, 10))\r\n        sidebar.pack_propagate(False)\r\n        \r\n        ttk.Label(sidebar, text=\"Presets\", font=(\"Segoe UI\", 14, \"bold\")).pack(anchor=tk.W, pady=(0, 10))\r\n        \r\n        # Preset listbox\r\n        self.preset_listbox = tk.Listbox(sidebar, **self.listbox_config, height=20)\r\n        self.preset_listbox.pack(fill=tk.BOTH, expand=True)\r\n        self.preset_listbox.bind(\"<<ListboxSelect>>\", self.on_preset_select)\r\n        \r\n        # Refresh preset list\r\n        self.refresh_preset_list()\r\n        \r\n        # Sidebar buttons\r\n        sidebar_btns = ttk.Frame(sidebar)\r\n        sidebar_btns.pack(fill=tk.X, pady=(10, 0))\r\n        \r\n        ttk.Button(sidebar_btns, text=\"+ New\", command=self.create_preset).pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 5))\r\n        ttk.Button(sidebar_btns, text=\"Duplicate\", command=self.duplicate_preset).pack(side=tk.LEFT, fill=tk.X, expand=True)\r\n        \r\n        # Right side - Settings panel\r\n        self.settings_container = ttk.Frame(main_frame)\r\n        self.settings_container.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)\r\n        \r\n        # Canvas for scrolling\r\n        self.canvas = tk.Canvas(self.settings_container, bg=\"#1e1e2e\", highlightthickness=0)\r\n        scrollbar = ttk.Scrollbar(self.settings_container, orient=tk.VERTICAL, command=self.canvas.yview)\r\n        self.scrollable_frame = ttk.Frame(self.canvas)\r\n        \r\n        self.scrollable_frame.bind(\"<Configure>\", lambda e: self.canvas.configure(scrollregion=self.canvas.bbox(\"all\")))\r\n        \r\n        self.canvas.create_window((0, 0), window=self.scrollable_frame, anchor=tk.NW)\r\n        self.canvas.configure(yscrollcommand=scrollbar.set)\r\n        \r\n        self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)\r\n        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)\r\n        \r\n        # Bind mousewheel\r\n        self.canvas.bind_all(\"<MouseWheel>\", self._on_mousewheel)\r\n        \r\n        # Build settings form\r\n        self.build_settings_form()\r",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "misutesu-desu/MudaRemote",
+    "repo_created_date": "2024-10-12",
+    "repo_stars": 34,
+    "repo_forks": 5,
+    "file_path": "mudae_preset_editor.py",
+    "function_name": "build_ui",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 50,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

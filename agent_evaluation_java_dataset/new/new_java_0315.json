@@ -1,0 +1,22 @@
+{
+  "instruction": "Find Maximum",
+  "output": "    public int findMaximum(int[] arr) {\n        // code here\n        for(int i=1;i<arr.length-1;i++){\n            if(!(arr[i-1]<arr[i] && arr[i]<arr[i+1]))return arr[i];\n        }\n        return -1;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Himanshi-Saini-0277/GFG_Streak",
+    "repo_created_date": "2024-08-24",
+    "repo_stars": 4,
+    "repo_forks": 0,
+    "file_path": "Difficulty: Easy/Bitonic Point/bitonic-point.java",
+    "function_name": "findMaximum",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 7,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

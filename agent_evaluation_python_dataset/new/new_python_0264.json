@@ -1,0 +1,22 @@
+{
+  "instruction": "Load Model",
+  "output": "def load_model(device, model_name, checkpoint=None):\n    if model_name == \"biomed_clip\":\n        model, preprocess = create_model_from_pretrained(\"hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224\")\n        tokenizer = get_tokenizer(\"hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224\")\n        print(f\"{model_name} loaded on {device}\")\n\n    # whether to load the finetuning weights\n    if checkpoint is not None:\n        checkpoint_path = f\"saved_models/biomedclip/classification/{checkpoint}\"\n        state_dict = torch.load(checkpoint_path, map_location=device)\n        if \"LoRA_Vision\" in checkpoint:\n            lora_mode = \"vision\"\n            lora_vit = BiomedCLIPViT_LoRA(model, lora_rank=args.lora_rank)\n            model.visual.trunk = lora_vit.lora_vit\n        elif \"LoRA_Projection\" in checkpoint:\n            lora_mode = \"projection\"\n            model = build_lora_projection(model, lora_rank=args.lora_rank)\n        if 'clf' in checkpoint:\n            if \"breastmnist\" in checkpoint or \"pneumoniamnist\" in checkpoint:\n                nClasses = 2\n            elif \"organamnist\" in checkpoint or \"organcmnist\" in checkpoint:\n                nClasses = 11\n            model = BiomedCLIP_Classifier(model, nClasses, task=\"binary-class\")\n        model.load_state_dict(state_dict)\n     \n    model.to(device)\n\n    return model, preprocess, tokenizer",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "98haiting/General-or-Medical-CLIP-Which-one-Shall-We-Choose",
+    "repo_created_date": "2024-10-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "biomed_clip/classification.py",
+    "function_name": "load_model",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 28,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

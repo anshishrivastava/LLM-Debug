@@ -1,0 +1,22 @@
+{
+  "instruction": "Spiral Order",
+  "output": "    public List<Integer> spiralOrder(int[][] matrix) {\n        List<Integer> ans = new ArrayList<>();\n        int top = 0, bottom = matrix.length - 1, left = 0, right = matrix[0].length - 1;\n        while (top <= bottom && left <= right) {\n            for (int i = left; i <= right; i++) {\n                ans.add(matrix[top][i]);\n            }\n            top++;\n            for (int i = top; i <= bottom; i++) {\n                ans.add(matrix[i][right]);\n            }\n            right--;\n            if (top <= bottom) {\n                for (int i = right; i >= left; i--) {\n                    ans.add(matrix[bottom][i]);\n                }\n                bottom--;\n            }\n            if (left <= right) {\n                for (int i = bottom; i >= top; i--) {\n                    ans.add(matrix[i][left]);\n                }\n                left++;\n            }\n        }\n        return ans;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Braj111/DSA-Practice",
+    "repo_created_date": "2024-08-24",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0054-spiral-matrix/0054-spiral-matrix.java",
+    "function_name": "spiralOrder",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 27,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

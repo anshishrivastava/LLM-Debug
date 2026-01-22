@@ -1,0 +1,22 @@
+{
+  "instruction": "Check if a word can fit at the given position and direction.",
+  "output": "    def can_fit_word(\n        self,\n        word: str,\n        start_pos: Tuple[int, int],\n        direction: Tuple[int, int],\n        word_index: int,\n    ) -> Optional[Tuple[Tuple[int, int], Tuple[int, int]]]:\n        \"\"\"Check if a word can fit at the given position and direction.\n        \n        Args:\n            word: The word to check\n            start_pos: Starting position (row, col)\n            direction: Direction vector (row_step, col_step)\n            word_index: Index in the word to start from\n            \n        Returns:\n            Tuple of (start_position, direction) if word can fit, None otherwise\n        \"\"\"\n        row_step, col_step = direction\n        word_len = len(word) - 1\n        left, right = word[:word_index], word[word_index:word_len]\n        opposite_direction = (-row_step, -col_step)\n\n        R = self.search_chunk(right, direction, tuple(start_pos))\n        if R is None:\n            return None\n\n        _, direction = R\n        L = self.search_chunk(left, opposite_direction, tuple(start_pos))\n\n        if L is None:\n            return None\n\n        start, _ = L\n        return start, R[1]",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "pb-96/crossword-generator",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "cw_generator_uv/cw_generator/cw_gen/cw_base_class.py",
+    "function_name": "can_fit_word",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 35,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

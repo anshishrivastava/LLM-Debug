@@ -1,0 +1,22 @@
+{
+  "instruction": "Number To Words Helper",
+  "output": "\n    public static String numberToWordsHelper(int num) {\n        String[] digitString = new String[]{\"Zero\", \"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\"};\n        String[] teenString = new String[]{\"Ten\", \"Eleven\", \"Twelve\", \"Thirteen\", \"Fourteen\", \"Fifteen\", \"Sixteen\", \"Seventeen\", \"Eighteen\", \"Nineteen\"};\n        String[] tenString = new String[]{\"\", \"\", \"Twenty\", \"Thirty\", \"Forty\", \"Fifty\", \"Sixty\", \"Seventy\", \"Eighty\", \"Ninety\"};\n\n        String result = \"\";\n        if (num > 99) {\n            result += digitString[num / 100] + \" Hundred \";\n        }\n        num = num % 100;\n\n        if (num < 20 && num > 9) {\n            result += teenString[num % 10] + \" \";\n        } else {\n            if (num > 19) {\n                result += tenString[num / 10] + \" \";\n            }\n            num = num % 10;\n            if (num > 0)\n                result += digitString[num] + \" \";\n        }\n\n        return result;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "VivekLpu/LeetCode-Solutions",
+    "repo_created_date": "2024-08-17",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "IntegerToEnglishWords.java",
+    "function_name": "numberToWordsHelper",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 25,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

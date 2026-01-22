@@ -1,0 +1,22 @@
+{
+  "instruction": "Spellchecker",
+  "output": "    def spellchecker(self, wordlist: List[str], queries: List[str]) -> List[str]:\n        v=\"aeiou\" #for vowels\n        \n        exact=set(wordlist)\n        \n        cap={} #for capital diff\n        for w in wordlist: #for each word\n            l=w.lower() #making the word in lower case\n            if l not in cap:\n                cap[l]=w\n                \n        vowel={} # when vowel differ\n        for w in wordlist:\n            pattern=\"\"\n            for c in w.lower(): #checking characters\n                if c in v: #if character is a vowel\n                    pattern+=\"*\" #show vowels in both string look *\n                else:\n                    pattern+=c\n            if pattern not in vowel:\n                vowel[pattern]=w\n        \n        r=[] #result array\n        for q in queries:\n            if q in exact: #when exact \n                r.append(q)\n            elif q.lower() in cap:#when lowercase making the diff\n                r.append(cap[q.lower()])\n            else: #vowel difference case\n                p=\"\"\n                for c in q.lower():\n                    if c in v:\n                        p+=\"*\"\n                    else:\n                        p+=c\n                if p in vowel:\n                    r.append(vowel[p])\n                else:\n                    r.append(\"\")\n        return r #returning the result",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Mohammad-Adilkhan3/leetcode",
+    "repo_created_date": "2024-10-15",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "1006-vowel-spellchecker/vowel-spellchecker.py",
+    "function_name": "spellchecker",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 40,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

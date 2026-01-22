@@ -1,0 +1,22 @@
+{
+  "instruction": "Pull Ability",
+  "output": "\n    public PullAbility(Texture iconTexture) {\n        super(\n                \"Pull\",\n                \"Create a divine vortex that pulls all nearby enemies toward you\",\n                10.0f,\n                20,\n                0f,\n                PULL_DURATION,\n                PULL_RADIUS,\n                AbilityType.CROWD_CONTROL,\n                iconTexture\n        );\n        this.affectedEnemies = new HashSet<>();\n        this.isPulling = false;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/PaladinAbilities.java",
+    "function_name": "PullAbility",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 16,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Modifies the definition of a bin",
+  "output": "  def modify_binning(self, bin_number: int, bin_selection: str, \n                     bin_name: str='', is_high_pt: bool=False):\n    '''Modifies the definition of a bin\n    \n    Args:\n      bin_number: bin number to modify\n      bin_selection: new selection for bin, empty string reuses selection\n      bin_name: new name for bin, empty string reuses name\n      is_high_pt: indicates if bin is high pt\n    '''\n    if bin_selection != '':\n      self.data_nom_tnp_analyzer.bin_selections[bin_number] = bin_selection\n      self.data_altsig_tnp_analyzer.bin_selections[bin_number] = bin_selection\n      self.data_altbkg_tnp_analyzer.bin_selections[bin_number] = bin_selection\n      self.data_altsigbkg_tnp_analyzer.bin_selections[bin_number] = (\n          bin_selection)\n      self.mc_nom_tnp_analyzer.bin_selections[bin_number] = bin_selection\n      self.mc_alt_tnp_analyzer.bin_selections[bin_number] = bin_selection\n    if bin_name != '':\n      self.data_nom_tnp_analyzer.bin_names[bin_number] = bin_name\n      self.data_altsig_tnp_analyzer.bin_names[bin_number] = bin_name\n      self.data_altbkg_tnp_analyzer.bin_names[bin_number] = bin_name\n      self.data_altsigbkg_tnp_analyzer.bin_names[bin_number] = (\n          bin_name)\n      self.mc_nom_tnp_analyzer.bin_names[bin_number] = bin_name\n      self.mc_alt_tnp_analyzer.bin_names[bin_number] = bin_name\n    if (is_high_pt and not (bin_number in self.highpt_bins)):\n      self.highpt_bins.append(bin_number)\n    elif (not is_high_pt and (bin_number in self.highpt_bins)):\n      self.highpt_bins.remove(bin_number)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/rms_sf_analyzer.py",
+    "function_name": "modify_binning",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 30,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

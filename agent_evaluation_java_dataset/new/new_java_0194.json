@@ -1,0 +1,22 @@
+{
+  "instruction": "Num Equiv Domino Pairs",
+  "output": "    public int numEquivDominoPairs(int[][] dominoes) {\n        Map<String, Integer> countMap = new HashMap<>();\n        int count = 0;\n\n        for (int[] d : dominoes) {\n            int a = Math.min(d[0], d[1]);\n            int b = Math.max(d[0], d[1]);\n            String key = a + \",\" + b;\n            count += countMap.getOrDefault(key, 0);\n            countMap.put(key, countMap.getOrDefault(key, 0) + 1);\n        }\n\n        return count;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "GAURAV-SENGAR-14/LEETCODE-PROBLEMS",
+    "repo_created_date": "2025-01-13",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "1227-number-of-equivalent-domino-pairs/number-of-equivalent-domino-pairs.java",
+    "function_name": "numEquivDominoPairs",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 14,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

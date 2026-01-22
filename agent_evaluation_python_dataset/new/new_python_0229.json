@@ -1,0 +1,22 @@
+{
+  "instruction": "Check For Updates",
+  "output": "def check_for_updates():\n    if not UPDATE_URL:\n        return\n    \n    print(f\"[{BOT_NAME}] Checking for updates... (Current: v{CURRENT_VERSION})\")\n    try:\n        # Check version.json\n        # Format: {\"version\": \"2.6.0\", \"download_url\": \"...\"}\n        response = requests.get(f\"{UPDATE_URL}version.json\", timeout=10)\n        if response.status_code == 200:\n            data = response.json()\n            latest_version = data.get(\"version\")\n            download_url = data.get(\"download_url\")\n            \n            if latest_version and latest_version > CURRENT_VERSION:\n                print(f\"[{BOT_NAME}] New version found: v{latest_version}\")\n                print(f\"[{BOT_NAME}] Downloading update...\")\n                \n                # Download new script\n                update_res = requests.get(download_url, timeout=30)\n                if update_res.status_code == 200:\n                    current_script = os.path.abspath(__file__)\n                    backup_script = current_script + \".bak\"\n                    \n                    # Create backup\n                    shutil.copy2(current_script, backup_script)\n                    \n                    # Replace current script\n                    with open(current_script, \"wb\") as f:\n                        f.write(update_res.content)\n                    \n                    print(f\"[{BOT_NAME}] Update applied. Starting new version in a fresh window...\")\n                    # Restart process\n                    if os.name == 'nt':\n                        # On Windows, launch in a new console window\n                        subprocess.Popen([sys.executable] + sys.argv, creationflags=subprocess.CREATE_NEW_CONSOLE)\n                    else:\n                        os.execv(sys.executable, [sys.executable] + sys.argv)\n                    sys.exit()\n                else:\n                    print(f\"[{BOT_NAME}] Failed to download update file.\")\n            else:\n                print(f\"[{BOT_NAME}] You are up to date.\")\n    except Exception as e:\n        print(f\"[{BOT_NAME}] Update check failed: {e}\")",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "misutesu-desu/MudaRemote",
+    "repo_created_date": "2024-10-12",
+    "repo_stars": 34,
+    "repo_forks": 5,
+    "file_path": "mudae_bot.py",
+    "function_name": "check_for_updates",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 45,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

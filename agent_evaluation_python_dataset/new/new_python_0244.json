@@ -1,0 +1,22 @@
+{
+  "instruction": "Refresh the preset listbox.",
+  "output": "    def refresh_preset_list(self):\r\n        \"\"\"Refresh the preset listbox.\"\"\"\r\n        self.preset_listbox.delete(0, tk.END)\r\n        for name in sorted(self.presets.keys()):\r\n            self.preset_listbox.insert(tk.END, name)\r",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "misutesu-desu/MudaRemote",
+    "repo_created_date": "2024-10-12",
+    "repo_stars": 34,
+    "repo_forks": 5,
+    "file_path": "mudae_preset_editor.py",
+    "function_name": "refresh_preset_list",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 5,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

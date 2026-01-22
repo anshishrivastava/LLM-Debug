@@ -1,0 +1,22 @@
+{
+  "instruction": "Ability Manager",
+  "output": "\n    public AbilityManager(Player player, GameProj gameProj, PlayerClass playerClass) {\n        this.player = player;\n        this.gameProj = gameProj;\n        this.playerClass = playerClass;\n        this.abilities = new Ability[NUM_ABILITY_SLOTS];\n        this.activeEffects = new HashMap<>();\n        this.shapeRenderer = new ShapeRenderer();\n        this.font = Storage.assetManager.get(\"fonts/Cascadia.fnt\", BitmapFont.class);\n\n        this.activeVisuals = new ArrayList<>();\n\n        // Initialize abilities based on player class\n        if (playerClass == PlayerClass.PALADIN) {\n            initializePaladinAbilities();\n        } else {\n            initializeMercenaryAbilities();\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/AbilityManager.java",
+    "function_name": "AbilityManager",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 19,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

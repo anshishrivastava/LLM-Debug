@@ -1,0 +1,22 @@
+{
+  "instruction": "Use offhand attack (shield bash if shield equipped)",
+  "output": "    private void useOffhandAttack() {\n        if (offhandCooldown > 0) { return; }\n\n        Item offhand = player.getInventory().getEquipment().getEquippedItem(Equipment.EquipmentSlot.OFFHAND);\n\n        if (offhand != null && (offhand.getName().toLowerCase().contains(\"shield\"))) {\n            performShieldBash();\n            offhandCooldown = OFFHAND_COOLDOWN_TIME;\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/AbilityManager.java",
+    "function_name": "useOffhandAttack",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 10,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Render Textured Cone",
+  "output": "\n        private void renderTexturedCone(SpriteBatch batch) {\n            int segmentsToDraw = (int)(NUM_SEGMENTS * fillProgress);\n            if (segmentsToDraw < 1 && fillProgress > 0) segmentsToDraw = 1;\n\n            float segmentAngle = coneAngle / NUM_SEGMENTS;\n            float startAngle = facingAngle - (coneAngle / 2f);\n\n            int textureWidth = coneTexture.getWidth();\n            int textureHeight = coneTexture.getHeight();\n            int segmentWidth = textureWidth / NUM_SEGMENTS;\n\n            float coneWidth = range;\n            float coneHeight = range * ((float)textureHeight / textureWidth) * NUM_SEGMENTS;\n            float segmentDrawWidth = coneWidth / NUM_SEGMENTS;\n\n            for (int i = 0; i < segmentsToDraw; i++) {\n                int srcX = i * segmentWidth;\n                TextureRegion segmentRegion = new TextureRegion(coneTexture, srcX, 0, segmentWidth, textureHeight);\n\n                float angle = startAngle + (i * segmentAngle) + (segmentAngle / 2f);\n\n                float segmentAlpha = 0.5f;\n                if (i == segmentsToDraw - 1) {\n                    segmentAlpha = 0.7f;\n                }\n\n                batch.setColor(indicatorColor.r, indicatorColor.g, indicatorColor.b, segmentAlpha);\n\n                batch.draw(segmentRegion,\n                        position.x, position.y - coneHeight / 2f,\n                        0, coneHeight / 2f,\n                        segmentDrawWidth, coneHeight,\n                        1f, 1f,\n                        angle);\n            }\n\n            batch.setColor(1f, 1f, 1f, 1f);\n        }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/AbilityVisual.java",
+    "function_name": "renderTexturedCone",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 39,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

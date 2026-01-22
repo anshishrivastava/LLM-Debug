@@ -1,0 +1,22 @@
+{
+  "instruction": "Get Result",
+  "output": "\n    private static int getResult(char[][] graph) {\n        int result = 0;\n\n        // \uccab\uc9f8 \uc904 \ud770\uc0c9\uc774 \uc544\ub2cc \uac83 \uce74\uc6b4\ud2b8\n        for (char color : graph[0]) {\n            if (color != 'W') {\n                result += 1;\n            }\n        }\n\n        // \ub4c8 \uc9f8\uc904\ubd80\ud130 \uad6c\ud55c \uc0c9\uae54 \uc870\ud569\uc73c\ub85c \ucd5c\uc18c \uc0c9\uce60 \ud69f\uc218 \ucc3e\uae30\n        int minCnt = Integer.MAX_VALUE;\n        for (char[] strCom : strCombination) {\n            int sumChangeCnt = 0;\n\n            for (int i = 1; i < N; i++) {\n                char color = strCom[i - 1];\n\n                for (char target : graph[i]) {\n                    if (color != target){\n                        sumChangeCnt += 1;\n                    }\n                }\n            }\n            minCnt = Math.min(minCnt, sumChangeCnt);\n        }\n        result += minCnt;\n\n        return result;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "xabinM/algorithm-record-Java",
+    "repo_created_date": "2024-09-19",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "src/SSAFY/backTrack/LikeRussianFlag.java",
+    "function_name": "getResult",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 31,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

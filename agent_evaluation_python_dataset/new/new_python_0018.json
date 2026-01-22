@@ -1,0 +1,22 @@
+{
+  "instruction": "Test if object is an h5py Dataset",
+  "output": "    def is_dataset(f: Any) -> bool:\n        \"\"\"\n        Test if object is an h5py Dataset\n        \"\"\"\n        return isinstance(f, h5py._hl.dataset.Dataset)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "PrincetonUniversity/slurmise",
+    "repo_created_date": "2024-06-21",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "src/slurmise/job_database.py",
+    "function_name": "is_dataset",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 5,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

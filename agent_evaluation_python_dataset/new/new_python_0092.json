@@ -1,0 +1,22 @@
+{
+  "instruction": "Attempts to save fit output",
+  "output": "  def save_output(self) -> bool:\n    \"\"\"Attempts to save fit output\n\n    Returns:\n      true if successful\n    \"\"\"\n    #originally was going to save Workspace, but ROOT is too unstable, so\n    #just saving fit parameter info to recreate later\n    if os.path.exists(self.output_filename):\n      print('WARNING: output file already exists, enter \"y\" to overwrite')\n      user_input_2 = input()\n      if user_input_2 != 'y':\n        print('Aborting write.')\n        return False\n    param_dict = dict()\n    for param_name in self.param_names:\n      param_dict[param_name] = self.workspace.var(param_name).getValV()\n      param_dict[param_name+'_unc'] = self.workspace.var(param_name).getError()\n    param_dict['fit_status'] = self.fit_status\n    param_dict['fit_model'] = self.model_name\n    with open(self.output_filename,'w') as output_file:\n      output_file.write(json.dumps(param_dict))\n    return True",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/interactive_fit.py",
+    "function_name": "save_output",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 23,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

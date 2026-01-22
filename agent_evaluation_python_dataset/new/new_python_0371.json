@@ -1,0 +1,22 @@
+{
+  "instruction": "Show current status without entering trading loop.",
+  "output": "def show_status(config: dict):\n    \"\"\"\n    Show current status without entering trading loop.\n\n    Args:\n        config: Configuration dictionary\n    \"\"\"\n    # Initialize logging\n    trade_logger = setup_logging(config, bot_name=\"DELTA_NEUTRAL\")\n\n    # Initialize client\n    client = SaxoClient(config)\n\n    if not client.authenticate():\n        print(\"Failed to authenticate. Please check your credentials.\")\n        return\n\n    # Initialize strategy (without trading)\n    strategy = DeltaNeutralStrategy(client, config, trade_logger)\n\n    # Update market data\n    strategy.update_market_data()\n\n    # Get and display status\n    status = strategy.get_status_summary()\n\n    print(\"\\n\" + \"=\" * 60)\n    print(\"CURRENT STATUS\")\n    print(\"=\" * 60)\n    print(f\"  State: {status['state']}\")\n    print(f\"  SPY Price: ${status['underlying_price']:.2f}\")\n    print(f\"  VIX: {status['vix']:.2f}\")\n    print(f\"  VIX Entry Threshold: < {config['strategy']['max_vix_entry']}\")\n    print(f\"  Can Enter Trade: {'Yes' if status['vix'] < config['strategy']['max_vix_entry'] else 'No'}\")\n    print(\"=\" * 60)\n\n    # Get positions\n    positions = client.get_positions()\n    if positions:\n        print(f\"\\nOpen Positions: {len(positions)}\")\n        for pos in positions:\n            print(f\"  - {pos.get('DisplayAndFormat', {}).get('Symbol', 'Unknown')}: \"\n                  f\"{pos.get('PositionBase', {}).get('Amount', 0)} @ \"\n                  f\"${pos.get('PositionView', {}).get('CurrentPrice', 0):.2f}\")\n    else:\n        print(\"\\nNo open positions\")\n\n    print()",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/main.py",
+    "function_name": "show_status",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 48,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

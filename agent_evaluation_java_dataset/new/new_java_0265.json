@@ -1,0 +1,22 @@
+{
+  "instruction": "Count Complete Day Pairs",
+  "output": "    public int countCompleteDayPairs(int[] hours) {\r\n        int count = 0;\r\n        for (int i = 0; i < hours.length; i++) {\r\n            for (int j = i + 1; j < hours.length; j++) {\r\n                if ((hours[i] + hours[j]) % 24 == 0){\r\n                    count++;\r\n                }\r\n                }\r\n        }\r\n        return count;\r\n    }\r",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "AnanyaVishwakarma/Java_Practice01",
+    "repo_created_date": "2024-06-15",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "CountThatFormsACompleteDay01.java",
+    "function_name": "countCompleteDayPairs",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 11,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

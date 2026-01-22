@@ -1,0 +1,22 @@
+{
+  "instruction": "Roman To Int",
+  "output": "    public int romanToInt(String s) {\n        HashMap<Character,Integer> map=new HashMap<>();\n        map.put('I',1);\n        map.put('V',5);\n        map.put('X',10);\n        map.put('L',50);\n        map.put('C',100);\n        map.put('D',500);\n        map.put('M',1000);\n        int sum=0;\n        sum=map.get(s.charAt(s.length()-1));\n        for(int i=s.length()-2;i>=0;i--){\n            int temp1=map.get(s.charAt(i));\n            int temp2=map.get(s.charAt(i+1));\n            if(temp1<temp2){\n                sum=sum-temp1;\n            }else{\n                sum=sum+temp1;\n            }\n        }\n        return sum;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Rithesh05/LeetCode-Codes",
+    "repo_created_date": "2024-12-29",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0013-roman-to-integer/0013-roman-to-integer.java",
+    "function_name": "romanToInt",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 22,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Save presets to JSON file.",
+  "output": "    def save_presets(self):\r\n        \"\"\"Save presets to JSON file.\"\"\"\r\n        try:\r\n            with open(PRESETS_FILE, \"w\", encoding=\"utf-8\") as f:\r\n                json.dump(self.presets, f, indent=4, ensure_ascii=False)\r\n            return True\r\n        except Exception as e:\r\n            messagebox.showerror(\"Error\", f\"Failed to save {PRESETS_FILE}:\\n{e}\")\r\n            return False\r",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "misutesu-desu/MudaRemote",
+    "repo_created_date": "2024-10-12",
+    "repo_stars": 34,
+    "repo_forks": 5,
+    "file_path": "mudae_preset_editor.py",
+    "function_name": "save_presets",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 9,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

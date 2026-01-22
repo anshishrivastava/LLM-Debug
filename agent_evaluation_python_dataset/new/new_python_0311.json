@@ -1,0 +1,22 @@
+{
+  "instruction": "Extract and parse details from a Shadowsocks config.",
+  "output": "def extract_config_details(config):\n    \"\"\"Extract and parse details from a Shadowsocks config.\"\"\"\n    try:\n        match = re.match(r\"ss://([a-zA-Z0-9+/=]+)@([^:]+):(\\d+)\", config)\n        if not match:\n            logger.warning(f\"Invalid config format: {config}\")\n            return None\n\n        base64_part, host, port = match.groups()\n\n        # Decode Base64 to extract method and password\n        try:\n            decoded_part = base64.b64decode(base64_part).decode(\"utf-8\")\n            method, password = decoded_part.split(\":\", 1)\n        except Exception:\n            logger.warning(f\"Invalid Base64 encoding in config: {config}\")\n            return None\n\n        # Validate host and port\n        if not (1 <= int(port) <= 65535):\n            logger.warning(f\"Invalid port in config: {config}\")\n            return None\n\n        return {\"method\": method, \"password\": password, \"host\": host, \"port\": port}\n    except Exception as e:\n        logger.error(f\"Failed to extract details from config: {config} - {e}\")\n        return None",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "3yed-61/Shadowsocks",
+    "repo_created_date": "2025-01-21",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "config-cleaner.py",
+    "function_name": "extract_config_details",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 27,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

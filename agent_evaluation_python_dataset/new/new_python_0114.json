@@ -1,0 +1,22 @@
+{
+  "instruction": "Adds a piecewise gaussian-polynomial distributino as the signal model and",
+  "output": "def model_initializer_gaussbern(fit_var, ibin, is_pass):\n  '''Adds a piecewise gaussian-polynomial distributino as the signal model and\n  no background\n\n  fit_var      RooRealVar representing variable to fit\n  ibin         int bin number\n  is_pass      bool, indicates if passing or failing leg\n  '''\n  workspace = ROOT.RooWorkspace()\n  getattr(workspace,'import')(fit_var)\n\n  mu = ROOT.RooRealVar('mean', 'Gaussian mean', 85.0, 95.0) \n  sigma = ROOT.RooRealVar('sigma', 'Gaussian sigma', 0.01, 15.0) \n  cb_alphal = ROOT.RooRealVar('alphal', 'CB left switchover', 0.1, 10.0) \n  cb_alphar = ROOT.RooRealVar('alphar', 'CB right switchover', 0.1, 10.0) \n  al1 = ROOT.RooRealVar('al1', 'Bernstein left coef 0', 0.0, 1.0) \n  al2 = ROOT.RooRealVar('al2', 'Bernstein left coef 1', 0.0, 1.0) \n  al3 = ROOT.RooRealVar('al3', 'Bernstein left coef 2', 0.0, 1.0) \n  al4 = ROOT.RooRealVar('al4', 'Bernstein left coef 3', 0.0, 1.0) \n  ar1 = ROOT.RooRealVar('ar1', 'Bernstein right coef 0', 0.0, 1.0) \n  ar2 = ROOT.RooRealVar('ar2', 'Bernstein right coef 1', 0.0, 1.0) \n  ar3 = ROOT.RooRealVar('ar3', 'Bernstein right coef 2', 0.0, 1.0) \n  ar4 = ROOT.RooRealVar('ar4', 'Bernstein right coef 3', 0.0, 1.0) \n\n  sigma.setVal(3.0)\n  cb_alphal.setVal(2.0)\n  cb_alphar.setVal(2.0)\n  getattr(workspace,'import')(mu)\n  getattr(workspace,'import')(sigma)\n  getattr(workspace,'import')(cb_alphal)\n  getattr(workspace,'import')(cb_alphar)\n  getattr(workspace,'import')(al1)\n  getattr(workspace,'import')(al2)\n  getattr(workspace,'import')(al3)\n  getattr(workspace,'import')(al4)\n  getattr(workspace,'import')(ar1)\n  getattr(workspace,'import')(ar2)\n  getattr(workspace,'import')(ar3)\n  getattr(workspace,'import')(ar4)\n\n  nSig = ROOT.RooRealVar('nSig', 'Signal normalization', 0.0, MAX_SIGNAL) \n  nBkg = ROOT.RooRealVar('nBkg', 'Background normalization', 0.0, 0.0) \n  getattr(workspace,'import')(nSig)\n  getattr(workspace,'import')(nBkg)\n  \n  pdf_s  = ROOT.RooGaussBern('pdf_sb','pdf_sb', fit_var, mu, sigma, cb_alphal,\n                             cb_alphar, ROOT.RooArgList(al1,al2,al3,al4),\n                             ROOT.RooArgList(ar1,ar2,ar3,ar4))\n  getattr(workspace,'import')(pdf_s)\n  return workspace",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/model_initializers.py",
+    "function_name": "model_initializer_gaussbern",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 50,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

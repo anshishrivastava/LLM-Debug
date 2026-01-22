@@ -1,0 +1,22 @@
+{
+  "instruction": "Find Number Of L I S",
+  "output": "    public int findNumberOfLIS(int[] nums) {\n        int n = nums.length;\n        int[] dp = new int[n];\n        Arrays.fill(dp, 1);\n        int[] ct = new int[n];\n        Arrays.fill(ct, 1);\n        int maxi = 1;\n        for (int i = 0; i < n; i++) {\n            \n            for (int j = 0; j < i; j++) {\n                \n                if (nums[j] < nums[i] && dp[j] + 1 > dp[i]) {\n                    dp[i] = dp[j] + 1;\n                    ct[i] = ct[j];\n                }\n                else if (nums[j] < nums[i] && dp[j] + 1 == dp[i]) {\n                    ct[i] = ct[i] + ct[j];\n                }\n            }\n            \n            maxi = Math.max(maxi, dp[i]);\n        }\n        int countLIS = 0; \n        for (int i = 0; i < n; i++) {\n            if (dp[i] == maxi) {\n                countLIS += ct[i];\n            }\n        }\n\n        \n        return countLIS;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Ananthu191030/Leetcode",
+    "repo_created_date": "2024-10-30",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0673-number-of-longest-increasing-subsequence/0673-number-of-longest-increasing-subsequence.java",
+    "function_name": "findNumberOfLIS",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 32,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

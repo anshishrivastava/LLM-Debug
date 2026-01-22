@@ -1,0 +1,22 @@
+{
+  "instruction": "Check for massive move that breaches shorts requiring hard exit.",
+  "output": "    def check_emergency_exit_condition(self) -> bool:\n        \"\"\"\n        Check for massive move that breaches shorts requiring hard exit.\n\n        Video rule: \"If massive move (5%+) blows through shorts and can't adjust\n        for credit, close entire trade\"\n\n        Returns:\n            bool: True if emergency exit needed, False otherwise.\n        \"\"\"\n        if not self.initial_straddle_strike or not self.current_underlying_price:\n            return False\n\n        # Calculate percent move from initial entry\n        percent_move = abs(\n            (self.current_underlying_price - self.initial_straddle_strike) /\n            self.initial_straddle_strike\n        ) * 100\n\n        emergency_threshold = self.strategy_config.get(\"emergency_exit_percent\", 5.0)\n\n        if percent_move >= emergency_threshold:\n            logger.critical(\n                f\"EMERGENCY EXIT CONDITION! {percent_move:.2f}% move from initial strike. \"\n                f\"Price: ${self.current_underlying_price:.2f}, Initial: ${self.initial_straddle_strike:.2f}\"\n            )\n            return True\n\n        return False",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "check_emergency_exit_condition",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 29,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

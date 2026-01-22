@@ -1,0 +1,22 @@
+{
+  "instruction": "Add an optional list field with checkbox to enable/disable.",
+  "output": "    def add_optional_list_field(self, parent, key, label, placeholder):\r\n        \"\"\"Add an optional list field with checkbox to enable/disable.\"\"\"\r\n        container = ttk.Frame(parent)\r\n        container.pack(fill=tk.X, pady=5)\r\n        \r\n        # Checkbox to enable\r\n        var = tk.BooleanVar()\r\n        cb = ttk.Checkbutton(container, text=label, variable=var)\r\n        cb.pack(anchor=tk.W)\r\n        \r\n        # Entry for values\r\n        entry = ttk.Entry(container)\r\n        entry.pack(fill=tk.X, padx=(20, 0))\r\n        entry.insert(0, placeholder)\r\n        entry.configure(state=\"disabled\")\r\n        \r\n        # Toggle entry state based on checkbox\r\n        def toggle_entry():\r\n            if var.get():\r\n                entry.configure(state=\"normal\")\r\n            else:\r\n                entry.configure(state=\"disabled\")\r\n        \r\n        var.trace_add(\"write\", lambda *_: toggle_entry())\r\n        \r\n        self.widgets[f\"{key}_enabled\"] = var\r\n        self.widgets[key] = entry\r",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "misutesu-desu/MudaRemote",
+    "repo_created_date": "2024-10-12",
+    "repo_stars": 34,
+    "repo_forks": 5,
+    "file_path": "mudae_preset_editor.py",
+    "function_name": "add_optional_list_field",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 27,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

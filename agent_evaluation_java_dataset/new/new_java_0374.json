@@ -1,0 +1,22 @@
+{
+  "instruction": "Count And Say",
+  "output": "    public String countAndSay(int n) {\n        String s = \"1\";\n        while (--n > 0) {\n            StringBuilder t = new StringBuilder();\n            for (int i = 0; i < s.length();) {\n                int j = i;\n                while (j < s.length() && s.charAt(j) == s.charAt(i)) {\n                    ++j;\n                }\n                t.append((j - i) + \"\");\n                t.append(s.charAt(i));\n                i = j;\n            }\n            s = t.toString();\n        }\n        return s;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Apoo-28/Leetcode-Problems",
+    "repo_created_date": "2024-08-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0038-count-and-say/0038-count-and-say.java",
+    "function_name": "countAndSay",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 17,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

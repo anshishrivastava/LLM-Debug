@@ -1,0 +1,22 @@
+{
+  "instruction": "In Sequence",
+  "output": "    static int inSequence(int a, int b, int c) {\n        // code here\n        if(c==0) {\n            return (a==b)?1:0;\n        }\n        return ((b-a)%c==0)?1:0;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "VinayKishore25/Geeks-For-Geeks",
+    "repo_created_date": "2024-07-18",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "Difficulty: Easy/Arithmetic Number/arithmetic-number.java",
+    "function_name": "inSequence",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 7,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

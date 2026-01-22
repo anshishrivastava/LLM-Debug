@@ -1,0 +1,22 @@
+{
+  "instruction": "TIME-003: Check if today is an early market close day (1pm ET).",
+  "output": "    def is_early_close_day(self, dt: datetime = None) -> Tuple[bool, Optional[str]]:\n        \"\"\"\n        TIME-003: Check if today is an early market close day (1pm ET).\n\n        Early close days are typically:\n        - Day before Independence Day (if July 4 is on weekday, July 3 closes early)\n        - Day after Thanksgiving (Friday)\n        - Christmas Eve (Dec 24, if weekday)\n        - New Year's Eve (Dec 31, if weekday)\n\n        Args:\n            dt: Date to check (defaults to now in ET)\n\n        Returns:\n            Tuple[bool, Optional[str]]: (is_early_close, reason)\n        \"\"\"\n        if dt is None:\n            dt = get_us_market_time()\n\n        month = dt.month\n        day = dt.day\n        weekday = dt.weekday()  # 0=Monday, 4=Friday\n\n        # Not on weekends\n        if weekday >= 5:\n            return False, None\n\n        # July 3 (if July 4 is on weekday except Monday where July 3 is Sunday)\n        if month == 7 and day == 3 and weekday <= 4:\n            return True, \"Day before Independence Day\"\n\n        # Day after Thanksgiving (always Friday)\n        # Thanksgiving is 4th Thursday of November\n        if month == 11 and weekday == 4:  # Friday in November\n            # Check if yesterday was Thanksgiving (4th Thursday)\n            from shared.market_hours import _get_nth_weekday_of_month\n            thanksgiving = _get_nth_weekday_of_month(dt.year, 11, 3, 4)  # 3=Thursday, 4th occurrence\n            if dt.day == thanksgiving.day + 1:\n                return True, \"Day after Thanksgiving\"\n\n        # Christmas Eve (Dec 24) if it's a weekday\n        if month == 12 and day == 24 and weekday <= 4:\n            return True, \"Christmas Eve\"\n\n        # New Year's Eve (Dec 31) if it's a weekday\n        if month == 12 and day == 31 and weekday <= 4:\n            return True, \"New Year's Eve\"\n\n        return False, None",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "is_early_close_day",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 49,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Print Pairs",
+  "output": "    public static void printPairs(int[] nums){\n        int tp = 0;\n        for (int i=0; i<nums.length; i++){\n            int curr = nums[i];\n            for (int j=i+1; j<nums.length; j++){\n                System.out.print(\"(\"+curr+\",\"+nums[j]+\")\");\n                tp++;\n            }\n            System.out.println();\n        }\n        System.out.println(\"Total number of pairs: \"+ tp);\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "sSumankumari/DSA-in-Java",
+    "repo_created_date": "2024-09-30",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "Array/PairsInArray.java",
+    "function_name": "printPairs",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 12,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

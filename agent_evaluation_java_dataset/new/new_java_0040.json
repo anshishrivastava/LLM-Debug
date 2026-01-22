@@ -1,0 +1,22 @@
+{
+  "instruction": "Render Smite Ring",
+  "output": "\n        private void renderSmiteRing(SpriteBatch batch, Vector2 center, float radius, float alpha) {\n            batch.setColor(SMITE_COLOR.r, SMITE_COLOR.g, SMITE_COLOR.b, alpha);\n\n            int segments = 32;\n            float angleStep = 360f / segments;\n\n            for (int i = 0; i < segments; i++) {\n                float angle = i * angleStep;\n                float nextAngle = (i + 1) * angleStep;\n                float rad = (float) Math.toRadians(angle);\n                float nextRad = (float) Math.toRadians(nextAngle);\n\n                float x1 = center.x + (float) Math.cos(rad) * radius;\n                float y1 = center.y + (float) Math.sin(rad) * radius;\n                float x2 = center.x + (float) Math.cos(nextRad) * radius;\n                float y2 = center.y + (float) Math.sin(nextRad) * radius;\n\n                drawLine(batch, x1, y1, x2, y2, 4f);\n            }\n\n            batch.setColor(1f, 1f, 1f, 1f);\n        }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/AbilityVisual.java",
+    "function_name": "renderSmiteRing",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 23,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

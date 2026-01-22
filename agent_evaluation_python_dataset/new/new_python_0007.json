@@ -1,0 +1,22 @@
+{
+  "instruction": "This method saves the basic information of the model, such as its query,",
+  "output": "    def save(self, model_params: dict | None = None):\n        \"\"\"This method saves the basic information of the model, such as its query,\n        when it was last fit, the dataset size of the latest fit, and the type of\n        the model.\n        \"\"\"\n        if model_params is None:\n            model_params = {}\n\n        self.path.mkdir(parents=True, exist_ok=True)\n        with open(str(self.path / \"fits.json\"), \"w\") as save_file:\n            # This converts the dataclass to a dictionary. If it is called from a subclass,\n            # the subclass's attributes will be included in the dictionary.\n            info = asdict(self)\n\n            # Convert path to string\n            info[\"path\"] = str(info[\"path\"])\n\n            # Convert datetime to string\n            info[\"fit_timestamp\"] = info[\"fit_timestamp\"].isoformat()\n\n            info.update(model_params)\n            json.dump(info, save_file)\n\n        if self.runtime_model is not None:\n            modelpath = self.path / self._runtime_model_name\n            joblib.dump(self.runtime_model, str(modelpath))\n        if self.memory_model is not None:\n            modelpath = self.path / self._memory_model_name\n            joblib.dump(self.memory_model, str(modelpath))",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "PrincetonUniversity/slurmise",
+    "repo_created_date": "2024-06-21",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "src/slurmise/fit/resource_fit.py",
+    "function_name": "save",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 29,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

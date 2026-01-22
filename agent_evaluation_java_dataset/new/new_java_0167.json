@@ -1,0 +1,22 @@
+{
+  "instruction": "Add One Row",
+  "output": "    public TreeNode addOneRow(TreeNode root, int val, int depth) {\n        if (depth == 1) {\n            TreeNode newRoot = new TreeNode(val);\n            newRoot.left = root;\n            return newRoot;\n        }\n        bfs(root, val, depth, 1);\n        return root;\n    }void bfs(TreeNode root, int val, int depth, int level){\n        Queue<TreeNode> q = new LinkedList<>();\n        q.offer(root);\n        while(!q.isEmpty()){\n            int size = q.size();\n            if (level == depth - 1) {\n                for (int i = 0; i < size; i++) {\n                    TreeNode node = q.poll();\n                    TreeNode left = node.left;\n                    TreeNode right = node.right;\n                    node.left = new TreeNode(val);\n                    node.right = new TreeNode(val);\n                    node.left.left = left;\n                    node.right.right = right;\n                }\n                return;\n            }\n            for(int i = 0; i < size; i++){\n                TreeNode node = q.poll();\n                if(node.left != null) q.offer(node.left);\n                if(node.right != null) q.offer(node.right);   \n            }level++;\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "R-Shailesh-varma/code-contributions",
+    "repo_created_date": "2024-08-14",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "add-one-row-to-tree.java",
+    "function_name": "addOneRow",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 32,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

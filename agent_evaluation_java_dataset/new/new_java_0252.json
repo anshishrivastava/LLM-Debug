@@ -1,0 +1,22 @@
+{
+  "instruction": "Nth Fibonacci",
+  "output": "        public int nthFibonacci(int n) {\n            // code here\n            int n1 = 0, n2 = 1, n3 = 0;\n\n            //base case\n            if (n == 0) return 0;\n            if (n == 1) return 1;\n\n            //using loop\n\n            // for(int i=2;i<=n;i++){\n            //     n3=n1+n2;\n            //     n1=n2;\n            //     n2=n3;\n            // }\n            // return n3;\n\n\n            //recursion\n\n            return nthFibonacci(n - 1) + nthFibonacci(n - 2);\n        }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "dheerajkr8287/DSA",
+    "repo_created_date": "2024-09-12",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "src/BasicInterviewAsked/Nth_Fibonacci_Number.java",
+    "function_name": "nthFibonacci",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 22,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

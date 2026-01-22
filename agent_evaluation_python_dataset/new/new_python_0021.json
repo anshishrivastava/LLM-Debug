@@ -1,0 +1,22 @@
+{
+  "instruction": "Helper function to recursively iterate through the database and yield job groups with their categories as tuples.",
+  "output": "    def iterate_jobs(h5py_obj, categories=None) -> Generator[tuple[tuple[str, ...], dict[str, h5py.Group]]]:\n        \"\"\"\n        Helper function to recursively iterate through the database and yield job groups with their categories as tuples.\n        Note, jobs are NOT yielded ordred by slurm-id.\n\n        :arguments:\n\n            :h5py_obj: the current h5py object to check for jobs\n            :categories: the categories found on the way to the current h5py object as a tuple of strings\n\n        :yields:\n\n            Tuple of categories and dict of slurm_id to h5py dataset for each job in the database\n            For example two jobs that have the same name and categories: ((\"test_job\", \"option1=value1\", \"option2=value2\"), {\"123\": <h5py dataset>, \"456\": <h5py dataset>}).\n\n\n        \"\"\"\n        if categories is None:\n            categories = ()\n\n        jobs = {}\n        for key, entry in h5py_obj.items():\n            if JobDatabase.is_slurm_job(entry):\n                jobs[key] = entry\n            else:\n                yield from JobDatabase.iterate_jobs(entry, categories + (key,))  # noqa: RUF005\n\n        if jobs:\n            yield categories, jobs",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "PrincetonUniversity/slurmise",
+    "repo_created_date": "2024-06-21",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "src/slurmise/job_database.py",
+    "function_name": "iterate_jobs",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 29,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

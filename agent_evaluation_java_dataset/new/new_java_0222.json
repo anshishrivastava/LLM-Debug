@@ -1,0 +1,22 @@
+{
+  "instruction": "Swap Pairs",
+  "output": "    public ListNode swapPairs(ListNode head) {\n        if(head==null || head.next==null) return head;\n        ListNode dummy=head;\n        ListNode temp=dummy.next;\n        dummy.next=swapPairs(dummy.next.next);\n        temp.next=dummy;\n        return temp;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "y24has/Leetcode",
+    "repo_created_date": "2024-10-02",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "0024-swap-nodes-in-pairs/0024-swap-nodes-in-pairs.java",
+    "function_name": "swapPairs",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 8,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

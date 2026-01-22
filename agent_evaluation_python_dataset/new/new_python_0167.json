@@ -1,0 +1,22 @@
+{
+  "instruction": "plots a TH1 as data points",
+  "output": "  def plot_points(self, hist, color=None):\n    '''plots a TH1 as data points\n\n    @params\n    hist - root TH1 to plot, title is used as legend entry\n    color - custom color to use for plot, None uses a default\n    '''\n    return self.plot_hist(hist, color, 'point')",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/root_plot_lib.py",
+    "function_name": "plot_points",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 8,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

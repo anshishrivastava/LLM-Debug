@@ -1,0 +1,22 @@
+{
+  "instruction": "Get dashboard metrics with protection against stale data when market is closed.",
+  "output": "    def get_dashboard_metrics_safe(self) -> Dict[str, Any]:\n        \"\"\"\n        Get dashboard metrics with protection against stale data when market is closed.\n\n        When market is closed (weekends, holidays, pre/post-market), Saxo may return\n        stale or incorrect prices. This method uses last known P&L values from\n        Daily Summary to avoid incorrect metrics.\n\n        Returns:\n            dict: Dashboard metrics with corrected P&L values when market is closed\n        \"\"\"\n        # Get live metrics first\n        metrics = self.get_dashboard_metrics()\n\n        # If market is open, use live values\n        if is_market_open():\n            return metrics\n\n        # Market is closed - use last known P&L from Daily Summary\n        if not self.trade_logger:\n            return metrics\n\n        last_summary = self.trade_logger.get_last_daily_summary()\n        if not last_summary:\n            logger.debug(\"No previous Daily Summary found, using live metrics\")\n            return metrics\n\n        # Override P&L values with last known values\n        last_cumulative_pnl = last_summary.get(\"Cumulative P&L ($)\", 0)\n        last_net_theta = last_summary.get(\"Net Theta ($)\", 0)\n        last_cumulative_theta = last_summary.get(\"Cumulative Net Theta ($)\", 0)\n\n        # Calculate if we need to add today's theta (if today hasn't been logged yet)\n        last_date = last_summary.get(\"Date\", \"\")\n        today = get_us_market_time().strftime(\"%Y-%m-%d\")\n\n        if last_date != today:\n            # Today hasn't been logged yet, add today's theta to cumulative\n            cumulative_theta = last_cumulative_theta + last_net_theta\n            # Est. theta earned this week also needs today's theta\n            last_est_theta_week = last_summary.get(\"Est. Theta Earned This Week ($)\", 0)\n            est_theta_week = last_est_theta_week + last_net_theta\n        else:\n            # Today was already logged, use as-is\n            cumulative_theta = last_cumulative_theta\n            est_theta_week = last_summary.get(\"Est. Theta Earned This Week ($)\", 0)\n\n        # Override with last known values\n        metrics[\"total_pnl\"] = last_cumulative_pnl\n        metrics[\"unrealized_pnl\"] = 0  # Can't calculate accurately when closed\n        metrics[\"net_theta\"] = last_net_theta\n        metrics[\"daily_net_theta\"] = last_net_theta\n        metrics[\"cumulative_net_theta\"] = cumulative_theta\n        metrics[\"estimated_theta_earned\"] = est_theta_week\n\n        # Recalculate pnl_percent using corrected total_pnl\n        initial_cost = self.metrics.total_straddle_cost or 1\n        metrics[\"pnl_percent\"] = (last_cumulative_pnl / initial_cost) if initial_cost > 0 else 0\n\n        logger.info(f\"Market closed: using last known P&L=${last_cumulative_pnl:.2f}, Net Theta=${last_net_theta:.2f}\")\n        return metrics",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "get_dashboard_metrics_safe",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 61,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

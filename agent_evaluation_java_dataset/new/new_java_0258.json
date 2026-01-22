@@ -1,0 +1,22 @@
+{
+  "instruction": "Get Product",
+  "output": "    \n    public int getProduct(int k) {\n        int s=li.size();\n        if(s<=k)\n        return 0;\n        return li.get(s-1)/li.get(s-1-k);\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "rithishnv/Problem-Solving",
+    "repo_created_date": "2024-08-07",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "1352-Product-of-the-Last-K-Numbers.java",
+    "function_name": "getProduct",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 7,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

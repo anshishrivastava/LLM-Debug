@@ -1,0 +1,22 @@
+{
+  "instruction": "Count And Say",
+  "output": "    public String countAndSay(int n) {\n        String res = \"1\";\n        for (int i = 1; i < n; i++) {\n            res = buildNext(res);\n        }\n        return res;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Himanshi-Saini-0277/Leetcode_Streak",
+    "repo_created_date": "2024-08-24",
+    "repo_stars": 4,
+    "repo_forks": 0,
+    "file_path": "0038-count-and-say/0038-count-and-say.java",
+    "function_name": "countAndSay",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 7,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

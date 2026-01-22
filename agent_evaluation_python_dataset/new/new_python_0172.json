@@ -1,0 +1,22 @@
+{
+  "instruction": "adds a ratio of two plot elements to the plot",
+  "output": "  def add_difference(self, minuend_name, subtrahend_name, switch_colors=False):\n    '''adds a ratio of two plot elements to the plot\n\n    @params\n    minuend_name      name of plot element to use as minuend\n    subtrahend_name   name of plot element to use as subtrahend\n    switch_colors     switch colors of numerator and denominator\n    '''\n    self.bottom_is_ratio = False\n    self.y_title_lower = 'Data-MC'\n    minuend_hist = None\n    subtrahend_hist = None\n    minuend_color = 1\n    subtrahend_color = 1\n    for hist, color in zip(self.hists, self.hist_color):\n      if (hist.GetName()==minuend_name):\n        minuend_hist = hist\n        minuend_color = color\n      if (hist.GetName()==subrahend_name):\n        subrahend_hist = hist\n        subrahend_color = color\n    if (minuend_hist != None and subtrahend_hist != None):\n      #add uncertainties for reference on first plot\n      if len(self.bottom_plots)==0:\n        self.bottom_plots.append(strahend_hist.Clone())\n        self.bottom_plots[-1].Add(subtrahend_hist,-1.0)\n        if not switch_colors:\n          self.bottom_plot_color.append(minuend_color)\n        else:\n          self.bottom_plot_color.append(subtrahend_color)\n      self.bottom_plots.append(minuend_hist.Clone())\n      self.bottom_plots[-1].Add(subtrahend_hist, -1.0)\n      if not switch_colors:\n        self.bottom_plot_color.append(subtrahend_color)\n      else:\n        self.bottom_plot_color.append(minuend_color)\n      self.plot_bottom = True\n    else:\n      raise ValueError('Could not find minuend and subtrahend plots requested for difference.')\n    #TODO implement differences of graphs\n    return self",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/root_plot_lib.py",
+    "function_name": "add_difference",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 41,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

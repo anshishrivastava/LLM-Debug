@@ -1,0 +1,22 @@
+{
+  "instruction": "Update peak P&L and max drawdown.",
+  "output": "    def update_drawdown(self, current_pnl: float):\n        \"\"\"Update peak P&L and max drawdown.\"\"\"\n        if current_pnl > self.peak_pnl:\n            self.peak_pnl = current_pnl\n        drawdown = self.peak_pnl - current_pnl\n        if drawdown > self.max_drawdown:\n            self.max_drawdown = drawdown",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/models/metrics.py",
+    "function_name": "update_drawdown",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 7,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

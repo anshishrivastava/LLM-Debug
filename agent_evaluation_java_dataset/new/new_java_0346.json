@@ -1,0 +1,22 @@
+{
+  "instruction": "Length Of Longest Substring",
+  "output": "    public int lengthOfLongestSubstring(String s) {\n       \n        if(s == null || s.length() == 0)\n            return 0;\n        \n        int left = 0;\n        int maxLength = 0;\n        Set<Character> charSet = new HashSet<>();\n\n        for (int right = 0; right < s.length(); right++){\n            \n            char currentChar = s.charAt(right);\n\n            while (charSet.contains(currentChar)){\n                char charLeft = s.charAt(left);\n                charSet.remove(charLeft);\n                left = left + 1;\n            }\n\n            charSet.add(currentChar);\n\n            int currentLength = right - left + 1;\n            maxLength = Math.max(maxLength, currentLength);\n        }\n\n        return maxLength; \n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Sumit-0005/CP-track",
+    "repo_created_date": "2024-08-05",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "0003-longest-substring-without-repeating-characters/0003-longest-substring-without-repeating-characters.java",
+    "function_name": "lengthOfLongestSubstring",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 27,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

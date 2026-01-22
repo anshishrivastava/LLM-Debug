@@ -1,0 +1,22 @@
+{
+  "instruction": "Lora Model State Dict",
+  "output": "def lora_model_state_dict(model: nn.Module, bias: str = 'none') -> Dict[str, torch.Tensor]:\n    my_state_dict = model.state_dict()\n    if bias == 'none':\n        return {k: my_state_dict[k] for k in my_state_dict if 'lora_' in k}\n    elif bias == 'all':\n        return {k: my_state_dict[k] for k in my_state_dict if 'lora_' in k or 'bias' in k}\n    elif bias == 'lora_only':\n        to_return = {}\n        for k in my_state_dict:\n            if 'lora_' in k:\n                to_return[k] = my_state_dict[k]\n                bias_name = k.split('lora_')[0]+'bias'\n                if bias_name in my_state_dict:\n                    to_return[bias_name] = my_state_dict[bias_name]\n        return to_return\n    else:\n        raise NotImplementedError",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "98haiting/General-or-Medical-CLIP-Which-one-Shall-We-Choose",
+    "repo_created_date": "2024-10-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "biomed_clip/loralib/utils.py",
+    "function_name": "lora_model_state_dict",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 17,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

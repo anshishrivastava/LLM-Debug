@@ -1,0 +1,22 @@
+{
+  "instruction": "Update missing mem and runtime for jobs with incomplete data in the db.",
+  "output": "    def update_missing_data(self, jobs: list[JobData]) -> list[JobData]:\n        \"\"\"\n        Update missing mem and runtime for jobs with incomplete data in the db.\n        Takes a list of JobData which was queried from the db, updates the db, and returns the updated job list.\n\n        TODO: gather slurm_ids of jobs that need updating and do it in one call\n        \"\"\"\n        updated_jobs = []\n        for job in jobs:\n            if job.memory is None or job.runtime is None:\n                if \".\" in job.slurm_id:\n                    slurm_id, step_id = job.slurm_id.split(\".\")\n                else:\n                    slurm_id, step_id = job.slurm_id, None\n                job_info = slurm.parse_slurm_job_metadata(slurm_id=slurm_id, step_id=step_id)\n\n                # job dataclass is immutable, so this creates a new object with the updated values\n                # ternary's are to avoid updating if the value is already present which causes a \"dataset already exists\" error\n                self.record(\n                    dataclasses.replace(\n                        job,\n                        memory=job_info[\"max_rss\"] if job.memory is None else None,\n                        runtime=(job_info[\"elapsed_seconds\"] if job.runtime is None else None),\n                        numerics={},\n                    )\n                )\n\n                job = dataclasses.replace(\n                    job,\n                    memory=job_info[\"max_rss\"] if job.memory is None else job.memory,\n                    runtime=(job_info[\"elapsed_seconds\"] if job.runtime is None else job.runtime),\n                )\n\n            updated_jobs.append(job)\n\n        return updated_jobs",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "PrincetonUniversity/slurmise",
+    "repo_created_date": "2024-06-21",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "src/slurmise/job_database.py",
+    "function_name": "update_missing_data",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 36,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

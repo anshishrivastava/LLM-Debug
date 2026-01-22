@@ -1,0 +1,22 @@
+{
+  "instruction": "Build Graph",
+  "output": "    def build_graph(self):\n        molecule = Chem.MolFromSmiles(self.smiles[0])\n        molecule = Chem.AddHs(molecule)\n        neighbors = self.get_neighbors(molecule)  # molecule is now a rdkit molecule\n\n        self.atomic_nums = [x.GetAtomicNum() for x in molecule.GetAtoms()]\n        # what is the element of each atom in the same order as atom_idxs\n        self.atom_idxs = list(range(len(self.atomic_nums)))\n        self.atom_num = len(self.atom_idxs)  # how many atoms are in this molecule\n\n        if (\n            \".\" in self.smiles[0]  # and not self.train_args.final\n        ):  # Means the smiles consists of multiple components\n            neighbors = self.reorder_cluster_atoms(neighbors, self.smiles[0])\n        if len(neighbors) > 1:\n            self.bonds = build_bonds(self, neighbors)\n            self.angles = build_angles(self, neighbors)\n            self.dihedrals = build_dihedrals(self, neighbors)\n            self.impropers = build_impropers(self, self.bonds, neighbors)\n            self.pairs, self.f_1_4 = build_pairs(\n                self,\n                self.bonds,\n                self.angles,\n                self.dihedrals,\n                self.train_args.exclude_dihedrals_in_pairs,\n            )\n\n        else:\n            self.bonds = torch.tensor([])\n            self.angles = torch.tensor([])\n            self.dihedrals = torch.tensor([])\n            self.impropers = torch.tensor([])\n            self.pairs = torch.tensor([])",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/data/builder.py",
+    "function_name": "build_graph",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 33,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

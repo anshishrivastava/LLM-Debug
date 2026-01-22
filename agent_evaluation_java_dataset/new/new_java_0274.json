@@ -1,0 +1,22 @@
+{
+  "instruction": "Length Of Longest Substring",
+  "output": "    public int lengthOfLongestSubstring(String s) {\n        HashMap<Character,Integer> map=new HashMap<>();\n        int max=0,l=0;\n        for(int i=0;i<s.length();i++){\n            char c=s.charAt(i);\n            if(map.containsKey(c) && map.get(c) >=l){\n                l=map.get(c)+1;\n            }\n            max=Math.max(max,i-l+1);\n            map.put(c,i);\n        }\n        return max;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "hariharan1009/leetcode",
+    "repo_created_date": "2024-09-23",
+    "repo_stars": 8,
+    "repo_forks": 0,
+    "file_path": "0003-longest-substring-without-repeating-characters/0003-longest-substring-without-repeating-characters.java",
+    "function_name": "lengthOfLongestSubstring",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 13,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

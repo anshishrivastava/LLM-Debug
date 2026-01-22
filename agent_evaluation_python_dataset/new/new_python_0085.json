@@ -1,0 +1,22 @@
+{
+  "instruction": "Run a single iteration of the strategy logic.",
+  "output": "    def run_strategy_check(self) -> str:\n        \"\"\"\n        Run a single iteration of the strategy logic.\n\n        This should be called periodically (e.g., every minute) or\n        on price updates to check conditions and take actions.\n\n        Returns:\n            str: Description of action taken, if any.\n        \"\"\"\n        # TIME-001: Check operation lock to prevent concurrent strategy checks\n        if self._operation_in_progress:\n            elapsed = \"\"\n            if self._operation_start_time:\n                mins = (datetime.now() - self._operation_start_time).total_seconds() / 60\n                elapsed = f\" ({mins:.1f} minutes)\"\n            logger.warning(f\"\u26a0\ufe0f TIME-001: Operation already in progress{elapsed}, skipping this check\")\n            return \"Operation in progress - skipped\"\n\n        # Acquire operation lock\n        self._operation_in_progress = True\n        self._operation_start_time = datetime.now()\n\n        try:\n            return self._run_strategy_check_impl()\n        finally:\n            # TIME-001: Release operation lock\n            self._operation_in_progress = False\n            self._operation_start_time = None",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "run_strategy_check",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 29,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

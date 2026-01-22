@@ -1,0 +1,22 @@
+{
+  "instruction": "Custom Lev Distance",
+  "output": "def custom_lev_distance(word_one: str, word_two: str) -> bool:\n    # This will look at the lev distance\n    # And if the difference is greater then the threshold\n    # Check if it is the last [Threshold: ] this is the difference\n    # If yes -> then return True\n    ...",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "pb-96/crossword-generator",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "cw_generator_uv/cw_generator/cw_gen/pre_validate_utils.py",
+    "function_name": "custom_lev_distance",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 6,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Handle ability input (keys 1-5, RMB, LMB for Paladin)",
+  "output": "    public void handleInput() {\n        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {\n            useAbility(0);\n        } else if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_2)) {\n            useAbility(1);\n        } else if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_3)) {\n            useAbility(2);\n        } else if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_4)) {\n            useAbility(3);\n        } else if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_5)) {\n            useAbility(4);\n        }\n\n        // Check RMB for offhand attack\n        if (Gdx.input.isButtonJustPressed(Input.Buttons.RIGHT)) {\n            useOffhandAttack();\n        }\n\n        // For Paladin: Check LMB for sword attack\n        if (playerClass == PlayerClass.PALADIN && Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) {\n            if (!gameProj.isPaused() && !player.getInventory().isOpen()) {\n                performSwordAttack();\n            }\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/AbilityManager.java",
+    "function_name": "handleInput",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 25,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

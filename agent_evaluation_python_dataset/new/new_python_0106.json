@@ -1,0 +1,22 @@
+{
+  "instruction": "Run interactive fit",
+  "output": "  def run_interactive(self) -> int:\n    \"\"\"Run interactive fit\n\n    Returns:\n      exit status. 0 = exit, 1 = continue to next fit\n    \"\"\"\n    function_lookup = {'c': self.interactive_constant,\n                       'constant': self.interactive_constant,\n                       'f': self.interactive_fit,\n                       'fit': self.interactive_fit,\n                       'h': self.interactive_help,\n                       'help': self.interactive_help,\n                       'j': self.interactive_json,\n                       'json': self.interactive_json,\n                       'l': self.interactive_list,\n                       'list': self.interactive_list,\n                       'n': self.interactive_next,\n                       'next': self.interactive_next,\n                       'p': self.interactive_preset,\n                       'preset': self.interactive_preset,\n                       'q': self.interactive_quit,\n                       'quit': self.interactive_quit,\n                       'q!': self.interactive_quitnosave,\n                       'quit!': self.interactive_quitnosave,\n                       'ra': self.interactive_randomize,\n                       'randomize': self.interactive_randomize,\n                       'r': self.interactive_revert,\n                       'revert': self.interactive_revert,\n                       's': self.interactive_set,\n                       'set': self.interactive_set,\n                       'w': self.interactive_write,\n                       'write': self.interactive_write}\n    exit_loop = False\n    fit_status = 0\n    while not exit_loop:\n      user_input = input('>:')\n      user_input = user_input.split()\n      if len(user_input)<1:\n        continue\n      if user_input[0] in function_lookup:\n        exit_loop = function_lookup[user_input[0]](user_input)\n    return self.exit_code",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/interactive_fit.py",
+    "function_name": "run_interactive",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 42,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

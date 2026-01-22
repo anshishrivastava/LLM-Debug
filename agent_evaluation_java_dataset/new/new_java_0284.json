@@ -1,0 +1,22 @@
+{
+  "instruction": "Back Track",
+  "output": "\n    private static void backTrack(int sumPrice, int depth) {\n        if (sumPrice >= minPriceSum) {\n            return;\n        }\n\n        if (depth == N) {\n            minPriceSum = sumPrice;\n            return;\n        }\n\n        for (int i = 0; i < N; i++) {\n            if (!visited[i]){\n                visited[i] = true;\n                backTrack(sumPrice + graph[depth][i], depth + 1);\n                visited[i] = false;\n            }\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "xabinM/algorithm-record-Java",
+    "repo_created_date": "2024-09-19",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "src/SSAFY/backTrack/MinimumProductionPrice.java",
+    "function_name": "backTrack",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 19,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

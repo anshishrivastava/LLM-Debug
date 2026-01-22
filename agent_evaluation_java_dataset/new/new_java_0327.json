@@ -1,0 +1,22 @@
+{
+  "instruction": "Letter Combinations",
+  "output": "    public List<String> letterCombinations(String digits) {\n        List<String> result = new ArrayList<>();\n        if(digits.length() == 0) return result;\n        Map<Character, String> hm = new HashMap<>();\n        hm.put('2', \"abc\");\n        hm.put('3', \"def\");\n        hm.put('4', \"ghi\");\n        hm.put('5', \"jkl\");\n        hm.put('6', \"mno\");\n        hm.put('7', \"pqrs\");\n        hm.put('8', \"tuv\");\n        hm.put('9', \"wxyz\");\n\n        backtracking(0, result, digits, hm, new StringBuilder());\n        return result;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "alikhan0616/DSA",
+    "repo_created_date": "2024-09-28",
+    "repo_stars": 1,
+    "repo_forks": 1,
+    "file_path": "0017-letter-combinations-of-a-phone-number/0017-letter-combinations-of-a-phone-number.java",
+    "function_name": "letterCombinations",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 16,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

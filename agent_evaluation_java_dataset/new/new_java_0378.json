@@ -1,0 +1,22 @@
+{
+  "instruction": "Largest Rectangle Area",
+  "output": "\n  private int largestRectangleArea(int[] heights) {\n    int ans = 0;\n    Deque<Integer> stack = new ArrayDeque<>();\n\n    for (int i = 0; i <= heights.length; ++i) {\n      while (!stack.isEmpty() && (i == heights.length || heights[stack.peek()] > heights[i])) {\n        final int h = heights[stack.pop()];\n        final int w = stack.isEmpty() ? i : i - stack.peek() - 1;\n        ans = Math.max(ans, h * w);\n      }\n      stack.push(i);\n    }\n\n    return ans;\n  }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Apoo-28/Leetcode-Problems",
+    "repo_created_date": "2024-08-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0085-maximal-rectangle/0085-maximal-rectangle.java",
+    "function_name": "largestRectangleArea",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 16,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

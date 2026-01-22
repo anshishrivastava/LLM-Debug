@@ -1,0 +1,4 @@
+{
+  "instruction": "Create a web crawler in Python to scrape news articles from a given website. Bonus points if you can add support for pagination.",
+  "output": "import requests\nfrom bs4 import BeautifulSoup\n\nurl = 'https://example.com'\n\narticles = []\n\ndef scrape_articles(url):\n response = requests.get(url)\n html = BeautifulSoup(response.text, 'html.parser')\n article_elements = html.find_all('article')\n\n for article_element in article_elements:\n title = article_element.find('h2').text\n content = article_element.find('p').text\n\n article = {\n 'title': title,\n 'content': content\n }\n\n articles.append(article)\n\nscrape_articles(url)\n\nnext_page_element = html.find('a', {'title': 'Next page'})\n\nwhile next_page_element:\n next_page_url = next_page_element['href']\n scrape_articles(next_page_url)\n next_page_element = html.find('a', {'title': 'Next page'})\n\nfor article in articles:\n print(article)"
+}

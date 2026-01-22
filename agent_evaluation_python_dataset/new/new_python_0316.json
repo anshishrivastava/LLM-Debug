@@ -1,0 +1,22 @@
+{
+  "instruction": "Setup LibreOffice macro for recalculation if not already configured",
+  "output": "def setup_libreoffice_macro():\n    \"\"\"Setup LibreOffice macro for recalculation if not already configured\"\"\"\n    if platform.system() == 'Darwin':\n        macro_dir = os.path.expanduser('~/Library/Application Support/LibreOffice/4/user/basic/Standard')\n    else:\n        macro_dir = os.path.expanduser('~/.config/libreoffice/4/user/basic/Standard')\n    \n    macro_file = os.path.join(macro_dir, 'Module1.xba')\n    \n    if os.path.exists(macro_file):\n        with open(macro_file, 'r') as f:\n            if 'RecalculateAndSave' in f.read():\n                return True\n    \n    if not os.path.exists(macro_dir):\n        subprocess.run(['soffice', '--headless', '--terminate_after_init'], \n                      capture_output=True, timeout=10)\n        os.makedirs(macro_dir, exist_ok=True)\n    \n    macro_content = '''<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE script:module PUBLIC \"-//OpenOffice.org//DTD OfficeDocument 1.0//EN\" \"module.dtd\">\n<script:module xmlns:script=\"http://openoffice.org/2000/script\" script:name=\"Module1\" script:language=\"StarBasic\">\n    Sub RecalculateAndSave()\n      ThisComponent.calculateAll()\n      ThisComponent.store()\n      ThisComponent.close(True)\n    End Sub\n</script:module>'''\n    \n    try:\n        with open(macro_file, 'w') as f:\n            f.write(macro_content)\n        return True\n    except Exception:\n        return False",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "rishibhandia/dotfiles",
+    "repo_created_date": "2024-12-30",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "dot_claude/skills/xlsx/recalc.py",
+    "function_name": "setup_libreoffice_macro",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 35,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

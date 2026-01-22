@@ -1,0 +1,22 @@
+{
+  "instruction": "Check if the entire trade should be exited.",
+  "output": "    def should_exit_trade(self) -> bool:\n        \"\"\"\n        Check if the entire trade should be exited.\n\n        Per spec: \"If Long Straddle DTE < 60 days, close the entire position\"\n\n        Returns:\n            bool: True if should exit, False otherwise.\n        \"\"\"\n        if not self.long_straddle or not self.long_straddle.call:\n            return False\n\n        # Calculate DTE for long straddle\n        expiry_str = self.long_straddle.call.expiry\n        if not expiry_str:\n            return False\n\n        expiry_date = datetime.strptime(expiry_str[:10], \"%Y-%m-%d\").date()\n        dte = (expiry_date - datetime.now().date()).days\n\n        # Exit when DTE drops below 60 days\n        if dte < 60:\n            logger.info(\n                f\"EXIT CONDITION MET: {dte} DTE on long straddle (threshold: < 60 DTE)\"\n            )\n            return True\n\n        return False",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "should_exit_trade",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 28,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

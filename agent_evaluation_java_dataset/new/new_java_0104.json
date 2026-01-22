@@ -1,0 +1,22 @@
+{
+  "instruction": "Build B S T",
+  "output": "\n    public static TreeNode buildBST(int[] values) {\n        TreeNode root = null;\n        for (int val : values) {\n            root = insertRecursive(root, val);\n            System.out.println(root.val);\n        }\n        //System.out.println(root.val);\n        return root;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Victor5H/Java-CP",
+    "repo_created_date": "2024-10-08",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "src/Tree.java",
+    "function_name": "buildBST",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 10,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

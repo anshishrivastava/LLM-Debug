@@ -1,0 +1,22 @@
+{
+  "instruction": "Query returns a list of JobData objects based on the requested JobData.",
+  "output": "    def query(self, job_data: JobData, update_missing: bool = False) -> list[JobData]:\n        \"\"\"\n        Query returns a list of JobData objects based on the requested JobData.\n        The returned jobs match the query JobData's job name and categories.\n        `update_missing` will try to get maxRSS and elapsed from sacct if not found in the DB.\n\n        Note: It does not descend into all child categories, only the highest matching leaves\n        \"\"\"\n        group_name = JobDatabase.get_group_name(job_data)\n\n        job_group = self.db.get(group_name, default={})\n        result = []\n        for slurm_id, slurm_data in job_group.items():\n            if JobDatabase.is_slurm_job(slurm_data):\n                result.append(\n                    JobData.from_dataset(\n                        job_name=job_data.job_name,\n                        slurm_id=slurm_id,\n                        categories=job_data.categories,\n                        dataset=slurm_data,\n                    )\n                )\n\n        if update_missing:\n            result = self.update_missing_data(result)\n\n        return result",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "PrincetonUniversity/slurmise",
+    "repo_created_date": "2024-06-21",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "src/slurmise/job_database.py",
+    "function_name": "query",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 27,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Roman To Int",
+  "output": "\n    public static int romanToInt(String s) {\n        HashMap<Character, Integer> romanNumerals = new HashMap<>();\n        romanNumerals.put('I', 1);\n        romanNumerals.put('V', 5);\n        romanNumerals.put('X', 10);\n        romanNumerals.put('L', 50);\n        romanNumerals.put('C', 100);\n        romanNumerals.put('D', 500);\n        romanNumerals.put('M', 1000);\n\n        int num = 0;\n        char prevChar = ' ';\n\n        for (int i = 0; i < s.length(); i++){ \n            if (prevChar!=' ' && romanNumerals.get(s.charAt(i)) > romanNumerals.get(prevChar)){\n                num += romanNumerals.get(s.charAt(i)) - 2*romanNumerals.get(prevChar);\n            }else{\n                num += romanNumerals.get(s.charAt(i));\n            }\n            prevChar = s.charAt(i);\n        }\n\n        return num;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "nchhillar2004/dsa-cp",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "leetcode/easy/0013. Roman to Integer/Solution.java",
+    "function_name": "romanToInt",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 25,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

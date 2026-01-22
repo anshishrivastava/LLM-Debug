@@ -1,0 +1,22 @@
+{
+  "instruction": "Sets input files",
+  "output": "  def set_input_files(self, data_files: list[str], mc_files: list[str], \n                      mc_alt_files: list[str], data_tree: str, \n                      mc_tree: str='', mc_alt_tree: str=''):\n    '''Sets input files\n\n    Args:\n      data_files: data files to process\n      mc_files: mc files to process\n      mc_alt_files: alternative MC files to process\n      data_tree: name of TTree in data files\n      mc_tree: name of TTree in MC files, defaults to data_tree if ''\n      mc_alt_tree: name of TTree in MC alt file, defaults to mc_tree if ''\n    '''\n    if mc_tree=='':\n      mc_tree = data_tree\n    if mc_alt_tree=='':\n      mc_alt_tree = data_tree\n    self.data_nom_tnp_analyzer.set_input_files(data_files, data_tree)\n    self.data_altsig_tnp_analyzer.set_input_files(data_files, data_tree)\n    self.data_altbkg_tnp_analyzer.set_input_files(data_files, data_tree)\n    self.data_altsigbkg_tnp_analyzer.set_input_files(data_files, data_tree)\n    self.mc_nom_tnp_analyzer.set_input_files(mc_files, mc_tree)\n    self.mc_alt_tnp_analyzer.set_input_files(mc_alt_files, mc_alt_tree)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/rms_sf_analyzer.py",
+    "function_name": "set_input_files",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 23,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Update ability cooldown and cast time",
+  "output": "    public void update(float delta) {\n        if (currentCooldown > 0) {\n            currentCooldown -= delta;\n            if (currentCooldown < 0) currentCooldown = 0;\n        }\n\n        if (isCasting) {\n            castTimer += delta;\n            if (castTimer >= castTime) {\n                onCastComplete();\n                isCasting = false;\n                castTimer = 0f;\n            }\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/Ability.java",
+    "function_name": "update",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 15,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

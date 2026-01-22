@@ -1,0 +1,22 @@
+{
+  "instruction": "Find Median Sorted Arrays",
+  "output": "    public double findMedianSortedArrays(int[] nums1, int[] nums2) {\n        List<Integer> ll = new ArrayList<>();\n        for (int i : nums1) {\n            ll.add(i);\n        }\n        for (int i : nums2) {\n            ll.add(i);\n        }\n        Collections.sort(ll);\n        int n = ll.size();\n        if (ll.size() % 2 == 0) {\n            double mid = (ll.get(n / 2 - 1) + ll.get(n / 2)) / 2.0;\n            return mid;\n        } else {\n            int mid = ll.size() / 2;\n            double val = (double) ll.get(mid);\n            return val;\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "CodeFusioner/LeetCode_Solutions",
+    "repo_created_date": "2025-01-02",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0004-median-of-two-sorted-arrays/0004-median-of-two-sorted-arrays.java",
+    "function_name": "findMedianSortedArrays",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 19,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

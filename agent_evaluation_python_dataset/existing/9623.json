@@ -1,0 +1,4 @@
+{
+  "instruction": "Generate a batch of 10 code samples for a classification task that takes a piece of code as input and outputs its programming language.",
+  "output": "Java\n// package com.example;\npublic class Example { \n    public static void main(String[] args) {\n        System.out.println(\"Hello World!\");\n    }\n}\n\nPython\nprint(\"Hello World\")\n\nSwift \n// This program prints \"Hello World\"\nprint(\"Hello World\")\n\nC\nint main() {\n    printf(\"Hello World!\");\n    return 0;\n}\n\nPHP\n<?php\n    echo \"Hello World!\";\n?>\n\nC#\n// This program prints \"Hello World\"\nusing System;\n\npublic class Hello\n{\n    public static void Main()\n    {\n        Console.WriteLine(\"Hello World!\");\n    }\n}\n\nJavaScript\n// This program prints \"Hello World\"\nconsole.log(\"Hello World!\");\n\nGo\n// This program prints \"Hello World\"\npackage main\n\nimport \"fmt\"\n\nfunc main() {\n        fmt.Println(\"Hello World!\")\n}"
+}

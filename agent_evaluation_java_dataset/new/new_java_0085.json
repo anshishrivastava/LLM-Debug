@@ -1,0 +1,22 @@
+{
+  "instruction": "Bfs Of Graph",
+  "output": "    public ArrayList<Integer> bfsOfGraph(ArrayList<ArrayList<Integer>> adj) {\n        ArrayList<Integer> ls=new ArrayList<>();\n        Queue<Integer> qu=new LinkedList<>();\n        int V=adj.size();\n        boolean vis[]=new boolean[V];\n        qu.add(0);\n        vis[0]=true;\n        while(!qu.isEmpty()){\n            int node=qu.poll();\n            ls.add(node);\n            for(int it:adj.get(node)){\n                if(vis[it]==false){\n                    vis[it]=true;\n                    qu.add(it);\n                }\n            }\n        }\n        return ls;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Rajeshkuruva2003/competitive-program",
+    "repo_created_date": "2025-01-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "BFS of graph.java",
+    "function_name": "bfsOfGraph",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 19,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

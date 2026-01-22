@@ -1,0 +1,22 @@
+{
+  "instruction": "Makes a heatmap (2D histogram/colz)",
+  "output": "def make_heatmap(x: list[float], y: list[float], z: list[float], name: str, \n                 x_title: str, y_title: str, z_title: str, \n                 lumi: list[tuple[float,float]], log_x: bool=False, \n                 log_y: bool=False):\n  '''Makes a heatmap (2D histogram/colz)\n\n  Args:\n    x: x axis bin divisions\n    y: y axis bin divisions\n    z: heatmap values\n    name: filename\n    x_title: x-axis label\n    y_title: y-axis label\n    z_title: z-axis label\n    lumi: list of tuple of two floats representing lumi and CM energy\n    log_x: if true sets x-axis to be logarithmic\n    log_y: if true sets y-axis to be logarithmic\n  '''\n  x_bins = array('d',x)\n  y_bins = array('d',y)\n  hist = ROOT.TH2D('heatmap',';'+x_title+';'+y_title+';'+z_title,\n                   len(x)-1,x_bins,len(y)-1,y_bins)\n  for ix in range(len(x)-1):\n    for iy in range(len(y)-1):\n      hist.SetBinContent(ix+1, iy+1, z[ix][iy])\n  sf_plot = RplPlot()\n  sf_plot.lumi_data = lumi\n  sf_plot.plot_colormap(hist)\n  sf_plot.log_x = log_x\n  sf_plot.log_y = log_y\n  sf_plot.draw(name)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/rms_sf_analyzer.py",
+    "function_name": "make_heatmap",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 31,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

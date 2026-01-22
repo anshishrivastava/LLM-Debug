@@ -1,0 +1,22 @@
+{
+  "instruction": "Initialize tracking for a new trading day.",
+  "output": "    def start_new_trading_day(self):\n        \"\"\"\n        Initialize tracking for a new trading day.\n\n        Call this at market open or first check of the day.\n        Resets daily metrics and clears any stale failure counters from previous day.\n        \"\"\"\n        self.metrics.reset_daily_tracking(\n            current_pnl=self.metrics.total_pnl,\n            spy_price=self.current_underlying_price or 0,\n            vix=self.current_vix or 0\n        )\n\n        # Reset failure counter at start of new trading day\n        # Failures from previous day shouldn't carry over - each day starts fresh\n        if self._consecutive_failures > 0:\n            logger.info(\n                f\"Resetting consecutive failure counter from {self._consecutive_failures} to 0 (new trading day)\"\n            )\n            self._consecutive_failures = 0\n\n        # Clear action cooldowns from previous day\n        if self._action_cooldowns:\n            logger.info(f\"Clearing {len(self._action_cooldowns)} action cooldowns from previous day\")\n            self._action_cooldowns = {}\n\n        # Reset circuit breaker if it was open (allow fresh start)\n        if self._circuit_breaker_open:\n            logger.warning(\n                f\"Circuit breaker was OPEN from previous day (reason: {self._circuit_breaker_reason}). \"\n                \"Resetting for new trading day - please verify positions in SaxoTraderGO.\"\n            )\n            self._circuit_breaker_open = False\n            self._circuit_breaker_reason = \"\"\n\n        logger.info(f\"New trading day started. Opening P&L: ${self.metrics.total_pnl:.2f}\")",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "start_new_trading_day",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 36,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

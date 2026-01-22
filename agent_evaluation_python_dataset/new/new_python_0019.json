@@ -1,0 +1,22 @@
+{
+  "instruction": "Test if object is non-empty or its first element is a Dataset.",
+  "output": "    def is_slurm_job(f: Any) -> bool:\n        \"\"\"\n        Test if object is non-empty or its first element is a Dataset.\n        This is consistent with a slurm job\n        \"\"\"\n\n        if len(f) == 0:  # group contains no values\n            return True\n        first_element = f[list(f.keys())[0]]\n        # group contains a dataset\n        return JobDatabase.is_dataset(first_element)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "PrincetonUniversity/slurmise",
+    "repo_created_date": "2024-06-21",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "src/slurmise/job_database.py",
+    "function_name": "is_slurm_job",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 11,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

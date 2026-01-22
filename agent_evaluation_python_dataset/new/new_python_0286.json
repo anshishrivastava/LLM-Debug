@@ -1,0 +1,22 @@
+{
+  "instruction": "This function calculates the roc_auc score",
+  "output": "    def roc_auc(self, output, target, task=\"binary-class\"):\n        \"\"\"\n        This function calculates the roc_auc score\n        :param output: ground truth, (n_samples,) or (n_samples, n_classes)\n        :param target: predictions, (n_samples,) or (n_samples, n_classes)\n        :return: roc_auc score\n        \"\"\"    \n        if task == \"multi-class\":\n            roc_auc = roc_auc_score(output, target, multi_class='ovr')\n        else:\n            roc_auc = roc_auc_score(output, target)\n        return roc_auc",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "98haiting/General-or-Medical-CLIP-Which-one-Shall-We-Choose",
+    "repo_created_date": "2024-10-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "biomed_clip/metrices.py",
+    "function_name": "roc_auc",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 12,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

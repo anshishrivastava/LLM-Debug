@@ -1,0 +1,22 @@
+{
+  "instruction": "dcf will calculate the distance correlation matrix for each window of length delT, this means that the",
+  "output": "def get_dcf(delta_x):\n    \"\"\"dcf will calculate the distance correlation matrix for each window of length delT, this means that the\n    [[r_cat1 dot r_cat1, r_cat1 dot r_cat2, r_cat1 dot r_ani1, r_cat1 dot r_ani2],\n     [r_cat2 dot r_cat1, r_cat2 dot r_cat2, r_cat2 dot r_ani1, r_cat2 dot r_ani2],\n     [r_ani1 dot r_cat1, r_ani1 dot r_cat2, r_ani1 dot r_ani1, r_ani1 dot r_ani2],\n     [r_ani2 dot r_cat1, r_ani2 dot r_cat2, r_ani2 dot r_ani1, r_ani2 dot r_ani2]] for each window... diagonal=self\"\"\"\n    return np.stack(\n        [np.matmul(cur_frame, np.transpose(cur_frame, (1, 0))) for cur_frame in delta_x]\n    )",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/analysis/trajectory_analysis.py",
+    "function_name": "get_dcf",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 9,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

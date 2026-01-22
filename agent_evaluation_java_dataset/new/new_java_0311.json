@@ -1,0 +1,22 @@
+{
+  "instruction": "Maximal Rectangle",
+  "output": "    public int maximalRectangle(char[][] matrix) {\n        if (matrix == null || matrix.length == 0 || matrix[0].length == 0)\n            return 0;\n\n        int M = matrix.length;\n        int N = matrix[0].length;\n\n        int[][] mat = new int[M][N];\n\n        for (int i = 0; i < M; i++) {\n            for (int j = 0; j < N; j++) {\n                mat[i][j] = matrix[i][j] - '0';\n            }\n        }\n\n        for (int i = 0; i < M; i++) {\n            for (int j = 1; j < N; j++) {\n                if (mat[i][j] == 1) {\n                    mat[i][j] += mat[i][j - 1];\n                }\n            }\n        }\n\n        int Ans = 0;\n\n        for (int j = 0; j < N; j++) {\n            for (int i = 0; i < M; i++) {\n                int width = mat[i][j];\n                if (width == 0) continue;\n\n                int currWidth = width;\n                for (int k = i; k < M && mat[k][j] > 0; k++) {\n                    currWidth = Math.min(currWidth, mat[k][j]);\n                    int height = k - i + 1;\n                    Ans = Math.max(Ans, currWidth * height);\n                }\n\n                currWidth = width;\n                for (int k = i; k >= 0 && mat[k][j] > 0; k--) {\n                    currWidth = Math.min(currWidth, mat[k][j]);\n                    int height = i - k + 1;\n                    Ans = Math.max(Ans, currWidth * height);\n                }\n            }\n        }\n\n        return Ans;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Himanshi-Saini-0277/Leetcode_Streak",
+    "repo_created_date": "2024-08-24",
+    "repo_stars": 4,
+    "repo_forks": 0,
+    "file_path": "0085-maximal-rectangle/0085-maximal-rectangle.java",
+    "function_name": "maximalRectangle",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 48,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

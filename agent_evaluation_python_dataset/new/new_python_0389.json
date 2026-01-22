@@ -1,0 +1,22 @@
+{
+  "instruction": "Manually reset the critical intervention flag.",
+  "output": "    def reset_critical_intervention(self) -> None:\n        \"\"\"\n        Manually reset the critical intervention flag.\n\n        Only call this AFTER you have:\n        1. Verified all positions in SaxoTraderGO\n        2. Manually closed any risky positions\n        3. Confirmed account is in safe state\n        \"\"\"\n        if self._critical_intervention_required:\n            logger.info(\"=\" * 50)\n            logger.info(\"Critical intervention flag manually cleared\")\n            logger.info(f\"Previous reason: {self._critical_intervention_reason}\")\n            logger.info(\"=\" * 50)\n\n            if self.trade_logger:\n                self.trade_logger.log_safety_event({\n                    \"timestamp\": datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\"),\n                    \"event_type\": \"CRITICAL_INTERVENTION_CLEARED\",\n                    \"severity\": \"INFO\",\n                    \"spy_price\": self.current_underlying_price,\n                    \"vix\": self.current_vix,\n                    \"action_taken\": \"Manual intervention completed\",\n                    \"description\": f\"Cleared: {self._critical_intervention_reason}\",\n                    \"result\": \"RESOLVED\"\n                })\n\n        self._critical_intervention_required = False\n        self._critical_intervention_reason = \"\"\n        self._critical_intervention_timestamp = None",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "reset_critical_intervention",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 30,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Prefixes Div By5",
+  "output": "    public List<Boolean> prefixesDivBy5(int[] nums) {\n        List<Boolean> result = new ArrayList<>();\n        int num = 0;\n        \n        for (int i = 0; i < nums.length; i++) {\n            num = (num * 2 + nums[i]) % 5;\n            result.add(num == 0);\n        }\n        \n        return result;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "TheKnightProtocol/Leetcode",
+    "repo_created_date": "2024-10-13",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "1018. Binary Prefix Divisible By 5.java",
+    "function_name": "prefixesDivBy5",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 11,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

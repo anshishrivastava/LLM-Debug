@@ -1,0 +1,22 @@
+{
+  "instruction": "Check if there's an upcoming Fed/FOMC meeting within blackout period.",
+  "output": "    def check_fed_meeting_filter(self) -> bool:\n        \"\"\"\n        Check if there's an upcoming Fed/FOMC meeting within blackout period.\n\n        Avoids entering positions before major binary events that can cause\n        large volatility spikes.\n\n        Returns:\n            bool: True if safe to enter (no Fed meeting soon), False otherwise.\n        \"\"\"\n        # 2026 FOMC Meeting Dates (update annually)\n        # Source: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm\n        fomc_dates_2026 = [\n            datetime(2026, 1, 28).date(),  # Jan 27-28\n            datetime(2026, 3, 18).date(),  # Mar 17-18\n            datetime(2026, 5, 6).date(),   # May 5-6\n            datetime(2026, 6, 17).date(),  # Jun 16-17\n            datetime(2026, 7, 29).date(),  # Jul 28-29\n            datetime(2026, 9, 16).date(),  # Sep 15-16\n            datetime(2026, 11, 4).date(),  # Nov 3-4\n            datetime(2026, 12, 16).date(), # Dec 15-16\n        ]\n\n        today = datetime.now().date()\n        blackout_days = self.strategy_config.get(\"fed_blackout_days\", 2)\n\n        for meeting_date in fomc_dates_2026:\n            days_until_meeting = (meeting_date - today).days\n\n            if 0 <= days_until_meeting <= blackout_days:\n                logger.warning(\n                    f\"Fed meeting on {meeting_date} is in {days_until_meeting} days - \"\n                    f\"within {blackout_days}-day blackout period. Entry blocked.\"\n                )\n                return False\n\n        return True",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "check_fed_meeting_filter",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 37,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Generates individual efficiency measurements if they have not already",
+  "output": "  def generate_individual_outputs(self, cnc: bool=False):\n    '''Generates individual efficiency measurements if they have not already \n    been generated and checks output files are generated correctly\n\n    Args:\n      cnc: use only cut and count rather than fits\n\n    Returns:\n      true if the outputs are generated correctly\n    '''\n    nomdat_name = self.name+'_data_nom'\n    altsig_name = self.name+'_data_altsig'\n    altbkg_name = self.name+'_data_altbkg'\n    altsnb_name = self.name+'_data_altsigbkg'\n    nomsim_name = self.name+'_mc_nom'\n    altsim_name = self.name+'_mc_alt'\n    eff_name = 'efficiencies.json'\n    if cnc:\n      eff_name = 'cnc_efficiencies.json'\n    if not cnc:\n      if not os.path.isfile('out/'+nomdat_name+'/efficiencies.json'):\n        self.data_nom_tnp_analyzer.generate_final_output()\n      if not os.path.isfile('out/'+altsig_name+'/efficiencies.json'):\n        self.data_altsig_tnp_analyzer.generate_final_output()\n      if not os.path.isfile('out/'+altbkg_name+'/efficiencies.json'):\n        self.data_altbkg_tnp_analyzer.generate_final_output()\n      if not os.path.isfile('out/'+altsnb_name+'/efficiencies.json'):\n        self.data_altsigbkg_tnp_analyzer.generate_final_output()\n      if not os.path.isfile('out/'+nomsim_name+'/efficiencies.json'):\n        #just for fit plots\n        self.mc_nom_tnp_analyzer.generate_final_output() \n    else:\n      if not os.path.isfile('out/'+nomdat_name+'/cnc_efficiencies.json'):\n        self.data_nom_tnp_analyzer.generate_cut_and_count_output()\n      if not os.path.isfile('out/'+altsig_name+'/cnc_efficiencies.json'):\n        self.data_altsig_tnp_analyzer.generate_cut_and_count_output()\n      if not os.path.isfile('out/'+altbkg_name+'/cnc_efficiencies.json'):\n        self.data_altbkg_tnp_analyzer.generate_cut_and_count_output()\n      if not os.path.isfile('out/'+altsnb_name+'/cnc_efficiencies.json'):\n        self.data_altsigbkg_tnp_analyzer.generate_cut_and_count_output()\n      if not os.path.isfile('out/'+nomsim_name+'/cnc_efficiencies.json'):\n        #just for fit plots\n        self.mc_nom_tnp_analyzer.generate_cut_and_count_output() \n    if not os.path.isfile('out/'+nomsim_name+'/cnc_efficiencies.json'):\n      self.mc_nom_tnp_analyzer.generate_cut_and_count_output()\n    if not os.path.isfile('out/'+altsim_name+'/cnc_efficiencies.json'):\n      self.mc_alt_tnp_analyzer.generate_cut_and_count_output()\n    if ((not os.path.isfile('out/'+nomdat_name+'/'+eff_name)) or\n        (not os.path.isfile('out/'+altsig_name+'/'+eff_name)) or\n        (not os.path.isfile('out/'+altbkg_name+'/'+eff_name)) or\n        (not os.path.isfile('out/'+altsnb_name+'/'+eff_name)) or\n        (not os.path.isfile('out/'+nomsim_name+'/cnc_efficiencies.json')) or\n        (not os.path.isfile('out/'+altsim_name+'/cnc_efficiencies.json'))):\n      print('ERROR: Could not generate individual outputs, please ensure '+\n            'all fits have been performed.')\n      return False\n    return True",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/rms_sf_analyzer.py",
+    "function_name": "generate_individual_outputs",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 57,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

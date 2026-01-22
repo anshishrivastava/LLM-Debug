@@ -1,0 +1,22 @@
+{
+  "instruction": "Move Zeroes",
+  "output": "    public void moveZeroes(int[] nums) {\n        int i = 0;\n        for(int j = 0; j<nums.length; j++){\n            if(nums[j] != 0){\n                nums[i] = nums[j];\n                i++;\n            }\n        } \n\n        while( i < nums.length){\n            nums[i] = 0;\n            i++;\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "utkrshydv/learningLeetCode",
+    "repo_created_date": "2025-01-15",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0283-move-zeroes/0283-move-zeroes.java",
+    "function_name": "moveZeroes",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 14,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

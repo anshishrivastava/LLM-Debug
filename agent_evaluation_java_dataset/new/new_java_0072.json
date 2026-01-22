@@ -1,0 +1,22 @@
+{
+  "instruction": "Add Two Numbers",
+  "output": "    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {\n        ListNode dummy = new ListNode(100);\n        ListNode temp = dummy;\n        int carry = 0;\n        while(l1 != null || l2 != null || carry != 0){\n            int val1 = (l1!=null) ? l1.val : 0;\n            int val2 = (l2!=null) ? l2.val : 0;\n\n            int sum = val1+val2+carry;\n            int digit = sum % 10;\n            carry = sum / 10;\n\n            temp.next = new ListNode(digit);\n            temp = temp.next;\n\n            l1 = (l1 != null) ? l1.next : null;\n            l2 = (l2 != null) ? l2.next : null;\n\n        }\n\n        return dummy.next;\n\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "CodeFusioner/LeetCode_Solutions",
+    "repo_created_date": "2025-01-02",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0002-add-two-numbers/0002-add-two-numbers.java",
+    "function_name": "addTwoNumbers",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 23,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

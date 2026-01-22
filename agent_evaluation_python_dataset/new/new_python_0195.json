@@ -1,0 +1,22 @@
+{
+  "instruction": "Generates efficiencies and fit plots",
+  "output": "  def generate_final_output(self):\n    '''Generates efficiencies and fit plots\n    '''\n    #do checks\n    self.initialize_files_directories()\n    plot_filename = 'out/'+self.temp_name+'/allfits.pdf'\n    effi_filename = 'out/'+self.temp_name+'/efficiencies.json'\n    if os.path.exists(plot_filename) or os.path.exists(effi_filename):\n      print('ERROR: output files already exist')\n      return\n    file_keys = self.temp_file.GetListOfKeys()\n    for ibin in range(0,self.nbins):\n      for pass_fail in ('pass','fail'):\n        param_filename = ('out/'+self.temp_name+'/fitinfo_bin'+str(ibin)+\n                          '_'+pass_fail+'.json')\n        if not os.path.exists(param_filename):\n          print('ERROR:'+param_filename+' not found.')\n          return\n\n    #draw final plots and calculate final efficiencies\n    #each pass/fail/parameters pad is 600x200\n    nbins_x = self.nbins_x\n    if nbins_x == 0:\n      nbins_x = 6\n    effs = []\n    fragment_names = []\n    file_extension = '.pdf'\n    for ibin in range(0,self.nbins):\n      fragment_name = ('out/'+self.temp_name+'/allfits_fragment'+str(ibin)\n                       +file_extension)\n      fragment_names.append(fragment_name)\n      effs.append(self.draw_fit_set(ibin,fragment_name))\n    fit_plot_name = 'out/'+self.temp_name+'/allfits.pdf'\n    merge_pdfs(fragment_names,nbins_x,fit_plot_name)\n    with open(effi_filename,'w') as output_file:\n      output_file.write(json.dumps(effs))\n    print('Wrote '+effi_filename)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_analyzer.py",
+    "function_name": "generate_final_output",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 37,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

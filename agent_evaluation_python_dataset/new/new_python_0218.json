@@ -1,0 +1,22 @@
+{
+  "instruction": "Increases tag pt for low probe pt and gap bins",
+  "output": "def modify_tag_lowpt(analyzer: RmsSFAnalyzer, pt_bins: list[float], \n                     eta_bins: list[float], gap_pt_bins: list[float]):\n  '''Increases tag pt for low probe pt and gap bins\n\n  Args:\n    analyzer: analyzer to modify\n    eta_bins: eta binning\n    pt_bins: pt binning\n    gap_pt_bins: gap pt binning\n  '''\n  lowpt_tag_selections = ('tag_Ele_pt>60&&tag_Ele_3charge==1'\n      +'&&tag_Ele_trigMVA>0.92&&sqrt(2.0*event_met_pfmet*tag_Ele_pt*'\n      +'(1.0-cos(event_met_pfphi-tag_Ele_phi)))<25.0')\n  gap_tag_selections = ('tag_Ele_pt>50&&tag_Ele_3charge==1'\n      +'&&tag_Ele_trigMVA>0.92&&sqrt(2.0*event_met_pfmet*tag_Ele_pt*'\n      +'(1.0-cos(event_met_pfphi-tag_Ele_phi)))<45.0')\n  nbins_eta = len(eta_bins)-1\n  nbins_pt = len(pt_bins)-1\n  nbins_gap_pt = len(gap_pt_bins)-1\n  for ibin in range(nbins_eta):\n    eta_lo = eta_bins[ibin]\n    eta_hi = eta_bins[ibin+1]\n    analyzer.modify_binning(ibin, f'7.0<el_pt&&el_pt<15.0'\n        +f'&&{eta_lo}<el_sc_eta&&el_sc_eta<{eta_hi}&&{lowpt_tag_selections}')\n  for ibin in range(nbins_gap_pt):\n    tnp_bin = nbins_eta*nbins_pt+ibin*2\n    pt_lo = gap_pt_bins[ibin]\n    pt_hi = gap_pt_bins[ibin+1]\n    analyzer.modify_binning(tnp_bin, f'{pt_lo}<el_pt&&el_pt<{pt_hi}'\n        +f'&&-1.566<el_sc_eta&&el_sc_eta<-1.4442&&{gap_tag_selections}')\n    analyzer.modify_binning(tnp_bin+1, f'{pt_lo}<el_pt&&el_pt<{pt_hi}'\n        +f'&&1.4442<el_sc_eta&&el_sc_eta<1.566&&{gap_tag_selections}')",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "scripts/elid_wpl.py",
+    "function_name": "modify_tag_lowpt",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 32,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

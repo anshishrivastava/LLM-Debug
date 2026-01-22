@@ -1,0 +1,22 @@
+{
+  "instruction": "Raw Record",
+  "output": "    def raw_record(self, job_data):\n        if \".\" in job_data.slurm_id:\n            # If the slurm_id is in the format \"1234.0\", split it to get the step_id\n            slurm_id, step_name = job_data.slurm_id.split(\".\")\n        else:\n            # If no step_id is provided, use the slurm_id as is\n            slurm_id, step_name = job_data.slurm_id, None\n\n        metadata_json = slurm.parse_slurm_job_metadata(slurm_id=slurm_id, step_name=step_name)\n\n        job_data.memory = metadata_json[\"max_rss\"]\n        job_data.runtime = metadata_json[\"elapsed_seconds\"]\n\n        with job_database.JobDatabase.get_database(self.configuration.db_filename) as database:\n            database.record(job_data)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "PrincetonUniversity/slurmise",
+    "repo_created_date": "2024-06-21",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "src/slurmise/api.py",
+    "function_name": "raw_record",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 15,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

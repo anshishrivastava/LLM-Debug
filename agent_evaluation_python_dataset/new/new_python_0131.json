@@ -1,0 +1,22 @@
+{
+  "instruction": "Parameter initializer for Cheby+DSCB based on MC fit",
+  "output": "def param_initializer_moddscb_from_mc(ibin: int, is_pass: bool, \n                                      workspace: ROOT.RooWorkspace, \n                                      mc_analyzer: TnpAnalyzer):\n  '''Parameter initializer for Cheby+DSCB based on MC fit\n\n  Parameter initializer for cheby_dscb model that fixes DSCB parameters except\n  mean and sigma to MC result\n  \n  Args:\n    ibin: bin number\n    is_pass: indicates if passing leg\n    workspace: RooWorkspace for this bin\n    mc_analyzer: TnpAnalyzer for MC samples\n  '''\n  pass_fail = 'pass'\n  if not is_pass:\n    pass_fail = 'fail'\n  mc_json_filename = 'out/{}/fitinfo_bin{}_{}.json'.format(\n          mc_analyzer.temp_name,str(ibin),pass_fail)\n  with open(mc_json_filename,'r') as mc_file:\n    param_dict = json.loads(mc_file.read())\n    for var in ['mean','sigmal','sigmar','alphal','nl1','nl2','fl','alphar',\n                'nr1','nr2','fr']:\n      workspace.var(var).setVal(param_dict[var])\n    for var in ['alphal','nl1','nl2','fl','alphar','nr1','nr2','fr']:\n      workspace.var(var).setConstant()",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/rms_sf_analyzer.py",
+    "function_name": "param_initializer_moddscb_from_mc",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 26,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

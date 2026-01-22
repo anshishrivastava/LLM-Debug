@@ -1,0 +1,22 @@
+{
+  "instruction": "Functino used in GetPatchesSpectrum() to calculate the average value (for a single wavelength/image) for all patches",
+  "output": "def GetPatchesIntensity(Image, Sample_size, PatchesPositions):\n\t\"\"\"\n\tFunctino used in GetPatchesSpectrum() to calculate the average value (for a single wavelength/image) for all patches\n\n\tInputs:\n\t\t- Image (slide of the hypercube, single wavelength)\n\t\t- Sample_size: estimated size of a patch (smaller than real patch to avoid unwanted pixels)\n\t\t- PatchesPositions: Positions of each patches, output of GetPatchPos()\n\n\tOutputs:\n\t\t- Intensities: Array size 30 containing the average intensity for this given image/wavelenght for all patches\n\n\t\"\"\"\n\tN = len(PatchesPositions)\n\tIntensities = []\n\tfor n in range(0,N):\n\t\tnn = PatchesPositions[n,0]\n\t\tx0, y0 = PatchesPositions[n,1], PatchesPositions[n,2]\n\t\txs, xe  = int(x0-Sample_size/2), int(x0+Sample_size/2)\n\t\tys, ye  = int(y0-Sample_size/2), int(y0+Sample_size/2)\n\t\tim_sub = Image[ys:ye, xs:xe]\n\t\tval = np.average(im_sub)\n\t\tstd = np.std(im_sub)\n\t\tIntensities.append([nn, val, std])       \n\treturn np.array(Intensities)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "YzaboRa/HySE_HypercubeFunctions",
+    "repo_created_date": "2024-08-22",
+    "repo_stars": 0,
+    "repo_forks": 2,
+    "file_path": "HySE/UserTools.py",
+    "function_name": "GetPatchesIntensity",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 25,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

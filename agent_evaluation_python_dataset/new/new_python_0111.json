@@ -1,0 +1,22 @@
+{
+  "instruction": "Model initializer that reutrns a tnp workspace where the signal model",
+  "output": "def model_initializer_dscbgaus(fit_var, ibin, is_pass):\n  '''Model initializer that reutrns a tnp workspace where the signal model\n  is a DSCB shape plus a Gaussian and there is no background\n\n  fit_var      RooRealVar representing variable to fit\n  ibin         int bin number\n  is_pass      bool, indicates if passing or failing leg\n  '''\n  workspace = ROOT.RooWorkspace()\n  getattr(workspace,'import')(fit_var)\n\n  mu = ROOT.RooRealVar('mu', 'Gaussian mean', 85.0, 95.0) \n  sigma = ROOT.RooRealVar('sigma', 'Gaussian sigma', 0.5, 10.0) \n  cb_alphal = ROOT.RooRealVar('alphal', 'CB left switchover', 0.1, 10.0) \n  cb_nl = ROOT.RooRealVar('nl', 'CB left power', 0.1, 10.0) \n  cb_alphar = ROOT.RooRealVar('alphar', 'CB right switchover', 0.1, 10.0) \n  cb_nr = ROOT.RooRealVar('nr', 'CB right power', 0.1, 10.0) \n\n  gauss_mu = ROOT.RooRealVar('gauss_mu', 'Gaussian mean', 60.0, 120.0) \n  gauss_sigma = ROOT.RooRealVar('gauss_sigma', 'Gaussian sigma', 0.5, 30.0) \n  gauss_frac = ROOT.RooRealVar('gauss_frac', 'Gaussian fraction', 0.0, 1.0)\n\n  sigma.setVal(3.0)\n  cb_alphal.setVal(2.0)\n  cb_alphar.setVal(2.0)\n  cb_nl.setVal(2.0)\n  cb_nr.setVal(2.0)\n  gauss_mu.setVal(75.0)\n  gauss_sigma.setVal(5.0)\n  gauss_frac.setVal(0.0)\n  gauss_frac.setConstant(True)\n\n  nSig = ROOT.RooRealVar('nSig', 'Signal normalization', 0.0, MAX_SIGNAL) \n  nBkg = ROOT.RooRealVar('nBkg', 'Background normalization', 0.0, 0.0) \n\n  getattr(workspace,'import')(mu)\n  getattr(workspace,'import')(sigma)\n  getattr(workspace,'import')(cb_alphal)\n  getattr(workspace,'import')(cb_nl)\n  getattr(workspace,'import')(cb_alphar)\n  getattr(workspace,'import')(cb_nr)\n  getattr(workspace,'import')(gauss_mu)\n  getattr(workspace,'import')(gauss_sigma)\n  getattr(workspace,'import')(gauss_frac)\n  getattr(workspace,'import')(nSig)\n  getattr(workspace,'import')(nBkg)\n\n  pdf_dscb = ROOT.RooCrystalBall('pdf_dscb','pdf_dscb', fit_var, mu, sigma, \n                                 cb_alphal, cb_nl, cb_alphar, cb_nr)\n  pdf_gaus = ROOT.RooGaussian('pdf_gaus','pdf_gaus', fit_var, gauss_mu,\n                              gauss_sigma)\n  pdf_sb = ROOT.RooAddPdf('pdf_sb','pdf_sb',\n                          ROOT.RooArgList(pdf_gaus, pdf_dscb), \n                          ROOT.RooArgList(gauss_frac))\n  getattr(workspace,'import')(pdf_sb)\n  return workspace",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/model_initializers.py",
+    "function_name": "model_initializer_dscbgaus",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 56,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

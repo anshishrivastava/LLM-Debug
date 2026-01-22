@@ -1,0 +1,22 @@
+{
+  "instruction": "Adds exponential as background model",
+  "output": "def add_background_model_exponential(workspace, ibin, is_pass):\n  '''Adds exponential as background model\n\n  workspace    workspace to add model to; must have variable fit_var\n  ibin         int bin number\n  is_pass      bool, indicates if passing or failing leg\n  '''\n  fit_var = workspace.var('fit_var')\n  alpha = ROOT.RooRealVar('alpha', 'exponential parameter', -5.0, 5.0)\n  getattr(workspace,'import')(alpha)\n  pdf_b = ROOT.RooExponential('pdf_b', 'pdf_b', fit_var, alpha)\n  getattr(workspace,'import')(pdf_b)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/model_initializers.py",
+    "function_name": "add_background_model_exponential",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 12,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

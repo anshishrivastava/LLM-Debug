@@ -1,0 +1,22 @@
+{
+  "instruction": "Largest Perimeter",
+  "output": "  public int largestPerimeter(int[] nums) {\n    Arrays.sort(nums);\n\n    for (int i = nums.length - 1; i > 1; --i)\n      if (nums[i - 2] + nums[i - 1] > nums[i])\n        return nums[i - 2] + nums[i - 1] + nums[i];\n\n    return 0;\n  }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "GAURAV-SENGAR-14/LEETCODE-PROBLEMS",
+    "repo_created_date": "2025-01-13",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "1018-largest-perimeter-triangle/largest-perimeter-triangle.java",
+    "function_name": "largestPerimeter",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 9,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Create StrategyMetrics from saved dictionary.",
+  "output": "    def from_dict(cls, data: Dict[str, Any]) -> \"StrategyMetrics\":\n        \"\"\"Create StrategyMetrics from saved dictionary.\"\"\"\n        from shared.market_hours import get_us_market_time\n        metrics = cls()\n        metrics.total_premium_collected = data.get(\"total_premium_collected\", 0.0)\n        metrics.total_straddle_cost = data.get(\"total_straddle_cost\", 0.0)\n        metrics.realized_pnl = data.get(\"realized_pnl\", 0.0)\n        metrics.recenter_count = data.get(\"recenter_count\", 0)\n        metrics.roll_count = data.get(\"roll_count\", 0)\n\n        # Only restore daily metrics if they're from today (same trading day)\n        # This ensures daily tracking resets properly on new days\n        saved_date = data.get(\"daily_metrics_date\", data.get(\"daily_counts_date\", \"\"))\n        today = get_us_market_time().strftime(\"%Y-%m-%d\")\n        if saved_date == today:\n            metrics.daily_recenter_count = data.get(\"daily_recenter_count\", 0)\n            metrics.daily_roll_count = data.get(\"daily_roll_count\", 0)\n            metrics.daily_pnl_start = data.get(\"daily_pnl_start\", 0.0)\n            metrics.spy_open = data.get(\"spy_open\", 0.0)\n            metrics.spy_high = data.get(\"spy_high\", 0.0)\n            metrics.spy_low = data.get(\"spy_low\", 0.0)\n            metrics.vix_high = data.get(\"vix_high\", 0.0)\n            metrics.vix_samples = data.get(\"vix_samples\", [])\n        # else: daily metrics stay at default (new day - will be initialized at market open)\n\n        metrics.trade_count = data.get(\"trade_count\", 0)\n        metrics.winning_trades = data.get(\"winning_trades\", 0)\n        metrics.losing_trades = data.get(\"losing_trades\", 0)\n        metrics.best_trade_pnl = data.get(\"best_trade_pnl\", 0.0)\n        metrics.worst_trade_pnl = data.get(\"worst_trade_pnl\", 0.0)\n        metrics.total_trade_pnl = data.get(\"total_trade_pnl\", 0.0)\n        metrics.peak_pnl = data.get(\"peak_pnl\", 0.0)\n        metrics.max_drawdown = data.get(\"max_drawdown\", 0.0)\n        return metrics",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/models/metrics.py",
+    "function_name": "from_dict",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 34,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

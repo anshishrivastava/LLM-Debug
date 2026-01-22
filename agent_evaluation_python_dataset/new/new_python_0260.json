@@ -1,0 +1,22 @@
+{
+  "instruction": "Generate Imgid Idx",
+  "output": "def generate_imgid_idx(input_path, output_path):\n    if \"RAD\" in input_path:\n        with open(input_path, \"rb\") as f:\n            dataset = json.load(f)\n        imgid2idx = {}\n        idx = 0\n        for item in dataset:\n            image_name = item[\"image_name\"]\n            if image_name not in imgid2idx.keys():\n                imgid2idx[image_name] = idx\n                idx += 1\n    else:\n        with open(input_path+\"train.json\", \"rb\") as f:\n            train_dataset = json.load(f)\n        with open(input_path+\"validation.json\", \"rb\") as f:\n            val_dataset = json.load(f)\n        with open(input_path+\"test.json\", \"rb\") as f:\n            test_dataset = json.load(f)\n        imgid2idx = {}\n        for item in train_dataset:\n            image_name = item[\"img_name\"]\n            image_id = item[\"img_id\"]\n            if image_name not in imgid2idx.keys():\n                imgid2idx[image_name] = image_id\n        for item in val_dataset:\n            image_name = item[\"img_name\"]\n            image_id = item[\"img_id\"]\n            if image_name not in imgid2idx.keys():\n                imgid2idx[image_name] = image_id\n        for item in test_dataset:\n            image_name = item[\"img_name\"]\n            image_id = item[\"img_id\"]\n            if image_name not in imgid2idx.keys():\n                imgid2idx[image_name] = image_id\n    \n    pickle.dump(imgid2idx, open(output_path, \"wb\"))",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "98haiting/General-or-Medical-CLIP-Which-one-Shall-We-Choose",
+    "repo_created_date": "2024-10-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "biomed_clip/VQA.py",
+    "function_name": "generate_imgid_idx",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 36,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

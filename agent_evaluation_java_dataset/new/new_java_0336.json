@@ -1,0 +1,22 @@
+{
+  "instruction": "Letter Combinations",
+  "output": "    public List<String> letterCombinations(String digits) {\n        List<String> ans = new ArrayList<>();\n        if(digits == null || digits.isEmpty())return ans;\n        // helper(\"\",digits,ans);\n        helper(new StringBuilder(),digits,ans);\n        return ans;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "bishal292/LeetCodeProblems",
+    "repo_created_date": "2024-11-30",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0017-letter-combinations-of-a-phone-number/0017-letter-combinations-of-a-phone-number.java",
+    "function_name": "letterCombinations",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 7,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

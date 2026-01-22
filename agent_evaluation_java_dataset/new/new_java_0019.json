@@ -1,0 +1,22 @@
+{
+  "instruction": "Perform Shield Bash",
+  "output": "\n    private void performShieldBash() {\n        player.addAbilityVisual(AbilityVisual.ConalAttack.createWhite(player, gameProj, 0.1f, 30f));\n\n        com.badlogic.gdx.math.Vector2 playerPos = player.getPosition();\n        float attackRange = 30f;\n\n        com.badlogic.gdx.math.Vector3 mousePos3D = gameProj.getCamera().unproject(\n                new com.badlogic.gdx.math.Vector3(Gdx.input.getX(), Gdx.input.getY(), 0)\n        );\n        com.badlogic.gdx.math.Vector2 mousePos = new com.badlogic.gdx.math.Vector2(mousePos3D.x, mousePos3D.y);\n        com.badlogic.gdx.math.Vector2 attackDir = new com.badlogic.gdx.math.Vector2(\n                mousePos.x - playerPos.x, mousePos.y - playerPos.y\n        ).nor();\n\n        for (managers.Chunk chunk : gameProj.getChunks().values()) {\n            for (entities.Enemy enemy : new ArrayList<>(chunk.getEnemies())) {\n                if (enemy.getBody() != null) {\n                    com.badlogic.gdx.math.Vector2 enemyPos = enemy.getBody().getPosition();\n                    com.badlogic.gdx.math.Vector2 toEnemy = new com.badlogic.gdx.math.Vector2(\n                            enemyPos.x - playerPos.x, enemyPos.y - playerPos.y\n                    );\n\n                    if (toEnemy.len() < attackRange && toEnemy.nor().dot(attackDir) > 0.5f) {\n                        enemy.takeDamage(SHIELD_BASH_DAMAGE);\n                        StunEffect stun = new StunEffect(enemy, 0.5f);\n                        stun.onApply();\n                        addStatusEffect(enemy, stun);\n                    }\n                }\n            }\n\n            for (entities.BossKitty boss : new ArrayList<>(chunk.getBossKitty())) {\n                if (boss.getBody() != null) {\n                    com.badlogic.gdx.math.Vector2 enemyPos = boss.getBody().getPosition();\n                    com.badlogic.gdx.math.Vector2 toEnemy = new com.badlogic.gdx.math.Vector2(\n                            enemyPos.x - playerPos.x, enemyPos.y - playerPos.y\n                    );\n\n                    if (toEnemy.len() < attackRange && toEnemy.nor().dot(attackDir) > 0.5f) {\n                        boss.takeDamage(SHIELD_BASH_DAMAGE);\n                        StunEffect stun = new StunEffect(boss, 0.5f);\n                        stun.onApply();\n                        addStatusEffect(boss, stun);\n                    }\n                }\n            }\n        }\n\n        // Check dungeon enemies\n        if (gameProj.getCurrentDungeon() != null) {\n            for (entities.DungeonEnemy enemy : new ArrayList<>(gameProj.getCurrentDungeon().getEnemies())) {\n                if (enemy.getBody() != null) {\n                    com.badlogic.gdx.math.Vector2 enemyPos = enemy.getBody().getPosition();\n                    com.badlogic.gdx.math.Vector2 toEnemy = new com.badlogic.gdx.math.Vector2(\n                            enemyPos.x - playerPos.x, enemyPos.y - playerPos.y\n                    );\n\n                    if (toEnemy.len() < attackRange && toEnemy.nor().dot(attackDir) > 0.5f) {\n                        enemy.takeDamage(SHIELD_BASH_DAMAGE);\n                        StunEffect stun = new StunEffect(enemy, 0.5f);\n                        stun.onApply();\n                        addStatusEffect(enemy, stun);\n                    }\n                }\n            }\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/AbilityManager.java",
+    "function_name": "performShieldBash",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 68,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

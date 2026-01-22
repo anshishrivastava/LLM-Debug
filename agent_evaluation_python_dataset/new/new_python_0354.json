@@ -1,0 +1,22 @@
+{
+  "instruction": "Define all bond/angle/etc types for the full set of possible chemistries in training data",
+  "output": "    def define_discrete_topology_types(self, neighbors):\n        \"\"\"\n        Define all bond/angle/etc types for the full set of possible chemistries in training data\n        saved into the dataset first. These will be referenced to populate the individual molecule types\n        \"\"\"\n        self.atom_type = self.set_atom_type(neighbors)\n        self.num_node_types = self.atom_type.max().item() + 1\n        self.bonds = build_bonds(self, neighbors)\n        self.angles = build_angles(self, neighbors)\n        self.dihedrals = build_dihedrals(self, neighbors)\n        self.impropers = build_impropers(self, self.bonds, neighbors)\n\n        self.bond_type = self.set_bond_type()\n        self.angle_type = self.set_angle_type()\n        self.dihedral_type = self.set_dihedral_type()\n        self.improper_type = self.set_improper_type()",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/data/builder.py",
+    "function_name": "define_discrete_topology_types",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 16,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Adds signal model that is template smeared by a Gaussian",
+  "output": "def add_signal_model_mcsmear(workspace, ibin, is_pass, get_histogram):\n  '''Adds signal model that is template smeared by a Gaussian\n\n  workspace      workspace to add model to; must have variable fit_var\n  ibin           int, bin number\n  is_pass        bool, if is passing leg\n  get_histogram  function that returns TH1D given ibin and is_pass\n  '''\n\n  fit_var = workspace.var('fit_var')\n  mean = ROOT.RooRealVar('mean', 'Smearing gaussian peak', -10.0, 10.0) \n  sigma = ROOT.RooRealVar('sigma', 'Smearing gaussian sigma', 0.5, 5.0) \n  getattr(workspace,'import')(mean)\n  getattr(workspace,'import')(sigma)\n\n  hist = get_histogram(ibin, is_pass)\n  core_hist = ROOT.RooDataHist('pdf_s_core_hist',\n                               'pdf_s_core_hist',\n                               ROOT.RooArgList(fit_var), hist)\n  getattr(workspace,'import')(core_hist)\n  pdf_s_core = ROOT.RooHistPdf('pdf_s_core','pdf_s_core',\n                               ROOT.RooArgSet(fit_var),core_hist)\n  pdf_s_res = ROOT.RooGaussian('pdf_s_res','pdf_s_res',fit_var,mean,sigma)\n  pdf_s = ROOT.RooFFTConvPdf('pdf_s','pdf_s',fit_var,pdf_s_core,pdf_s_res)\n  getattr(workspace,'import')(pdf_s)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/model_initializers.py",
+    "function_name": "add_signal_model_mcsmear",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 25,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Estimates patch positions on a Macbeth chart with rough barrel distortion compensation.",
+  "output": "def GetPatchPos_WithDistortion(Patch1_pos, Patch_size_x, Patch_size_y, Image_angle, **kwargs):\n\t\"\"\"\n\tEstimates patch positions on a Macbeth chart with rough barrel distortion compensation.\n\tEnsures all coordinates remain in the image coordinate system (positive values).\n\n\tInputs:\n\t\t- Patch1_pos: [y0, x0] coordinate of patch 1 (top-left brown) in pixels\n\t\t- Patch_size_x/y: average patch spacing (pixels)\n\t\t- Image_angle: chart tilt in degrees (positive = counterclockwise)\n\t\t- kwargs:\n\t\t\t- k1, k2: barrel distortion coefficients (default 0)\n\t\t\t- ImageShape: (height, width) in pixels [required]\n\t\t\t- Help: prints this docstring\n\n\tOutput:\n\t\t- Positions: array of [index, x, y] for each of the 30 patches (in distorted image coordinates)\n\t\"\"\"\n\n\t\n\tHelp = kwargs.get('Help', False)\n\tif Help:\n\t\tprint(inspect.getdoc(GetPatchPos_WithDistortion))\n\t\treturn 0\n\n\tk1 = kwargs.get('k1', 0.0)\n\tk2 = kwargs.get('k2', 0.0)\n\tImageShape = kwargs.get('ImageShape', None)\n\tif ImageShape is None:\n\t\traise ValueError(\"You must supply ImageShape=(height, width) for radial correction\")\n\n\tif k1==0.0 and k2==0.0:\n\t\tPositions = []\n\t\t[y0, x0] = Patch1_pos\n\t\tImage_angle_rad = Image_angle*np.pi/180\n\t\tindex = 0\n\t\tfor j in range(0,5):\n\t\t\ty0s = y0 -  j*Patch_size_y*np.cos(Image_angle_rad) #j*Patch_size -\n\t\t\tx0s = x0 + j*Patch_size_x*np.sin(Image_angle_rad)\n\t\t\tfor i in range(0,6):\n\t\t\t\tx = x0s - Patch_size_x*np.cos(Image_angle_rad)*i\n\t\t\t\ty = y0s - Patch_size_x*np.sin(Image_angle_rad)*i\n\t\t\t\t# if (j==0 and i==5):\n\t\t\t\t# \ty = y-15\n\t\t\t\t# \tx = x+10\n\t\t\t\tPositions.append([index, x, y])\n\t\t\t\tindex +=1\n\telse:\n\t\th_px, w_px = ImageShape\n\t\tx_c = w_px / 2\n\t\ty_c = h_px / 2\n\n\t\tPositions = []\n\t\t[y0, x0] = Patch1_pos\n\t\tangle_rad = Image_angle * np.pi / 180\n\t\tindex = 0\n\t\t\n\t\tdiag2 = w_px**2 + h_px**2\n\n\t\tfor j in range(5):  # rows\n\t\t\tfor i in range(6):  # cols\n\t\t\t\t# Estimate raw offset from patch 1\n\t\t\t\tdx = -i * Patch_size_x * np.cos(angle_rad) + j * Patch_size_x * np.sin(angle_rad)\n\t\t\t\tdy = -i * Patch_size_x * np.sin(angle_rad) - j * Patch_size_y * np.cos(angle_rad)\n\t\t\t\tx_guess = x0 + dx\n\t\t\t\ty_guess = y0 + dy\n\n\t\t\t\t# Apply local scale adjustment for barrel distortion\n\t#             scale = rough_radial_scaling(x_guess, y_guess, x_c, y_c, k1, k2)\n\t\t\t\tscale = rough_radial_scaling(x_guess, y_guess, x_c, y_c, k1, k2, diag2)\n\t\t\t\tdx_adj = dx * scale\n\t\t\t\tdy_adj = dy * scale\n\n\t\t\t\tx = x0 + dx_adj\n\t\t\t\ty = y0 + dy_adj\n\t\t\t\t# if j == 0 and i == 5:\n\t\t\t\t# \ty -= 15\n\t\t\t\t# \tx += 10\n\n\t\t\t\t# Ensure coordinates remain positive\n\t\t\t\tx = max(0, min(x, w_px - 1))\n\t\t\t\ty = max(0, min(y, h_px - 1))\n\n\t\t\t\tPositions.append([index, x, y])\n\t\t\t\tindex += 1\n\n\treturn np.array(Positions)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "YzaboRa/HySE_HypercubeFunctions",
+    "repo_created_date": "2024-08-22",
+    "repo_stars": 0,
+    "repo_forks": 2,
+    "file_path": "HySE/UserTools.py",
+    "function_name": "GetPatchPos_WithDistortion",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 86,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

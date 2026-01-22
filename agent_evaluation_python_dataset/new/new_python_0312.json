@@ -1,0 +1,22 @@
+{
+  "instruction": "Validate and re-encode a Shadowsocks config.",
+  "output": "def validate_and_reencode_config(config):\n    \"\"\"Validate and re-encode a Shadowsocks config.\"\"\"\n    details = extract_config_details(config)\n    if not details:\n        return None\n\n    try:\n        # Test if the port is open\n        with socket.create_connection((details[\"host\"], int(details[\"port\"])), timeout=5):\n            logger.info(f\"Port is open for config: {config}\")\n\n        # Optional: Add more specific Shadowsocks validation here\n        # For example, check if Shadowsocks server responds correctly\n\n        return config  # Return the original config if valid\n    except socket.error as e:\n        logger.warning(f\"Failed to validate config: {config} - {e}\")\n        return None",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "3yed-61/Shadowsocks",
+    "repo_created_date": "2025-01-21",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "config-cleaner.py",
+    "function_name": "validate_and_reencode_config",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 18,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

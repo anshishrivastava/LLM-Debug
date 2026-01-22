@@ -1,0 +1,22 @@
+{
+  "instruction": "Adds information about fitting variable",
+  "output": "  def set_fitting_variable(self, name: str, description: str, \n                           nbins: int, var_range: tuple[float,float], \n                           weight: str='1'):\n    '''Adds information about fitting variable\n\n    Args:\n      name: name of branch in TTree or C++ expression\n      description: name used in plots (with TLaTeX)\n      nbins: number of bins to use for fit variable\n      var_range: start and end of fit range\n      weight: expression for weight to use\n    '''\n    self.fit_var_name = name\n    self.fit_var_desc = description\n    self.fit_var_nbins = nbins\n    self.fit_var_range = var_range\n    self.fit_var_weight = weight\n    self.flag_set_fitting_variable = True",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_analyzer.py",
+    "function_name": "set_fitting_variable",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 18,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

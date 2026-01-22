@@ -1,0 +1,22 @@
+{
+  "instruction": "Write Playlist",
+  "output": "def write_playlist(file_path, entries):\n    with open(file_path, 'w', encoding='utf-8') as file:\n        file.write('#EXTM3U\\n')\n        for entry in entries:\n            for line in entry:\n                file.write(line)\n            file.write('\\n')  # Ensure there is a single newline after each entry",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Love4vn/Test",
+    "repo_created_date": "2024-06-07",
+    "repo_stars": 36,
+    "repo_forks": 5,
+    "file_path": "cn2en.py",
+    "function_name": "write_playlist",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 7,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

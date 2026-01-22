@@ -1,0 +1,22 @@
+{
+  "instruction": "Extends a histogram so it extends from low to high",
+  "output": "def extend_hist(hist: ROOT.TH1D, low: float, high: float) -> ROOT.TH1D:\n  '''Extends a histogram so it extends from low to high\n\n  Args:\n    hist: histogram to extend\n    low: new low edge\n    high: new high edge\n\n  Returns:\n    extended histogram\n  '''\n  #calculate new binning\n  nbins_old = hist.GetNbinsX()\n  low_old = hist.GetXaxis().GetBinLowEdge(1)\n  bin_width = hist.GetXaxis().GetBinWidth(1)\n  nbins_new = int((high-low)/bin_width)\n  first_old_bin = int((low_old-low)/bin_width)\n  #build new histogram\n  hist_new = ROOT.TH1D(hist.GetName()+'_ext','',nbins_new,low,high)\n  for ibin in range(1,nbins_old+1):\n    new_bin = ibin+first_old_bin\n    hist_new.SetBinContent(new_bin, hist.GetBinContent(ibin))\n    hist_new.SetBinError(new_bin, hist.GetBinError(ibin))\n  return hist_new",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_utils.py",
+    "function_name": "extend_hist",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 24,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

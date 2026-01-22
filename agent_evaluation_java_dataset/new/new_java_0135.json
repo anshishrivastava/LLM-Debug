@@ -1,0 +1,22 @@
+{
+  "instruction": "Min Deletion Size",
+  "output": "    public int minDeletionSize(String[] strs) {\n        int rows = strs.length;\n        int cols = strs[0].length();\n        int count = 0;\n\n        for (int col = 0; col < cols; col++) {\n            for (int row = 1; row < rows; row++) {\n                if (strs[row].charAt(col) < strs[row - 1].charAt(col)) {\n                    count++;\n                    break;\n                }\n            }\n        }\n\n        return count;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "vhnguyenx/LeetCode-Problems",
+    "repo_created_date": "2024-10-14",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "src/Array/DeleteColumnsToMakeSorted.java",
+    "function_name": "minDeletionSize",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 16,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

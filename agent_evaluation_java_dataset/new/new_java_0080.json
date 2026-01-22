@@ -1,0 +1,22 @@
+{
+  "instruction": "Fetch Daily Cat Fact",
+  "output": "\n    private static String fetchDailyCatFact() throws IOException, InterruptedException {\n        // Try up to 3 times with increasing delay\n        for (int attempt = 1; attempt <= 3; attempt++) {\n            try {\n                HttpClient client = HttpClient.newHttpClient();\n                HttpRequest request = HttpRequest.newBuilder()\n                        .uri(URI.create(CAT_FACT_API_URL))\n                        .build();\n\n                HttpResponse<String> response = client.send(request,\n                        HttpResponse.BodyHandlers.ofString());\n\n                ObjectMapper mapper = new ObjectMapper();\n                JsonNode root = mapper.readTree(response.body());\n\n                return root.get(\"fact\").asText();\n            } catch (Exception e) {\n                System.err.println(\"Attempt \" + attempt + \" failed: \" + e.getMessage());\n                if (attempt < 3) {\n                    // Exponential backoff - wait longer between attempts\n                    Thread.sleep(1000 * attempt * attempt);\n                } else {\n                    // If all attempts fail, use a fallback fact\n                    return \"Cats have five toes on their front paws and four on their back paws. (FALLBACK - API unavailable)\";\n                }\n            }\n        }\n        // This line should never be reached due to the fallback above\n        return \"Unable to fetch cat fact\";\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mattbixby123/daily-cat-fact-committer",
+    "repo_created_date": "2025-01-05",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "src/DailyCatFactCommit.java",
+    "function_name": "fetchDailyCatFact",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 31,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

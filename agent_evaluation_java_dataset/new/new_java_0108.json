@@ -1,0 +1,22 @@
+{
+  "instruction": "Nth Largest",
+  "output": "    public static void nthLargest(TreeNode node, int n){\n        if(node==null || count>n) return;\n        nthLargest(node.right,n);\n        count++;\n        if (count==n)\n            System.out.print(node.val+\" \");\n\n        nthLargest(node.left,n);\n\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Victor5H/Java-CP",
+    "repo_created_date": "2024-10-08",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "src/Tree.java",
+    "function_name": "nthLargest",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 10,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "List all available accounts for the authenticated user.",
+  "output": "def list_accounts(config: dict):\n    \"\"\"\n    List all available accounts for the authenticated user.\n\n    Args:\n        config: Configuration dictionary\n    \"\"\"\n    # Initialize logging (required for SaxoClient)\n    setup_logging(config, bot_name=\"DELTA_NEUTRAL\")\n\n    # Initialize Saxo client\n    client = SaxoClient(config)\n\n    # Authenticate with Saxo API\n    print(\"\\nAuthenticating...\")\n    if not client.authenticate():\n        print(\"\u274c Failed to authenticate. Please check your credentials.\")\n        return\n\n    print(\"\u2705 Authentication successful!\\n\")\n\n    # Get list of accounts\n    print(\"Fetching accounts...\\n\")\n    accounts = client.get_accounts()\n\n    if not accounts:\n        print(\"\u274c No accounts found or failed to fetch accounts.\")\n        return\n\n    print(\"=\" * 80)\n    print(\"AVAILABLE ACCOUNTS\")\n    print(\"=\" * 80)\n\n    for idx, account in enumerate(accounts, 1):\n        print(f\"\\n{idx}. Account Key: {account.get('AccountKey')}\")\n        print(f\"   Account Type: {account.get('AccountType')}\")\n        print(f\"   Currency: {account.get('Currency')}\")\n        print(f\"   Account ID: {account.get('AccountId')}\")\n\n        # Show if this is the currently configured account\n        env = config[\"saxo_api\"].get(\"environment\", \"sim\")\n        account_cfg = config[\"account\"]\n        if env in account_cfg and isinstance(account_cfg[env], dict):\n            configured_key = account_cfg[env].get(\"account_key\")\n        else:\n            configured_key = account_cfg.get(\"account_key\")\n        if account.get('AccountKey') == configured_key:\n            print(f\"   \u2b50 CURRENTLY CONFIGURED\")\n\n        # Show account balance if available\n        client_temp = SaxoClient(config)\n        client_temp.access_token = client.access_token\n        client_temp.account_key = account.get('AccountKey')\n        client_temp.client_key = account.get('ClientKey', account.get('AccountKey'))\n\n        balance = client_temp.get_balance()\n        if balance:\n            total = balance.get('TotalValue', 0)\n            currency = balance.get('Currency', 'USD')\n            print(f\"   Balance: {total:,.2f} {currency}\")\n\n    print(\"\\n\" + \"=\" * 80)\n    print(\"\\nTo use a specific account, run:\")\n    print(f\"  python main.py --account <ACCOUNT_KEY>\")\n    print(f\"\\nExample:\")\n    print(f\"  python main.py --live --account {accounts[0].get('AccountKey')}\")\n    print(\"=\" * 80 + \"\\n\")",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/main.py",
+    "function_name": "list_accounts",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 67,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

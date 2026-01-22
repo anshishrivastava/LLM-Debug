@@ -1,0 +1,22 @@
+{
+  "instruction": "Helper function used to get appropriate histogram from analyzer",
+  "output": "def get_mc_histogram(ibin: int, is_pass: bool, mc_analyzer: TnpAnalyzer, \n                     highpt_bins: list[int]) -> ROOT.TH1D:\n  '''Helper function used to get appropriate histogram from analyzer\n\n  Args:\n    ibin: bin index\n    is_pass: indicates if passing leg\n    mc_analyzer: TnpAnalyzer to extract histogram from\n    highpt_bins: list of high pt bins where the failing leg is ignored\n\n  Returns:\n    specified histogram\n  '''\n  pass_fail = 'pass'\n  if not is_pass and not (ibin in highpt_bins):\n    pass_fail = 'fail'\n  mc_filename = 'out/'+mc_analyzer.temp_name+'/'+mc_analyzer.temp_name+'.root'\n  hist_name = 'hist_{}_bin{}'.format(pass_fail,ibin)\n  input_file = ROOT.TFile(mc_filename,'READ')\n  hist = input_file.Get(hist_name)\n  #deal with rare case of empty histogram\n  if hist.Integral()<=0.0:\n    if pass_fail=='pass':\n      hist_name = 'hist_fail_bin{}'.format(ibin)\n      hist = input_file.Get(hist_name)\n    else:\n      hist_name = 'hist_pass_bin{}'.format(ibin)\n      hist = input_file.Get(hist_name)\n  hist.SetDirectory(ROOT.nullptr)\n  input_file.Close()\n  return hist",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/rms_sf_analyzer.py",
+    "function_name": "get_mc_histogram",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 31,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

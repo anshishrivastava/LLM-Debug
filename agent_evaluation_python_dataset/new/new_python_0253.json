@@ -1,0 +1,22 @@
+{
+  "instruction": "Delete the current preset.",
+  "output": "    def delete_preset(self):\r\n        \"\"\"Delete the current preset.\"\"\"\r\n        if not self.current_preset:\r\n            messagebox.showwarning(\"Warning\", \"No preset selected.\")\r\n            return\r\n        \r\n        if messagebox.askyesno(\"Confirm Delete\", \r\n                               f\"Are you sure you want to delete preset '{self.current_preset}'?\"):\r\n            del self.presets[self.current_preset]\r\n            self.save_presets()\r\n            self.current_preset = None\r\n            self.refresh_preset_list()\r\n            self.title_label.config(text=\"Select a preset\")\r\n            \r\n            # Clear form or select first preset\r\n            if self.presets:\r\n                self.select_preset(list(self.presets.keys())[0])\r",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "misutesu-desu/MudaRemote",
+    "repo_created_date": "2024-10-12",
+    "repo_stars": 34,
+    "repo_forks": 5,
+    "file_path": "mudae_preset_editor.py",
+    "function_name": "delete_preset",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 17,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

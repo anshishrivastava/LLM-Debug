@@ -1,0 +1,22 @@
+{
+  "instruction": "Build the crossword puzzle using the tree-based approach.",
+  "output": "    def build_cw(self) -> None:\n        \"\"\"Build the crossword puzzle using the tree-based approach.\"\"\"\n        if not self.words:\n            return\n            \n        words = iter(self.words)\n        word = next(words)\n        \n        # Place first word randomly\n        placement = self.place_randomly(word)\n        if placement is None:\n            self.un_added_words.append(word)\n            return\n            \n        self.place_tup(word, placement)\n\n        # Place remaining words\n        for word in words:\n            placement = self.compare_to_existing(word) or self.place_randomly(word)\n            if placement is not None:\n                self.place_tup(word, placement)\n            else:\n                self.un_added_words.append(word)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "pb-96/crossword-generator",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "cw_generator_uv/cw_generator/cw_gen/cw_gen_with_tree.py",
+    "function_name": "build_cw",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 23,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

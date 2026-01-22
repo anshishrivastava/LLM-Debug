@@ -1,0 +1,22 @@
+{
+  "instruction": "Update current market data for underlying and VIX with PriceInfo fallback.",
+  "output": "    def update_market_data(self) -> bool:\n        \"\"\"\n        Update current market data for underlying and VIX with PriceInfo fallback.\n\n        Returns:\n            bool: True if data updated successfully, False otherwise.\n        \"\"\"\n        try:\n            # Get underlying price (SPY) - with external feed fallback for simulation\n            quote = self.client.get_spy_price(self.underlying_uic, symbol=self.underlying_symbol)\n            if quote:\n                quote_data = quote.get(\"Quote\", {})\n                price_info = quote.get(\"PriceInfo\", {})\n\n                # Check if using external source\n                if quote_data.get(\"_external_source\"):\n                    logger.info(f\"{self.underlying_symbol}: Using external price feed (simulation only)\")\n\n                # Priority: 1. Mid/LastTraded from Quote, 2. Last from PriceInfo\n                self.current_underlying_price = (\n                    quote_data.get(\"Mid\") or\n                    quote_data.get(\"LastTraded\") or\n                    price_info.get(\"Last\") or\n                    quote_data.get(\"Bid\") or\n                    quote_data.get(\"Ask\") or\n                    0.0\n                )\n\n                if self.current_underlying_price > 0:\n                    logger.debug(f\"{self.underlying_symbol} price: ${self.current_underlying_price:.2f}\")\n                    # MKT-002: Record price for flash crash velocity detection\n                    self._record_price_for_velocity(self.current_underlying_price)\n                else:\n                    logger.error(f\"{self.underlying_symbol}: No price data found\")\n                    return False\n            else:\n                logger.error(f\"Failed to get underlying quote for {self.underlying_symbol}\")\n                return False\n\n            # Get VIX price (This now uses your updated logic in saxo_client.py)\n            vix_price = self.client.get_vix_price(self.vix_uic)\n            if vix_price:\n                self.current_vix = vix_price\n                logger.debug(f\"VIX: {self.current_vix:.2f}\")\n            else:\n                logger.warning(\"Failed to get VIX price, using last known value\")\n\n            return True\n\n        except Exception as e:\n            logger.error(f\"Error updating market data: {e}\")\n            return False",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "update_market_data",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 52,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

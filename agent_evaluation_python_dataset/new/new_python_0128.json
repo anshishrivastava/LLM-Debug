@@ -1,0 +1,22 @@
+{
+  "instruction": "Adds gamma distribution as background model",
+  "output": "def add_background_model_gamma(workspace, ibin, is_pass):\n  '''Adds gamma distribution as background model\n\n  workspace    workspace to add model to; must have variable fit_var\n  ibin         int bin number\n  is_pass      bool, indicates if passing or failing leg\n  '''\n  fit_var = workspace.var('fit_var')\n  gamma = ROOT.RooRealVar('gamma', 'RooGamma gamma', 0.01, 20.0)\n  beta = ROOT.RooRealVar('beta', 'RooGamma beta', 0.5, 100.0)\n  gamma_mu = ROOT.RooRealVar('gamma_mu', 'RooGamma mu', 0.0, 60.0)\n  gamma.setVal(18.0)\n  beta.setVal(1.5)\n  gamma_mu.setVal(59.0)\n  gamma_mu.setConstant(True)\n  getattr(workspace,'import')(gamma)\n  getattr(workspace,'import')(beta)\n  getattr(workspace,'import')(gamma_mu)\n  pdf_b = ROOT.RooGamma('pdf_b', 'pdf_b', fit_var, gamma, beta, gamma_mu)\n  getattr(workspace,'import')(pdf_b)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/model_initializers.py",
+    "function_name": "add_background_model_gamma",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 20,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

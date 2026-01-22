@@ -1,0 +1,22 @@
+{
+  "instruction": "Adds background model that is CMS shape (erf*exp)",
+  "output": "def add_background_model_cmsshape(workspace, ibin, is_pass):\n  '''Adds background model that is CMS shape (erf*exp)\n\n  workspace      workspace to add model to; must have variable fit_var\n  ibin           int, bin number\n  is_pass        bool, if is passing leg\n  '''\n  fit_var = workspace.var('fit_var')\n  acms = ROOT.RooRealVar('acms', 'erf turn-on point', 50.0, 80.0)\n  beta = ROOT.RooRealVar('beta', 'erf width', 0.01, 0.08)\n  gamma = ROOT.RooRealVar('gamma', 'exp parameter', -2.0, 2.0)\n  peak = ROOT.RooRealVar('peak', 'peak', 90.0, 90.0)\n  acms.setVal(60.0)\n  beta.setVal(0.01)\n  gamma.setVal(0.005)\n  getattr(workspace,'import')(acms)\n  getattr(workspace,'import')(beta)\n  getattr(workspace,'import')(gamma)\n  getattr(workspace,'import')(peak)\n  pdf_b = ROOT.RooGenericPdf('pdf_b','pdf_b',\n      'TMath::Erfc((@1-@0)*@2)*exp((@4-@0)*@3)',\n      ROOT.RooArgList(fit_var, acms, beta, gamma, peak))\n  getattr(workspace,'import')(pdf_b)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/model_initializers.py",
+    "function_name": "add_background_model_cmsshape",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 23,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Oranges Rotting",
+  "output": "    public int orangesRotting(int[][] grid) \n    {\n        if(grid == null || grid.length == 0)\n            return 0;\n\n        int rows = grid.length;\n        int cols = grid[0].length;\n        Queue<int[]> queue = new LinkedList<>();\n        int fresh = 0;\n\n\n        for(int i = 0;i<rows;i++)\n        {\n            for(int j=0;j<cols;j++)\n            {\n                if(grid[i][j] == 2)\n                {\n                    queue.offer(new int[]{i,j});\n                }\n\n                if(grid[i][j] != 0)\n                {\n                    fresh++;\n                }\n            }\n        }\n\n        if(fresh == 0)\n            return 0;\n\n        int min= 0;\n        int count = 0;\n        int[] dx = {0,0,1,-1};\n        int[] dy ={1,-1,0,0};\n\n        while(!queue.isEmpty()) {\n            int size = queue.size();\n            count += size; \n            \n            for(int i = 0 ; i < size ; i++) {\n                int[] point = queue.poll(); \n                \n                for(int j = 0;j<4;j++) {\n                    int x = point[0] + dx[j];\n                    int y = point[1] + dy[j];\n                    \n                    if(x < 0 || y < 0 || x >= rows || y >= cols || grid[x][y] == 0 || \n                    grid[x][y] == 2) continue; \n                    \n                    grid[x][y] = 2; \n                    queue.offer(new int[]{x , y}); \n        }\n    }\n    \n    if(queue.size() != 0) {\n        min++; \n    }\n        \n    }\n\n    return fresh == count ? min : -1;\n\n}",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "TONYPRIYAN/DSA-Problem-Solving-",
+    "repo_created_date": "2025-01-17",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "1036-rotting-oranges/rotting-oranges.java",
+    "function_name": "orangesRotting",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 63,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

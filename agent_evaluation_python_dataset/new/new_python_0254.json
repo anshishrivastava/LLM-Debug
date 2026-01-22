@@ -1,0 +1,22 @@
+{
+  "instruction": "Run the bot with the current preset.",
+  "output": "    def run_bot(self):\r\n        \"\"\"Run the bot with the current preset.\"\"\"\r\n        if not self.current_preset:\r\n            messagebox.showwarning(\"Warning\", \"No preset selected.\")\r\n            return\r\n        \r\n        # Save first\r\n        self.save_current_preset()\r\n        \r\n        # Check if bot script exists\r\n        if not os.path.exists(BOT_SCRIPT):\r\n            messagebox.showerror(\"Error\", f\"{BOT_SCRIPT} not found in current directory.\")\r\n            return\r\n        \r\n        try:\r\n            # Launch in new console\r\n            if sys.platform == \"win32\":\r\n                subprocess.Popen(\r\n                    [sys.executable, BOT_SCRIPT, \"--preset\", self.current_preset],\r\n                    creationflags=subprocess.CREATE_NEW_CONSOLE\r\n                )\r\n            else:\r\n                subprocess.Popen([sys.executable, BOT_SCRIPT, \"--preset\", self.current_preset])\r\n            \r\n            messagebox.showinfo(\"Bot Started\", \r\n                               f\"Bot started with preset '{self.current_preset}'.\\n\"\r\n                               \"A new terminal window should open.\")\r\n        except Exception as e:\r\n            messagebox.showerror(\"Error\", f\"Failed to start bot:\\n{e}\")\r",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "misutesu-desu/MudaRemote",
+    "repo_created_date": "2024-10-12",
+    "repo_stars": 34,
+    "repo_forks": 5,
+    "file_path": "mudae_preset_editor.py",
+    "function_name": "run_bot",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 29,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

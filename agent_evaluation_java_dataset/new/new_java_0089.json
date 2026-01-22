@@ -1,0 +1,22 @@
+{
+  "instruction": "Distribute Coins",
+  "output": "    public int distributeCoins(TreeNode root) {\n        if(root==null) return 0;\n        minmove(root);\n        return ans;\n\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "itsakshitasaxena/Data-Structures-and-Algorithms",
+    "repo_created_date": "2024-11-16",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "1021-distribute-coins-in-binary-tree/distribute-coins-in-binary-tree.java",
+    "function_name": "distributeCoins",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 6,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Exits interactive fitter without saving",
+  "output": "  def interactive_quitnosave(self, user_input: list[str]) -> bool:\n    \"\"\"Exits interactive fitter without saving\n\n    Args:\n      user_input: user input\n\n    Returns:\n      true if user should exit interactive session\n    \"\"\"\n    return True",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/interactive_fit.py",
+    "function_name": "interactive_quitnosave",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 10,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Returns list of colors to be used for plots",
+  "output": "def get_palette_official(nplots):\n  '''Returns list of colors to be used for plots\n\n  @params\n  nplots - number of different overlayed plots\n  '''\n  if (nplots <= 6):\n    return [ROOT.TColor.GetColor('#5790fc'), ROOT.TColor.GetColor('#f89c20'), \n            ROOT.TColor.GetColor('#e42536'), ROOT.TColor.GetColor('#964a8b'), \n            ROOT.TColor.GetColor('#9c9ca1'), ROOT.TColor.GetColor('#7a21dd')]\n  elif (nplots <= 10):\n    return [ROOT.TColor.GetColor('#3f90da'), ROOT.TColor.GetColor('#ffa90e'), \n            ROOT.TColor.GetColor('#bd1f01'), ROOT.TColor.GetColor('#832db6'), \n            ROOT.TColor.GetColor('#94a4a2'), ROOT.TColor.GetColor('#a96b59'),\n            ROOT.TColor.GetColor('#e76300'), ROOT.TColor.GetColor('#b9ac70'),\n            ROOT.TColor.GetColor('#717581'), ROOT.TColor.GetColor('#92dadd')]\n  raise ValueError('More colors than allowed in official colors.')",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/root_plot_lib.py",
+    "function_name": "get_palette_official",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 17,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

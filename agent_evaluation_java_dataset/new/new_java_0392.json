@@ -1,0 +1,22 @@
+{
+  "instruction": "Longest Diverse String",
+  "output": "\n    public String longestDiverseString(int a, int b, int c) {\n        PriorityQueue<Pair> pq = new PriorityQueue<Pair>((x, y) ->\n            (y.count - x.count)\n        );\n        // Add the counts of a, b and c in priority queue.\n        if (a > 0) {\n            pq.add(new Pair(a, 'a'));\n        }\n\n        if (b > 0) {\n            pq.add(new Pair(b, 'b'));\n        }\n\n        if (c > 0) {\n            pq.add(new Pair(c, 'c'));\n        }\n\n        StringBuilder ans = new StringBuilder();\n        while (!pq.isEmpty()) {\n            Pair p = pq.poll();\n            int count = p.count;\n            char character = p.character;\n            // If three consecutive characters exists, pick the second most\n            // frequent character.\n            if (\n                ans.length() >= 2 &&\n                ans.charAt(ans.length() - 1) == p.character &&\n                ans.charAt(ans.length() - 2) == p.character\n            ) {\n                if (pq.isEmpty()) break;\n\n                Pair temp = pq.poll();\n                ans.append(temp.character);\n                if (temp.count - 1 > 0) {\n                    pq.add(new Pair(temp.count - 1, temp.character));\n                }\n            } else {\n                count--;\n                ans.append(character);\n            }\n\n            // If count is greater than zero, add it to priority queue.\n            if (count > 0) {\n                pq.add(new Pair(count, character));\n            }\n        }\n        return ans.toString();\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Amar-Manjarathkar/LeetCode-Daily_Challenges",
+    "repo_created_date": "2024-07-07",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "1405. Longest Happy String .java",
+    "function_name": "longestDiverseString",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 49,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

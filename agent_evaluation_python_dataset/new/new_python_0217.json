@@ -1,0 +1,22 @@
+{
+  "instruction": "Make Rebin Page",
+  "output": "def make_rebin_page():\n  years = years_run2 + years_run3\n  index_page_text = '<!DOCTYPE html>\\n'\n  index_page_text += '<html>\\n'\n  index_page_text += '<head>\\n'\n  index_page_text += '<link rel=\"stylesheet\" href=\"../style.css\">\\n'\n  index_page_text += '</head>\\n'\n  index_page_text += '<body>\\n'\n  index_page_text += '<h1>Rebinned electron trigger efficiency and scale '\n  index_page_text += 'factor summary plots</h1>\\n'\n  index_page_text += '<p>This page was auto-generated.</p>\\n'\n  index_page_text += '<p><a href=\"../index.html\">Back to top</a></p>\\n'\n  for year in years:\n    for meas_name in ['eltrig27','eltrig23','eltrig12']:\n      if meas_name=='eltrig27':\n        meas_name = singleel_names[year]\n      meas_desc = 'Electron trigger '+meas_name[-2:]\n      index_page_text += f'<h1>{year} {meas_desc}</h1>'\n      for plot_type, desc in [\n          ('eff_data','Data efficiency as a function of pT and eta.'),\n          ('eff_mc','MC efficiency as a function of pT and eta.'),\n          ('eff_ptbinned','Data (solid) and MC (dashed) efficiency as a '\n                          'function of pT for eta bins (colors).'),\n          ('eff_etabinned','Data (solid) and MC (dashed) efficiency as a '\n                           'function of eta for pT bins (colors).'),\n          ('sfpass','Data/MC efficiency ratio (scale factor) as a function '\n                    'of pT and eta.'),\n          ('sfpass_unc','Data/MC efficiency ratio (scale factor) uncertainty'\n                        'as a function of pT and eta.'),\n          ('sfpass_ptbinned','Data/MC efficiency ratio (scale factor) as a '\n                             'function of pT for different eta bins '\n                             '(colors).'),\n          ('sfpass_etabinned','Data/MC efficiency ratio (scale factor) as a '\n                              'function of eta for different pT bins '\n                              '(colors).'),\n          ('sffail','(1-data efficiency)/(1-MC efficiency) as a function '\n                    'of pT and eta.'),\n          ('sffail_unc','(1-data efficiency)/(1-MC efficiency) uncertainty'\n                        'as a function of pT and eta.'),\n          ('sffail_ptbinned','(1-data efficiency)/(1-MC efficiency) as a '\n                             'function of pT for different eta bins '\n                             '(colors).'),\n          ('sffail_etabinned','(1-data efficiency)/(1-MC efficiency) as a '\n                              'function of eta for different pT bins '\n                              '(colors).')]:\n        plot_name = f'hzg_{meas_name}_{year}_{plot_type}.png'\n        cmd = (f'cp out/hzg_{meas_name}_{year}_rebinned/{plot_name} '\n               +'rebinned_page/')\n        subprocess.run(cmd.split())\n        index_page_text += f'<figure><img src=\"{plot_name}\" width=\"256\"'\n        index_page_text += f' height=\"256\"><figcaption>(Above) {desc}'\n        index_page_text += '</figcaption></figure>\\n'\n  index_page_text += '</body>\\n'\n  index_page_text += '</html>'\n  with open('rebinned_page/index.html','w') as html_file:\n    html_file.write(index_page_text)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "scripts/copy_util.py",
+    "function_name": "make_rebin_page",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 56,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

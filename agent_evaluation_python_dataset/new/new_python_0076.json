@@ -1,0 +1,22 @@
+{
+  "instruction": "Check if short options are at risk of expiring In-The-Money.",
+  "output": "    def check_shorts_itm_risk(self) -> bool:\n        \"\"\"\n        Check if short options are at risk of expiring In-The-Money.\n\n        Video rule: \"Never let the shorts go In-The-Money (ITM)\"\n\n        Uses 0.3% threshold for faster bot reaction (30s check interval).\n        At SPY ~$690, 0.3% = ~$2.07 buffer from strike.\n\n        Returns:\n            bool: True if shorts need immediate action, False if safe.\n        \"\"\"\n        if not self.short_strangle or not self.current_underlying_price:\n            return False\n\n        call_strike = self.short_strangle.call_strike\n        put_strike = self.short_strangle.put_strike\n        price = self.current_underlying_price\n\n        # Check if shorts are ITM or dangerously close (within 0.3% of strike)\n        # Tighter threshold for bot's 30s check interval\n        call_threshold = call_strike * 0.003  # 0.3% of call strike (~$2.07 at $690)\n        put_threshold = put_strike * 0.003    # 0.3% of put strike\n\n        # Distance from current price to strikes\n        call_distance = call_strike - price\n        put_distance = price - put_strike\n\n        # If price is within 0.5% of either strike, shorts are in danger\n        if call_distance <= call_threshold:\n            pct_from_strike = (call_distance / call_strike) * 100\n            logger.critical(\n                f\"SHORT CALL ITM RISK! Price ${price:.2f} is {pct_from_strike:.2f}% \"\n                f\"(${call_distance:.2f}) from strike ${call_strike:.2f}. Immediate action required.\"\n            )\n            return True\n\n        if put_distance <= put_threshold:\n            pct_from_strike = (put_distance / put_strike) * 100\n            logger.critical(\n                f\"SHORT PUT ITM RISK! Price ${price:.2f} is {pct_from_strike:.2f}% \"\n                f\"(${put_distance:.2f}) from strike ${put_strike:.2f}. Immediate action required.\"\n            )\n            return True\n\n        return False",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "check_shorts_itm_risk",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 46,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

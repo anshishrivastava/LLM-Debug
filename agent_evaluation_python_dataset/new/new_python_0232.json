@@ -1,0 +1,22 @@
+{
+  "instruction": "Detects special Mudae event characters (like Christmas Art Contest)",
+  "output": "def is_free_event(embed):\n    \"\"\"\n    Detects special Mudae event characters (like Christmas Art Contest) \n    that do not consume claim rights.\n    \"\"\"\n    if not embed or not embed.description:\n        return False\n    desc = embed.description.lower()\n    # \"on me, it's free!\" is the standard indicator for these event cards.\n    free_keywords = [\"it's free!\", \"\u00e9 de gra\u00e7a!\", \"\u00a1es gratis!\", \"christmas art contest\", \"new year's contest\"]\n    return any(k in desc for k in free_keywords)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "misutesu-desu/MudaRemote",
+    "repo_created_date": "2024-10-12",
+    "repo_stars": 34,
+    "repo_forks": 5,
+    "file_path": "mudae_bot.py",
+    "function_name": "is_free_event",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 11,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

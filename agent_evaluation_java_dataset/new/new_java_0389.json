@@ -1,0 +1,22 @@
+{
+  "instruction": "Evaluate Sub Expr",
+  "output": "\n    private char evaluateSubExpr(String subExpr) {\n        // Extract the operator and the enclosed values\n        char op = subExpr.charAt(0);\n        String values = subExpr.substring(2, subExpr.length() - 1);\n        // Apply logical operations based on the operator\n        if (op == '!') return values.charAt(0) == 't' ? 'f' : 't';\n        if (op == '&') return values.contains(\"f\") ? 'f' : 't';\n        if (op == '|') return values.contains(\"t\") ? 't' : 'f';\n        return 'f'; // This point should never be reached\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Amar-Manjarathkar/LeetCode-Daily_Challenges",
+    "repo_created_date": "2024-07-07",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "1106. Parsing A Boolean Expression .java",
+    "function_name": "evaluateSubExpr",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 11,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

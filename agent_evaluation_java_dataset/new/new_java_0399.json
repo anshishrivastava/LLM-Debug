@@ -1,0 +1,22 @@
+{
+  "instruction": "Same Check",
+  "output": "\n    private static void sameCheck(int[][] arr1, int[][] arr2){\n        for(int i = 0; i < arr1.length; i++) {\n        for(int j = 0; j < arr1[i].length; j++) {\n            System.out.print((arr1[i][j] == arr2[i][j] ? 0 : 1) + \" \");\n        }\n        System.out.println();\n    }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "bumstone/codetree-algorithm",
+    "repo_created_date": "2024-12-31",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "250102/\ub450 \uac1c\uc758 \uaca9\uc790 \ube44\uad50\ud558\uae30/compare-two-grid.java",
+    "function_name": "sameCheck",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 9,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

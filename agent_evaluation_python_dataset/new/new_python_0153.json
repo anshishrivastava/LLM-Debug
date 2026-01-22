@@ -1,0 +1,22 @@
+{
+  "instruction": "Generates webpage that summarizes output",
+  "output": "  def generate_web_output(self):\n    '''Generates webpage that summarizes output\n    '''\n    #do checks\n    sf_filename = 'out/{0}/{0}_scalefactors.json'.format(self.name)\n    if not os.path.exists(sf_filename):\n      print('ERROR: general output must be created before web output')\n      return\n    if os.path.isdir('out/web_{0}'.format(self.name)):\n      print('ERROR: web output already exists, aborting')\n      return\n\n    #generate plots\n    webdir = 'out/web_{0}'.format(self.name)\n    os.mkdir(webdir)\n    self.data_nom_tnp_analyzer.generate_web_output(webdir)\n    self.data_altsig_tnp_analyzer.generate_web_output(webdir)\n    self.data_altbkg_tnp_analyzer.generate_web_output(webdir)\n    self.data_altsigbkg_tnp_analyzer.generate_web_output(webdir)\n    self.mc_nom_tnp_analyzer.generate_web_output(webdir)\n    self.generate_output(True)\n    plot_types = ['eff_data','eff_mc','eff_ptbinned','eff_etabinned','sfpass',\n                  'sfpass_unc','sfpass_ptbinned','sfpass_etabinned','sffail',\n                  'sffail_unc','sffail_ptbinned','sffail_etabinned']\n    if self.binning_type=='std_gap' or self.binning_type=='std_gap_highpt':\n      plot_types += ['eff_gapptbinned','sfpass_gapptbinned',\n                     'sffail_gapptbinned']\n    for plot_type in plot_types:\n      subprocess.run(('mv out/{0}/{0}_{1}.png out/web_{0}/'.format(self.name,\n                      plot_type)).split())\n\n    nbins = self.data_nom_tnp_analyzer.nbins\n\n    #setup web page/directory\n    if self.binning_type=='std_gap':\n      with open('data/index_template_gap.html','r') as template_file:\n        index_content = template_file.read()\n    elif self.binning_type=='std_gap_highpt':\n      with open('data/index_template_gap_highpt.html','r') as template_file:\n        index_content = template_file.read()\n    else:\n      with open('data/index_template.html','r') as template_file:\n        index_content = template_file.read()\n    index_content = index_content.replace('{0}',self.name)\n    with open('{0}/index.html'.format(webdir),'w') as webindex_file:\n      webindex_file.write(index_content)\n    with open('{0}/fits.html'.format(webdir),'w') as fits_file:\n      fits_file.write('<!DOCTYPE html>\\n<html>\\n<head>\\n')\n      fits_file.write('<link rel=\"stylesheet\" href=\"../style.css\">\\n')\n      fits_file.write('</head>\\n<body>\\n')\n      fits_file.write('<p>This page was auto-generated.</p>')\n      fits_file.write('<p>Data in black, background in blue,')\n      fits_file.write(' signal+background in red. ')\n      fits_file.write('All fit models included (scroll to see).</p>')\n      fits_file.write('<p><a href=\"index.html\">Back to summary</a></p>\\n')\n      for analyzer, desc in [(self.data_nom_tnp_analyzer, 'Nominal fits'), \n                       (self.data_altsig_tnp_analyzer, 'Altsig fits'), \n                       (self.data_altbkg_tnp_analyzer, 'Altbkg fits'), \n                       (self.data_altsigbkg_tnp_analyzer, 'Altsigbkg fits'),\n                       (self.mc_nom_tnp_analyzer, 'MC constraint fits')]:\n        fits_file.write('<p>{0}</p>'.format(desc))\n        for ibin in range(nbins):\n          fits_file.write(\n            '<img src=\"{0}_fit{1}.png\" width=\"765\" height=\"256\">'.format(\n            analyzer.temp_name,ibin))\n      fits_file.write('</body>\\n</html>\\n')",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/rms_sf_analyzer.py",
+    "function_name": "generate_web_output",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 66,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

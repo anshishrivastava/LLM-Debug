@@ -1,0 +1,22 @@
+{
+  "instruction": "Repeated N Times",
+  "output": "    public int repeatedNTimes(int[] nums) {\n        java.util.HashSet<Integer> set = new java.util.HashSet<>();\n        for (int x : nums) {\n            if (!set.add(x)) return x;\n        }\n        return -1;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "GAURAV-SENGAR-14/LEETCODE-PROBLEMS",
+    "repo_created_date": "2025-01-13",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "1001-n-repeated-element-in-size-2n-array/n-repeated-element-in-size-2n-array.java",
+    "function_name": "repeatedNTimes",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 7,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

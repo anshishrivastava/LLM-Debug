@@ -1,0 +1,22 @@
+{
+  "instruction": "Count Occurrence",
+  "output": "\n    static int countOccurrence(int[] arr,int x){\n\n        //Time Complexity (TC): O(n)\n        //Space Complexity (SC): O(1)\n\n        int count=0;\n        for(int i=0;i<arr.length;i++){\n\n            if(arr[i]==x){\n                count++;\n            }\n        }\n\n        return count;\n\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "PatraTushar/DSA",
+    "repo_created_date": "2025-01-02",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "src/ArraysbyStriver/Basics/A1.java",
+    "function_name": "countOccurrence",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 17,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Exit all positions and close the trade.",
+  "output": "    def exit_all_positions(self, emergency_mode: bool = False) -> bool:\n        \"\"\"\n        Exit all positions and close the trade.\n\n        Args:\n            emergency_mode: If True, use aggressive pricing for faster fills (ITM risk, etc.)\n\n        Returns:\n            bool: True if exit successful, False otherwise.\n        \"\"\"\n        if emergency_mode:\n            logger.warning(\"=\" * 50)\n            logger.warning(\"\ud83d\udea8 EMERGENCY EXITING ALL POSITIONS (aggressive pricing)\")\n            logger.warning(\"=\" * 50)\n        else:\n            logger.info(\"=\" * 50)\n            logger.info(\"EXITING ALL POSITIONS\")\n            logger.info(\"=\" * 50)\n\n        self.state = StrategyState.EXITING\n\n        success = True\n\n        # Close short strangle first (use emergency mode if urgent)\n        if self.short_strangle:\n            if not self.close_short_strangle(emergency_mode=emergency_mode):\n                logger.error(\"Failed to close short strangle during exit\")\n                success = False\n                self._increment_failure_count(\"exit_close_shorts_failed\")\n\n        # Close long straddle (use emergency mode if urgent)\n        if self.long_straddle:\n            if not self.close_long_straddle(emergency_mode=emergency_mode):\n                logger.error(\"Failed to close long straddle during exit\")\n                success = False\n                self._increment_failure_count(\"exit_close_straddle_failed\")\n\n        if success:\n            self.state = StrategyState.IDLE\n            logger.info(\n                f\"All positions closed. Total P&L: ${self.metrics.total_pnl:.2f}, \"\n                f\"Recenters: {self.metrics.recenter_count}, Rolls: {self.metrics.roll_count}\"\n            )\n\n            # Log trade\n            if self.trade_logger:\n                action_prefix = \"[SIMULATED] \" if self.dry_run else \"\"\n                self.trade_logger.log_trade(\n                    action=f\"{action_prefix}EXIT_ALL\",\n                    strike=self.initial_straddle_strike,\n                    price=self.current_underlying_price,\n                    delta=0.0,\n                    pnl=self.metrics.total_pnl,\n                    saxo_client=self.client,\n                    underlying_price=self.current_underlying_price,\n                    vix=self.current_vix,\n                    option_type=\"Exit All\",\n                    expiry_date=None,\n                    dte=None,\n                    premium_received=None\n                )\n\n                # Clear all positions from Positions sheet\n                self.trade_logger.clear_all_positions()\n        else:\n            # CRITICAL FIX: Restore state based on what positions remain\n            # Don't leave in EXITING state which causes the bot to freeze\n            logger.warning(\"Exit incomplete - restoring state based on remaining positions\")\n            if self.long_straddle and self.short_strangle:\n                self.state = StrategyState.FULL_POSITION\n            elif self.long_straddle:\n                self.state = StrategyState.LONG_STRADDLE_ACTIVE\n            elif self.short_strangle:\n                # Unusual state - only shorts remain, force to IDLE to re-enter longs\n                logger.warning(\"Only shorts remain after failed exit - setting IDLE\")\n                self.state = StrategyState.IDLE\n            else:\n                self.state = StrategyState.IDLE\n            logger.info(f\"State restored to: {self.state.value}\")\n\n        return success",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "exit_all_positions",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 81,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Hex O P Config Forge",
+  "output": "\n    public HexOPConfigForge(ForgeConfigSpec.Builder builder) {\n        {%- for grp,lines in group_val(data,'category') %}\n        {%- set grp_pieces = grp.split('.') -%}\n        {%- for piece in grp_pieces %}\n        builder.push(\"{{piece}}\");\n        {%- endfor %}\n        {%- for line in lines %}\n        cfg_{{line.name}} = builder.comment(desc_{{line.name}}) {{-''-}}\n                .define{% if line.type == 'boolean' %}{% else %}InRange{% endif %}(\"{{line.name}}\", {{line.default}});\n        {%- endfor %}\n        {%- for piece in grp_pieces %}\n        builder.pop();\n        {%- endfor %}{{'\\n'}}\n        {%- endfor %}\n        INSTANCE = this;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "YukkuriC/HexOverpowered",
+    "repo_created_date": "2025-01-04",
+    "repo_stars": 2,
+    "repo_forks": 0,
+    "file_path": "codegen/templates/forge.java",
+    "function_name": "HexOPConfigForge",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 17,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

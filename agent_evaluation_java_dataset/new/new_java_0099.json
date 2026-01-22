@@ -1,0 +1,22 @@
+{
+  "instruction": "Find Maximum X O R",
+  "output": "    public int findMaximumXOR(int[] nums) {\n        Trie trie=new Trie();\n        int n=nums.length;\n        for(int i=0;i<n;i++){\n            trie.insert(nums[i]);\n        }\n        int max1=0;\n        for(int i=0;i<n;i++){\n            max1=Math.max(max1,trie.getMax(nums[i]));\n        }\n        return max1;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Ananthu191030/Leetcode",
+    "repo_created_date": "2024-10-30",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0421-maximum-xor-of-two-numbers-in-an-array/0421-maximum-xor-of-two-numbers-in-an-array.java",
+    "function_name": "findMaximumXOR",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 12,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

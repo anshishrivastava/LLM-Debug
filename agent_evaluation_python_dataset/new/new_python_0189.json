@@ -1,0 +1,22 @@
+{
+  "instruction": "Performs interactive fit to data",
+  "output": "  def fit_histogram_wrapper(self, ibin_str: str, pass_probe: str, model: str, \n                            param_initializer: str=''):\n    \"\"\"Performs interactive fit to data\n\n    Args:\n      ibin_str: bin to fit\n      pass_probe: pass or fail\n      model: model name\n      param_initializer: parameter initializer name\n    \"\"\"\n    #do initial checks\n    ibin = 0\n    try:\n      ibin = int(ibin_str)\n    except ValueError:\n      print('ERROR: Unable to cast bin, skipping fit.')\n      return\n    if ibin<0 or ibin>=self.nbins:\n      print('ERROR: Bin out of range.')\n      return\n    if pass_probe not in ['pass','p','P','fail','f','F']:\n      print('ERROR: <pass> parameter must be (p)ass or (f)ail.')\n      return\n    if not model in self.model_initializers:\n      print('ERROR: unknown fit model, aborting fit.')\n      return\n    if not param_initializer in self.param_initializers:\n      if not param_initializer=='':\n        print('ERROR: unknown param initializer, aborting fit.')\n        return\n    exit_code = 1\n    while exit_code==1:\n      exit_code = self.fit_histogram(ibin, pass_probe, model, \n                                     param_initializer)\n      if exit_code == 1:\n        if (ibin != (self.nbins-1)):\n          ibin += 1\n        else:\n          if (pass_probe in ['pass','p','P']):\n            ibin = 0\n            pass_probe = 'f'\n          else:\n            exit_code = 0\n      if exit_code==0:\n        print('Exiting interactive fitter bin {} category {}.'\n            .format(ibin, pass_probe))",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_analyzer.py",
+    "function_name": "fit_histogram_wrapper",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 46,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

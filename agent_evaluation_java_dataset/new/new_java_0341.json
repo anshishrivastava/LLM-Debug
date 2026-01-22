@@ -1,0 +1,22 @@
+{
+  "instruction": "Remove Duplicates",
+  "output": "    public int removeDuplicates(int[] nums) {\n        if(nums.length == 1)return 1;\n        int j = 1;// second pointer to point to the next Unique Element.\n        for(int i = 1;i<nums.length;i++){\n            if(nums[i] != nums[i-1])\n                nums[j++] = nums[i];\n        }\n        return j;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "bishal292/LeetCodeProblems",
+    "repo_created_date": "2024-11-30",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0026-remove-duplicates-from-sorted-array/0026-remove-duplicates-from-sorted-array.java",
+    "function_name": "removeDuplicates",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 9,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

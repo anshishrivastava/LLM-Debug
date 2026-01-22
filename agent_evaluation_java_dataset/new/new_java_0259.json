@@ -1,0 +1,22 @@
+{
+  "instruction": "Is Same Tree",
+  "output": "    \n    \n    public boolean isSameTree(TreeNode p, TreeNode q) \n    {\n        \n        if(p == null && q == null)\n        {\n            return true;\n        }\n        if(p == null || q == null)\n        {\n            return false;\n        }\n        if(p.val != q.val)\n        {\n            return false;\n        }\n\n\n        return isSameTree(p.left,q.left) && isSameTree(p.right,q.right);\n        \n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "TONYPRIYAN/DSA-Problem-Solving-",
+    "repo_created_date": "2025-01-17",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "100-same-tree/same-tree.java",
+    "function_name": "isSameTree",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 22,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

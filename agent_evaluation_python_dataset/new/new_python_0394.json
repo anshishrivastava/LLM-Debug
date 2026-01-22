@@ -1,0 +1,22 @@
+{
+  "instruction": "TIME-003: Get today's market close time, accounting for early close days.",
+  "output": "    def get_market_close_time_today(self) -> time:\n        \"\"\"\n        TIME-003: Get today's market close time, accounting for early close days.\n\n        Returns:\n            time: 13:00 (1pm) for early close days, 16:00 (4pm) otherwise\n        \"\"\"\n        from datetime import time as dt_time\n\n        is_early, reason = self.is_early_close_day()\n        if is_early:\n            logger.info(f\"\u23f0 TIME-003: Early close day ({reason}) - market closes at 1:00 PM ET\")\n            return dt_time(13, 0)  # 1pm ET\n\n        return dt_time(16, 0)  # 4pm ET (normal)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "get_market_close_time_today",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 15,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

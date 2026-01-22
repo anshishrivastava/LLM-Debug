@@ -1,0 +1,22 @@
+{
+  "instruction": "Record a job",
+  "output": "def raw_record(ctx, job_name, slurm_id, step_id, numerics, categories, cmd):\n    \"\"\"Record a job\"\"\"\n    slurm_id = f\"{slurm_id}.{step_id}\" if step_id is not None else slurm_id\n\n    jd = _parse_json_options(categories, numerics, job_name, cmd, slurm_id)\n\n    ctx.obj[\"slurmise\"].raw_record(jd)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "PrincetonUniversity/slurmise",
+    "repo_created_date": "2024-06-21",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "src/slurmise/__main__.py",
+    "function_name": "raw_record",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 7,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

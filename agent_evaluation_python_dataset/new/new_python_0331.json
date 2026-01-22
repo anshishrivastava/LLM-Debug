@@ -1,0 +1,22 @@
+{
+  "instruction": "Binning 2D",
+  "output": "def binning_2D(data1, data2, dx1, dx2, density=True):\n    min1, max1 = data1.min(), data1.max()\n    min2, max2 = data2.min(), data2.max()\n    nbins1 = int(np.ceil((max1 - min1) / dx1))\n    nbins2 = int(np.ceil((max2 - min2) / dx2))\n    count_mat = np.zeros(shape=(nbins1, nbins2))\n    for val1, val2 in zip(\n        data1.flatten(), data2.flatten()\n    ):  # , data1.mask.flatten(), data2.mask.flatten()): , mask1, mask2\n        # if not (mask1 or mask2):\n        idx1 = int(np.floor((val1 - min1) / dx1))\n        idx2 = int(np.floor((val2 - min2) / dx2))\n        count_mat[idx1, idx2] += 1\n\n    if density:\n        count_mat /= count_mat.sum() * dx1 * dx2\n\n    centers1 = np.arange(nbins1) * dx1 + dx1 / 2 + min1\n    centers2 = np.arange(nbins2) * dx2 + dx2 / 2 + min2\n    x_2d, y_2d = np.meshgrid(centers1, centers2)\n\n    return count_mat.T, x_2d, y_2d",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/analysis/trajectory_analysis.py",
+    "function_name": "binning_2D",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 22,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Function that computes the peak signal to noise ratio (PSNR) between two images",
+  "output": "def psnr(img1, img2, data_range=1.0, **kwargs):\n\t\"\"\"\n\tFunction that computes the peak signal to noise ratio (PSNR) between two images\n\tUsed to calculate how closely data matches a reference (spectra)\n\n\tInputs:\n\t\t- img1\n\t\t- img2\n\t\t- kwargs:\n\t\t\t- Help\n\n\tOutputs:\n\t\t- psnr\n\t\"\"\"\n\tHelp = kwargs.get('Help', False)\n\tif Help:\n\t\tprint(inspect.getdoc(psnr))\n\n\t# mse = np.mean((img1 - img2) ** 2)\n\tmse = np.mean(np.square(np.subtract(img1,img2)))\n\tif mse == 0:\n\t\t# return float('inf')\n\t\treturn np.Inf\n\treturn 20 * np.log10(data_range / np.sqrt(mse))",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "YzaboRa/HySE_HypercubeFunctions",
+    "repo_created_date": "2024-08-22",
+    "repo_stars": 0,
+    "repo_forks": 2,
+    "file_path": "HySE/UserTools.py",
+    "function_name": "psnr",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 24,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Createtree",
+  "output": "\n    public TreeNode createtree(int[] in, int[]pre, int ilo, int ihi, int plo, int phi){\n        if(ilo>ihi || plo>phi)   return null;\n\n        TreeNode node= new TreeNode(pre[plo]);\n\n        int idx=linear_search(in, ilo, ihi, pre[plo]);\n        int c=idx-ilo; //to get count of node\n\n        node.left= createtree(in,pre,ilo,idx-1,plo+1,plo+c);\n        node.right=createtree(in,pre,idx+1,ihi,plo+c+1,phi);\n\n        return node;\n\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "itsakshitasaxena/Data-Structures-and-Algorithms",
+    "repo_created_date": "2024-11-16",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "105-construct-binary-tree-from-preorder-and-inorder-traversal/construct-binary-tree-from-preorder-and-inorder-traversal.java",
+    "function_name": "createtree",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 15,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

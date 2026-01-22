@@ -1,0 +1,22 @@
+{
+  "instruction": "Back Track",
+  "output": "\n    private static void backTrack(List<String> temp, int idx, int depth) {\n        if (depth == repeat) {\n            maxValue = Math.max(maxValue, translate(temp));\n            return;\n        }\n\n        // \uc911\ubcf5 \uccb4\ud06c\n        String state = String.join(\"\", temp) + \"-\" + depth;\n        if (visited.contains(state)) {\n            return;\n        }\n        visited.add(state);\n\n        for (int i = idx; i < temp.size() - 1; i++) {\n            for (int j = i + 1; j < temp.size(); j++) {\n                // \ub9ac\uc2a4\ud2b8 \uc694\uc18c \uad50\ud658\n                changeValue(temp, i, j);\n                backTrack(temp, i, depth + 1);\n                // \uad50\ud658 \ud588\ub358 \uc694\uc18c \ub418\ub3cc\ub9ac\uae30\n                changeValue(temp, j, i);\n            }\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "xabinM/algorithm-record-Java",
+    "repo_created_date": "2024-09-19",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "src/SSAFY/backTrack/MaximumPrize.java",
+    "function_name": "backTrack",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 24,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

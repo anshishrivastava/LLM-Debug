@@ -1,0 +1,22 @@
+{
+  "instruction": "Pytorch implementations of nbr_list for minimum image convention, the offsets are only limited to 0, 1, -1:",
+  "output": "def torch_nbr_list(\n    xyz, cutoff, cell, directed=True, pbc_flag=True, requires_large_offsets=True\n):\n    \"\"\"Pytorch implementations of nbr_list for minimum image convention, the offsets are only limited to 0, 1, -1:\n    it means that no pair interactions is allowed for more than 1 periodic box length. It is so much faster than\n    neighbor_list algorithm in ase.\n    It is similar to the output of neighbor_list(\"ijS\", atomsobject, cutoff) but a lot faster\n    Args:\n        atomsobject (TYPE): Description\n        cutoff (float): cutoff for\n        device (str, optional): Description\n        requires_large_offsets: to get offsets beyond -1,0,1\n    Returns:\n        i, j, cutoff: just like ase.neighborlist.neighbor_list\n    \"\"\"\n\n    if pbc_flag:\n        # check if sufficiently large to run the \"fast\" nbr_list function\n        # otherwise, default to the \"robust\" nbr_list function below for small cells\n        if np.all(2 * cutoff < cell.diagonal()):\n            # fidn the distance from one to another\n            dis_mat = xyz[None, :, :] - xyz[:, None, :]\n            cell_dim = cell.diagonal()\n            # cell_dim = torch.Tensor(np.array(atomsobject.get_cell())).diag().to(device)\n            if requires_large_offsets:\n                shift = np.round(np.divide(dis_mat, cell_dim))\n                offsets = -shift\n            else:\n                offsets = np.greater_equal(-dis_mat, 0.5 * cell_dim).astype(\n                    float\n                ) + np.less(dis_mat, -0.5 * cell_dim).astype(float)\n\n            dis_mat = dis_mat + offsets * cell_dim\n            dis_sq = np.sum(np.power(dis_mat, 2), axis=-1)\n            mask = (dis_sq < cutoff**2) & (dis_sq != 0)\n            # print('min:', np.min(np.sqrt(dis_sq[dis_sq!=0])), np.max(np.sqrt(dis_sq[dis_sq!=0])))\n            nbr_list = mask.nonzero()\n            offsets = offsets[nbr_list[0], nbr_list[1], :]\n        # nbr_list[:, 1], :].detach().to(\"cpu\").numpy()\n        else:\n            raise NameError(\"only works if cutoff << cell_param for now\")\n    else:\n        raise NameError(\"only works if pbc for now\")\n\n    if not directed:\n        nbr_list = nbr_list[nbr_list[:, 1] > nbr_list[:, 0]]\n    # i, j = nbr_list[:, 0].detach().to(\"cpu\").numpy(\n    # ), nbr_list[:, 1].detach().to(\"cpu\").numpy()\n    i, j = nbr_list[0], nbr_list[1]\n\n    if pbc_flag:\n        offsets = offsets\n    else:\n        offsets = np.zeros((nbr_list.shape[0], 3))\n\n    return i, j, offsets",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/analysis/trajectory_analysis.py",
+    "function_name": "torch_nbr_list",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 56,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

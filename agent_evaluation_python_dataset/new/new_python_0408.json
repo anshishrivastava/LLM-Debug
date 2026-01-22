@@ -1,0 +1,22 @@
+{
+  "instruction": "Check if VIX is below the threshold for entry.",
+  "output": "    def check_vix_entry_condition(self) -> bool:\n        \"\"\"\n        Check if VIX is below the threshold for entry.\n\n        The strategy only enters when VIX < 18 to avoid entering\n        during high volatility periods.\n\n        Returns:\n            bool: True if VIX condition is met, False otherwise.\n        \"\"\"\n        if self.current_vix <= 0:\n            logger.warning(\"VIX data not available, cannot check entry condition\")\n            return False\n\n        is_below_threshold = self.current_vix < self.max_vix\n\n        if is_below_threshold:\n            logger.info(f\"VIX entry condition MET: {self.current_vix:.2f} < {self.max_vix}\")\n        else:\n            logger.info(f\"VIX entry condition NOT met: {self.current_vix:.2f} >= {self.max_vix}\")\n\n        return is_below_threshold",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "check_vix_entry_condition",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 22,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

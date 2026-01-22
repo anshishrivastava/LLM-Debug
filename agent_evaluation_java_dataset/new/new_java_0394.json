@@ -1,0 +1,22 @@
+{
+  "instruction": "Min Number Operations",
+  "output": "    public int minNumberOperations(int[] target) {\n        int totalOperations = 0;\n        int previousValue = 0;\n        \n        for (int currentValue : target) {\n            // Calculate the difference needed from the previous height\n            int diff = currentValue - previousValue;\n            \n            // If the current target is higher than the previous,\n            // we must add new operations to cover this new height.\n            // These operations start at or before this index.\n            if (diff > 0) {\n                totalOperations += diff;\n            }\n            \n            // If diff <= 0, it means the operations that built the\n            // previous element are sufficient (or more than sufficient).\n            // No new operations are needed; some old operations just\n            // don't extend this far.\n            \n            // The current value becomes the \"previous\" value\n            // for the next element's comparison.\n            previousValue = currentValue;\n        }\n        \n        return totalOperations;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Amar-Manjarathkar/LeetCode-Daily_Challenges",
+    "repo_created_date": "2024-07-07",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "1526. Minimum Number of Increments on Subarrays to Form a Target Array.java",
+    "function_name": "minNumberOperations",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 27,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

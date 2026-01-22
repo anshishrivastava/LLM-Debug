@@ -1,0 +1,22 @@
+{
+  "instruction": "Render Line Cone",
+  "output": "\n        private void renderLineCone(SpriteBatch batch) {\n            int segments = 12;\n            int segmentsToDraw = (int)(segments * fillProgress);\n            if (segmentsToDraw < 1 && fillProgress > 0) segmentsToDraw = 1;\n\n            float halfCone = coneAngle / 2f;\n            float angleStep = coneAngle / segments;\n\n            batch.setColor(indicatorColor.r, indicatorColor.g, indicatorColor.b, 0.4f);\n\n            for (int i = 0; i < segmentsToDraw; i++) {\n                float angle1 = facingAngle - halfCone + (i * angleStep);\n                float rad1 = (float) Math.toRadians(angle1);\n\n                float x1 = position.x + (float) Math.cos(rad1) * range;\n                float y1 = position.y + (float) Math.sin(rad1) * range;\n\n                drawLine(batch, position.x, position.y, x1, y1, 2f);\n            }\n\n            // Draw arc\n            batch.setColor(indicatorColor.r, indicatorColor.g, indicatorColor.b, 0.2f);\n            for (int i = 0; i < segmentsToDraw - 1; i++) {\n                float angle1 = facingAngle - halfCone + (i * angleStep);\n                float angle2 = facingAngle - halfCone + ((i + 1) * angleStep);\n                float rad1 = (float) Math.toRadians(angle1);\n                float rad2 = (float) Math.toRadians(angle2);\n\n                float x1 = position.x + (float) Math.cos(rad1) * range;\n                float y1 = position.y + (float) Math.sin(rad1) * range;\n                float x2 = position.x + (float) Math.cos(rad2) * range;\n                float y2 = position.y + (float) Math.sin(rad2) * range;\n\n                drawLine(batch, x1, y1, x2, y2, 2f);\n            }\n\n            batch.setColor(1f, 1f, 1f, 1f);\n        }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/AbilityVisual.java",
+    "function_name": "renderLineCone",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 39,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

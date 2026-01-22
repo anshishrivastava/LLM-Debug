@@ -1,0 +1,22 @@
+{
+  "instruction": "Parse Args",
+  "output": "def parse_args():\n    parser = argparse.ArgumentParser(description='CLIP used for VQA Task')\n    parser.add_argument('--dataset', type=str, default=None, \n                        help='Dataset to be used for classification: VQA-RAD, SLAKE')\n    parser.add_argument('--dataset_path', type=str, default=None, help=\"path to load dataset\")\n    parser.add_argument('--checkpoint_path', type=str, default=None, help=\"path to checkpoint\")\n    parser.add_argument('--mode', type=str, default=\"train\", help=\"whether to train and evaluate the model\")\n    parser.add_argument('--RAD_split', type=str, default=\"anstype_split\", help=\"which type of split\")\n    parser.add_argument('--SLAKE_version', type=str, default=None, help=\"version of SLAKE\")\n    parser.add_argument('--data_augmentation', action=\"store_true\", default=False, help=\"whether to use data augmentation\")\n\n    parser.add_argument('--epochs', type=int, default=200, help=\"number of epochs\")\n    parser.add_argument('--lr', default=0.005, type=float, help=\"initial learning rate\")\n    parser.add_argument('--weight_decay', default=0, type=float, help=\"learning rate weight decay\")\n    parser.add_argument('--layer_wise', action=\"store_true\", default=False, help=\"whether to use layer-wise learning rate\")\n    parser.add_argument('--lr_clip', default=0.005, type=float, help=\"initial learning rate\")\n    parser.add_argument('--weight_decay_clip', default=0, type=float, help='learning rate weight decay')\n    parser.add_argument('--lr_ban', default=0.005, type=float, help=\"initial learning rate\")\n    parser.add_argument('--weight_decay_ban', default=0, type=float, help='learning rate weight decay')\n    parser.add_argument('--batch_size', type=int, default=196, help=\"batch size\")\n    parser.add_argument('--finetuning', type=str, default=None, help=\"finetuning strategies: BAN, lora-clip, normal-clip\")\n    parser.add_argument('--lora_rank', type=int, default=4, help=\"lora rank\")\n    parser.add_argument('--scheduler', action=\"store_true\", default=False, help=\"Use learning rate scheduler\")\n    parser.add_argument('--gamma', type=int, default=4)\n    parser.add_argument('--embedding_space', type=str, default=\"ans2vector.pkl\")\n\n    parser.add_argument(\"--wandbName\", type=str, default=None, help=\"distinguish between different runs\")\n    return parser.parse_args()",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "98haiting/General-or-Medical-CLIP-Which-one-Shall-We-Choose",
+    "repo_created_date": "2024-10-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "biomed_clip/VQA.py",
+    "function_name": "parse_args",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 28,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

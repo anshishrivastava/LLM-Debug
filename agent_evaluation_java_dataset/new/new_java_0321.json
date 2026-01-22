@@ -1,0 +1,22 @@
+{
+  "instruction": "Count Pairs",
+  "output": "    int countPairs(int arr[], int target) {\n        // Your code here\n        Arrays.sort(arr);\n        int count=0;\n        int st=0;\n        int ed=arr.length-1;\n        while(st<ed){\n            if((arr[st]+arr[ed])<target){\n                count+=ed-st;\n                st++;\n            }\n            else{\n            ed--;\n            }\n        }\n        return count;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Himanshi-Saini-0277/GFG_Streak",
+    "repo_created_date": "2024-08-24",
+    "repo_stars": 4,
+    "repo_forks": 0,
+    "file_path": "Difficulty: Easy/Count Pairs whose sum is less than target/count-pairs-whose-sum-is-less-than-target.java",
+    "function_name": "countPairs",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 17,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "generate following plots: highpt 1D efficiency plot with MC & data",
+  "output": "  def generate_summary_plots_gap_highpt(self, data_eff: list[float], \n                                 data_unc: list[float], mc_eff: list[float], \n                                 mc_unc: list[float], pass_sf: list[float], \n                                 pass_unc: list[float], fail_sf: list[float], \n                                 fail_unc: list[float], \n                                 is_webversion: bool=False):\n    '''generate following plots: highpt 1D efficiency plot with MC & data\n                                 highpt 1D SF plot pass\n                                 highpt 1D SF plot fail\n                                 +all standard for gap\n\n    Args:\n      data_eff: list of data efficiencies\n      data_unc: list of data uncertainties\n      mc_eff: list of mc efficiencies\n      mc_unc: list of mc uncertainties\n      pass_sf: list of scale factors (SFs) for passing selection\n      pass_unc: list of uncertainties on passing SFs\n      fail_sf: list of scale factors for failing selection\n      fail_unc: list of uncertainties on failing SFs\n      is_webvserion: flag to indicate if output should be web-friendly\n    '''\n    self.generate_summary_plots_gap(data_eff, data_unc, mc_eff, mc_unc, \n        pass_sf, pass_unc, fail_sf, fail_unc, is_webversion)\n\n    highpteta_plot_x = [0.75,2.0]\n    highpteta_plot_ex = [0.75,0.5]\n    highpteta_plot_data_y = [[]]\n    highpteta_plot_data_ey = [[]]\n    highpteta_plot_mc_y = [[]]\n    highpteta_plot_mc_ey = [[]]\n    highpteta_plot_pass_y = [[]]\n    highpteta_plot_pass_ey = [[]]\n    highpteta_plot_fail_y = [[]]\n    highpteta_plot_fail_ey = [[]]\n\n    for ieta in range(2):\n      tnp_bin = ((len(self.pt_bins)-1)*(len(self.eta_bins)-1)\n                 +2*(len(self.gap_pt_bins)-1)+ieta)\n      eff_highpteta_plot_data_y[ieta].append(data_eff[tnp_bin])\n      eff_highpteta_plot_data_ey[ieta].append(data_unc[tnp_bin])\n      eff_highpteta_plot_mc_y[ieta].append(mc_eff[tnp_bin])\n      eff_highpteta_plot_mc_ey[ieta].append(mc_unc[tnp_bin])\n      sf_highpteta_plot_pass_y[ieta].append(pass_sf[tnp_bin])\n      sf_highpteta_plot_pass_ey[ieta].append(pass_unc[tnp_bin])\n      sf_highpteta_plot_fail_y[ieta].append(fail_sf[tnp_bin])\n      sf_highpteta_plot_fail_ey[ieta].append(fail_unc[tnp_bin])\n\n    eff_string = 'Efficiency '+self.data_nom_tnp_analyzer.measurement_desc\n    highpteta_plot_names = ['100<p_{T}<500 GeV']\n    gc.collect()\n    gc.disable()\n    file_extension = 'pdf'\n    if is_webversion:\n      file_extension = 'png'\n\n    make_data_mc_graph(highpteta_plot_x, highpt_eta_plot_ex, \n                       eff_highpteta_plot_data_y, \n                       eff_highpteta_plot_data_ey, eff_highpteta_plot_mc_y, \n                       eff_highpteta_plot_mc_ey, \n                       'out/{0}/{0}_eff_highptetabinned.{1}'.format(self.name,\n                           file_extension),\n                       ['Data'], ['MC'],\n                       '|#eta|', eff_string, LUMI_TAGS[self.year],True)\n    make_sf_graph(highpteta_plot_x, highpteta_plot_ex, \n                  sf_highpteta_plot_pass_y, \n                  sf_highpteta_plot_pass_ey, \n                  'out/{0}/{0}_sfpass_highptetabinned.{1}'.format(self.name,\n                      file_extension),\n                  highpteta_plot_names, '|#eta|', 'Pass SF', \n                  LUMI_TAGS[self.year], True)\n    make_sf_graph(highpteta_plot_x, highpteta_plot_ex, \n                  sf_highpteta_plot_fail_y, \n                  sf_highpteta_plot_fail_ey, \n                  'out/{0}/{0}_sffail_highptetabinned.{1}'.format(self.name,\n                      file_extension),\n                  highpteta_plot_names, '|#eta|', 'Fail SF', \n                  LUMI_TAGS[self.year], True)\n    gc.enable()",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/rms_sf_analyzer.py",
+    "function_name": "generate_summary_plots_gap_highpt",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 79,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

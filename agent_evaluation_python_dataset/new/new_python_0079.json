@@ -1,0 +1,22 @@
+{
+  "instruction": "Check if weekly shorts should be rolled.",
+  "output": "    def should_roll_shorts(self) -> tuple:\n        \"\"\"\n        Check if weekly shorts should be rolled.\n\n        Shorts should be rolled on Thursday 3PM EST, Friday 10AM EST, or if challenged\n        (price approaching short strikes).\n\n        Returns:\n            tuple: (should_roll: bool, challenged_side: str or None)\n                   challenged_side is \"call\", \"put\", or None for scheduled roll\n        \"\"\"\n        # Check if it's time to roll shorts\n        # Per Brian Terry: \"Thursday 3PM EST or Friday 10AM EST\"\n        # CRITICAL: Use US Eastern time, not server local time\n        now_est = get_us_market_time()\n        today = now_est.strftime(\"%A\")\n        current_hour = now_est.hour\n\n        is_roll_time = False\n\n        if today == \"Thursday\" and current_hour >= 15:\n            is_roll_time = True\n            logger.info(f\"Thursday 3PM+ EST ({now_est.strftime('%H:%M')}) - scheduled roll time for weekly shorts\")\n        elif today == \"Friday\" and current_hour >= 10:\n            is_roll_time = True\n            logger.info(f\"Friday 10AM+ EST ({now_est.strftime('%H:%M')}) - scheduled roll time for weekly shorts\")\n\n        if is_roll_time:\n            # CRITICAL: Check if current shorts already have 7+ DTE (already rolled to next week)\n            # This prevents immediate re-rolling of shorts that were just entered with next week's expiry\n            if self.short_strangle and self.short_strangle.expiry:\n                try:\n                    expiry_date = datetime.strptime(self.short_strangle.expiry[:10], \"%Y-%m-%d\").date()\n                    dte = (expiry_date - now_est.date()).days\n                    if dte >= 7:\n                        logger.info(f\"Shorts already have {dte} DTE (next week expiry) - no roll needed\")\n                        return (False, None)\n                except (ValueError, TypeError):\n                    pass  # If we can't parse expiry, proceed with roll check\n            return (True, None)  # Scheduled roll, no specific challenge\n\n        # Check if shorts are being challenged\n        # Per spec: \"within 0.3% of Short_Call_Strike or Short_Put_Strike\"\n        # (Tighter threshold for bot's 30s check interval)\n        if self.short_strangle and self.current_underlying_price:\n            call_strike = self.short_strangle.call_strike\n            put_strike = self.short_strangle.put_strike\n            price = self.current_underlying_price\n\n            # Calculate 0.3% threshold for each strike\n            call_threshold = call_strike * 0.003  # 0.3% of call strike (~$2.07 at $690)\n            put_threshold = put_strike * 0.003    # 0.3% of put strike\n\n            # Distance from current price to strikes\n            call_distance = call_strike - price\n            put_distance = price - put_strike\n\n            # If price is within 0.3% of either strike, roll early\n            if call_distance <= call_threshold:\n                pct_from_strike = (call_distance / call_strike) * 100\n                logger.warning(f\"Short call CHALLENGED! Price ${price:.2f} within {pct_from_strike:.2f}% of call strike ${call_strike:.2f}\")\n                return (True, \"call\")\n\n            if put_distance <= put_threshold:\n                pct_from_strike = (put_distance / put_strike) * 100\n                logger.warning(f\"Short put CHALLENGED! Price ${price:.2f} within {pct_from_strike:.2f}% of put strike ${put_strike:.2f}\")\n                return (True, \"put\")\n\n        return (False, None)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "should_roll_shorts",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 69,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

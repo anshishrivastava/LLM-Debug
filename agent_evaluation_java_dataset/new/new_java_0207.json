@@ -1,0 +1,22 @@
+{
+  "instruction": "Find Median Sorted Arrays",
+  "output": "    public double findMedianSortedArrays(int[] nums1, int[] nums2) {\n        int i=0,j=0;\n        int n1=nums1.length,n2=nums2.length;\n        int n=(n1+n2);\n        int ind2=n/2;\n        int ind1=ind2-1;\n        int cnt=0;\n        int ind2el=-1;\n        int ind1el=-1;\n        while(i<n1&&j<n2)\n        {\n            if(nums1[i]<nums2[j])\n            {\n                if(cnt==ind1)\n                ind1el=nums1[i];\n                if(cnt==ind2)\n                ind2el=nums1[i];\n                cnt++;\n                i++;\n            }\n            else\n            {\n                if(cnt==ind1)\n                ind1el=nums2[j];\n                if(cnt==ind2)\n                ind2el=nums2[j];\n                cnt++;\n                j++;\n            }\n        }\n        while(i<n1)\n        {\n             if(cnt==ind1)\n                ind1el=nums1[i];\n                if(cnt==ind2)\n                ind2el=nums1[i];\n                cnt++;\n                i++;\n        }\n        while(j<n2)\n        {\n             if(cnt==ind1)\n                ind1el=nums2[j];\n                if(cnt==ind2)\n                ind2el=nums2[j];\n                cnt++;\n                j++;\n        }\n        if(n%2==1)\n        return ind2el;\n        return (double)((double)(ind1el+ind2el))/2.0;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Dishagoel1804/DSA",
+    "repo_created_date": "2024-11-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0004-median-of-two-sorted-arrays/0004-median-of-two-sorted-arrays.java",
+    "function_name": "findMedianSortedArrays",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 52,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

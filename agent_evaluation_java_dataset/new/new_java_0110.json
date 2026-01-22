@@ -1,0 +1,22 @@
+{
+  "instruction": "Roman To Int",
+  "output": "    public int romanToInt(String s) {\n        int result = 0;\n        int preValue = 0;\n        HashMap<Character, Integer> roman = new HashMap<Character, Integer>();\n        roman.put('I', 1);\n        roman.put('V', 5);\n        roman.put('X', 10);\n        roman.put('L', 50);\n        roman.put('C', 100);\n        roman.put('D', 500);\n        roman.put('M', 1000);\n        for (int i=s.length()-1; i >= 0; i--) {\n            int curValue = roman.get(s.charAt(i));\n            if (curValue < preValue) {\n                result -= curValue;\n            } else {\n                result += curValue;\n            }\n            preValue = curValue;\n        }\n        return result;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "pkucpkam/daily-code-challenge",
+    "repo_created_date": "2024-10-29",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "problems-from-1-to-100/problem-07/Solution.java",
+    "function_name": "romanToInt",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 22,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

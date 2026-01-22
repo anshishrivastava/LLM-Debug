@@ -1,0 +1,22 @@
+{
+  "instruction": "Save metrics to JSON file for persistence across bot restarts.",
+  "output": "    def save_to_file(self, filepath: str = None) -> bool:\n        \"\"\"\n        Save metrics to JSON file for persistence across bot restarts.\n\n        Args:\n            filepath: Path to save file. Defaults to METRICS_FILE.\n\n        Returns:\n            True if save successful, False otherwise.\n        \"\"\"\n        filepath = filepath or METRICS_FILE\n        try:\n            # Ensure directory exists\n            os.makedirs(os.path.dirname(filepath), exist_ok=True)\n\n            with open(filepath, 'w') as f:\n                json.dump(self.to_dict(), f, indent=2)\n            logger.info(f\"Saved strategy metrics to {filepath}\")\n            return True\n        except Exception as e:\n            logger.error(f\"Failed to save metrics to {filepath}: {e}\")\n            return False",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/models/metrics.py",
+    "function_name": "save_to_file",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 22,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

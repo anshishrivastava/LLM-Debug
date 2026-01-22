@@ -1,0 +1,22 @@
+{
+  "instruction": "Saves unwrapped 100 xyz frames at the beginning of the simulation",
+  "output": "def get_coords_PDB_rdf(\n    folder,\n    frame_count,  # ns\n    save_interval=5,  # ps\n    frame_save_amount=100,\n):\n    \"\"\"\n    Saves unwrapped 100 xyz frames at the beginning of the simulation\n    at the middle of it and at the end.\n    \"\"\"\n    xyz_1 = []\n    xyz_2 = []\n    xyz_3 = []\n    atom_names = []\n    curr_frame = 0\n\n    frame_intervals = [frame_save_amount, int(frame_count / 2), frame_count]\n\n    exclude_tags = [\"TER\", \"ENDMDL\", \"TITLE\", \"REMARK\", \"CRYST1\", \"MODEL\"]\n    with open(f\"{folder}/simu_output.pdb\", \"r\") as f:\n        for ind, line in enumerate(f):\n            if \"MODEL\" in line:\n                curr_frame += 1\n                continue\n            if not any(ext in line for ext in exclude_tags):\n                if (\n                    curr_frame > frame_intervals[0] - frame_save_amount\n                    and curr_frame < frame_intervals[0]\n                ):\n                    x = float(line[30:38])\n                    y = float(line[38:46])\n                    z = float(line[46:54])\n                    xyz_1.append(np.array([x, y, z], dtype=np.float32))\n                    if curr_frame < 2:\n                        values = line.split()\n                        if values[3] == \"CA1\":\n                            atom_names.append(\n                                \"Li\" + f\",{line[17:20]},{line[20:26].strip()}\"\n                            )\n                        else:\n                            atom_names.append(\n                                values[-1] + f\",{line[17:20]},{line[20:26].strip()}\"\n                            )\n                elif (\n                    curr_frame > frame_intervals[1] - frame_save_amount\n                    and curr_frame < frame_intervals[1]\n                ):\n                    x = float(line[30:38])\n                    y = float(line[38:46])\n                    z = float(line[46:54])\n                    xyz_2.append(np.array([x, y, z], dtype=np.float32))\n                elif (\n                    curr_frame > frame_intervals[2] - frame_save_amount\n                    and curr_frame < frame_intervals[2]\n                ):\n                    x = float(line[30:38])\n                    y = float(line[38:46])\n                    z = float(line[46:54])\n                    xyz_3.append(np.array([x, y, z], dtype=np.float32))\n                elif curr_frame > frame_intervals[2]:\n                    break\n\n    with open(f\"{folder}/xyz_wrapped_rdf_beginning.txt\", \"w\") as f:\n        for xyz in xyz_1:\n            f.write(f\"{xyz[0]},{xyz[1]},{xyz[2]}\\n\")\n    with open(f\"{folder}/xyz_wrapped_rdf_middle.txt\", \"w\") as f:\n        for xyz in xyz_2:\n            f.write(f\"{xyz[0]},{xyz[1]},{xyz[2]}\\n\")\n    with open(f\"{folder}/xyz_wrapped_rdf_end.txt\", \"w\") as f:\n        for xyz in xyz_3:\n            f.write(f\"{xyz[0]},{xyz[1]},{xyz[2]}\\n\")\n    with open(f\"{folder}/atom_names_rdf.txt\", \"w\") as f:\n        for i in atom_names:\n            f.write(f\"{i}\\n\")\n    print(f\"RDF frames have been saved at {folder}\")",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/analysis/trajectory_analysis.py",
+    "function_name": "get_coords_PDB_rdf",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 75,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

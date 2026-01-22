@@ -1,0 +1,22 @@
+{
+  "instruction": "Record a completed trade for statistics tracking.",
+  "output": "    def record_trade(self, pnl: float):\n        \"\"\"Record a completed trade for statistics tracking.\"\"\"\n        self.trade_count += 1\n        self.total_trade_pnl += pnl\n        if pnl > 0:\n            self.winning_trades += 1\n        else:\n            self.losing_trades += 1\n        if pnl > self.best_trade_pnl:\n            self.best_trade_pnl = pnl\n        if pnl < self.worst_trade_pnl:\n            self.worst_trade_pnl = pnl",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/models/metrics.py",
+    "function_name": "record_trade",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 12,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

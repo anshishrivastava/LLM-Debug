@@ -1,0 +1,22 @@
+{
+  "instruction": "Peak Element",
+  "output": "\n    public int peakElement(int[] arr) {\n        // code here\n        int low = 0, high = arr.length - 1;\n\n        while (low < high) {\n            int mid = low + (high - low) / 2;\n            if (arr[mid] > arr[mid + 1]) {\n                high = mid;\n            } else {\n                low = mid + 1;\n            }\n        }\n        return low;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Apoo-28/GFG-Problems",
+    "repo_created_date": "2024-12-08",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "Difficulty: Basic/Peak element/peak-element.java",
+    "function_name": "peakElement",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 15,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

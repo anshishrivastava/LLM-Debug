@@ -1,0 +1,22 @@
+{
+  "instruction": "Levelorder",
+  "output": "    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:\n        if not root:\n            return []\n        Q = deque([root])\n        levels = [[root.val]]\n        temp = deque()\n\n        while Q:\n            node = Q.popleft()\n            if node.left: temp.append(node.left)\n            if node.right: temp.append(node.right)\n            \n            if not Q:\n                if temp:\n                    levels.append([n.val for n in temp])\n                Q = temp\n                temp = deque()\n\n        return levels",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "lokeshhh-10/LeetCode",
+    "repo_created_date": "2024-07-24",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "102-binary-tree-level-order-traversal/binary-tree-level-order-traversal.py",
+    "function_name": "levelOrder",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 19,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

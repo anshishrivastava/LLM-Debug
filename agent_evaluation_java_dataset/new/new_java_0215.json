@@ -1,0 +1,22 @@
+{
+  "instruction": "Is Palindrome",
+  "output": "    public boolean isPalindrome(int x) {\n        int temp=x;\n        int pal=0;\n        int r=0;\n        while(temp>0){\n            pal=(pal*10)+temp%10;\n            temp=temp/10;\n        }\n        if(x==pal){\n            return true;\n        }\n        else{\n            return false;\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "tkambham/LeetCode",
+    "repo_created_date": "2025-01-02",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0009-palindrome-number/0009-palindrome-number.java",
+    "function_name": "isPalindrome",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 15,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Finds the minimum-image representation of vector(s) D",
+  "output": "def find_mic(D, cell, pbc=True):\n    \"\"\"Finds the minimum-image representation of vector(s) D\"\"\"\n    # Calculate the 4 unique unit cell diagonal lengths\n    diags = np.sqrt(\n        (\n            np.dot(\n                [\n                    [1, 1, 1],\n                    [-1, 1, 1],\n                    [1, -1, 1],\n                    [-1, -1, 1],\n                ],\n                cell,\n            )\n            ** 2\n        ).sum(1)\n    )\n\n    # calculate 'mic' vectors (D) and lengths (D_len) using simple method\n    Dr = np.dot(D, np.linalg.inv(cell))\n    D = np.dot(Dr - np.round(Dr) * pbc, cell)\n    D_len = np.sqrt((D**2).sum(1))\n    # return mic vectors and lengths for only orthorhombic cells,\n    # as the results may be wrong for non-orthorhombic cells\n    if (max(diags) - min(diags)) / max(diags) > 1e-9:\n        return D, D_len\n\n    # The cutoff radius is the longest direct distance between atoms\n    # or half the longest lattice diagonal, whichever is smaller\n    cutoff = min(max(D_len), max(diags) / 2.0)\n    # The number of neighboring images to search in each direction is\n    # equal to the ceiling of the cutoff distance (defined above) divided\n    # by the length of the projection of the lattice vector onto its\n    # corresponding surface normal. a's surface normal vector is e.g.\n    # b x c / (|b| |c|), so this projection is (a . (b x c)) / (|b| |c|).\n    # The numerator is just the lattice volume, so this can be simplified\n    # to V / (|b| |c|). This is rewritten as V |a| / (|a| |b| |c|)\n    # for vectorization purposes.\n    latt_len = np.sqrt((cell**2).sum(1))\n    V = abs(np.linalg.det(cell))\n    n = pbc * np.array(np.ceil(cutoff * np.prod(latt_len) / (V * latt_len)), dtype=int)\n\n    # Construct a list of translation vectors. For example, if we are\n    # searching only the nearest images (27 total), tvecs will be a\n    # 27x3 array of translation vectors. This is the only nested loop\n    # in the routine, and it takes a very small fraction of the total\n    # execution time, so it is not worth optimizing further.\n    tvecs = []\n    for i in range(-n[0], n[0] + 1):\n        latt_a = i * cell[0]\n        for j in range(-n[1], n[1] + 1):\n            latt_ab = latt_a + j * cell[1]\n            for k in range(-n[2], n[2] + 1):\n                tvecs.append(latt_ab + k * cell[2])\n    tvecs = np.array(tvecs)\n\n    # Translate the direct displacement vectors by each translation\n    # vector, and calculate the corresponding lengths.\n    D_trans = tvecs[np.newaxis] + D[:, np.newaxis]\n    D_trans_len = np.sqrt((D_trans**2).sum(2))\n\n    # Find mic distances and corresponding vector(s) for each given pair\n    # of atoms. For symmetrical systems, there may be more than one\n    # translation vector corresponding to the MIC distance; this finds the\n    # first one in D_trans_len.\n    D_min_len = np.min(D_trans_len, axis=1)\n    D_min_ind = D_trans_len.argmin(axis=1)\n    D_min = D_trans[range(len(D_min_ind)), D_min_ind]\n\n    return D_min, D_min_len",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/analysis/trajectory_analysis.py",
+    "function_name": "find_mic",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 70,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

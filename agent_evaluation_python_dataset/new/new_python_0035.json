@@ -1,0 +1,22 @@
+{
+  "instruction": "Validate that required configuration values are present.",
+  "output": "def validate_config(config: dict) -> bool:\n    \"\"\"\n    Validate that required configuration values are present.\n\n    Args:\n        config: Configuration dictionary\n\n    Returns:\n        bool: True if valid, raises ValueError otherwise\n    \"\"\"\n    # Check account keys (supports both old and new structure)\n    if \"account\" not in config:\n        raise ValueError(\"Missing config section: account\")\n\n    # Get the environment to validate the correct account keys\n    environment = config.get(\"saxo_api\", {}).get(\"environment\", \"sim\")\n    account_config = config[\"account\"]\n\n    # Check for new structure (account.sim / account.live) or legacy (account.account_key)\n    if environment in account_config and isinstance(account_config[environment], dict):\n        # New structure\n        env_account = account_config[environment]\n        if \"account_key\" not in env_account:\n            raise ValueError(f\"Missing config key: account.{environment}.account_key\")\n        if \"client_key\" not in env_account:\n            raise ValueError(f\"Missing config key: account.{environment}.client_key\")\n    else:\n        # Legacy structure\n        if \"account_key\" not in account_config:\n            raise ValueError(\"Missing config key: account.account_key\")\n        if \"client_key\" not in account_config:\n            raise ValueError(\"Missing config key: account.client_key\")\n\n    # Check saxo_api section exists\n    if \"saxo_api\" not in config:\n        raise ValueError(\"Missing config section: saxo_api\")\n\n    # Validate environment-specific credentials\n    environment = config[\"saxo_api\"].get(\"environment\", \"sim\")\n    if environment not in config[\"saxo_api\"]:\n        raise ValueError(f\"Missing config section: saxo_api.{environment}\")\n\n    env_config = config[\"saxo_api\"][environment]\n    if \"app_key\" not in env_config or not env_config[\"app_key\"]:\n        raise ValueError(f\"Missing app_key for {environment} environment\")\n    if \"app_secret\" not in env_config or not env_config[\"app_secret\"]:\n        raise ValueError(f\"Missing app_secret for {environment} environment\")\n\n    return True",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/main.py",
+    "function_name": "validate_config",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 49,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Attempt to use the ability @return true if ability was successfully activated",
+  "output": "    public boolean use(Player player, game.GameProj gameProj) {\n        if (currentCooldown > 0 || isCasting) {\n            return false;\n        }\n\n        if (castTime > 0) {\n            isCasting = true;\n            castTimer = 0f;\n            onCastStart(player, gameProj);\n            return true;\n        } else {\n            execute(player, gameProj);\n            currentCooldown = cooldown;\n            return true;\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/Ability.java",
+    "function_name": "use",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 16,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Update intraday high/low tracking.",
+  "output": "    def update_intraday_tracking(self):\n        \"\"\"Update intraday high/low tracking.\"\"\"\n        if self.current_underlying_price and self.current_vix:\n            self.metrics.update_daily_tracking(\n                spy_price=self.current_underlying_price,\n                vix=self.current_vix\n            )",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "update_intraday_tracking",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 7,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

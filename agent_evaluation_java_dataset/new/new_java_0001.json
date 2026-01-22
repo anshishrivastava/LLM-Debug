@@ -1,0 +1,22 @@
+{
+  "instruction": "Get First Occurance",
+  "output": "\n    private int getFirstOccurance(int[] nums, int target) {\n        int start = 0;\n        int end = nums.length - 1;\n        int index = -1;\n\n        while(start <= end) {\n            int mid = start + (end - start)/2;\n            if (nums[mid] == target) {\n                index = mid;\n                end = mid - 1;\n            }else if (nums[mid] > target) {\n                end = mid - 1;\n            } else {\n                start = mid + 1;\n            }\n        }\n        return index;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "karan-shergill/dsa101",
+    "repo_created_date": "2024-11-16",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "2026/binary_search/e_find_first_and_last_position_of_element_in_sorted_array.java",
+    "function_name": "getFirstOccurance",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 19,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

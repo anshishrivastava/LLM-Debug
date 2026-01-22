@@ -1,0 +1,22 @@
+{
+  "instruction": "Use ability at slot index",
+  "output": "    private void useAbility(int slot) {\n        if (slot >= 0 && slot < NUM_ABILITY_SLOTS && abilities[slot] != null) {\n            boolean success = abilities[slot].use(player, gameProj);\n            if (!success && abilities[slot].isOnCooldown()) {\n                System.out.println(abilities[slot].getName() + \" is on cooldown!\");\n            }\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/AbilityManager.java",
+    "function_name": "useAbility",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 8,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

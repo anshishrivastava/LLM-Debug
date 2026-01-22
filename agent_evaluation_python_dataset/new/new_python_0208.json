@@ -1,0 +1,22 @@
+{
+  "instruction": "Returns bin into which value falls. -1 represents underflow while",
+  "output": "def get_bin(value, bin_edges):\n  '''\n  Returns bin into which value falls. -1 represents underflow while\n  len(bin_edges) represents overflow\n\n  value      float to check\n  bin_edges  sorted list of floats describing binning\n  '''\n  if value < bin_edges[0]:\n    return -1\n  for ibin in range(len(bin_edges)-1):\n    if value>bin_edges[ibin] and value<bin_edges[ibin+1]:\n      return ibin\n  return len(bin_edges)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_utils.py",
+    "function_name": "get_bin",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 14,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

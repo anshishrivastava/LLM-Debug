@@ -1,0 +1,22 @@
+{
+  "instruction": "Longest Common Prefix",
+  "output": "    public String longestCommonPrefix(String[] strs) {\n        char[] prefArr = strs[0].toCharArray();\n\n        for (int i = 1; i < strs.length; i++) {\n            char[] arr = strs[i].toCharArray();\n\n            for (int j = 0; j < prefArr.length; j++) {\n                if (j >= arr.length) {\n                    prefArr[j] = '0';\n                } else {\n                    if (arr[j] != prefArr[j]) {\n                        prefArr[j] = '0';\n                    }\n                }\n            }\n        }\n\n        StringBuilder sb = new StringBuilder();\n        for (char c : prefArr) {\n            if (c == '0') {\n                break;\n            }\n            sb.append(c);\n        }\n\n        return sb.toString();\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "TasmiaH0508/lc",
+    "repo_created_date": "2024-06-13",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "0014-longest-common-prefix/0014-longest-common-prefix.java",
+    "function_name": "longestCommonPrefix",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 27,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

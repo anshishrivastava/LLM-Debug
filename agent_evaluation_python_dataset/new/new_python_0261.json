@@ -1,0 +1,22 @@
+{
+  "instruction": "Generate Imgid Idx Only",
+  "output": "def generate_imgid_idx_only(dataset, dataset_name):\n    if \"RAD\" in dataset_name:\n        imgid2idx = {}\n        idx = 0\n        for item in dataset:\n            image_name = item[\"image_name\"]\n            if image_name not in imgid2idx.keys():\n                imgid2idx[image_name] = idx\n                idx += 1\n    elif \"SLAKE\" in dataset_name:\n        for item in dataset:\n            image_name = item[\"img_name\"]\n            image_id = item[\"img_id\"]\n            if image_name not in imgid2idx.keys():\n                imgid2idx[image_name] = image_id\n\n    return imgid2idx",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "98haiting/General-or-Medical-CLIP-Which-one-Shall-We-Choose",
+    "repo_created_date": "2024-10-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "biomed_clip/VQA.py",
+    "function_name": "generate_imgid_idx_only",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 17,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

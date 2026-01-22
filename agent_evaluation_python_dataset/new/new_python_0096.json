@@ -1,0 +1,22 @@
+{
+  "instruction": "Reads or writes parameter values to json file",
+  "output": "  def interactive_json(self, user_input: list[str]) -> bool:\n    \"\"\"Reads or writes parameter values to json file\n\n    Args:\n      user_input: user input\n\n    Returns:\n      true if user should exit interactive session\n    \"\"\"\n    if len(user_input)<3:\n      print('ERROR: (j)son takes two arguments: json <s/l> <fname>')\n      return False\n    if not user_input[1] in ['s','save','l','load','S','L']:\n      print('ERROR: (j)son second argument must be (s)ave or (l)oad')\n      return False\n    is_save = (user_input[1] in ['s','save','S'])\n    filename = user_input[2] \n    if (not is_save) and (not os.path.exists(filename)):\n      print('ERROR: File not found.')\n      return False\n    if is_save and os.path.exists(filename):\n      print('WARNING: file already exists, enter \"y\" to overwrite')\n      user_input_2 = input()\n      if user_input_2 != 'y':\n        print('Aborting write.')\n        return False\n    if (is_save):\n      param_dict = dict()\n      if len(user_input)<4:\n        for param_name in self.param_names:\n          param_dict[param_name] = self.workspace.var(param_name).getValV()\n      else: \n        user_param_names = user_input[3].split(',')\n        for param_name in user_param_names:\n          if param_name in self.param_names:\n            param_dict[param_name] = self.workspace.var(param_name).getValV()\n          else:\n            print('Warning: parameter {} not known, skipping'.format(\n                param_name))\n      with open(filename,'w') as output_file:\n        output_file.write(json.dumps(param_dict))\n    if (not is_save):\n      with open(filename,'r') as input_file:\n        param_dict = json.loads(input_file.read())\n        for param_name in param_dict:\n          self.workspace.var(param_name).setVal(param_dict[param_name])\n      self.plot_callback()\n    return False",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/interactive_fit.py",
+    "function_name": "interactive_json",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 48,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

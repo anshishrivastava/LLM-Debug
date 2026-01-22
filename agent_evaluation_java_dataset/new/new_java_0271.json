@@ -1,0 +1,22 @@
+{
+  "instruction": "Smallest Repunit Div By K",
+  "output": "    public int smallestRepunitDivByK(int k) {\n        if (k % 2 == 0 || k % 5 == 0) {\n            return -1;\n        }\n        \n        int remainder = 0;\n        for (int length = 1; length <= k; length++) {\n            remainder = (remainder * 10 + 1) % k;\n            if (remainder == 0) {\n                return length;\n            }\n        }\n        return -1;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "TheKnightProtocol/Leetcode",
+    "repo_created_date": "2024-10-13",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "1015. Smallest Integer Divisible by K.java",
+    "function_name": "smallestRepunitDivByK",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 14,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

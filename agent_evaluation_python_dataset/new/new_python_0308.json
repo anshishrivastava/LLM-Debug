@@ -1,0 +1,22 @@
+{
+  "instruction": "Check Tables Exists",
+  "output": "def check_tables_exists(engine: Engine):\n    all_found = False\n    connection = None\n    \n    try:\n        tables_dicts = DeclarativeBase.metadata.tables\n        tables_names_from_base = [table.name for table in tables_dicts.values()]\n        connection = engine.connect()\n        all_found = all(\n            engine.dialect.has_table(connection=connection, table_name=t_name)\n            for t_name in tables_names_from_base\n        )\n    except Exception as e:\n        logging.error(f\"Error checking tables: {e}\")\n        raise e\n    finally:\n        if connection is not None:\n            connection.close()\n        engine.dispose()\n\n    return all_found",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "pb-96/crossword-generator",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "cw_generator_uv/cw_generator/db_service/init_db.py",
+    "function_name": "check_tables_exists",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 21,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

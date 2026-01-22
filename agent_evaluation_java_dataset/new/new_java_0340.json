@@ -1,0 +1,22 @@
+{
+  "instruction": "Utility function to find the k-th node starting from the given node",
+  "output": "    private ListNode getKthNode(ListNode curr, int k) {\n        while (curr != null && k > 0) {\n            curr = curr.next;\n            k--;\n        }\n        return curr;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "bishal292/LeetCodeProblems",
+    "repo_created_date": "2024-11-30",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0025-reverse-nodes-in-k-group/0025-reverse-nodes-in-k-group.java",
+    "function_name": "getKthNode",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 7,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

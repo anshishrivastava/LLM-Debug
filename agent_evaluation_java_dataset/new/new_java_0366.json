@@ -1,0 +1,22 @@
+{
+  "instruction": "Find Maximum",
+  "output": "    public int findMaximum(int[] arr) {\n        int low = 0, high = arr.length - 1;\n        while (low < high) {\n            int mid = (low + high) / 2;\n            if (arr[mid] < arr[mid + 1])\n                low = mid + 1;\n            else\n                high = mid;\n        }\n        return arr[low];\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Apoo-28/GFG-Problems",
+    "repo_created_date": "2024-12-08",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "Difficulty: Easy/Bitonic Point/bitonic-point.java",
+    "function_name": "findMaximum",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 11,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

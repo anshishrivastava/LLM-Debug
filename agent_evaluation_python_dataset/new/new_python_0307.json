@@ -1,0 +1,22 @@
+{
+  "instruction": "Write To Database",
+  "output": "def write_to_database(db_engine: Engine): \n    try:\n        fn_data = partial(get_raw_data, url=URL)\n        with get_session(db_engine) as session:\n            for word_vector_store in normalize_data(fn_data):\n                session.add(word_vector_store)\n            session.commit()\n    except Exception as e:\n        logging.error(f\"Error writing to database: {e}\")\n        return False\n    return True",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "pb-96/crossword-generator",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "cw_generator_uv/cw_generator/db_service/data_loader.py",
+    "function_name": "write_to_database",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 11,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

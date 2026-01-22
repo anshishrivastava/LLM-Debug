@@ -1,0 +1,22 @@
+{
+  "instruction": "Divides hist1 by hist2, but ignores uncertainties on hist2. Returns",
+  "output": "def hist_simpledivide(hist1, hist2):\n  '''Divides hist1 by hist2, but ignores uncertainties on hist2. Returns\n  the result of the division. Error is taken from denominator\n\n  hist1  TH1\n  hist2  TH1, should have the same binning as hist1\n  '''\n  ret = hist1.Clone()\n  for ibin in range(0,hist1.GetNbinsX()+2):\n    h1_content = hist1.GetBinContent(ibin)\n    h2_content = hist2.GetBinContent(ibin)\n    h2_error = hist2.GetBinError(ibin)\n    if (h2_content != 0.0):\n      ret.SetBinContent(ibin, h1_content/h2_content)\n      ret.SetBinError(ibin, h1_content/h2_content/h2_content*h2_error)\n    else:\n      ret.SetBinContent(ibin, 0.0)\n      ret.SetBinError(ibin, 0.0)\n  return ret",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/root_plot_lib.py",
+    "function_name": "hist_simpledivide",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 19,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

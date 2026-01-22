@@ -1,0 +1,22 @@
+{
+  "instruction": "This method loads a model from a file. The model is loaded from the path",
+  "output": "    def load(cls, query: JobData | None = None, path: str | None = None, **kwargs) -> ResourceFit:\n        \"\"\"\n        This method loads a model from a file. The model is loaded from the path\n        provided, or from the path generated from the query.\n\n        :param query: The query used to generate the model\n        :type query: JobData\n        :param path: The path to the model\n        :type path: str\n        :param kwargs: Additional keyword arguments to pass to the model\n        :return: The model\n        :rtype: ResourceFit\n\n        \"\"\"\n        match [path, query]:\n            case (None, None):\n                raise ValueError(\"Either query or path must be provided\")\n            case (None, _):\n                path = cls._make_model_path(query)\n            case (str(path), _):\n                path = pathlib.Path(path)\n\n        if (path / \"fits.json\").exists():\n            with open(str(path / \"fits.json\")) as load_file:\n                info = json.load(load_file)\n\n            # Convert datetime from isoformat string to datetime object\n            info[\"fit_timestamp\"] = datetime.datetime.fromisoformat(info[\"fit_timestamp\"])\n        else:\n            info = {\n                \"query\": query,\n                \"last_fit_dsize\": 0,\n                \"fit_timestamp\": datetime.datetime.now(tz=datetime.UTC),\n                \"model_metrics\": {},\n                \"path\": path,\n            }\n            info.update(kwargs)\n\n        # Generates an instance of the class from the dictionary. When this is called by\n        # a ResourceFit subclass, it includes all attributes of the subclass(es) and the\n        # ResourceFit class.\n\n        return cls(**info)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "PrincetonUniversity/slurmise",
+    "repo_created_date": "2024-06-21",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "src/slurmise/fit/resource_fit.py",
+    "function_name": "load",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 43,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

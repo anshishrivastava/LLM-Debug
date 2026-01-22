@@ -1,0 +1,22 @@
+{
+  "instruction": "Add Helper",
+  "output": "\n    public static int addHelper(Node temp) {\n        if (temp == null) {\n            return 1;\n        }\n        int carry = addHelper(temp.next);\n        temp.data += carry;\n        if (temp.data < 10) {\n            return 0;\n        }\n        temp.data = 0;\n        return 1;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Rajeshkuruva2003/competitive-program",
+    "repo_created_date": "2025-01-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "AddOne to LL.java",
+    "function_name": "addHelper",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 13,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

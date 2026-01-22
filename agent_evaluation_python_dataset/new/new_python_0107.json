@@ -1,0 +1,22 @@
+{
+  "instruction": "Function that removes extension from filename if an extension exists",
+  "output": "def strip_extension(filename):\n  '''\n  Function that removes extension from filename if an extension exists\n\n  Param: filename - string of filename\n  Returns: string that is filename with extension removed\n  '''\n  if '.' in filename:\n    dot_pos = [i for i in range(len(filename)) if filename[i]=='.']\n    return filename[0:dot_pos[-1]]\n  else:\n    return filename",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/merge_pdfs.py",
+    "function_name": "strip_extension",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 12,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

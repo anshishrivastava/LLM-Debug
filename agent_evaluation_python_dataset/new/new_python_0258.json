@@ -1,0 +1,22 @@
+{
+  "instruction": "Generate Ans Label",
+  "output": "def generate_ans_label(input_path, output_path):\n    with open(input_path+\"train.json\", \"rb\") as f:\n        train_dataset = json.load(f)\n    with open(input_path+\"validation.json\", \"rb\") as f:\n        val_dataset = json.load(f)\n    \n    ans2label, label2ans, ans2vec = {}, {}, {}\n    idx = 0\n    for item in train_dataset:\n        answer = item[\"answer\"]\n        if isinstance(answer, int):\n            answer = str(answer)\n        answer = answer.lower()\n        if answer not in ans2label.keys():\n            ans2label[answer] = idx\n            label2ans[idx] = answer\n            idx += 1\n\n    for item in val_dataset:\n        answer = item[\"answer\"]\n        if isinstance(answer, int):\n            answer = str(answer)\n        answer = answer.lower()\n        if answer not in ans2label.keys():\n            ans2label[answer] = idx\n            label2ans[idx] = answer\n            idx += 1\n    \n    pickle.dump(ans2label, open(output_path+\"ans2label.pkl\", \"wb\"))\n    pickle.dump(label2ans, open(output_path+\"label2ans.pkl\", \"wb\"))",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "98haiting/General-or-Medical-CLIP-Which-one-Shall-We-Choose",
+    "repo_created_date": "2024-10-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "biomed_clip/VQA.py",
+    "function_name": "generate_ans_label",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 30,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

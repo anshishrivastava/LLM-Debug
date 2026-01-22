@@ -1,0 +1,22 @@
+{
+  "instruction": "Sort Colors",
+  "output": "  public void sortColors(int[] nums) {\n    int zero = -1;\n    int one = -1;\n    int two = -1;\n\n    for (final int num : nums)\n      if (num == 0) {\n        nums[++two] = 2;\n        nums[++one] = 1;\n        nums[++zero] = 0;\n      } else if (num == 1) {\n        nums[++two] = 2;\n        nums[++one] = 1;\n      } else {\n        nums[++two] = 2;\n      }\n  }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Apoo-28/Leetcode-Problems",
+    "repo_created_date": "2024-08-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0075-sort-colors/0075-sort-colors.java",
+    "function_name": "sortColors",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 17,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

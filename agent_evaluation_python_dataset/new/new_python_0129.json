@@ -1,0 +1,22 @@
+{
+  "instruction": "Adds gamma+gauss distribution as background model",
+  "output": "def add_background_model_gammagauss(workspace, ibin, is_pass):\n  '''Adds gamma+gauss distribution as background model\n\n  workspace    workspace to add model to; must have variable fit_var\n  ibin         int bin number\n  is_pass      bool, indicates if passing or failing leg\n  '''\n  fit_var = workspace.var('fit_var')\n  gamma = ROOT.RooRealVar('gamma', 'RooGamma gamma', 0.01, 20.0)\n  beta = ROOT.RooRealVar('beta', 'RooGamma beta', 0.5, 100.0)\n  gamma_mu = ROOT.RooRealVar('gamma_mu', 'RooGamma mu', 0.0, 60.0)\n  gamadd_mu = ROOT.RooRealVar('gamadd_mu', 'RooGaussian mu', 40.0, 140.0)\n  gamadd_sigma = ROOT.RooRealVar('gamadd_sigma', 'RooGaussian sigma', 0.5, 60.0)\n  gamadd_frac = ROOT.RooRealVar('gamadd_frac', 'Gaussian frac', 0.0, 1.0)\n  gamma.setVal(18.0)\n  beta.setVal(4.0)\n  gamma_mu.setVal(55.0)\n  gamadd_mu.setVal(65.0)\n  gamadd_sigma.setVal(7.0)\n  gamadd_frac.setVal(0.34)\n  getattr(workspace,'import')(gamma)\n  getattr(workspace,'import')(beta)\n  getattr(workspace,'import')(gamma_mu)\n  getattr(workspace,'import')(gamadd_mu)\n  getattr(workspace,'import')(gamadd_sigma)\n  getattr(workspace,'import')(gamadd_frac)\n  pdf_b_gamma = ROOT.RooGamma('pdf_b_gamma', 'pdf_b_gamma', fit_var, gamma, \n                              beta, gamma_mu)\n  pdf_b_gauss = ROOT.RooGaussian('pdf_b_gauss', 'pdf_b_gauss', fit_var, \n                              gamadd_mu, gamadd_sigma)\n  pdf_b = ROOT.RooAddPdf('pdf_b','pdf_b',\n                          ROOT.RooArgList(pdf_b_gauss, pdf_b_gamma), \n                          ROOT.RooArgList(gamadd_frac))\n  getattr(workspace,'import')(pdf_b)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/model_initializers.py",
+    "function_name": "add_background_model_gammagauss",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 34,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

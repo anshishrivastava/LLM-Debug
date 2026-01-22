@@ -1,0 +1,22 @@
+{
+  "instruction": "Generate Ans Vector",
+  "output": "def generate_ans_vector(model, ans2label, tokenizer, output_path):\n    # text_encoder = model.feature_extractor\n    text_encoder = model\n    ans2vector = {}\n    with torch.no_grad():\n        for answer in ans2label.keys():\n            tokenized_answer = tokenizer([answer]).to(device)\n            ans2vector[answer] = text_encoder.encode_text(tokenized_answer).detach().cpu().numpy()\n\n    pickle.dump(ans2vector, open(output_path, \"wb\"))\n    return ans2vector",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "98haiting/General-or-Medical-CLIP-Which-one-Shall-We-Choose",
+    "repo_created_date": "2024-10-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "biomed_clip/VQA.py",
+    "function_name": "generate_ans_vector",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 11,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

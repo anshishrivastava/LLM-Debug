@@ -1,0 +1,22 @@
+{
+  "instruction": "Mindominorotations",
+  "output": "    def minDominoRotations(self, tops: List[int], bottoms: List[int]) -> int:\n        def check(x):\n            rotations_top = rotations_bottom = 0\n            for i in range(len(tops)):\n                if tops[i] != x and bottoms[i] != x:\n                    return float('inf')  # Cannot make all same\n                elif tops[i] != x:\n                    rotations_top += 1\n                elif bottoms[i] != x:\n                    rotations_bottom += 1\n            return min(rotations_top, rotations_bottom)\n\n        candidates = [tops[0], bottoms[0]]\n        min_rotations = min(check(candidates[0]), check(candidates[1]))\n\n        return min_rotations if min_rotations != float('inf') else -1",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Mohammad-Adilkhan3/leetcode",
+    "repo_created_date": "2024-10-15",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "1049-minimum-domino-rotations-for-equal-row/minimum-domino-rotations-for-equal-row.py",
+    "function_name": "minDominoRotations",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 16,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

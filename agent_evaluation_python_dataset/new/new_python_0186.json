@@ -1,0 +1,22 @@
+{
+  "instruction": "Generates output file and directory if they do not already exist",
+  "output": "  def initialize_files_directories(self):\n    '''Generates output file and directory if they do not already exist\n    '''\n    #make output directory if it doesn't already exist\n    if not os.path.isdir('out'):\n      os.mkdir('out')\n    if not os.path.isdir('out/'+self.temp_name):\n      print('Output directory not found, making new output directory')\n      os.mkdir('out/'+self.temp_name)\n\n    #open working (swap/temp) file\n    temp_file_name = 'out/'+self.temp_name+'/'+self.temp_name+'.root'\n    if not os.path.isfile(temp_file_name):\n      print('Temp ROOT file not found, making new temp file.')\n      self.temp_file = ROOT.TFile(temp_file_name,'CREATE')\n    else:\n      if self.temp_file == None:\n        self.temp_file = ROOT.TFile(temp_file_name,'UPDATE')",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_analyzer.py",
+    "function_name": "initialize_files_directories",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 18,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Adds CBExGaussShapeTNP convoluted with Z lineshape",
+  "output": "def add_signal_model_cbconvgen(workspace, ibin, is_pass):\n  '''Adds CBExGaussShapeTNP convoluted with Z lineshape\n\n  workspace    workspace to add model to; must have variable fit_var\n  ibin         int bin number\n  is_pass      bool, indicates if passing or failing leg\n  '''\n  fit_var = workspace.var('fit_var')\n  m0 = ROOT.RooRealVar('m0', 'm0', -5.0, 5.0) \n  sigma = ROOT.RooRealVar('sigma', 'sigma', 0.7, 15.0) \n  alpha = ROOT.RooRealVar('alpha', 'alpha', 0.5, 10.0) \n  n = ROOT.RooRealVar('n', 'n', -5.0, 5.0) \n  sigma_2 = ROOT.RooRealVar('sigma_2', 'sigma_2', 0.5, 6.0) \n  tailLeft = ROOT.RooRealVar('tailLeft', 'tailLeft', 0.5, 5.0) \n  sigma.setVal(2.0)\n  alpha.setVal(2.0)\n  n.setVal(3.0)\n  sigma_2.setVal(2.0)\n  tailLeft.setVal(1.0)\n  getattr(workspace,'import')(m0)\n  getattr(workspace,'import')(sigma)\n  getattr(workspace,'import')(alpha)\n  getattr(workspace,'import')(n)\n  getattr(workspace,'import')(sigma_2)\n  getattr(workspace,'import')(tailLeft)\n\n  input_file = ROOT.TFile('lib/ZeeGenLevel.root','READ')\n  hist = input_file.Get('Mass')\n  hist.SetDirectory(ROOT.nullptr)\n  input_file.Close()\n  core_hist = ROOT.RooDataHist('pdf_s_core_hist',\n                               'pdf_s_core_hist',\n                               ROOT.RooArgList(fit_var), hist)\n  getattr(workspace,'import')(core_hist)\n  pdf_s_core = ROOT.RooHistPdf('pdf_s_core','pdf_s_core',\n                               ROOT.RooArgSet(fit_var),core_hist)\n  pdf_s_res = ROOT.RooCBExGaussShapeTNP('pdf_s_res','pdf_s_res',fit_var,m0,\n                                        sigma,\n                                        alpha,n,sigma_2,tailLeft)\n  pdf_s = ROOT.RooFFTConvPdf('pdf_s','pdf_s',fit_var,pdf_s_core,pdf_s_res)\n  getattr(workspace,'import')(pdf_s)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/model_initializers.py",
+    "function_name": "add_signal_model_cbconvgen",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 41,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

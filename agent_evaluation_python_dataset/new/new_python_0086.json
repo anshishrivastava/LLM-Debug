@@ -1,0 +1,22 @@
+{
+  "instruction": "Get a summary of the current strategy status.",
+  "output": "    def get_status_summary(self) -> Dict:\n        \"\"\"\n        Get a summary of the current strategy status.\n\n        Returns:\n            dict: Status summary with positions and metrics.\n        \"\"\"\n        summary = {\n            \"state\": self.state.value,\n            \"environment\": self.client.environment,\n            \"is_simulation\": self.client.is_simulation,\n            \"underlying_price\": self.current_underlying_price,\n            \"vix\": self.current_vix,\n            \"initial_strike\": self.initial_straddle_strike,\n            \"price_from_strike\": abs(self.current_underlying_price - self.initial_straddle_strike)\n                                if self.initial_straddle_strike else 0,\n            \"has_long_straddle\": self.long_straddle is not None and self.long_straddle.is_complete,\n            \"has_short_strangle\": self.short_strangle is not None and self.short_strangle.is_complete,\n            \"total_delta\": self.get_total_delta(),\n            \"total_pnl\": self.metrics.total_pnl,\n            \"realized_pnl\": self.metrics.realized_pnl,\n            \"unrealized_pnl\": self.metrics.unrealized_pnl,\n            \"premium_collected\": self.metrics.total_premium_collected,\n            \"straddle_cost\": self.metrics.total_straddle_cost,\n            \"recenter_count\": self.metrics.recenter_count,\n            \"roll_count\": self.metrics.roll_count\n        }\n\n        # Add currency conversion if enabled\n        if self.trade_logger and self.trade_logger.currency_enabled:\n            try:\n                rate = self.client.get_fx_rate(\n                    self.trade_logger.base_currency,\n                    self.trade_logger.account_currency\n                )\n                if rate:\n                    summary[\"exchange_rate\"] = rate\n                    summary[\"total_pnl_eur\"] = self.metrics.total_pnl * rate\n                    summary[\"realized_pnl_eur\"] = self.metrics.realized_pnl * rate\n                    summary[\"unrealized_pnl_eur\"] = self.metrics.unrealized_pnl * rate\n            except Exception as e:\n                logger.warning(f\"Could not fetch FX rate for status: {e}\")\n\n        return summary",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "get_status_summary",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 44,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

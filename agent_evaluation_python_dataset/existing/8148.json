@@ -1,0 +1,4 @@
+{
+  "instruction": "Create a program to solve the traveling salesman problem in python.",
+  "output": "import random\n\ngraph = { \n 'A': ['B', 'C', 'D'], \n 'B': ['A', 'C',  'E'], \n 'C': ['A', 'B', 'D', 'E'], \n 'D': ['A', 'C'], \n 'E': ['B', 'C']\n}\n\ndef findBestRoute(graph):\n  currentNode = random.choice(list(graph.keys()))\n \n  bestRoute = [currentNode] \n  min_length =  len(graph)\n \n  while len(bestRoute) < min_length: \n \n    nbrs = graph[currentNode] \n \n    nextNode = None\n    minDist = float('Inf')\n \n    for node in nbrs: \n        if node not in bestRoute: \n            dist = 0\n            for i in range(len(bestRoute)-1): \n                dist += graph[bestRoute[i]][node] \n            if dist < minDist : \n                minDist = dist\n                nextNode = node\n \n    bestRoute.append(nextNode) \n    currentNode = nextNode \n   \n  return bestRoute \n  \nprint(findBestRoute(graph))"
+}

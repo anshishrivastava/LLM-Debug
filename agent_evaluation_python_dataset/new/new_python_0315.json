@@ -1,0 +1,22 @@
+{
+  "instruction": "Main execution flow.",
+  "output": "def main():\n    \"\"\"Main execution flow.\"\"\"\n    logger.info(\"Fetching Shadowsocks configs...\")\n\n    # Fetch raw content\n    raw_content = fetch_content(URL)\n    if not raw_content:\n        logger.error(\"Failed to fetch content. Exiting...\")\n        return\n\n    # Decode Base64 content\n    decoded_content = decode_base64(raw_content)\n    if not decoded_content:\n        logger.error(\"Failed to decode content. Exiting...\")\n        return\n\n    # Validate and filter configs\n    valid_configs = filter_valid_configs(decoded_content)\n    if not valid_configs:\n        logger.warning(\"No valid configs found.\")\n        return\n\n    # Save valid configs as a single Base64-encoded string\n    save_to_file_as_base64(valid_configs, OUTPUT_FILE)\n    logger.info(\"Process completed successfully!\")",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "3yed-61/Shadowsocks",
+    "repo_created_date": "2025-01-21",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "config-cleaner.py",
+    "function_name": "main",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 25,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Back Track",
+  "output": "    private static void backTrack(StringBuilder temp, int idx, boolean hasB, boolean hasR) {\n        if (temp.length() == N - 1) {\n            if (hasB && hasR){\n                strCombination.add(temp.toString().toCharArray());\n            }\n            return;\n        }\n        \n        for (int i = idx; i < 3; i++) {\n            temp.append(chars[i]);\n            backTrack(temp, i, hasB || (chars[i] == 'B'), hasR || (chars[i] == 'R'));\n            temp.deleteCharAt(temp.length() - 1);\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "xabinM/algorithm-record-Java",
+    "repo_created_date": "2024-09-19",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "src/SSAFY/backTrack/LikeRussianFlag.java",
+    "function_name": "backTrack",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 14,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

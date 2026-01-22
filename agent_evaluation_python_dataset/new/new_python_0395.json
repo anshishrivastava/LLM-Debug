@@ -1,0 +1,22 @@
+{
+  "instruction": "TIME-003: Check for early close day and log warning if applicable.",
+  "output": "    def check_early_close_warning(self) -> Optional[str]:\n        \"\"\"\n        TIME-003: Check for early close day and log warning if applicable.\n\n        Call once at market open to alert operator.\n\n        Returns:\n            Optional[str]: Warning message if early close day, None otherwise\n        \"\"\"\n        now_est = get_us_market_time()\n        today_str = now_est.strftime(\"%Y-%m-%d\")\n\n        # Only check once per day\n        if self._early_close_checked_today:\n            return None\n\n        self._early_close_checked_today = True\n\n        is_early, reason = self.is_early_close_day()\n        if is_early:\n            logger.warning(\"=\" * 60)\n            logger.warning(f\"\u23f0 TIME-003: EARLY CLOSE DAY - {reason}\")\n            logger.warning(\"=\" * 60)\n            logger.warning(\"   Market closes at 1:00 PM ET today\")\n            logger.warning(\"   Roll/recenter operations blocked after 12:45 PM\")\n            logger.warning(\"=\" * 60)\n\n            if self.trade_logger:\n                self.trade_logger.log_safety_event({\n                    \"timestamp\": now_est.strftime(\"%Y-%m-%d %H:%M:%S\"),\n                    \"event_type\": \"EARLY_CLOSE_DAY\",\n                    \"severity\": \"INFO\",\n                    \"spy_price\": self.current_underlying_price,\n                    \"vix\": self.current_vix,\n                    \"action_taken\": \"Early close detection\",\n                    \"description\": f\"{reason} - market closes at 1pm ET\",\n                    \"result\": \"WARNING\"\n                })\n\n            return f\"Early close day: {reason}\"\n\n        return None",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "check_early_close_warning",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 42,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

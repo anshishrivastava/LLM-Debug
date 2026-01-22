@@ -1,0 +1,22 @@
+{
+  "instruction": "Returns copy of histogram with negative bins zeroed",
+  "output": "def remove_negative_bins(hist: ROOT.TH1D) -> ROOT.TH1D:\n  \"\"\"Returns copy of histogram with negative bins zeroed\n\n  Args:\n    hist: histogram to processo\n\n  Returns:\n    copy of hist with negative bins zeroed\n  \"\"\"\n  clone_hist = hist.Clone(hist.GetName()+'_nonegative')\n  for ibin in range(0,clone_hist.GetNbinsX()+2):\n    if clone_hist.GetBinContent(ibin) < 0.0:\n      clone_hist.SetBinContent(ibin, 0.0)\n  return clone_hist",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_utils.py",
+    "function_name": "remove_negative_bins",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 14,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

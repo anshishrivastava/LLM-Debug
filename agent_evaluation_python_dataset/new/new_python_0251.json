@@ -1,0 +1,22 @@
+{
+  "instruction": "Create a new preset.",
+  "output": "    def create_preset(self):\r\n        \"\"\"Create a new preset.\"\"\"\r\n        name = simpledialog.askstring(\"New Preset\", \"Enter preset name:\", parent=self.root)\r\n        if name:\r\n            name = name.strip()\r\n            if name in self.presets:\r\n                messagebox.showwarning(\"Warning\", f\"Preset '{name}' already exists.\")\r\n                return\r\n            \r\n            # Create with minimal defaults\r\n            self.presets[name] = {\r\n                \"token\": \"\",\r\n                \"prefix\": \"/////////////\",\r\n                \"mudae_prefix\": \"$\",\r\n                \"channel_id\": \"\",\r\n                \"roll_command\": \"wa\",\r\n                \"min_kakera\": 100,\r\n                \"delay_seconds\": 0,\r\n                \"rolling\": True,\r\n                \"wishlist\": [],\r\n                \"series_wishlist\": [],\r\n            }\r\n            \r\n            self.refresh_preset_list()\r\n            self.select_preset(name)\r",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "misutesu-desu/MudaRemote",
+    "repo_created_date": "2024-10-12",
+    "repo_stars": 34,
+    "repo_forks": 5,
+    "file_path": "mudae_preset_editor.py",
+    "function_name": "create_preset",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 25,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

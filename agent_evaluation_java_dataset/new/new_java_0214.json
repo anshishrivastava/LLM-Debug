@@ -1,0 +1,22 @@
+{
+  "instruction": "Find Median Sorted Arrays",
+  "output": "    public double findMedianSortedArrays(int[] nums1, int[] nums2) {\n        int m = nums1.length;\n        int n = nums2.length;\n\n        List<Integer> numsR = new ArrayList<Integer>();\n        int i = 0;\n        int j = 0;\n\n        while(i < m && j < n){\n            if(nums1[i] < nums2[j]){\n                numsR.add(nums1[i]);\n                i++;\n            }\n            else{\n                numsR.add(nums2[j]);\n                j++;\n            }\n        }\n\n        while(i<m){\n            numsR.add(nums1[i]);\n            i++;\n        }\n        while(j<n){\n            numsR.add(nums2[j]);\n            j++;\n        }\n\n        double result;\n        if((m+n)%2==0){\n            result = (numsR.get((m+n)/2)+numsR.get(((m+n)/2)-1))/2.0;\n        }\n        else{\n            result = numsR.get((m+n)/2);\n        }\n\n        return result;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "tkambham/LeetCode",
+    "repo_created_date": "2025-01-02",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0004-median-of-two-sorted-arrays/0004-median-of-two-sorted-arrays.java",
+    "function_name": "findMedianSortedArrays",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 38,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

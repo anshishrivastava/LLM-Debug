@@ -1,0 +1,22 @@
+{
+  "instruction": "Update all abilities and status effects",
+  "output": "    public void update(float delta) {\n        // Update ability cooldowns\n        for (Ability ability : abilities) {\n            if (ability != null) {\n                ability.update(delta);\n            }\n        }\n\n        // Update offhand cooldown\n        if (offhandCooldown > 0) {\n            offhandCooldown -= delta;\n        }\n\n        // Update sword cooldown (for Paladin)\n        if (swordCooldown > 0) {\n            swordCooldown -= delta;\n        }\n\n        // Update all status effects\n        for (Map.Entry<Object, List<StatusEffect>> entry : new HashMap<>(activeEffects).entrySet()) {\n            List<StatusEffect> effects = entry.getValue();\n            List<StatusEffect> toRemove = new ArrayList<>();\n\n            for (StatusEffect effect : effects) {\n                effect.onUpdate(delta);\n                if (!effect.update(delta)) {\n                    toRemove.add(effect);\n                }\n            }\n\n            effects.removeAll(toRemove);\n\n            // Remove empty lists\n            if (effects.isEmpty()) {\n                activeEffects.remove(entry.getKey());\n            }\n        }\n\n        // Update visual effects\n        updateVisualEffects(delta);\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/AbilityManager.java",
+    "function_name": "update",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 41,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

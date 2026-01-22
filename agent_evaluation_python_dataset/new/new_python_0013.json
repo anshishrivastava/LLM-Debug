@@ -1,0 +1,22 @@
+{
+  "instruction": "It records JobData information in the database. A tree is created based",
+  "output": "    def record(self, job_data: JobData, ignore_existing_job: bool = False) -> None:\n        \"\"\"\n        It records JobData information in the database. A tree is created based\n        on the job name, categories and slurm id. The leaves of the tree\n        are the memory, runtime and numerics of the JobData.\n        \"\"\"\n        table_name = JobDatabase.get_table_name(job_data)\n        if ignore_existing_job and self.job_exists(job_data):\n            return\n\n        table = self.db.require_group(name=table_name)\n\n        if job_data.memory is not None:\n            val = np.asarray(job_data.memory)\n            _ = table.create_dataset(name=\"memory\", shape=val.shape, data=val)\n\n        if job_data.runtime is not None:\n            val = np.asarray(job_data.runtime)\n            _ = table.create_dataset(name=\"runtime\", shape=val.shape, data=val)\n\n        for var, value in job_data.numerics.items():\n            val = np.asarray(value)\n            _ = table.create_dataset(name=var, shape=val.shape, data=val)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "PrincetonUniversity/slurmise",
+    "repo_created_date": "2024-06-21",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "src/slurmise/job_database.py",
+    "function_name": "record",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 23,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Is Palindrome",
+  "output": "    public boolean isPalindrome(int x) \n    {\n        int n=x;int s=0;int a;\n      if(x<0)\n      return false;\n      else\n      {\n          while(n!=0)\n          {\n              a=n%10;\n              s=s*10+a;\n              n=n/10;\n          }\n          if(x==s)\n          return true;\n          else\n          return false;\n      }  \n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Dishagoel1804/DSA",
+    "repo_created_date": "2024-11-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0009-palindrome-number/0009-palindrome-number.java",
+    "function_name": "isPalindrome",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 19,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

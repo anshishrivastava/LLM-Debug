@@ -1,0 +1,22 @@
+{
+  "instruction": "Roman To Int",
+  "output": "    public int romanToInt(String s) {\n        int num = 0;\n        HashMap<Character, Integer> roman = new HashMap<>() {\n            {\n                put('I', 1);\n                put('V', 5);\n                put('X', 10);\n                put('L', 50);\n                put('C', 100);\n                put('D', 500);\n                put('M', 1000);\n            }\n        };\n        s+='B';\n        if(s.length()==1) return roman.get(s.charAt(0));\n        for (int i = 1; i < s.length(); i++) {\n            if ((s.charAt(i) == 'V' || s.charAt(i) == 'X') && s.charAt(i-1) == 'I') {\n                num += roman.get(s.charAt(i)) - roman.get(s.charAt(i - 1));\n                i+=1;\n            }else if ((s.charAt(i) == 'L' || s.charAt(i) == 'C') && s.charAt(i-1) == 'X') {\n                num += roman.get(s.charAt(i)) - roman.get(s.charAt(i - 1));\n                i+=1;\n            } else if ((s.charAt(i) == 'D' || s.charAt(i) == 'M') && s.charAt(i-1) == 'C') {\n                num += roman.get(s.charAt(i)) - roman.get(s.charAt(i - 1));\n                i+=1;\n            }else{\n                num += roman.get(s.charAt(i-1));\n            }\n        }\n        return num;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Braj111/DSA-Practice",
+    "repo_created_date": "2024-08-24",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0013-roman-to-integer/0013-roman-to-integer.java",
+    "function_name": "romanToInt",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 31,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

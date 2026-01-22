@@ -1,0 +1,22 @@
+{
+  "instruction": "Merge Two Lists",
+  "output": "    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {\n        if (list1 == null) {\n            return list2;\n        } else if (list2 == null) {\n            return list1;\n        }\n\n        int val1 = list1.val;\n        int val2 = list2.val;\n        if (val1 <= val2) {\n            return new ListNode(val1, mergeTwoLists(list1.next, list2));\n        } else {\n            return new ListNode(val2, mergeTwoLists(list1, list2.next));\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "TasmiaH0508/lc",
+    "repo_created_date": "2024-06-13",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "0021-merge-two-sorted-lists/0021-merge-two-sorted-lists.java",
+    "function_name": "mergeTwoLists",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 15,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

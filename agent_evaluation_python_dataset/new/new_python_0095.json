@@ -1,0 +1,22 @@
+{
+  "instruction": "Prints help for interactive session",
+  "output": "  def interactive_help(self, user_input: list[str]) -> bool:\n    \"\"\"Prints help for interactive session\n\n    Args:\n      user_input: user input \n\n    Returns:\n      true if user should exit interactive session\n    \"\"\"\n    print(self.help_info)\n    print('Commands include:')\n    print('c(onstant) <var> <value>    set a value to constant or not')\n    print('f(it)                       attempt a fit')\n    print('j(son) <s/l> <fname> [pars] saves or loads parameters to JSON file')\n    print('l(ist)                      display values of variables')\n    print('n(ext)                      finish fit and proceed to next bin')\n    print('p(reset) <s/l> <#> [pars]   save or load parameter preset')\n    print('q(uit)                      exit interactive fitting session')\n    print('q(uit)!                     exit session without saving result')\n    print('ra(ndomize)                 randomize non-constant values')\n    print('r(evert)                    revert to prefit parameter values')\n    print('s(et) <var> <value>         set variable <var> to <value>')\n    print('w(rite) <fname>             write current canvas to a file')\n    return False",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/interactive_fit.py",
+    "function_name": "interactive_help",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 24,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

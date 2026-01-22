@@ -1,0 +1,22 @@
+{
+  "instruction": "Returns python list of variables in workspace",
+  "output": "def workspace_vars_to_list(workspace):\n  '''\n  Returns python list of variables in workspace\n\n  workspace   RooWorkspace to extract variables from\n  '''\n  var_list = []\n  workspace_vars = workspace.allVars()\n  var_iterator = workspace_vars.createIterator()\n  var = var_iterator.Next()\n  while var:\n    var_list.append(var.GetName())\n    var = var_iterator.Next()\n  return var_list",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_utils.py",
+    "function_name": "workspace_vars_to_list",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 14,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

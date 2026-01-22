@@ -1,0 +1,22 @@
+{
+  "instruction": "Add Two Numbers",
+  "output": "    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {\n       \n        ListNode join = new ListNode();\n        ListNode head = join;\n        int carry=0;\n        while(l1!=null && l2!=null){\n           int sum=l1.val+l2.val+carry;\n           join.next=new ListNode(sum%10); \n           carry= sum/10;\n           join=join.next;\n           l1=l1.next;\n           l2=l2.next;\n        }\n        while(l1!=null){\n           int sum=l1.val+carry;\n           join.next=new ListNode(sum%10); \n           carry= sum/10;\n           join=join.next;\n           l1=l1.next;\n        }\n         while(l2!=null){\n            int sum=l2.val+carry;\n           join.next=new ListNode(sum%10); \n           carry= sum/10;\n           join=join.next;\n           l2=l2.next;\n        }\n        if(carry!=0){\n           join.next=new ListNode(carry);  \n        }\n        return head.next;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "MaskeV/Leetcode",
+    "repo_created_date": "2024-10-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0002-add-two-numbers/0002-add-two-numbers.java",
+    "function_name": "addTwoNumbers",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 32,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

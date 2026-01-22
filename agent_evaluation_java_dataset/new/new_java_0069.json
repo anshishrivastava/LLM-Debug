@@ -1,0 +1,22 @@
+{
+  "instruction": "Max Sub Array",
+  "output": "    public int maxSubArray(int[] nums) {\n        int sum=0;\n        int mx=Integer.MIN_VALUE;\n        int j=0;\n\n        while(j<nums.length){\n            sum+=nums[j];\n           mx=Math.max(mx,sum);\n           \n            if(sum<0 ){\n                sum=0;\n                 \n            }\n            j++;\n            \n        }\n        return mx;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "ASHWIKA1/Leetcode",
+    "repo_created_date": "2024-08-12",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0053-maximum-subarray/0053-maximum-subarray.java",
+    "function_name": "maxSubArray",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 18,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

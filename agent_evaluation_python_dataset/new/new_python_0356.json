@@ -1,0 +1,22 @@
+{
+  "instruction": "r = one hot encoding of atomic number",
+  "output": "    def set_atom_type(self, neighbors, molecule=None):\n        \"\"\"\n        r = one hot encoding of atomic number\n        neighbors = indices of atoms in each edge\n        d = number of edges connected to each node\n        \"\"\"\n        if molecule is not None:\n            molecule.unique_values = {}\n            atomic_nums = molecule.atomic_nums\n            r = torch.vstack([self.atom_one_hot[cur] for cur in atomic_nums])\n            d = np.array([len(cur) for cur in neighbors])\n            molecule.atom_degrees = d\n        else:  # set atom types for the full dataset that will be used to set types for individual molecules\n            self.unique_values = {}\n            self.atom_one_hot = {}\n            atomic_nums = self.atomic_nums\n            unique_values_orig, one_hot_mapping_orig = torch.tensor(atomic_nums).unique(\n                dim=0, return_inverse=True\n            )\n            r = torch.eye(unique_values_orig.shape[0])[one_hot_mapping_orig].to(\n                self.train_args.device\n            )\n            d = np.array([len(cur) for cur in neighbors])\n            self.atom_degrees = d\n            # save the translation between the full atomic number and the full one hot encoding to be used by individual molecules\n            for cur in range(len(atomic_nums)):\n                self.atom_one_hot[atomic_nums[cur]] = r[cur]\n        for rad in range(self.train_args.discrete_neighborhood_depth + 1):\n            if rad != 0:\n                # the message is in the direction (atom 1 -> atom 0) for each edge, so the message is the current atom label of atom1\n                # the messages from each incoming atom are then split by receiving atom,\n                # so the messages that are going into a particular atom are all grouped together\n                messages = [r[cur] for cur in neighbors]\n                # the messages incoming to each atom are then added together to enforce permutation invariance\n                messages = [messages[n].sum(0) for n in range(len(d))]\n                messages = torch.stack(messages)\n                # the message is then appended to the current state to remember order of messages\n                r = torch.cat([r, messages], dim=1)\n            cur_unique_values, one_hot_mapping = r.unique(dim=0, return_inverse=True)\n            if molecule is not None and rad not in molecule.unique_values.keys():\n                molecule.unique_values[rad] = cur_unique_values\n            elif molecule is None and rad not in self.unique_values.keys():\n                self.unique_values[rad] = cur_unique_values\n            index = self.index_of2(\n                r, self.unique_values[rad]\n            )  # index based on the full atomic_num options saved in the dataset\n            r = (\n                torch.eye(len(self.unique_values[rad]))\n                .to(torch.long)\n                .to(r.device)[index]\n            )\n            if len(torch.nonzero((r.sum(1) == 0).to(torch.long), as_tuple=False)) != 0:\n                raise Exception(\"Unrecognized graph neighborhood.\")\n        return torch.nonzero(r)[:, 1].to(self.train_args.device)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/data/builder.py",
+    "function_name": "set_atom_type",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 54,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Reset Parameters",
+  "output": "    def reset_parameters(self) -> None:\n        for w_A in self.w_As:\n            nn.init.kaiming_uniform_(w_A.weight, a=math.sqrt(5))\n        for w_B in self.w_Bs:\n            nn.init.zeros_(w_B.weight)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "98haiting/General-or-Medical-CLIP-Which-one-Shall-We-Choose",
+    "repo_created_date": "2024-10-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "biomed_clip/lora.py",
+    "function_name": "reset_parameters",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 5,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

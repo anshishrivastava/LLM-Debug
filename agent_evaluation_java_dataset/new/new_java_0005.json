@@ -1,0 +1,22 @@
+{
+  "instruction": "Search Insert",
+  "output": "    public int searchInsert(int[] nums, int target) {\n        if (nums[0] > target) {\n            return 0;\n        }\n        if (nums[nums.length - 1] < target) {\n            return nums.length;\n        }\n\n        int start = 0;\n        int end = nums.length - 1;\n\n        while(start <= end) {\n            int mid = start + (end - start)/2;\n\n            if (nums[mid] == target) {\n                return mid;\n            } else if (nums[mid] > target && nums[mid-1] < target) {\n                return mid;\n            } else if (nums[mid] > target) {\n                end = mid - 1;\n            } else {\n                start = mid + 1;\n            }\n        }\n        return -1;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "karan-shergill/dsa101",
+    "repo_created_date": "2024-11-16",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "2026/binary_search/e_search_insert_position.java",
+    "function_name": "searchInsert",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 26,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

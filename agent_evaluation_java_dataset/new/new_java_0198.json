@@ -1,0 +1,22 @@
+{
+  "instruction": "Make Fancy String",
+  "output": "    public String makeFancyString(String s) {\n        if (s.length() < 3) {\n            return s;\n        }\n        StringBuilder sb = new StringBuilder(s);\n        char c = sb.charAt(0);\n        int cnt = 1;\n        for (int i = 1; i < sb.length(); ) {\n            char ch = sb.charAt(i);\n            if (ch == c) {\n                cnt++;\n            } else {\n                c = ch;\n                cnt = 1;\n            }\n            if (cnt > 2) {\n                sb.deleteCharAt(i);\n            } else {\n                i++;\n            }\n        }\n        return sb.toString();\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "GAURAV-SENGAR-14/LEETCODE-PROBLEMS",
+    "repo_created_date": "2025-01-13",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "1302-delete-characters-to-make-fancy-string/delete-characters-to-make-fancy-string.java",
+    "function_name": "makeFancyString",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 23,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

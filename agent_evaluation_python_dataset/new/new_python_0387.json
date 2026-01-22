@@ -1,0 +1,22 @@
+{
+  "instruction": "Calculate calendar days until expiration (not time-based).",
+  "output": "    def days_to_expiry(self) -> int:\n        \"\"\"Calculate calendar days until expiration (not time-based).\"\"\"\n        if not self.expiry:\n            return 0\n        try:\n            expiry_date = datetime.strptime(self.expiry, \"%Y-%m-%d\").date()\n            today = datetime.now().date()\n            return max(0, (expiry_date - today).days)\n        except ValueError:\n            return 0",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/models/positions.py",
+    "function_name": "days_to_expiry",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 10,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

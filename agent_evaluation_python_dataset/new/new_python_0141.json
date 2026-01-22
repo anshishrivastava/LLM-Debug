@@ -1,0 +1,22 @@
+{
+  "instruction": "Adds information about fitting variable",
+  "output": "  def set_fitting_variable(self, name: str, description: str, nbins: int=60, \n                           nbins_mc: int=80,\n                           var_range: tuple[float,float]=(60.0,120.0), \n                           custom_mc_range: tuple[float,float]=(50.0,130.0), \n                           weight: str='1', \n                           weight_mc: str='1'):\n    '''Adds information about fitting variable\n\n    Args:\n      name: name of branch in TTree or C++ expression\n      description: name used in plots (with TLaTeX)\n      nbins: number of bins to use for fit variable\n      var_range: start and end of fit range\n      custom_mc_range: start and end of MC histogram range\n      weight: expression for weight to use\n      weight_mc: expression for weight to use for MC\n    '''\n    self.data_nom_tnp_analyzer.set_fitting_variable(name, description, nbins, \n                                                    var_range, weight)\n    self.data_nom_tnp_analyzer.set_template_range(custom_mc_range)\n    self.data_altsig_tnp_analyzer.set_fitting_variable(name, description, \n                                                       nbins, var_range, weight)\n    self.data_altbkg_tnp_analyzer.set_fitting_variable(name, description, \n                                                       nbins, var_range, weight)\n    self.data_altbkg_tnp_analyzer.set_template_range(custom_mc_range)\n    self.data_altsigbkg_tnp_analyzer.set_fitting_variable(name, description, \n                                                          nbins, var_range, \n                                                          weight)\n    self.mc_nom_tnp_analyzer.set_fitting_variable(name, description, nbins_mc, \n                                                  custom_mc_range, weight_mc)\n    self.mc_alt_tnp_analyzer.set_fitting_variable(name, description, nbins_mc, \n                                                  custom_mc_range, weight_mc)\n    self.mc_nom_tnp_analyzer.set_custom_fit_range(var_range)\n    self.mc_alt_tnp_analyzer.set_custom_fit_range(var_range)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/rms_sf_analyzer.py",
+    "function_name": "set_fitting_variable",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 34,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

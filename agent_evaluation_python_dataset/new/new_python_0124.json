@@ -1,0 +1,22 @@
+{
+  "instruction": "Adds Chebyshev polynomial of degree 3 as background model",
+  "output": "def add_background_model_chebyshev(workspace, ibin, is_pass):\n  '''Adds Chebyshev polynomial of degree 3 as background model\n\n  workspace    workspace to add model to; must have variable fit_var\n  ibin         int bin number\n  is_pass      bool, indicates if passing or failing leg\n  '''\n  fit_var = workspace.var('fit_var')\n  a0 = ROOT.RooRealVar('a0', '0th Chebyshev coefficient', -1.0, 1.0)\n  a1 = ROOT.RooRealVar('a1', '1st Chebyshev coefficient', -1.0, 1.0)\n  a2 = ROOT.RooRealVar('a2', '2nd Chebyshev coefficient', -1.0, 1.0)\n  getattr(workspace,'import')(a0)\n  getattr(workspace,'import')(a1)\n  getattr(workspace,'import')(a2)\n  #pdf_b = ROOT.RooChebyshev('pdf_b', 'pdf_b', fit_var, ROOT.RooArgList(a0, a1, a2))\n  pdf_b = ROOT.RooGenericPdf('pdf_b','pdf_b',\n                             '1+@1*@0+@2*(2*@0*@0-1)+@3*(4*@0*@0*@0-3*@0)',\n                             ROOT.RooArgList(fit_var, a0, a1, a2))\n  getattr(workspace,'import')(pdf_b)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/model_initializers.py",
+    "function_name": "add_background_model_chebyshev",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 19,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

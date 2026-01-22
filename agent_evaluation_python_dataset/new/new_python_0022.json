@@ -1,0 +1,22 @@
+{
+  "instruction": "Prints the name and shape of datasets in a H5py HDF5 file.",
+  "output": "    def print_hdf5(h5py_obj, level=-1, print_full_name: bool = False, print_attrs: bool = True) -> None:\n        \"\"\"Prints the name and shape of datasets in a H5py HDF5 file.\n\n        Parameters\n        ----------\n        h5py_obj: [h5py.File, h5py.Group]\n            the h5py.File or h5py.Group object\n        level: int\n            What level of the file tree you are in\n        print_full_name\n            If True, the full tree will be printed as the name, e.g. /group0/group1/group2/dataset: ...\n            If False, only the current node will be printed, e.g. dataset:\n        print_attrs\n            If True: print all attributes in the file\n        Returns\n        -------\n        None\n\n        \"\"\"\n\n        def is_group(f):\n            return isinstance(f, h5py._hl.group.Group)\n\n        def is_dataset(f):\n            return isinstance(f, h5py._hl.dataset.Dataset)\n\n        def print_level(level, n_spaces=5) -> str:\n            if level == -1:\n                return \"\"\n            prepend = \"|\" + \" \" * (n_spaces - 1)\n            prepend *= level\n            tree = \"|\" + \"-\" * (n_spaces - 2) + \" \"\n            return prepend + tree\n\n        for key in h5py_obj.keys():\n            entry = h5py_obj[key]\n            name = entry.name if print_full_name else os.path.basename(entry.name)\n            if is_group(entry):\n                print(f\"{print_level(level)}{name}\")  # noqa: T201\n                JobDatabase.print_hdf5(entry, level + 1, print_full_name=print_full_name)\n            elif is_dataset(entry):\n                shape = entry.shape\n                dtype = entry.dtype\n                print(f\"{print_level(level)}{name}: {shape} {dtype} {entry[()]}\")  # noqa: T201\n        if level == -1 and print_attrs:\n            print(\"attrs: \")  # noqa: T201\n            for key, value in h5py_obj.attrs.items():\n                print(f\" {key}: {value}\")  # noqa: T201",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "PrincetonUniversity/slurmise",
+    "repo_created_date": "2024-06-21",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "src/slurmise/job_database.py",
+    "function_name": "print_hdf5",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 48,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

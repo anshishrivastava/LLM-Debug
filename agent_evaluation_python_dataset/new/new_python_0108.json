@@ -1,0 +1,22 @@
+{
+  "instruction": "Merge PDFs using LaTeX",
+  "output": "def merge_pdfs(input_filenames,figures_per_row,output_filename):\n  '''Merge PDFs using LaTeX\n  input_names      list of strings\n  figures_per_row  int, figures per row in output\n  output_name      string\n  '''\n  #calculate figure width\n  figure_width = 0.99/figures_per_row\n  figure_width_string = '{:.4f}'.format(figure_width)\n  #write latex file\n  with open('rootpdf_to_png_latexdoc.tex','w') as latex_file:\n    latex_file.write('\\\\documentclass[10pt,oneside]{report}\\n')\n    latex_file.write('\\\\usepackage{graphicx,float}\\n')\n    latex_file.write('\\\\usepackage[active,tightpage]{preview}\\n')\n    latex_file.write('\\\\begin{document}\\n')\n    latex_file.write('\\\\begin{preview}\\n')\n    latex_file.write('\\\\begin{figure}[H]\\n')\n    input_index = 1\n    for input_filename in input_filenames:\n      latex_file.write('\\\\includegraphics[width='+figure_width_string)\n      latex_file.write('\\\\textwidth]{'+input_filename+'}')\n      if (input_index % figures_per_row)==0:\n        latex_file.write('\\n')\n      else:\n        latex_file.write('%\\n')\n      input_index += 1\n    latex_file.write('\\\\end{figure}')\n    latex_file.write('\\\\end{preview}\\n')\n    latex_file.write('\\\\end{document}')\n  #compile latex document\n  subprocess.run(['pdflatex','rootpdf_to_png_latexdoc.tex'])\n  #clean up\n  os.remove('rootpdf_to_png_latexdoc.tex')\n  os.remove('rootpdf_to_png_latexdoc.aux')\n  os.remove('rootpdf_to_png_latexdoc.log')\n  shutil.copy('rootpdf_to_png_latexdoc.pdf',output_filename)\n  os.remove('rootpdf_to_png_latexdoc.pdf')",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/merge_pdfs.py",
+    "function_name": "merge_pdfs",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 37,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

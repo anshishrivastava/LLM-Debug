@@ -1,0 +1,22 @@
+{
+  "instruction": "Merge Two Lists",
+  "output": "    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {\n        ListNode f=list1;\n        ListNode s=list2;\n        ListNode ans=new ListNode();\n        ListNode cur=ans;\n        \n        while(f!=null && s!=null){\n           if(f.val<=s.val){\n              cur.next=f;\n              f=f.next;\n              cur=cur.next;\n           }\n           else{\n             cur.next=s;\n              s=s.next;\n              cur=cur.next;\n           }\n        }\n           while(f!=null){\n            cur.next=f;\n            f=f.next;\n            cur=cur.next;\n           }\n            \n            while(s !=null){\n            cur.next=s;\n            s=s.next;\n            cur=cur.next;\n           }\n\n        \n        return ans.next;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "y24has/Leetcode",
+    "repo_created_date": "2024-10-02",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "0021-merge-two-sorted-lists/0021-merge-two-sorted-lists.java",
+    "function_name": "mergeTwoLists",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 33,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

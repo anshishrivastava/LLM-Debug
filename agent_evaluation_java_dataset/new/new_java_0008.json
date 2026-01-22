@@ -1,0 +1,22 @@
+{
+  "instruction": "Find Pages",
+  "output": "    public static int findPages(int[] arr, int K) {\n        // code here\n        \n        if (arr.length < K) return -1;\n        \n        int totalPages = 0, maxPages1Book = 0;\n        for (Integer val : arr) {\n            totalPages += val;\n            maxPages1Book = Math.max(maxPages1Book, val);\n        }\n        \n        int start = maxPages1Book;\n        int end = totalPages;\n        int ans = -1;\n        \n        while (start <= end) {\n            int mid = start + ((end - start)/2);\n            \n            if (isPossibleToAllocateMidPagesToKStudents(arr, K, mid)) {\n                ans = mid;\n                //minimize pages\n                end = mid - 1;\n            } else {\n                start = mid + 1;\n            }\n        }\n        return ans;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "karan-shergill/dsa101",
+    "repo_created_date": "2024-11-16",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "2026/binary_search/h_allocate_minimum_pages.java",
+    "function_name": "findPages",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 28,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

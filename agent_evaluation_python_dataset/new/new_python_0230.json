@@ -1,0 +1,22 @@
+{
+  "instruction": "Removes the backup file created during the update process.",
+  "output": "def cleanup_after_update():\n    \"\"\"Removes the backup file created during the update process.\"\"\"\n    current_script = os.path.abspath(__file__)\n    backup_file = current_script + \".bak\"\n    if os.path.exists(backup_file):\n        try:\n            os.remove(backup_file)\n            print(f\"[{BOT_NAME}] Previous version backup (.bak) cleaned up.\")\n        except Exception:\n            pass",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "misutesu-desu/MudaRemote",
+    "repo_created_date": "2024-10-12",
+    "repo_stars": 34,
+    "repo_forks": 5,
+    "file_path": "mudae_bot.py",
+    "function_name": "cleanup_after_update",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 10,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

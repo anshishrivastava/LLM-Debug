@@ -1,0 +1,22 @@
+{
+  "instruction": "All Words Are Unique",
+  "output": "def all_words_are_unique(words: List[str]) -> Tuple[bool, Set[str]]:\n    unique = {}\n    for word in words:\n        if word in unique:\n            return False, set()\n        else:\n            unique[word] = True\n    return True, set(*unique.keys())",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "pb-96/crossword-generator",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "cw_generator_uv/cw_generator/cw_gen/pre_validate_utils.py",
+    "function_name": "all_words_are_unique",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 8,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Save Params",
+  "output": "def save_params(folder_path):\n    # Find the final_state file\n    for i in os.listdir(folder_path):\n        if os.path.isfile(os.path.join(folder_path, i)) and \"final_state_box\" in i:\n            final_state_name = i\n\n    with open(f\"{folder_path}/{final_state_name}\") as input:\n        final_state = XmlSerializer.deserialize(input.read())\n\n    cell = np.zeros((3, 3))\n    for indi, i in enumerate(final_state.getPeriodicBoxVectors()._value):\n        for indj, j in enumerate(i):\n            cell[indi, indj] = j\n    if final_state.getPeriodicBoxVectors().unit.get_name() == \"nanometer\":\n        cell = cell * 10\n\n    return cell",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/analysis/trajectory_analysis.py",
+    "function_name": "save_params",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 17,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

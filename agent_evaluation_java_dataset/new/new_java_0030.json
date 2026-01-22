@@ -1,0 +1,22 @@
+{
+  "instruction": "Render static cone (fallback line-based)",
+  "output": "        private void renderStaticCone(SpriteBatch batch, Vector2 playerPos, float facingAngle) {\n            batch.setColor(indicatorColor.r, indicatorColor.g, indicatorColor.b, 0.3f);\n\n            int segments = 12;\n            float halfCone = coneAngle / 2f;\n            float angleStep = coneAngle / segments;\n\n            for (int i = 0; i < segments; i++) {\n                float angle1 = facingAngle - halfCone + (i * angleStep);\n                float angle2 = facingAngle - halfCone + ((i + 1) * angleStep);\n\n                float rad1 = (float) Math.toRadians(angle1);\n                float rad2 = (float) Math.toRadians(angle2);\n\n                float x1 = playerPos.x + (float) Math.cos(rad1) * range;\n                float y1 = playerPos.y + (float) Math.sin(rad1) * range;\n                float x2 = playerPos.x + (float) Math.cos(rad2) * range;\n                float y2 = playerPos.y + (float) Math.sin(rad2) * range;\n\n                drawLine(batch, playerPos.x, playerPos.y, x1, y1, 2f);\n\n                batch.setColor(indicatorColor.r, indicatorColor.g, indicatorColor.b, 0.2f);\n                drawLine(batch, x1, y1, x2, y2, 2f);\n                batch.setColor(indicatorColor.r, indicatorColor.g, indicatorColor.b, 0.3f);\n            }\n\n            float finalAngle = facingAngle + halfCone;\n            float finalRad = (float) Math.toRadians(finalAngle);\n            float finalX = playerPos.x + (float) Math.cos(finalRad) * range;\n            float finalY = playerPos.y + (float) Math.sin(finalRad) * range;\n            drawLine(batch, playerPos.x, playerPos.y, finalX, finalY, 2f);\n\n            batch.setColor(1f, 1f, 1f, 1f);\n        }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/AbilityVisual.java",
+    "function_name": "renderStaticCone",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 34,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

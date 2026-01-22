@@ -1,0 +1,22 @@
+{
+  "instruction": "Merge Two Lists",
+  "output": "\n    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {\n        ListNode dummy = new ListNode();\n        ListNode current = dummy;\n\n        while (list1 != null && list2 != null) {\n            if (list1.val < list2.val) {\n                current.next = list1;\n                list1 = list1.next;\n            } else {\n                current.next = list2;\n                list2 = list2.next;\n            }\n            current = current.next;\n        }\n\n        if (list1 != null) {\n            current.next = list1;\n        } else {\n            current.next = list2;\n        }\n\n        return dummy.next;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "pkucpkam/daily-code-challenge",
+    "repo_created_date": "2024-10-29",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "problems-from-1-to-100/problem-10/Solution.java",
+    "function_name": "mergeTwoLists",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 24,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

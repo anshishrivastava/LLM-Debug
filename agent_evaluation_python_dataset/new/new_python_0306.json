@@ -1,0 +1,22 @@
+{
+  "instruction": "Normalize Data",
+  "output": "def normalize_data(fetch_data_fn: Callable[[], List[Dict[str, str]]]):\n    # Don't specify the parameters use functools partial before invoking the function\n    all_data = fetch_data_fn()\n    for idx in range(27):\n        current_letter_list = all_data[idx]\n        for word, description in current_letter_list.items():\n            yield WordVectorStore(word=word, description=description)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "pb-96/crossword-generator",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "cw_generator_uv/cw_generator/db_service/data_loader.py",
+    "function_name": "normalize_data",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 7,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

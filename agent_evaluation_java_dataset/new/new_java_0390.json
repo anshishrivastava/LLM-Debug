@@ -1,0 +1,22 @@
+{
+  "instruction": "Remove Subfolders",
+  "output": "\n    public List<String> removeSubfolders(String[] folder) {\n        // Create a set to store all folder paths for fast lookup\n        Set<String> folderSet = new HashSet<>(Arrays.asList(folder));\n        List<String> result = new ArrayList<>();\n\n        // Iterate through each folder to check if it's a sub-folder\n        for (String f : folder) {\n            boolean isSubFolder = false;\n            String prefix = f;\n\n            // Check all prefixes of the current folder path\n            while (!prefix.isEmpty()) {\n                int pos = prefix.lastIndexOf('/');\n                if (pos == -1) break;\n\n                // Reduce the prefix to its parent folder\n                prefix = prefix.substring(0, pos);\n\n                // If the parent folder exists in the set, mark as sub-folder\n                if (folderSet.contains(prefix)) {\n                    isSubFolder = true;\n                    break;\n                }\n            }\n\n            // If not a sub-folder, add it to the result\n            if (!isSubFolder) {\n                result.add(f);\n            }\n        }\n\n        return result;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Amar-Manjarathkar/LeetCode-Daily_Challenges",
+    "repo_created_date": "2024-07-07",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "1233. Remove Sub-Folders from the Filesystem .java",
+    "function_name": "removeSubfolders",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 34,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

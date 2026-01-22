@@ -1,0 +1,22 @@
+{
+  "instruction": "Min Domino Rotations",
+  "output": "    public int minDominoRotations(int[] tops, int[] bottoms) {\n        int result = check(tops[0], tops, bottoms);\n        if (result != -1 || tops[0] == bottoms[0]) {\n            return result;\n        } else {\n            return check(bottoms[0], tops, bottoms);\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "TheKnightProtocol/Leetcode",
+    "repo_created_date": "2024-10-13",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "1007. Minimum Domino Rotations For Equal Row.java",
+    "function_name": "minDominoRotations",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 8,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

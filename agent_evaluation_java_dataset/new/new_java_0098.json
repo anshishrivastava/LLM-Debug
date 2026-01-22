@@ -1,0 +1,22 @@
+{
+  "instruction": "Largest Divisible Subset",
+  "output": "       public List<Integer> largestDivisibleSubset(int[] nums) {\n        int n = nums.length;\n        \n        Arrays.sort(nums);\n        \n        List<Integer> ans = new ArrayList<>(); \n        \n        int[] dp = new int[n]; \n        Arrays.fill(dp, 1);\n        \n        int[] parent = new int[n]; \n        int lastIndex = 0; \n        int maxLen = 0;\n        \n        for(int i = 0; i < n; i++) {\n            parent[i] = i; // Assign the parent to itself\n            \n            // For each previous index\n            for(int prevInd = 0; prevInd < i; prevInd++) {\n                \n                // If the element at index i can be included in the LDS ending at index j\n                if(nums[i] % nums[prevInd] == 0 && dp[i] < dp[prevInd] + 1) {\n                    dp[i] = dp[prevInd] + 1; // Update the DP value\n                    parent[i] = prevInd; // Store the parent\n                }\n            }\n            // If a longer LDS is found, update the values\n            if(dp[i] > maxLen) {\n                lastIndex = i;\n                maxLen = dp[i];\n            }\n        }\n        // Backtracking\n        int i = lastIndex;\n        \n        // Until we reach an index which is its own parent\n        while(parent[i] != i) {\n            ans.add(nums[i]); // Add the element at current index\n            i = parent[i]; \n        }\n        ans.add(nums[i]); // Adding the last element \n        \n        // Return the computed result\n        return ans;\n      \n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Ananthu191030/Leetcode",
+    "repo_created_date": "2024-10-30",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0368-largest-divisible-subset/0368-largest-divisible-subset.java",
+    "function_name": "largestDivisibleSubset",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 46,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

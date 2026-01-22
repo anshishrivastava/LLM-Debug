@@ -1,0 +1,22 @@
+{
+  "instruction": "This function calculates the f1 score",
+  "output": "    def F1_score(self, output, target):\n        \"\"\"\n        This function calculates the f1 score\n        :param output: ground truth, 1d array-like, or label indicator array / sparse matrix\n        :param target: prediction, 1d array-like, or label indicator array / sparse matrix\n        :return: f1 score\n        \"\"\"\n\n        # f1 = f1_score(target.cpu().detach().numpy(), output.cpu().detach().numpy(), average='macro')\n        f1 = f1_score(target, output, average='weighted', zero_division=1)\n        return f1",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "98haiting/General-or-Medical-CLIP-Which-one-Shall-We-Choose",
+    "repo_created_date": "2024-10-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "biomed_clip/metrices.py",
+    "function_name": "F1_score",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 11,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

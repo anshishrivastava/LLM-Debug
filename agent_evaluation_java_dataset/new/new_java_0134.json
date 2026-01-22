@@ -1,0 +1,22 @@
+{
+  "instruction": "Count Elements",
+  "output": "    public int countElements(int[] arr) {\n        Set<Integer> set = new HashSet<>();\n\n        for (int num : arr) {\n            set.add(num);\n        }\n\n        int count = 0;\n\n        for (int i = 0; i < arr.length; i++) {\n            if (set.contains(arr[i] + 1)) {\n                count++;\n            }\n        }\n\n        return count;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "vhnguyenx/LeetCode-Problems",
+    "repo_created_date": "2024-10-14",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "src/Array/CountingElements.java",
+    "function_name": "countElements",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 17,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

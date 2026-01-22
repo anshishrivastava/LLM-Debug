@@ -1,0 +1,22 @@
+{
+  "instruction": "Merge Two Lists",
+  "output": "    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {\n        ListNode ptr1 = list1;\n        ListNode ptr2 = list2;\n        ListNode head = new ListNode(-1);\n        ListNode ans = head;\n        while(ptr1 != null && ptr2 != null){\n            if(ptr1.val < ptr2.val){\n                head.next = new ListNode(ptr1.val);\n                ptr1 = ptr1.next;\n            }else if(ptr1.val > ptr2.val){\n                head.next = new ListNode(ptr2.val);\n                ptr2 = ptr2.next;\n            }else{\n                head.next = new ListNode(ptr1.val,new ListNode(ptr2.val));\n                ptr1 = ptr1.next;\n                ptr2 = ptr2.next;\n                head = head.next; // as 2 Nodes are added here so head pointer must move 2 steps ahead so.\n            }\n            head = head.next; // At least 1 elements are added in each loop so head must move 2 step at each loop iteration.\n        }\n        if(ptr1 != null){\n            head.next = ptr1;\n        }\n        if(ptr2 != null)head.next = ptr2;\n        return ans.next;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "bishal292/LeetCodeProblems",
+    "repo_created_date": "2024-11-30",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0021-merge-two-sorted-lists/0021-merge-two-sorted-lists.java",
+    "function_name": "mergeTwoLists",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 26,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

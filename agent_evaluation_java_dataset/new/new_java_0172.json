@@ -1,0 +1,22 @@
+{
+  "instruction": "Subarray Bitwise O Rs",
+  "output": "    public int subarrayBitwiseORs(int[] arr) {\n        Set<Integer> res = new HashSet<>();\n        Set<Integer> prev = new HashSet<>();\n        \n        for (int num : arr) {\n            Set<Integer> curr = new HashSet<>();\n            curr.add(num);\n            \n            for (int p : prev) {\n                curr.add(p | num);\n            }\n            \n            res.addAll(curr);\n            prev = curr;\n        }\n        \n        return res.size();\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "R-Shailesh-varma/code-contributions",
+    "repo_created_date": "2024-08-14",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bitwise-ors-of-subarrays.java",
+    "function_name": "subarrayBitwiseORs",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 18,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

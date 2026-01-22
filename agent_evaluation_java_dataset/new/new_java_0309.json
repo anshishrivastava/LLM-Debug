@@ -1,0 +1,22 @@
+{
+  "instruction": "Set Zeroes",
+  "output": "    public void setZeroes(int[][] matrix) {\n        int n = matrix.length;\n        int m = matrix[0].length;\n        boolean[] row = new boolean[n];\n        boolean[] col = new boolean[m];\n\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < m; j++) {\n                if (matrix[i][j] == 0) {\n                    row[i] = true;\n                    col[j] = true;\n                }\n            }\n        }\n\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < m; j++) {\n                if (row[i] || col[j]) {\n                    matrix[i][j] = 0;\n                }\n            }\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Himanshi-Saini-0277/Leetcode_Streak",
+    "repo_created_date": "2024-08-24",
+    "repo_stars": 4,
+    "repo_forks": 0,
+    "file_path": "0073-set-matrix-zeroes/0073-set-matrix-zeroes.java",
+    "function_name": "setZeroes",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 23,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

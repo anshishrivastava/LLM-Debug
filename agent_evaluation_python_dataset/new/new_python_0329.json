@@ -1,0 +1,22 @@
+{
+  "instruction": "Takes an input of the save_path and creates",
+  "output": "def extract_density_info_npt(save_path):\n    \"\"\"\n    Takes an input of the save_path and creates\n    a bash script that saves all the xvg files\n    with the energy, temperature, volume and density\n    \"\"\"\n    with open(os.path.join(save_path, \"analysis_script.sh\"), \"w\") as f:\n        f.write(\"#!/bin/bash\" + \"\\n\")\n        f.write(\"#SBATCH --job-name=opv-md\" + \"\\n\")\n        f.write(\"#SBATCH --partition=xeon-p8\" + \"\\n\")\n        f.write(\"#SBATCH --nodes=1\" + \"\\n\")\n        f.write(\"#SBATCH --ntasks-per-node=1\" + \"\\n\")\n        f.write(\"#SBATCH --cpus-per-task=4\" + \"\\n\")\n        f.write(\"#SBATCH --time=4-00:00:00\" + \"\\n\")\n        f.write(\"\\n\")\n        f.write(\"# Load modules\" + \"\\n\")\n        f.write(\"module purge\" + \"\\n\")\n        f.write(\"module use --append /data1/groups/rgb_shared/jnam/opt/modules\" + \"\\n\")\n        f.write(\"module load gromacs/2023\" + \"\\n\")\n        f.write(\"source /etc/profile\" + \"\\n\")\n        f.write(\"source /home/gridsan/jruza/.bashrc\" + \"\\n\")\n        f.write(\"conda activate htvs\" + \"\\n\")\n        f.write(\"\\n\")\n        f.write(\"# Function to search for string in files\" + \"\\n\")\n        f.write('search_string=\"npt_prod\"' + \"\\n\")\n        f.write('search_string2=\"edr\"' + \"\\n\")\n        f.write(\"files=()\" + \"\\n\")\n        f.write(\"# Iterate through files in the directory\" + \"\\n\")\n        f.write(\"for file in ./*; do\" + \"\\n\")\n        f.write(\"    # Check if file is a regular file\" + \"\\n\")\n        f.write('    if [ -f \"$file\" ]; then' + \"\\n\")\n        f.write(\"        # Check if the file contains the search string\" + \"\\n\")\n        f.write('        if [[ \"$file\" == *\"$search_string\"* ]]; then' + \"\\n\")\n        f.write('            if [[ \"$file\" == *\"$search_string2\"* ]]; then' + \"\\n\")\n        f.write('                files+=(\"$file\")' + \"\\n\")\n        f.write(\"            fi\" + \"\\n\")\n        f.write(\"        fi\" + \"\\n\")\n        f.write(\"    fi\" + \"\\n\")\n        f.write(\"done\" + \"\\n\")\n        f.write(\"\\n\")\n        f.write(\"# Iterate through the list of files\" + \"\\n\")\n        f.write(\"# 10 total energy\" + \"\\n\")\n        f.write(\"# 12 temperature\" + \"\\n\")\n        f.write(\"# 19 volume\" + \"\\n\")\n        f.write(\"# 20 density\" + \"\\n\")\n        f.write('for file in \"${files[@]}\"; do' + \"\\n\")\n        f.write(\"    # Extract energy outputs using gmx energy command\" + \"\\n\")\n        f.write(\n            '    gmx_mpi energy -f \"$file\" -o \"${file%.edr}_energy.xvg\" -xvg none << EOF'\n            + \"\\n\"\n        )\n        f.write(\"10\" + \"\\n\")\n        f.write(\"12\" + \"\\n\")\n        f.write(\"19\" + \"\\n\")\n        f.write(\"20\" + \"\\n\")\n        f.write(\"EOF\" + \"\\n\")\n        f.write(\"done\" + \"\\n\")\n        f.write(\"\\n\")",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/analysis/gromacs_edr_analysis.py",
+    "function_name": "extract_density_info_npt",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 58,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

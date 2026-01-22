@@ -1,0 +1,22 @@
+{
+  "instruction": "Is Possible To Allocate Mid Pages To K Students",
+  "output": "    \n    public static boolean isPossibleToAllocateMidPagesToKStudents(int[] arr, int K, int mid) {\n        int studCount = 1;\n        int currPages = 0;\n        for (Integer val : arr) {\n            currPages += val;\n            if (currPages > mid) {\n                studCount++;\n                currPages = val;\n            }\n        }\n        \n        return studCount <= K;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "karan-shergill/dsa101",
+    "repo_created_date": "2024-11-16",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "2026/binary_search/h_allocate_minimum_pages.java",
+    "function_name": "isPossibleToAllocateMidPagesToKStudents",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 14,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

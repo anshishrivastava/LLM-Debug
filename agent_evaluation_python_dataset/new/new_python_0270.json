@@ -1,0 +1,22 @@
+{
+  "instruction": "Build Lora Projection",
+  "output": "def build_lora_projection(model, lora_rank=4):\n    visual_projection = model.visual.head.proj    # Linear(in_features, out_features)\n    text_projection = model.text.proj\n\n    setattr(model.visual.head, \"proj\", lora_ft.Linear(model.visual.head.proj.in_features, model.visual.head.proj.out_features, lora_rank))\n    for name, child in model.text.proj.named_children():\n        if isinstance(child, nn.Linear):\n            setattr(model.text.proj, name, lora_ft.Linear(child.in_features, child.out_features, lora_rank))\n\n    lora_utils.mark_only_lora_as_trainable(model)\n\n    return model",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "98haiting/General-or-Medical-CLIP-Which-one-Shall-We-Choose",
+    "repo_created_date": "2024-10-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "biomed_clip/lora.py",
+    "function_name": "build_lora_projection",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 12,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

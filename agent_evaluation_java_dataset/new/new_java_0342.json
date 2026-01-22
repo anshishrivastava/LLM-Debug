@@ -1,0 +1,22 @@
+{
+  "instruction": "Next Permutation",
+  "output": "    public void nextPermutation(int[] nums) {\n        int n = nums.length;\n        if(n==1)return;\n        int idx1 = -1; // will be pointing to the index from right which is sorted in ascending order means that number can be reArranged with the smallest number from its right which must be greater than the current element. -> BreakPoint\n        // [4,2,0,2,3,2,0]\n        //  0 1 2 3 4 5 6\n        //        i -> here i (3) element is the breaking point which can be replace with th number which is just greater than the current element (i);\n\n        int idx2 = -1; // pointing to the index which is just greater than the idx th element and on its right side.\n\n        for(int i = n-2;i>=0;i--){\n            if(nums[i] < nums[i+1]){\n                idx1 = i;\n                break;\n            }\n        }\n        // if no such index(idx1) is found then the array is purely sorted in descending order.\n        if(idx1 == -1){\n            reverse(nums, 0);\n            return;\n        }\n\n        // if such index is found then find the element on right which is greater than the idx elements.\n        for(int i = n-1;i >= 0;i--){\n            if(nums[i] > nums[idx1]){\n                idx2 = i;\n                break;\n            }\n        }\n\n        //  swap the elements on the both the index\n        nums[idx1] += nums[idx2];\n        nums[idx2] = nums[idx1] - nums[idx2];\n        nums[idx1] -= nums[idx2];\n\n        // then reverse the reight remaining elements just after idx1  \n        reverse(nums,idx1 + 1);\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "bishal292/LeetCodeProblems",
+    "repo_created_date": "2024-11-30",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0031-next-permutation/0031-next-permutation.java",
+    "function_name": "nextPermutation",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 38,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

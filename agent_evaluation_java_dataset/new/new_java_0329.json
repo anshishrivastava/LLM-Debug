@@ -1,0 +1,22 @@
+{
+  "instruction": "Merge Two Lists",
+  "output": "    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {\n        if(list1 == null){\n            return list2;\n        } \n        if(list2 == null){\n            return list1;\n        }\n\n        if(list1.val > list2.val){\n            list2.next = mergeTwoLists(list1, list2.next);\n            return list2;\n        } else {\n            list1.next = mergeTwoLists(list1.next, list2);\n            return list1;\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "alikhan0616/DSA",
+    "repo_created_date": "2024-09-28",
+    "repo_stars": 1,
+    "repo_forks": 1,
+    "file_path": "0021-merge-two-sorted-lists/0021-merge-two-sorted-lists-recursive.java",
+    "function_name": "mergeTwoLists",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 16,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Can Arrange",
+  "output": "\n    public boolean canArrange(int[] arr, int k) {\n        Map<Integer, Integer> remainderCount = new HashMap<>();\n\n        // Store the count of remainders in a map.\n        for (int i : arr) {\n            int rem = ((i % k) + k) % k;\n            remainderCount.put(rem, remainderCount.getOrDefault(rem, 0) + 1);\n        }\n\n        for (int i : arr) {\n            int rem = ((i % k) + k) % k;\n\n            // If the remainder for an element is 0, then the count\n            // of numbers that give this remainder must be even.\n            if (rem == 0) {\n                if (remainderCount.get(rem) % 2 == 1) return false;\n            }\n            // If the remainder rem and k-rem do not have the\n            // same count then pairs can not be made.\n            else if (\n                !Objects.equals(\n                    remainderCount.get(rem),\n                    remainderCount.get(k - rem)\n                )\n            ) return false;\n        }\n        return true;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Amar-Manjarathkar/LeetCode-Daily_Challenges",
+    "repo_created_date": "2024-07-07",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "1497. Check If Array Pairs Are Divisible by k .java",
+    "function_name": "canArrange",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 29,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

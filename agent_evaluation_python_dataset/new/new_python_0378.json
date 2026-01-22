@@ -1,0 +1,22 @@
+{
+  "instruction": "Convert metrics to dictionary for persistence.",
+  "output": "    def to_dict(self) -> Dict[str, Any]:\n        \"\"\"Convert metrics to dictionary for persistence.\"\"\"\n        from shared.market_hours import get_us_market_time\n        return {\n            \"total_premium_collected\": self.total_premium_collected,\n            \"total_straddle_cost\": self.total_straddle_cost,\n            \"realized_pnl\": self.realized_pnl,\n            \"recenter_count\": self.recenter_count,\n            \"roll_count\": self.roll_count,\n            # Daily metrics (only valid for same trading day)\n            \"daily_recenter_count\": self.daily_recenter_count,\n            \"daily_roll_count\": self.daily_roll_count,\n            \"daily_pnl_start\": self.daily_pnl_start,\n            \"spy_open\": self.spy_open,\n            \"spy_high\": self.spy_high,\n            \"spy_low\": self.spy_low,\n            \"vix_high\": self.vix_high,\n            \"vix_samples\": self.vix_samples if self.vix_samples else [],\n            \"daily_metrics_date\": get_us_market_time().strftime(\"%Y-%m-%d\"),\n            # Trade tracking\n            \"trade_count\": self.trade_count,\n            \"winning_trades\": self.winning_trades,\n            \"losing_trades\": self.losing_trades,\n            \"best_trade_pnl\": self.best_trade_pnl,\n            \"worst_trade_pnl\": self.worst_trade_pnl,\n            \"total_trade_pnl\": self.total_trade_pnl,\n            \"peak_pnl\": self.peak_pnl,\n            \"max_drawdown\": self.max_drawdown,\n            \"last_updated\": datetime.now().isoformat(),\n        }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/models/metrics.py",
+    "function_name": "to_dict",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 30,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

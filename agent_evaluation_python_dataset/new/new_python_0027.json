@@ -1,0 +1,22 @@
+{
+  "instruction": "Ispalindrome",
+  "output": "    def isPalindrome(self, s: str) -> bool:\n        s = ''.join(c.lower() for c in s if c.isalnum())\n        left = 0 \n        right = len(s) - 1\n\n        while left < right:\n            if s[left] != s[right]:\n                return False\n            left += 1\n            right -= 1\n\n        return True",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "lokeshhh-10/LeetCode",
+    "repo_created_date": "2024-07-24",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "125-valid-palindrome/valid-palindrome.py",
+    "function_name": "isPalindrome",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 12,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Reordering the encoding of atoms coming from chemprop",
+  "output": "    def reorder_encoding(self, encode):\n        \"\"\"\n        Reordering the encoding of atoms coming from chemprop\n        \"\"\"\n        if \".\" not in self.smiles[0]:\n            self.encode = encode\n            return\n        encode_separate = []\n        begin_ind = 0\n        end_ind = len(self.atom_numbers_true)\n        for ind, i in enumerate(self.atomic_nums_separate):\n            if (\n                1 not in i\n            ):  # Checking if there are any hydrogens in the molecule and rearanging properly\n                # Because chemprop puts Hs at the end of the cluster embedding\n                encode_separate.append(encode.narrow(0, begin_ind, len(i)))\n                begin_ind += len(i)\n            else:\n                encode_separate.append(encode.narrow(0, begin_ind, i.index(1)))\n                encode_separate[ind] = torch.cat(\n                    (\n                        encode_separate[ind],\n                        encode.narrow(\n                            0, end_ind - (len(i) - i.index(1)), len(i) - i.index(1)\n                        ),\n                    )\n                )\n                begin_ind += i.index(1)\n                end_ind -= len(i) - i.index(1)\n\n        encode_reorder = []\n        for _, val in self.order_dict.items():\n            encode_reorder.append(encode_separate[val])\n        self.encode = torch.cat([i for i in encode_reorder])",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/data/builder.py",
+    "function_name": "reorder_encoding",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 34,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

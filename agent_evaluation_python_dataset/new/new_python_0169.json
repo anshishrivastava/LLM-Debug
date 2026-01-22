@@ -1,0 +1,22 @@
+{
+  "instruction": "plots a TGraph",
+  "output": "  def plot_graph(self, graph, color=None):\n    '''plots a TGraph\n\n    @params\n    graph - root TGraph to plot, title is used as legend entry\n    color - custom color to use for plot, None uses a default\n    '''\n    if self.is_2d:\n      raise RuntimeError('Cannot add both 2D and 1D plots')\n    if (color==None):\n      if (self.color_index >= 6):\n        raise RuntimeError('Error: too many plots for selected palette')\n      self.graph_color.append(self.palette[self.color_index])\n      self.color_index += 1\n    else:\n      self.graph_color.append(color)\n    self.graphs.append(graph)\n    if self.n_plots == 0:\n      xaxis_title = graph.GetXaxis().GetTitle()\n      if self.x_title == 'x variable' and xaxis_title != '':\n        self.x_title = xaxis_title\n    self.n_plots += 1\n    return self",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/root_plot_lib.py",
+    "function_name": "plot_graph",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 23,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

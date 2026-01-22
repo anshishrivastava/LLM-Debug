@@ -1,0 +1,22 @@
+{
+  "instruction": "Bubble Ability",
+  "output": "\n    public BubbleAbility(Texture iconTexture) {\n        super(\n                \"Bubble\",\n                \"Gain a shield that blocks all damage for 2 seconds\",\n                12.0f,\n                0,\n                0f,\n                2f,\n                0f,\n                AbilityType.BUFF,\n                iconTexture\n        );\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/MercenaryAbilities.java",
+    "function_name": "BubbleAbility",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 14,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

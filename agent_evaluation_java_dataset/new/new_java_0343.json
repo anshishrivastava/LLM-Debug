@@ -1,0 +1,22 @@
+{
+  "instruction": "First Missing Positive",
+  "output": "    public int firstMissingPositive(int[] nums) {\n        // BruteForce using extra Space with Space Complexity: O(N);\n        int[] sorted = new int[nums.length];\n        for(int num : nums){\n            if(num > 0 && num <= nums.length){\n                sorted[num-1] = num;\n            }\n        }\n        int missingNum = -1;\n        for(int i = 0;i< nums.length;i++){\n            if(sorted[i] != i+1){\n                missingNum = i+1;\n                break;\n            }else if(sorted[i] == nums.length){\n                missingNum = i+2;\n            }\n        }\n        return missingNum == -1 ? nums.length : missingNum ;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "bishal292/LeetCodeProblems",
+    "repo_created_date": "2024-11-30",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0041-first-missing-positive/0041-first-missing-positive.java",
+    "function_name": "firstMissingPositive",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 19,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

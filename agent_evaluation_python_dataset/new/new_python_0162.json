@@ -1,0 +1,22 @@
+{
+  "instruction": "Returns list of colors to be used for plots",
+  "output": "def get_palette_lines(nplots):\n  '''Returns list of colors to be used for plots\n\n  @params\n  nplots - number of different overlayed plots\n  '''\n  if (nplots <= 6):\n    return [ROOT.TColor.GetColor('#de394d'), ROOT.TColor.GetColor('#ffbd38'), \n            ROOT.TColor.GetColor('#aee82a'), ROOT.TColor.GetColor('#28aee8'), \n            ROOT.TColor.GetColor('#446bcc'), ROOT.TColor.GetColor('#7346cc')]\n  if (nplots <= 8):\n    return [ROOT.TColor.GetColor('#de394d'), ROOT.TColor.GetColor('#ff9c38'), \n            ROOT.TColor.GetColor('#f6c24b'), ROOT.TColor.GetColor('#aee82a'), \n            ROOT.TColor.GetColor('#28aee8'), ROOT.TColor.GetColor('#446bcc'), \n            ROOT.TColor.GetColor('#7346cc'), ROOT.TColor.GetColor('#ee66ac')]\n  return [ROOT.TColor.GetColor('#de394d'), ROOT.TColor.GetColor('#ff9c38'), \n          ROOT.TColor.GetColor('#f6c24b'), ROOT.TColor.GetColor('#aee82a'), \n          ROOT.TColor.GetColor('#1b9e48'), ROOT.TColor.GetColor('#28aee8'), \n          ROOT.TColor.GetColor('#446bcc'), ROOT.TColor.GetColor('#50378f'),\n          ROOT.TColor.GetColor('#7346cc'), ROOT.TColor.GetColor('#ee66ac')]",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/root_plot_lib.py",
+    "function_name": "get_palette_lines",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 20,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

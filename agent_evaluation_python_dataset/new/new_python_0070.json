@@ -1,0 +1,22 @@
+{
+  "instruction": "Load historical P&L from closed positions into the metrics.",
+  "output": "    def load_historical_pnl_into_metrics(self) -> bool:\n        \"\"\"\n        Load historical P&L from closed positions into the metrics.\n\n        This should be called after position recovery if metrics were not loaded\n        from file. It ensures that P&L from previous short strangle rolls is\n        captured even on fresh bot starts.\n\n        Returns:\n            bool: True if historical P&L was loaded, False otherwise.\n        \"\"\"\n        # Only load if we didn't load from file (file has accurate cumulative data)\n        if self._metrics_loaded_from_file:\n            logger.info(\"Metrics loaded from file - skipping historical P&L query\")\n            return False\n\n        historical_pnl = self.calculate_historical_pnl()\n\n        if historical_pnl != 0.0:\n            # Add historical P&L to realized P&L\n            self.metrics.realized_pnl += historical_pnl\n            logger.info(f\"Added historical P&L to metrics: ${historical_pnl:.2f}\")\n            logger.info(f\"Total realized P&L now: ${self.metrics.realized_pnl:.2f}\")\n        else:\n            logger.info(\"No historical P&L to add (no closed short positions found)\")\n\n        # Always save metrics after querying historical P&L (even if 0)\n        # This prevents duplicate queries on subsequent restarts\n        if not self.dry_run:\n            self.metrics.save_to_file()\n            logger.info(\"Saved metrics to prevent duplicate historical P&L queries on restart\")\n\n        return historical_pnl != 0.0",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "load_historical_pnl_into_metrics",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 33,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

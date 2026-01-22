@@ -1,0 +1,22 @@
+{
+  "instruction": "Place a word at the specified position and direction.",
+  "output": "    def place_tup(self, word: str, tup: Tuple[Tuple[int, int], Tuple[int, int]]) -> None:\n        \"\"\"Place a word at the specified position and direction.\n        \n        Args:\n            word: The word to place\n            tup: Tuple of (start_position, direction)\n        \"\"\"\n        initial_placement, direction = tup\n        for char in word:\n            self.tree[char].append(Node(value=char, pos=initial_placement))\n            self.cw_matrix[initial_placement[0]][initial_placement[1]] = char\n            initial_placement = (\n                initial_placement[0] + direction[0],\n                initial_placement[1] + direction[1],\n            )\n            \n        # Store word location information\n        self.words_by_locations[word] = {\n            \"location_tuple_start\": tup[0],\n            \"location_tuple_end\": initial_placement,\n            \"direction\": direction\n        }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "pb-96/crossword-generator",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "cw_generator_uv/cw_generator/cw_gen/cw_gen_with_tree.py",
+    "function_name": "place_tup",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 22,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

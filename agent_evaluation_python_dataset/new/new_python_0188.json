@@ -1,0 +1,22 @@
+{
+  "instruction": "Processes the input file(s) and generates histograms for use in fitting",
+  "output": "  def produce_histograms(self):\n    '''Processes the input file(s) and generates histograms for use in fitting\n    '''\n    self.check_initialization()\n    self.initialize_files_directories()\n    print('Preparing file(s) for processing.')\n    filenames_vec = ROOT.std.vector('string')()\n    for filename in self.input_filenames:\n      filenames_vec.push_back(filename)\n    df = ROOT.RDataFrame(self.tree_name,filenames_vec)\n    df = df.Filter(self.preselection)\n    df = df.Define('tnpanalysis_fit_var', self.fit_var_name)\n    df = df.Define('tnpanalysis_fit_var_weight', self.fit_var_weight)\n    pass_hist_ptrs = []\n    fail_hist_ptrs = []\n    for ibin in range(0,self.nbins):\n      df_bin = df.Filter(self.bin_selections[ibin])\n      df_bin_pass = df_bin.Filter(self.measurement_variable)\n      df_bin_fail = df_bin.Filter('!('+self.measurement_variable+')')\n      pass_hist_ptrs.append(df_bin_pass.Histo1D((\n          'hist_pass_bin{}'.format(ibin),\n          ';'+self.fit_var_desc+';Events/bin',\n          self.fit_var_nbins,\n          self.fit_var_range[0],\n          self.fit_var_range[1]),\n          'tnpanalysis_fit_var',\n          'tnpanalysis_fit_var_weight'))\n      fail_hist_ptrs.append(df_bin_fail.Histo1D((\n          'hist_fail_bin{}'.format(ibin),\n          ';'+self.fit_var_desc+';Events/bin',\n          self.fit_var_nbins,\n          self.fit_var_range[0],\n          self.fit_var_range[1]),\n          'tnpanalysis_fit_var',\n          'tnpanalysis_fit_var_weight'))\n    print('Performing event loop. This may take a while.')\n    for ibin in range(0,self.nbins):\n      pass_hist_ptrs[ibin].Write()\n      fail_hist_ptrs[ibin].Write()",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/tnp_analyzer.py",
+    "function_name": "produce_histograms",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 39,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

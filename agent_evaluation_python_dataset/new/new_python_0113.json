@@ -1,0 +1,22 @@
+{
+  "instruction": "Adds modified double-sided crystal ball distribution as signal model",
+  "output": "def model_initializer_moddscb(fit_var, ibin, is_pass):\n  '''Adds modified double-sided crystal ball distribution as signal model\n  with no background\n\n  fit_var      RooRealVar representing variable to fit\n  ibin         int bin number\n  is_pass      bool, indicates if passing or failing leg\n  '''\n  workspace = ROOT.RooWorkspace()\n  getattr(workspace,'import')(fit_var)\n\n  gauss_mu = ROOT.RooRealVar('mean', 'Gaussian mean', 85.0, 95.0) \n  sigmal = ROOT.RooRealVar('sigmal', 'Gaussian sigma', 0.01, 15.0) \n  sigmar = ROOT.RooRealVar('sigmar', 'Gaussian sigma', 0.01, 15.0) \n  cb_alphal = ROOT.RooRealVar('alphal', 'CB left switchover', 0.1, 10.0) \n  cb_nl1 = ROOT.RooRealVar('nl1', 'CB left power', 0.1, 10.0) \n  cb_nl2 = ROOT.RooRealVar('nl2', 'CB left power', 0.1, 10.0) \n  cb_fl = ROOT.RooRealVar('fl', 'left power law fraction', 0.0, 1.0) \n  cb_alphar = ROOT.RooRealVar('alphar', 'CB right switchover', 0.1, 10.0) \n  cb_nr1 = ROOT.RooRealVar('nr1', 'CB right power', 0.1, 10.0) \n  cb_nr2 = ROOT.RooRealVar('nr2', 'CB right power', 0.1, 10.0) \n  cb_fr = ROOT.RooRealVar('fr', 'right power law fraction', 0.0, 1.0) \n\n  sigmal.setVal(3.0)\n  sigmar.setVal(3.0)\n  cb_alphal.setVal(2.0)\n  cb_alphar.setVal(2.0)\n  cb_nl1.setVal(1.0)\n  cb_nl2.setVal(2.0)\n  cb_nr1.setVal(1.0)\n  cb_nr2.setVal(2.0)\n  getattr(workspace,'import')(gauss_mu)\n  getattr(workspace,'import')(sigmal)\n  getattr(workspace,'import')(sigmar)\n  getattr(workspace,'import')(cb_alphal)\n  getattr(workspace,'import')(cb_nl1)\n  getattr(workspace,'import')(cb_nl2)\n  getattr(workspace,'import')(cb_fl)\n  getattr(workspace,'import')(cb_alphar)\n  getattr(workspace,'import')(cb_nr1)\n  getattr(workspace,'import')(cb_nr2)\n  getattr(workspace,'import')(cb_fr)\n\n  nSig = ROOT.RooRealVar('nSig', 'Signal normalization', 0.0, MAX_SIGNAL) \n  nBkg = ROOT.RooRealVar('nBkg', 'Background normalization', 0.0, 0.0) \n  getattr(workspace,'import')(nSig)\n  getattr(workspace,'import')(nBkg)\n  \n  pdf_s  = ROOT.RooModDSCB('pdf_sb','pdf_sb', fit_var, gauss_mu, sigmal, \n                           sigmar, cb_alphal, cb_nl1, cb_nl2, cb_fl, cb_alphar,\n                           cb_nr1, cb_nr2, cb_fr)\n  getattr(workspace,'import')(pdf_s)\n  return workspace",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/model_initializers.py",
+    "function_name": "model_initializer_moddscb",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 53,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

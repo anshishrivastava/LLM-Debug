@@ -1,0 +1,4 @@
+{
+  "instruction": "Write a Python program to evaluate a mathematical expression string and return the result.",
+  "output": "import re\n \ndef evaluate(expression):\n \n regex = re.compile('(\\d+\\.?\\d*)|(\\S)')\n tokens = regex.findall(expression)\n \n operands = []\n operators = []\n \n for token in tokens:\n \n if token[1]:\n operators.append(token[1])\n \n else:\n operands.append(float(token[0]))\n \n while (len(operators) > 0):\n \n operator = operators.pop()\n operator2 = operands.pop()\n operator1 = operands.pop()\n \n result = 0\n if (operator == '+'):\n result = operator1 + operator2\n elif (operator == '-'):\n result = operator1 - operator2\n elif (operator == '*'):\n result = operator1 * operator2\n elif (operator == '/'):\n result = operator1 / operator2\n \n operands.append(result)\n \n return operands[0]\n \n \nexpression = '2*3+4/5'\nresult = evaluate(expression)\n\nprint(result)"
+}

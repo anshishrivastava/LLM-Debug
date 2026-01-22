@@ -1,0 +1,22 @@
+{
+  "instruction": "Only safetensors is supported now.",
+  "output": "    def load_fc_parameters(self, filename: str) -> None:\n        r\"\"\"Only safetensors is supported now.\n\n        pip install safetensor if you do not have one installed yet.\n        \"\"\"\n\n        assert filename.endswith(\".safetensors\")\n        _in = self.lora_vit.head.in_features\n        _out = self.lora_vit.head.out_features\n        with safe_open(filename, framework=\"pt\") as f:\n            saved_key = f\"fc_{_in}in_{_out}out\"\n            try:\n                saved_tensor = f.get_tensor(saved_key)\n                self.lora_vit.head.weight = Parameter(saved_tensor)\n            except ValueError:\n                print(\"this fc weight is not for this model\")",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "98haiting/General-or-Medical-CLIP-Which-one-Shall-We-Choose",
+    "repo_created_date": "2024-10-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "biomed_clip/lora.py",
+    "function_name": "load_fc_parameters",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 16,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

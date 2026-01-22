@@ -1,0 +1,22 @@
+{
+  "instruction": "Find Median Sorted Arrays",
+  "output": "    public double findMedianSortedArrays(int[] nums1, int[] nums2) {\n        // Get the sizes of both input arrays.\n        int n = nums1.length;\n        int m = nums2.length;\n\n        // Merge the arrays into a single sorted array.\n        int[] merged = new int[n + m];\n        int k = 0;\n        for (int i = 0; i < n; i++) {\n            merged[k++] = nums1[i];\n        }\n        for (int i = 0; i < m; i++) {\n            merged[k++] = nums2[i];\n        }\n\n        // Sort the merged array.\n        Arrays.sort(merged);\n\n        // Calculate the total number of elements in the merged array.\n        int total = merged.length;\n\n        if (total % 2 == 1) {\n            // If the total number of elements is odd, return the middle element as the median.\n            return (double) merged[total / 2];\n        } else {\n            // If the total number of elements is even, calculate the average of the two middle elements as the median.\n            int middle1 = merged[total / 2 - 1];\n            int middle2 = merged[total / 2];\n            return ((double) middle1 + (double) middle2) / 2.0;\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "ShyamsaranRajendran/Leetcode",
+    "repo_created_date": "2024-06-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0004-median-of-two-sorted-arrays/0004-median-of-two-sorted-arrays.java",
+    "function_name": "findMedianSortedArrays",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 31,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

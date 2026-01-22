@@ -1,0 +1,22 @@
+{
+  "instruction": "Longest Common Prefix",
+  "output": "    public String longestCommonPrefix(String[] strs) {\n        // ek ek character kam krte jayenge if indexOf(prefix) != 0\n        // if == 0 then it means it is present in strs[i];\n        if(strs.length == 0 || strs == null){\n            return \"\";\n        }\n        String prefix = strs[0];// let flower as a prefix\n        for(int i = 1;i<strs.length;i++){ // start with the flow\n            while(strs[i].indexOf(prefix) != 0 ){\n                prefix = prefix.substring(0 , prefix.length() -1);\n                if(prefix.isEmpty()){\n                    return \"\";\n                }\n            }\n        }\n        return prefix;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "CodeFusioner/LeetCode_Solutions",
+    "repo_created_date": "2025-01-02",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0014-longest-common-prefix/0014-longest-common-prefix.java",
+    "function_name": "longestCommonPrefix",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 17,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Uniqueoccurrences",
+  "output": "    def uniqueOccurrences(self, arr: List[int]) -> bool:\n        freq = {}\n        for x in arr:\n            freq[x] = freq.get(x, 0) + 1\n\n        return len(freq) == len(set(freq.values()))",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "lokeshhh-10/LeetCode",
+    "repo_created_date": "2024-07-24",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "1319-unique-number-of-occurrences/unique-number-of-occurrences.py",
+    "function_name": "uniqueOccurrences",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 6,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

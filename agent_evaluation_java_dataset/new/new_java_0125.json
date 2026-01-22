@@ -1,0 +1,22 @@
+{
+  "instruction": "Find Median Sorted Arrays",
+  "output": "    public double findMedianSortedArrays(int[] nums1, int[] nums2) {\n        PriorityQueue<Integer> min = new PriorityQueue<>();\n        PriorityQueue<Integer> max = new PriorityQueue<>(Comparator.reverseOrder());\n\n        for (int num : nums1) {\n            if (max.isEmpty() || num <= max.peek()) max.offer(num);\n            else min.offer(num);\n\n            if (max.size() > min.size() + 1) min.offer(max.poll());\n            else if (min.size() > max.size()) max.offer(min.poll()); \n        }\n\n        for (int num : nums2) {\n            if (max.isEmpty() || num <= max.peek()) max.offer(num);\n            else min.offer(num);\n\n            if (max.size() > min.size() + 1) min.offer(max.poll());\n            else if (min.size() > max.size()) max.offer(min.poll()); \n        }   \n\n        return (max.size() > min.size()) ? max.peek() : ((long)max.peek() + (long)min.peek()) / 2.0;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Amit-S-Sahu/My-LeetCode",
+    "repo_created_date": "2024-09-29",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "0004-median-of-two-sorted-arrays/0004-median-of-two-sorted-arrays.java",
+    "function_name": "findMedianSortedArrays",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 22,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

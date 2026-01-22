@@ -1,0 +1,22 @@
+{
+  "instruction": "Return Atomtypes Numberneighbors",
+  "output": "def return_atomtypes_numberneighbors(data):\n    # this returns the atomtypes coordinating to lithium\n    # and the number of neighbors for the lithium that exist\n    coord_env = set()\n    num_neighs = set()\n\n    for i in range(len(data)):\n        for j in range(len(data[i])):\n            num_neighbors = len(data[i][j][\"nlist\"])\n            num_neighs.add(num_neighbors)\n            for neighbor in data[i][j][\"nlist\"]:\n                label_prefix = neighbor.label.split(\" \")[0]\n                # if label_prefix == \"AN1\":\n                coord_env.add(f\"{str(neighbor.specie)}-{label_prefix}\")\n                # elif label_prefix == \"PL1\":\n                #     coord_env.add(f\"{str(neighbor.specie)}-PL\")\n\n    coord_env = list(coord_env)\n    num_neighs = list(num_neighs)\n\n    return coord_env, num_neighs",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/analysis/coordination_analysis.py",
+    "function_name": "return_atomtypes_numberneighbors",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 21,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

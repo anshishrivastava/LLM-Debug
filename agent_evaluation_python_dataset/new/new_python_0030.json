@@ -1,0 +1,22 @@
+{
+  "instruction": "Get Fieldsets",
+  "output": "    def get_fieldsets(\n        self, request: HttpRequest, obj: Any | None = ...\n    ) -> list[tuple[str | None, dict[str, Any]]]:\n        # Why the fuck does the super method not return a list despite the signature saying so?\n        fieldsets = list(super().get_fieldsets(request, obj))\n\n        # Exclude these fields from the admin form\n        excluded_fields = [\n            \"first_name\",\n            \"last_name\",\n            \"email\",\n            \"is_active\",\n            \"is_superuser\",\n            \"is_staff\",\n            \"last_login\",\n        ]\n        excluded_fields = []\n\n        modified_fieldset = []\n\n        for name, fields in fieldsets:\n\n            new_fields = []\n            for field in fields[\"fields\"]:\n                if field in excluded_fields:\n                    continue\n                new_fields.append(field)\n\n            if not new_fields:\n                continue\n            modified_fieldset.append((name, {\"fields\": new_fields}))\n\n        rdf4j_fieldset = [\n            (\n                \"RDF4J options\",\n                {\n                    \"fields\": [\n                        \"role\",\n                        \"default_inference\",\n                        \"default_sameas\",\n                        \"default_vis_graph_schema\",\n                        \"execute_count\",\n                        \"ignore_shared_queries\",\n                    ],\n                },\n            )\n        ]\n\n        return modified_fieldset + rdf4j_fieldset",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "FAU-CDI/open_gdb",
+    "repo_created_date": "2024-06-10",
+    "repo_stars": 4,
+    "repo_forks": 0,
+    "file_path": "authproxy/rdf4j/admin.py",
+    "function_name": "get_fieldsets",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 49,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

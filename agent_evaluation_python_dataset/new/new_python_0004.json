@@ -1,0 +1,22 @@
+{
+  "instruction": "Check Chinese",
+  "output": "def check_chinese(w):\n    filtered_word = re.findall(r\"[\\u4e00-\\ufaff]+\", str(w), re.UNICODE)\n    if len(filtered_word) > 0:\n        return True\n    return False",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Love4vn/Test",
+    "repo_created_date": "2024-06-07",
+    "repo_stars": 36,
+    "repo_forks": 5,
+    "file_path": "transcribe.py",
+    "function_name": "check_chinese",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 5,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

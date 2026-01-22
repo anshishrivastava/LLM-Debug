@@ -1,0 +1,22 @@
+{
+  "instruction": "Remove Nth From End",
+  "output": "    public ListNode removeNthFromEnd(ListNode head, int n) {\n        ListNode fast=head;\n        ListNode slow=head;\n        ListNode prev=null;\n      \n\n        for(int i=0;i<n;i++){\n           fast=fast.next;     \n        }\n        if (fast == null) return head.next;\n\n\n        while(fast!=null){\n            prev=slow;\n            slow=slow.next;\n            fast=fast.next;\n        }\n        prev.next=slow.next;\n       \n       return head;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "y24has/Leetcode",
+    "repo_created_date": "2024-10-02",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "0019-remove-nth-node-from-end-of-list/0019-remove-nth-node-from-end-of-list.java",
+    "function_name": "removeNthFromEnd",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 21,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Sort Colors",
+  "output": "    public void sortColors(int[] nums) {\n    int low = 0, mid = 0, high = nums.length - 1;\n    while (mid <= high) {\n        if (nums[mid] == 0) {\n            int tmp = nums[low];\n            nums[low++] = nums[mid];\n            nums[mid++] = tmp;\n        } else if (nums[mid] == 1) {\n            mid++;\n        } else {\n            int tmp = nums[mid];\n            nums[mid] = nums[high];\n            nums[high--] = tmp;\n        }\n    }\n}",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Himanshi-Saini-0277/Leetcode_Streak",
+    "repo_created_date": "2024-08-24",
+    "repo_stars": 4,
+    "repo_forks": 0,
+    "file_path": "0075-sort-colors/0075-sort-colors.java",
+    "function_name": "sortColors",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 16,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

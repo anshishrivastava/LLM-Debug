@@ -1,0 +1,22 @@
+{
+  "instruction": "Unique Occurrences",
+  "output": "    public boolean uniqueOccurrences(int[] arr) {\n     int[] freq = new int[2001];\n\n     for(int num : arr){\n        freq[num+1000]++;\n     }\n\n     Arrays.sort(freq);\n\n     for(int i = 1; i < 2001; i++){\n        if(freq[i] != 0 && freq[i] == freq[i-1]){\n            return false;\n        }\n     }\n\n    \n     return true;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "utkrshydv/learningLeetCode",
+    "repo_created_date": "2025-01-15",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "1319-unique-number-of-occurrences/unique-number-of-occurrences.java",
+    "function_name": "uniqueOccurrences",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 18,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

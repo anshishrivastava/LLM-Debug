@@ -1,0 +1,22 @@
+{
+  "instruction": "Letter Combinations",
+  "output": "    public List<String> letterCombinations(String digits) {\n       List<String> result = new ArrayList<>();\n        if (digits == null || digits.length() == 0) {\n            return result;\n        }\n\n        Map<Character, String> phoneMap = new HashMap<>();\n        phoneMap.put('2', \"abc\");\n        phoneMap.put('3', \"def\");\n        phoneMap.put('4', \"ghi\");\n        phoneMap.put('5', \"jkl\");\n        phoneMap.put('6', \"mno\");\n        phoneMap.put('7', \"pqrs\");\n        phoneMap.put('8', \"tuv\");\n        phoneMap.put('9', \"wxyz\");\n\n        backtrack(result, phoneMap, digits, \"\", 0);\n        return result;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "CodeFusioner/LeetCode_Solutions",
+    "repo_created_date": "2025-01-02",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0017-letter-combinations-of-a-phone-number/0017-letter-combinations-of-a-phone-number.java",
+    "function_name": "letterCombinations",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 19,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

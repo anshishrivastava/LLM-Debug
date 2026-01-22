@@ -1,0 +1,22 @@
+{
+  "instruction": "Dfscomparison",
+  "output": "    def dfscomparison(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:\n        if not p and not q:\n            return True\n        if p and q:\n            x,y=self.dfscomparison(p.left, q.left), self.dfscomparison(p.right, q.right)\n            if x and y and p.val==q.val:\n                return True\n        return False",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "lokeshhh-10/LeetCode",
+    "repo_created_date": "2024-07-24",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "100-same-tree/same-tree.py",
+    "function_name": "dfscomparison",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 8,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

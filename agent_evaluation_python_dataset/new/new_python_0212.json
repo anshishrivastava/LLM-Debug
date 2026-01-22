@@ -1,0 +1,22 @@
+{
+  "instruction": "Make Summary Plots",
+  "output": "def make_summary_plots():\n  for measurement in measurements:\n    for run, years in [('run2',years_run2),('run3',years_run3)]:\n      for bins in ['','gap']:\n        command = 'python3 /homes/oshiro/analysis/small_phys_utils/scripts/rootpdf_to_png_new.py'\n        nrow = 4\n        if run=='run3' and bins=='gap':\n          nrow = 5\n        command += ' -f {} -o {}_{}{}_summary.pdf'.format(nrow,measurement,run,\n                                                         bins)\n        for year in years:\n          meas_name = fix_measurement_name(measurement,year)\n          command += (' out/hzg_{0}_{1}/hzg_{0}_{1}_eff_{2}ptbinned.pdf'.format(\n              meas_name, year,bins))\n        if run=='run3' and bins=='gap':\n          command += (' out/hzg_{0}_2023BPixHole/hzg_{0}_2023BPixHole_eff_ptbinned.pdf'.format(\n              meas_name, year))\n        for year in years:\n          meas_name = fix_measurement_name(measurement,year)\n          command += (' out/hzg_{0}_{1}/hzg_{0}_{1}_sfpass_{2}ptbinned.pdf'\n              .format(meas_name, year,bins))\n        if run=='run3' and bins=='gap':\n          command += (' out/hzg_{0}_2023BPixHole/hzg_{0}_2023BPixHole_sfpass_ptbinned.pdf'.format(\n              meas_name, year))\n        subprocess.run(command.split())",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "scripts/copy_util.py",
+    "function_name": "make_summary_plots",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 25,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

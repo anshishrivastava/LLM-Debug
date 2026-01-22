@@ -1,0 +1,22 @@
+{
+  "instruction": "Three Sum Closest",
+  "output": "    public int threeSumClosest(int[] nums, int target) {\n       \n        int n =nums.length;\n        Arrays.sort(nums);\n         int ans=nums[0]+nums[1]+nums[2];\n        for(int i=0;i<n-2;i++)\n        {\n            int val=0;\n           int l=i+1,r=n-1;\n           while(l<r){\n                val=(nums[i] + nums[l] + nums[r]);\n                if(val==target)\n                {\n                    return val;\n                }\n\n                if (Math.abs(target - val) < Math.abs(target - ans)) {\n                    ans = val;\n                }\n\n                if (val < target) {\n                    l++;\n                } else {\n                    r--;\n                }\n\n\n           }\n        }\n        return ans;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "ShyamsaranRajendran/Leetcode",
+    "repo_created_date": "2024-06-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0016-3sum-closest/0016-3sum-closest.java",
+    "function_name": "threeSumClosest",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 31,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

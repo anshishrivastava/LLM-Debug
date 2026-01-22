@@ -1,0 +1,22 @@
+{
+  "instruction": "Function that calculates the Spectral Angle Mapper (SAM) between two 1D arrays.",
+  "output": "def spectral_angle_mapper(spec1, spec2, eps=1e-8, **kwargs):\n\t\"\"\"\n\tFunction that calculates the Spectral Angle Mapper (SAM) between two 1D arrays.\n\n\tInputs:\n\t\t- spec1\n\t\t- spec2\n\t\t- eps = 1e-8 (epsilon, to avoid dividing by 0)\n\t\t- kwargs\n\t\t\t- Help\n\t\t\t- Radians = False. If true, outputs angle in radians instead of degrees\n\t\n\tOutputs:\n\t\t- Angle (degrees).\n\t\"\"\"\n\tHelp = kwargs.get('Help', False)\n\tif Help:\n\t\tprint(inspect.getdoc(spectral_angle_mapper))\n\t\treturn\n\tRadians = kwargs.get('Radians', False)\n\tdot_product = np.dot(spec1, spec2)\n\tnorm_spec1 = np.linalg.norm(spec1)\n\tnorm_spec2 = np.linalg.norm(spec2)\n\t# Adding epsilon to avoid division by zero\n\tangle_rad = np.arccos(dot_product / (norm_spec1 * norm_spec2 + eps))\n\tif Radians:\n\t\tangle = angle_rad\n\telse:\n\t\tangle = np.degrees(angle_rad)\n\treturn angle",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "YzaboRa/HySE_HypercubeFunctions",
+    "repo_created_date": "2024-08-22",
+    "repo_stars": 0,
+    "repo_forks": 2,
+    "file_path": "HySE/UserTools.py",
+    "function_name": "spectral_angle_mapper",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 30,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

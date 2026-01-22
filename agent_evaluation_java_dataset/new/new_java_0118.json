@@ -1,0 +1,22 @@
+{
+  "instruction": "Print Triangle",
+  "output": "\n    void printTriangle(int n) {\n        // code here\n        for(int i = 0 ; i < n ; i++){\n            for(int j = 0 ; j < n - i - 1 ; j++){\n                System.out.print(\" \");\n            }\n            for(int j = 0 ; j < 2 * i + 1 ; j++){\n                System.out.print(\"*\");\n            }\n            // for(int j = 0 ; j < n - i - 1 ; j++){\n            //     System.out.print(\" \");\n            // }\n            System.out.println();\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "VinayKishore25/Geeks-For-Geeks",
+    "repo_created_date": "2024-07-18",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "Difficulty: Basic/Pattern 7/pattern-7.java",
+    "function_name": "printTriangle",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 16,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

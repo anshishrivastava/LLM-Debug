@@ -1,0 +1,22 @@
+{
+  "instruction": "Bot Lifecycle Wrapper",
+  "output": "def bot_lifecycle_wrapper(preset_name, preset_data):\n    # Auto-restart wrapper\n    while True:\n        try:\n            run_bot(\n                preset_data[\"token\"], preset_data[\"prefix\"], preset_data[\"channel_id\"],\n                preset_data[\"roll_command\"], preset_data[\"min_kakera\"], preset_data[\"delay_seconds\"],\n                preset_data[\"mudae_prefix\"], print_log, preset_name, \n                preset_data.get(\"key_mode\", False), preset_data.get(\"start_delay\", 0),\n                preset_data.get(\"snipe_mode\", False), preset_data.get(\"snipe_delay\", 2),\n                preset_data.get(\"snipe_ignore_min_kakera_reset\", False), preset_data.get(\"wishlist\", []),\n                preset_data.get(\"series_snipe_mode\", False), preset_data.get(\"series_snipe_delay\", 3),\n                preset_data.get(\"series_wishlist\", []), preset_data.get(\"roll_speed\", 0.4),\n                preset_data.get(\"kakera_snipe_mode\", False), preset_data.get(\"kakera_snipe_threshold\", 0),\n                preset_data.get(\"reactive_snipe_on_own_rolls\", True), preset_data.get(\"rolling\", True),\n                preset_data.get(\"kakera_reaction_snipe_mode\", False), preset_data.get(\"kakera_reaction_snipe_delay\", 0.75),\n                preset_data.get(\"kakera_reaction_snipe_targets\", []),\n                preset_data.get(\"humanization_enabled\", False), preset_data.get(\"humanization_window_minutes\", 40),\n                preset_data.get(\"humanization_inactivity_seconds\", 5),\n                preset_data.get(\"dk_power_management\", False), preset_data.get(\"skip_initial_commands\", False),\n                preset_data.get(\"use_slash_rolls\", False), preset_data.get(\"only_chaos\", False),\n                preset_data.get(\"reactive_snipe_delay\", 0), preset_data.get(\"time_rolls_to_claim_reset\", False),\n                preset_data.get(\"rt_ignore_min_kakera_for_wishlist\", False),\n                preset_data.get(\"claim_emojis\", None),\n                preset_data.get(\"kakera_emojis\", None),\n                preset_data.get(\"chaos_emojis\", None),\n                preset_data.get(\"rt_only_self_rolls\", False),\n                preset_data.get(\"reactive_kakera_delay_range\", [0.3, 1.0])\n            )\n        except Exception as e:\n            print_log(f\"Instance crashed: {e}\", preset_name, \"ERROR\")\n        \n        time.sleep(60)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "misutesu-desu/MudaRemote",
+    "repo_created_date": "2024-10-12",
+    "repo_stars": 34,
+    "repo_forks": 5,
+    "file_path": "mudae_bot.py",
+    "function_name": "bot_lifecycle_wrapper",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 33,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

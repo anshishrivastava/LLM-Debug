@@ -1,0 +1,22 @@
+{
+  "instruction": "Construct B T",
+  "output": "    public TreeNode constructBT(int[] preorder,int bound){\n        \n        if(i==preorder.length || preorder[i] >bound)     return null;       \n\n        TreeNode node=new TreeNode(preorder[i++]);\n        \n        node.left=constructBT(preorder,node.val);\n        //for left, node is value of that node(all leftie less than node val)\n        node.right=constructBT(preorder,bound);\n        //for right, max value is bound as all rightie greater than nodeval\n        return node;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "itsakshitasaxena/Data-Structures-and-Algorithms",
+    "repo_created_date": "2024-11-16",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "1050-construct-binary-search-tree-from-preorder-traversal/construct-binary-search-tree-from-preorder-traversal.java",
+    "function_name": "constructBT",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 12,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

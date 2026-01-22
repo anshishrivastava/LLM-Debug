@@ -1,0 +1,22 @@
+{
+  "instruction": "Load presets from JSON file.",
+  "output": "    def load_presets(self):\r\n        \"\"\"Load presets from JSON file.\"\"\"\r\n        if os.path.exists(PRESETS_FILE):\r\n            try:\r\n                with open(PRESETS_FILE, \"r\", encoding=\"utf-8\") as f:\r\n                    self.presets = json.load(f)\r\n            except json.JSONDecodeError as e:\r\n                messagebox.showerror(\"Error\", f\"Failed to parse {PRESETS_FILE}:\\n{e}\")\r\n                self.presets = {}\r\n            except Exception as e:\r\n                messagebox.showerror(\"Error\", f\"Failed to load {PRESETS_FILE}:\\n{e}\")\r\n                self.presets = {}\r\n        else:\r\n            self.presets = {}\r",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "misutesu-desu/MudaRemote",
+    "repo_created_date": "2024-10-12",
+    "repo_stars": 34,
+    "repo_forks": 5,
+    "file_path": "mudae_preset_editor.py",
+    "function_name": "load_presets",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 14,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

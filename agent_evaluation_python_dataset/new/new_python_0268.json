@@ -1,0 +1,22 @@
+{
+  "instruction": "Parse Args",
+  "output": "def parse_args():\n    parser = argparse.ArgumentParser(description='CLIP used for fine-tuning with ROCO')\n    parser.add_argument('--dataset', type=str, default=\"ROCO\", \n                        help='Dataset to be used for fine-tuning')\n    parser.add_argument('--checkpoint_path', type=str, default=None, help=\"path to checkpoint\")\n    parser.add_argument('--mode', type=str, default=\"train\", help=\"whether to train and evaluate the model\")\n    parser.add_argument('--data_augmentation', action=\"store_true\", default=False, help=\"whether to use data augmentation\")\n    parser.add_argument('--data_type', type=str, default=\"radiology\", choices=[\"radiology\", \"non-radiology\", \"all\"])\n    parser.add_argument('--warmup', action=\"store_true\", default=False, help=\"whether to use warmup\")\n    parser.add_argument('--gradient_clip', action='store_true', default=False, help=\"whether to use gradient_clip to encounter gradient explode\")\n\n    # add fine-tuning specific hyperparameter arguments\n    parser.add_argument('--batch_size', type=int, default=3, help='Batch size for fine-tuning')\n    parser.add_argument('--epochs', type=int, default=32, help='Number of epochs for fine-tuning')\n    parser.add_argument('--lr', type=float, default=5.0e-4, help='Learning rate for fine-tuning')\n    parser.add_argument('--lr_visual', type=float, default=5.0e-5, help='Learning rate for vision encoder')\n    parser.add_argument('--lr_text', type=float, default=5.0e-5, help='Learning rate for text encoder')\n    parser.add_argument('--lr_rest', type=float, default=1.0e-5, help='Learning rate for rest of the model')\n    parser.add_argument('--weight_decay', type=float, default=0.1, help='Weight decay for fine-tuning')\n    parser.add_argument('--weight_decay_visual', type=float, default=1.0e-3, help='Weight decay for vision encoder')\n    parser.add_argument('--weight_decay_text', type=float, default=1.0e-3, help='Weight decay for text encoder')\n    parser.add_argument('--weight_decay_rest', type=float, default=0.0, help='Weight decay for rest of the model')\n    parser.add_argument('--layer_wise', action='store_true', default=False, help=\"whether to use layer wise finetuning\")\n    parser.add_argument('--finetuning', type=str, default=None, help='finetuning strategy: normal, lora-vision, vision, projection')\n    parser.add_argument('--lora_rank', type=int, default=4, help='Rank for LoRA')\n    parser.add_argument('--scheduler', action='store_true', default=False, help='Use learning rate scheduler')\n    parser.add_argument('--wandbName', type=str, default=None, help=\"distinguish between different runs\")\n\n    parser.add_argument(\"--distributed\", action=\"store_true\", default=False, help=\"Use distributed data parallel processing\")\n    parser.add_argument('--local_rank', type=int, default=-1, help='Local rank for distributed data parallel processing')\n    \n    return parser.parse_args()",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "98haiting/General-or-Medical-CLIP-Which-one-Shall-We-Choose",
+    "repo_created_date": "2024-10-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "biomed_clip/i2t.py",
+    "function_name": "parse_args",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 32,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

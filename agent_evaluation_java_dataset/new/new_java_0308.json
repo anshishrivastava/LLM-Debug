@@ -1,0 +1,22 @@
+{
+  "instruction": "Build Next",
+  "output": "\n    private String buildNext(String s) {\n        StringBuilder result = new StringBuilder();\n        int count = 1;\n        for (int i = 1; i < s.length(); i++) {\n            if (s.charAt(i) == s.charAt(i - 1)) {\n                count++;\n            } else {\n                result.append(count).append(s.charAt(i - 1));\n                count = 1;\n            }\n        }\n        result.append(count).append(s.charAt(s.length() - 1));\n        return result.toString();\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Himanshi-Saini-0277/Leetcode_Streak",
+    "repo_created_date": "2024-08-24",
+    "repo_stars": 4,
+    "repo_forks": 0,
+    "file_path": "0038-count-and-say/0038-count-and-say.java",
+    "function_name": "buildNext",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 15,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

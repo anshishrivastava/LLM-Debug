@@ -1,0 +1,22 @@
+{
+  "instruction": "Generate Dic",
+  "output": "def generate_dic(Dictionary, input_path, output_path):\n    if \"SLAKE\" in input_path:\n        with open(input_path+\"train.json\", \"rb\") as f:\n            loaded_dataset = json.load(f)\n            for item in loaded_dataset:\n                question = item[\"question\"].lower()\n                answer = str(item[\"answer\"]).lower()\n                question_words = question.replace(\"?\", \"\").split(\" \")\n                answer_words = answer.split(\" \")\n                for word in question_words:\n                    idx = Dictionary.add_word(word)\n                for word in answer_words:\n                    idx = Dictionary.add_word(word)\n        with open(input_path+\"validation.json\", \"rb\") as f:\n            loaded_dataset = json.load(f)\n            for item in loaded_dataset:\n                question = item[\"question\"].lower()\n                answer = str(item[\"answer\"]).lower()\n                question_words = question.replace(\"?\", \"\").split(\" \")\n                answer_words = answer.split(\" \")\n                for word in question_words:\n                    idx = Dictionary.add_word(word)\n                for word in answer_words:\n                    idx = Dictionary.add_word(word)\n\n    else:\n        with open(input_path, \"r\") as f:\n            loaded_dataset = json.load(f)\n            dataset_train, dataset_test = train_test_split(loaded_dataset, test_size=0.2, random_state=42)\n            train_dataset, val_dataset = train_test_split(dataset_train, test_size=0.2, random_state=42)\n            for item in train_dataset:\n                question = item[\"question\"].lower()\n                answer = str(item[\"answer\"]).lower()\n                question_words = question.replace(\"?\", \"\").replace(\",\", \"\").replace('\\'s', ' \\'s').split(\" \")\n                answer_words = answer.replace(\"?\", \"\").replace(\",\", \"\").replace('\\'s', ' \\'s').split(\" \")\n                for word in question_words:\n                    idx = Dictionary.add_word(word)\n                for word in answer_words:\n                    idx = Dictionary.add_word(word)\n            for item in val_dataset:\n                question = item[\"question\"].lower()\n                answer = str(item[\"answer\"]).lower()\n                question_words = question.replace(\"?\", \"\").split(\" \")\n                answer_words = answer.split(\" \")\n                for word in question_words:\n                    idx = Dictionary.add_word(word)\n                for word in answer_words:\n                    idx = Dictionary.add_word(word)\n        \n        new_output_path = output_path.split(\"/\")[0:3]\n        new_output_path = \"/\".join(new_output_path)\n        with open(new_output_path+\"/train.json\", \"w\") as f:\n            json.dump(train_dataset, f)\n        with open(new_output_path+\"/validation.json\", \"w\")as f:\n            json.dump(val_dataset, f)\n        with open(new_output_path+\"/test.json\", \"w\") as f:\n            json.dump(dataset_test, f)\n    \n    Dictionary.dump_to_file(path=output_path)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "98haiting/General-or-Medical-CLIP-Which-one-Shall-We-Choose",
+    "repo_created_date": "2024-10-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "biomed_clip/VQA.py",
+    "function_name": "generate_dic",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 59,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

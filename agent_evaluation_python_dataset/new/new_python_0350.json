@@ -1,0 +1,22 @@
+{
+  "instruction": "Reorder Cluster Atoms",
+  "output": "    def reorder_cluster_atoms(self, neighbors, smiles):\n        # Retreive atomic order from a random parsed geometry\n        geom_id = random.choice(self.geom_ids)\n        self.atom_numbers_true = []\n        with open(\n            f\"{self.train_args.geom_path}/{self.species_id}/{geom_id}.xyz\", \"r\"\n        ) as f:\n            lines = f.readlines()\n            for i in lines[2:]:\n                self.atom_numbers_true.append(ELEMENT_TO_NUM[i[:2].strip()])\n        split_smiles = smiles.split(\".\")\n        mols = [Chem.MolFromSmiles(i) for i in split_smiles]\n        mols = [Chem.AddHs(i) for i in mols]\n        self.atomic_nums_separate = [\n            [x.GetAtomicNum() for x in i.GetAtoms()] for i in mols\n        ]\n        hydrogen_dict = {}\n        for ind, i in enumerate(self.atomic_nums_separate):\n            if 1 in i:\n                hydrogen_dict[ind] = (i.index(1), len(i) - i.index(1))\n            else:\n                hydrogen_dict[ind] = (len(i), 0)\n\n        # Compare and reorder the smiles so that both match\n        self.order_dict = {}\n        k = 0\n        idx = 0\n        while idx < len(self.atom_numbers_true):\n            for ind, sub_list in enumerate(self.atomic_nums_separate):\n                if self.atom_numbers_true[idx : idx + len(sub_list)] == sub_list:\n                    self.order_dict[k] = ind\n                    k += 1\n                    idx += len(sub_list)\n        smiles_reordered = []\n        for _, val in self.order_dict.items():\n            smiles_reordered.append(split_smiles[val])\n\n        # Create atomic numbers, atomic indicies, neighbors and bonds in the new, correct order\n        mols = [Chem.MolFromSmiles(i) for i in smiles_reordered]\n        mols = [Chem.AddHs(i) for i in mols]\n        self.atomic_nums = [x.GetAtomicNum() for i in mols for x in i.GetAtoms()]\n        self.atom_idxs = [x for x, _ in enumerate(self.atomic_nums)]\n        x = 0\n        self.atom_idxs_separate = []\n        self.formal_charges_separate = []\n        for i in mols:\n            idxs = []\n            for j in i.GetAtoms():\n                idxs.append(x)\n                x += 1\n            self.atom_idxs_separate.append(idxs)\n\n            self.formal_charges_separate += [GetFormalCharge(i)]\n\n        # Fixing the indicies of the separate mols\n        neighbors_separate = [\n            [[x.GetIdx() for x in y.GetNeighbors()] for y in mol.GetAtoms()]\n            for mol in mols\n        ]\n        curr_len_neigh = len(neighbors_separate[0])\n        for ind_1, neigh in enumerate(neighbors_separate[1:]):\n            for ind_2, atom in enumerate(neigh):\n                if atom:\n                    for ind_3, each in enumerate(atom):\n                        neighbors_separate[ind_1 + 1][ind_2][ind_3] += curr_len_neigh\n            curr_len_neigh += len(neighbors_separate[ind_1 + 1])\n\n        neighbors = []\n        for i in neighbors_separate:\n            neighbors.extend(i)\n\n        return neighbors",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/data/builder.py",
+    "function_name": "reorder_cluster_atoms",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 72,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Download Datasets",
+  "output": "def download_datasets(args):\n    datasets_test = []\n    if args.combination is False:\n        datapath = f\"datasets/classification/{args.dataset}\"\n        datapath = Path(datapath)\n        datapath.mkdir(parents=True, exist_ok=True)\n\n        if args.dataset == 'chestmnist':\n            datasets_test.append(ChestMNIST(root=datapath, download=args.download, size=224, split='test'))\n        elif args.dataset == 'pneumoniamnist':\n            datasets_test.append(PneumoniaMNIST(root=datapath, download=args.download, size=224, split='test'))\n        elif args.dataset == 'breastmnist':\n            datasets_test.append(BreastMNIST(root=datapath, download=args.download, size=224, split='test'))\n        elif args.dataset == 'organamnist':\n            datasets_test.append(OrganAMNIST(root=datapath, download=args.download, size=224, split='test'))\n        elif args.dataset == 'organcmnist':\n            datasets_test.append(OrganCMNIST(root=datapath, download=args.download, size=224, split='test'))\n        else:\n            raise ValueError('Invalid dataset name, please choose from chestmnist, pneumoniamnist, breastmnist, organamnist, organcmnist')\n\n    else:\n        dataset_list = args.datasets_list.split(',')\n        for dataset in dataset_list:\n            datapath = f\"datasets/classification/{dataset}\"\n            datapath = Path(datapath)\n            datapath.mkdir(parents=True, exist_ok=True)\n            if dataset == 'chestmnist':\n                datasets_test.append(ChestMNIST(root=datapath, download=args.download, size=224, split='test'))\n            elif dataset == 'pneumoniamnist':\n                datasets_test.append(PneumoniaMNIST(root=datapath, download=args.download, size=224, split='test'))\n            elif dataset == 'breastmnist':\n                datasets_test.append(BreastMNIST(root=datapath, download=args.download, size=224, split='test'))\n            elif dataset == 'organamnist':\n                datasets_test.append(OrganAMNIST(root=datapath, download=args.download, size=224, split='test'))\n            elif dataset == 'organcmnist':\n                datasets_test.append(OrganCMNIST(root=datapath, download=args.download, size=224, split='test'))\n            else:    \n                raise ValueError('Invalid dataset name, please choose from chestmnist, pneumoniamnist, breastmnist, organamnist, organcmnist')\n            \n    return datasets_test",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "98haiting/General-or-Medical-CLIP-Which-one-Shall-We-Choose",
+    "repo_created_date": "2024-10-01",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "biomed_clip/classification.py",
+    "function_name": "download_datasets",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 40,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

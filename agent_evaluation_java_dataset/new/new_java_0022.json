@@ -1,0 +1,22 @@
+{
+  "instruction": "Render the skill bar UI",
+  "output": "    public void renderSkillBar(SpriteBatch batch) {\n        int screenWidth = Gdx.graphics.getWidth();\n        int screenHeight = Gdx.graphics.getHeight();\n\n        // Calculate total width: 5 abilities + space + 3 inventory + space + 2 attacks\n        int totalSlots = 10;\n        int totalWidth = (totalSlots * SLOT_SIZE) + ((totalSlots - 1) * SLOT_PADDING) + (2 * SEPARATOR_SPACE);\n\n        float startX = (screenWidth - totalWidth) / 2f;\n        float startY = 20; // Bottom of screen\n\n        // End batch for shape rendering\n        batch.end();\n\n        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);\n\n        // Render ability slots (1-5)\n        for (int i = 0; i < NUM_ABILITY_SLOTS; i++) {\n            float slotX = startX + i * (SLOT_SIZE + SLOT_PADDING);\n            renderAbilitySlot(slotX, startY, i);\n        }\n\n        // Separator space\n        float inventoryStartX = startX + (NUM_ABILITY_SLOTS * (SLOT_SIZE + SLOT_PADDING)) + SEPARATOR_SPACE;\n\n        // Render inventory quick slots (6-8)\n        for (int i = 0; i < 3; i++) {\n            float slotX = inventoryStartX + i * (SLOT_SIZE + SLOT_PADDING);\n            renderInventorySlot(slotX, startY, i);\n        }\n\n        // Separator space\n        float attackStartX = inventoryStartX + (3 * (SLOT_SIZE + SLOT_PADDING)) + SEPARATOR_SPACE;\n\n        // Render LMB and RMB slots\n        renderAttackSlot(attackStartX, startY, \"LMB\", player.getInventory().getEquipment().getEquippedItem(Equipment.EquipmentSlot.WEAPON));\n        renderAttackSlot(attackStartX + SLOT_SIZE + SLOT_PADDING, startY, \"RMB\",\n                player.getInventory().getEquipment().getEquippedItem(Equipment.EquipmentSlot.OFFHAND));\n\n        shapeRenderer.end();\n\n        // Resume batch for icon rendering\n        batch.begin();\n\n        // Render ability icons and cooldowns\n        for (int i = 0; i < NUM_ABILITY_SLOTS; i++) {\n            if (abilities[i] != null) {\n                float slotX = startX + i * (SLOT_SIZE + SLOT_PADDING);\n                renderAbilityIcon(batch, slotX, startY, abilities[i], i + 1);\n            }\n        }\n\n        // Render inventory item icons\n        for (int i = 0; i < 3; i++) {\n            Item item = player.getInventory().getItem(i);\n            if (item != null) {\n                float slotX = inventoryStartX + i * (SLOT_SIZE + SLOT_PADDING);\n                item.renderIcon(batch, slotX + 3, startY + 3, SLOT_SIZE - 6);\n            }\n        }\n\n        // Render equipped weapon/offhand icons\n        Item weapon = player.getInventory().getEquipment().getEquippedItem(Equipment.EquipmentSlot.WEAPON);\n        if (weapon != null) {\n            weapon.renderIcon(batch, attackStartX + 3, startY + 3, SLOT_SIZE - 6);\n        }\n\n        // Render sword cooldown for Paladin\n        if (playerClass == PlayerClass.PALADIN && swordCooldown > 0) {\n            renderCooldownOverlay(batch, attackStartX, startY, swordCooldown / SWORD_COOLDOWN_TIME);\n        }\n\n        Item offhand = player.getInventory().getEquipment().getEquippedItem(Equipment.EquipmentSlot.OFFHAND);\n        if (offhand != null) {\n            offhand.renderIcon(batch, attackStartX + SLOT_SIZE + SLOT_PADDING + 3, startY + 3, SLOT_SIZE - 6);\n\n            // Render offhand cooldown\n            if (offhandCooldown > 0) {\n                renderCooldownOverlay(batch, attackStartX + SLOT_SIZE + SLOT_PADDING, startY,\n                        offhandCooldown / OFFHAND_COOLDOWN_TIME);\n            }\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/AbilityManager.java",
+    "function_name": "renderSkillBar",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 83,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

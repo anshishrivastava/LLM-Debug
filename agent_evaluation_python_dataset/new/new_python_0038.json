@@ -1,0 +1,22 @@
+{
+  "instruction": "Update daily high/low tracking.",
+  "output": "    def update_daily_tracking(self, spy_price: float, vix: float):\n        \"\"\"Update daily high/low tracking.\"\"\"\n        if spy_price > self.spy_high:\n            self.spy_high = spy_price\n        if spy_price < self.spy_low or self.spy_low == 0:\n            self.spy_low = spy_price\n        if vix > self.vix_high:\n            self.vix_high = vix\n        self.vix_samples.append(vix)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/models/metrics.py",
+    "function_name": "update_daily_tracking",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 9,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Makes a nice plot with multiple graphs overlayed.",
+  "output": "def make_sf_graph(x: list[float], ex: list[float], y: list[list[float]], \n                  ey: list[list[float]], name: str, graph_names: list[str], \n                  x_title: str, y_title: str, \n                  lumi: list[tuple[float, float]], log_x: bool=False):\n  '''Makes a nice plot with multiple graphs overlayed. \n\n  Args:\n    x: x values for points\n    ex: x error bars for points\n    y: y values  for points\n    ey: y error bars for points\n    name: filename\n    graph_names: names for graphs\n    x_title: X-axis label\n    y_title: y-axis label\n    lumi: list of tuple of two floats representing lumi and CM energy\n    log_x: if true sets x-axis to be logarithmic\n  '''\n  ROOT.gStyle.SetOptStat(0)\n  x_vals = array('d',x)\n  ex_vals = array('d',ex)\n  y_vals = []\n  ey_vals = []\n  graphs = []\n  for idata in range(len(y)):\n    y_vals.append(array('d',y[idata]))\n    ey_vals.append(array('d',ey[idata]))\n    graphs.append(ROOT.TGraphErrors(len(x),x_vals,y_vals[idata],\n                                    ex_vals,ey_vals[idata]))\n    graphs[-1].SetTitle(graph_names[idata])\n    graphs[-1].SetLineColor(CMS_COLORS[idata])\n  sf_plot = RplPlot()\n  sf_plot.lumi_data = lumi\n  for graph in graphs:\n    sf_plot.plot_graph(graph, graph.GetLineColor())\n  sf_plot.x_title = x_title\n  sf_plot.y_title = y_title\n  sf_plot.log_x = log_x\n  sf_plot.draw(name)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/rms_sf_analyzer.py",
+    "function_name": "make_sf_graph",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 39,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

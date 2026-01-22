@@ -1,0 +1,22 @@
+{
+  "instruction": "Three Consecutive Odds",
+  "output": "    public boolean threeConsecutiveOdds(int[] arr) {\n        int count=0;\n        for(int i=0;i<arr.length;i++){\n            \n            if(arr[i]%2!=0){\n                count++;\n            }else{\n                count=0;\n            }\n\n            if(count==3){\n                return true;\n            }\n        }\n\n        return false;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "GAURAV-SENGAR-14/LEETCODE-PROBLEMS",
+    "repo_created_date": "2025-01-13",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "1293-three-consecutive-odds/three-consecutive-odds.java",
+    "function_name": "threeConsecutiveOdds",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 17,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

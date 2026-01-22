@@ -1,0 +1,22 @@
+{
+  "instruction": "Stop Server",
+  "output": "\n    public static void stopServer() {\n        if (server != null) {\n            server.stop(0);\n            System.out.println(\"Server stopped.\");\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "FrotaLucas/project_final_v1",
+    "repo_created_date": "2024-10-07",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "src/main/java/Servering.java",
+    "function_name": "stopServer",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 7,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

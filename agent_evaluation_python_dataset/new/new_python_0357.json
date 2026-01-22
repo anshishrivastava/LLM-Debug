@@ -1,0 +1,22 @@
+{
+  "instruction": "For set_<n body interaction>_type() functions, there are two modes.",
+  "output": "    def set_bond_type(self, molecule=None):\n        \"\"\"\n        For set_<n body interaction>_type() functions, there are two modes.\n        set_<>_type() is first used with molecule set to None. This assigns bond types to all the\n        bonds in the dataset, which can include multiple molecules at the same time. This ensures that\n        a bond between two atoms of the same type will always have the same type and parameters, even if\n        they are in different molecules.\n\n        After the full dataset bonds have been assigned, this function is called again by passing in each\n        molecule (topology builder) in the dataset to assign the bond types of each molecule\n        according to the full available types in the dataset\n        \"\"\"\n        if self.bonds.shape[0] == 0:\n            return torch.tensor([])\n        # node_types is a list of the type of each node\n        # top_types contains the node types of each node inside this topology\n        if molecule is not None:\n            # in this case, you use the atom (and their environments) from the molecule\n            # to assign the types of bond in the molecule\n            node_types = molecule.atom_type.view(-1)\n            if len(molecule.bonds) == 0:\n                return torch.tensor([])\n            top_types = node_types[molecule.bonds]\n        else:\n            # in this case, you use the dataset (self) atom types, which contains the atomic environments\n            # from all molecules at the same time\n            node_types = self.atom_type.view(-1)\n            if len(self.bonds) == 0:\n                return torch.tensor([])\n            top_types = node_types[self.bonds]\n\n        top_types = (\n            torch.eye(self.num_node_types)\n            .to(self.train_args.device)[top_types]\n            .to(\n                torch.long,\n            )\n        )  # always use the full possible node types from the dataset for onehot encoding\n        # create a diagonal square array whose dimension is the number of node types (one hot encoding of the possible node types)\n        # then changes top_types to be these one-hot-encoding representations fo the different possible node types by indexing [top_types]\n        # sums the two one-hot encodings to allow for permutation invariance in bond-types\n        top_types = top_types.sum(1)\n        # top_types is now the integer index of the distinct two-hot encodings (sum of 2 one-hot encodings),\n        # while self.unique_values[type_key] now holds the distinct two-hot encodings...\n        # so like dataset.topologies['bond'].unique_values['type'][0] will have the 9th and 12th index be 1 and\n        # the rest 0 if the bond contains node type 9 and 12!\n        cur_unique_values = top_types.unique(dim=0, return_inverse=True)[0]\n        if molecule is not None:\n            molecule.bond_unique_values = cur_unique_values\n        else:\n            self.bond_unique_values = cur_unique_values\n        top_types = self.index_of2(input=top_types, source=self.bond_unique_values)\n        return top_types",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/data/builder.py",
+    "function_name": "set_bond_type",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 53,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

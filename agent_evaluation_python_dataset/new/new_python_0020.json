@@ -1,0 +1,22 @@
+{
+  "instruction": "Yield key (query job) value (list of jobs) pairs of entire database.",
+  "output": "    def iterate_database(self, update_missing: bool = False) -> Generator[tuple[JobData, list[JobData]]]:\n        \"\"\"\n        Yield key (query job) value (list of jobs) pairs of entire database.\n        \"\"\"\n        for job_name in self.db.keys():\n            entry = self.db[job_name]\n            for categories, jobs in JobDatabase.iterate_jobs(entry):\n                categories = dict(cat.split(\"=\") for cat in categories)\n                query = JobData(job_name=job_name, categories=categories)\n                jobs = [\n                    JobData.from_dataset(\n                        job_name=job_name,\n                        slurm_id=slurm_id,\n                        categories=categories,\n                        dataset=slurm_data,\n                    )\n                    for slurm_id, slurm_data in jobs.items()\n                ]\n                if update_missing:\n                    jobs = self.update_missing_data(jobs)\n\n                yield query, jobs",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "PrincetonUniversity/slurmise",
+    "repo_created_date": "2024-06-21",
+    "repo_stars": 3,
+    "repo_forks": 0,
+    "file_path": "src/slurmise/job_database.py",
+    "function_name": "iterate_database",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 22,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

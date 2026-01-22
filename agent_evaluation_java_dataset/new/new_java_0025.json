@@ -1,0 +1,22 @@
+{
+  "instruction": "Render Ability Icon",
+  "output": "\n    private void renderAbilityIcon(SpriteBatch batch, float x, float y, Ability ability, int keyNumber) {\n        // Render icon\n        if (ability.getIconTexture() != null) {\n            batch.draw(ability.getIconTexture(), x + 3, y + 3, SLOT_SIZE - 6, SLOT_SIZE - 6);\n        }\n\n        // Render cooldown overlay\n        if (ability.isOnCooldown()) {\n            renderCooldownOverlay(batch, x, y, ability.getCooldownPercentage());\n        }\n\n        // Render cast bar\n        if (ability.isCasting()) {\n            renderCastBar(batch, x, y, ability.getCastProgress());\n        }\n\n        // Render key number\n        font.setColor(Color.WHITE);\n        font.getData().setScale(0.6f);\n        font.draw(batch, String.valueOf(keyNumber), x + 5, y + SLOT_SIZE - 5);\n        font.getData().setScale(1.0f);\n\n        // Render cooldown time\n        if (ability.isOnCooldown()) {\n            font.setColor(Color.YELLOW);\n            font.getData().setScale(0.8f);\n            String cooldownText = String.format(\"%.1f\", ability.getCurrentCooldown());\n            float textWidth = font.getSpaceXadvance() * cooldownText.length() * 0.8f;\n            font.draw(batch, cooldownText, x + (SLOT_SIZE - textWidth) / 2, y + SLOT_SIZE / 2 + 5);\n            font.getData().setScale(1.0f);\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/AbilityManager.java",
+    "function_name": "renderAbilityIcon",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 33,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

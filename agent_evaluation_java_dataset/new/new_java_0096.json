@@ -1,0 +1,22 @@
+{
+  "instruction": "Starts With",
+  "output": "    \n    public boolean startsWith(String prefix) {\n        Node node=root;\n        for(char ch:prefix.toCharArray()){\n            if(!node.containsKey(ch)){\n                return false;\n            }\n            node=node.get(ch);\n        }\n        return true;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Ananthu191030/Leetcode",
+    "repo_created_date": "2024-10-30",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0208-implement-trie-prefix-tree/0208-implement-trie-prefix-tree.java",
+    "function_name": "startsWith",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 11,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

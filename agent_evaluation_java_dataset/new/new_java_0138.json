@@ -1,0 +1,22 @@
+{
+  "instruction": "Is Valid Sudoku",
+  "output": "    public boolean isValidSudoku(char[][] board) {\n        int N = 9;\n        HashSet<Character>[] rowSet = new HashSet[N];\n        HashSet<Character>[] colSet = new HashSet[N];\n        HashSet<Character>[] squareSet = new HashSet[N];\n        for (int r = 0; r < N; r++) {\n            rowSet[r] = new HashSet<>();\n            colSet[r] = new HashSet<>();\n            squareSet[r] = new HashSet<>();\n        }\n        for (int r = 0; r < N; r++) {\n            for (int c = 0; c < N; c++) {\n                char val = board[r][c];\n                if (val == '.') continue;\n                int sPos = (r / 3) * 3 + c / 3;\n                if (rowSet[r].contains(val) || colSet[c].contains(val) || squareSet[sPos].contains(val))\n                    return false;\n                rowSet[r].add(val);\n                colSet[c].add(val);\n                squareSet[sPos].add(val);\n            }\n        }\n        return true;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Madhurima-R04/LeetCode_Solutions",
+    "repo_created_date": "2025-01-08",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0036-valid-sudoku/0036-valid-sudoku.java",
+    "function_name": "isValidSudoku",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 24,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

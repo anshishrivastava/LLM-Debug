@@ -1,0 +1,4 @@
+{
+  "instruction": "Create a Python program using PyTorch to categorize the sentiment of a sentence into either positive, negative, or neutral.",
+  "output": "import torch\nimport torch.nn as nn\nimport torch.optim as optim\n\nclass SentimentClassifier(nn.Module):\n def __init__(self):\n  super().__init__()\n  self.embedding = nn.EmbeddingBag(1000, 16, sparse=True)\n  self.fc = nn.Linear(16, 3)\n \n def forward(self, x):\n  x = self.embedding(x)\n  x = self.fc(x)\n  return x\n\nmodel = SentimentClassifier()\n\ncriterion = nn.CrossEntropyLoss()\noptimizer = optim.Adam(model.parameters(), lr=0.001)\n\nmodel.train()\nfor i in range(num_epochs):\n for x,y in train_iter:\n  y_pred = model(x)\n \n  loss = criterion(y_pred, y)\n \n  loss.backward()\n \n  optimizer.step()\n \n  optimizer.zero_grad()\n\nmodel.eval()\nwith torch.no_grad():\n for x,y in test_iter:\n  y_pred = model(x)\n \n  correct = (y == y_pred.argmax(dim=1)).float().sum()\n  acc = correct/len(y)"
+}

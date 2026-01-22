@@ -1,0 +1,22 @@
+{
+  "instruction": "Count Pairs",
+  "output": "    int countPairs(int[][] a, int[][] b, int x) {\n        int r1 = 0, c1 = 0, r2 = b.length - 1, c2 = b[0].length - 1, cnt = 0;\n        while (r1 < a.length && r2 >= 0) {\n            int sum = a[r1][c1] + b[r2][c2];\n            if (sum == x) { cnt++; c1++; c2--; }\n            else if (sum < x) c1++;\n            else c2--;\n            if (c1 == a[0].length) { c1 = 0; r1++; }\n            if (c2 < 0) { c2 = b[0].length - 1; r2--; }\n        }\n        return cnt;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Apoo-28/GFG-Problems",
+    "repo_created_date": "2024-12-08",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "Difficulty: Easy/Count pairs Sum in matrices/count-pairs-sum-in-matrices.java",
+    "function_name": "countPairs",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 12,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

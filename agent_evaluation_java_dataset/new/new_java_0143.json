@@ -1,0 +1,22 @@
+{
+  "instruction": "Next Permutation",
+  "output": "    public void nextPermutation(int[] nums) {\n        int n = nums.length;\n        int k = n - 2;\n        \n        // Find the largest index k such that nums[k] < nums[k + 1]\n        while (k >= 0 && nums[k] >= nums[k + 1]) {\n            k--;\n        }\n        \n        if (k >= 0) {\n            int l = n - 1;\n            // Find the largest index l > k such that nums[k] < nums[l]\n            while (nums[k] >= nums[l]) {\n                l--;\n            }\n            // Swap nums[k] and nums[l]\n            swap(nums, k, l);\n        }\n        \n        // Reverse the sub-array nums[k + 1:]\n        reverse(nums, k + 1);\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "DEVARASAIGANESH29/LeetCode",
+    "repo_created_date": "2024-08-18",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0031-next-permutation/0031-next-permutation.java",
+    "function_name": "nextPermutation",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 22,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

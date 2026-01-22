@@ -1,0 +1,22 @@
+{
+  "instruction": "Longest Common Prefix",
+  "output": "    public String longestCommonPrefix(String[] strs) {\n        Arrays.sort(strs);\n        String a=strs[0];\n        String b=strs[strs.length-1];\n        int i=0;\n        while(i<a.length() && i<b.length()){\n            if(a.charAt(i)==b.charAt(i)){\n                i++;\n            }\n            else{\n                break;\n            }\n        }\n        return a.substring(0,i);\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "hariharan1009/leetcode",
+    "repo_created_date": "2024-09-23",
+    "repo_stars": 8,
+    "repo_forks": 0,
+    "file_path": "0014-longest-common-prefix/0014-longest-common-prefix.java",
+    "function_name": "longestCommonPrefix",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 15,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

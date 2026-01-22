@@ -1,0 +1,22 @@
+{
+  "instruction": "Search for a valid position to place a chunk of a word.",
+  "output": "    def search_chunk(\n        self, word: str, direction: Tuple[int, int], pos: Tuple[int, int]\n    ) -> Optional[Tuple[Tuple[int, int], Tuple[int, int]]]:\n        \"\"\"Search for a valid position to place a chunk of a word.\n        \n        Args:\n            word: The word chunk to place\n            direction: Direction vector (row_step, col_step)\n            pos: Starting position (row, col)\n            \n        Returns:\n            Tuple of (end_position, direction) if valid, None otherwise\n        \"\"\"\n        r, c = pos\n        for _ in range(len(word)):\n            r, c = r + direction[0], c + direction[1]\n            if not (\n                r >= 0\n                and r < len(self.cw_matrix)\n                and c >= 0\n                and c < len(self.cw_matrix[0])\n            ):\n                return None\n\n            if self.cw_matrix[r][c] != \"X\":\n                return None\n\n        return (r, c), direction",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "pb-96/crossword-generator",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "cw_generator_uv/cw_generator/cw_gen/cw_base_class.py",
+    "function_name": "search_chunk",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 28,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Generate Data-MC comparison plot",
+  "output": "def make_data_mc_graph(x: list[float], ex: list[float], \n                       data_y: list[list[float]], data_ey: list[list[float]], \n                       sim_y: list[list[float]], sim_ey: list[list[float]], \n                       name: str, data_names: list[float], \n                       mc_names: list[str], x_title: str, \n                       y_title: str, lumi: tuple[float, float], \n                       log_x: bool=False):\n  '''Generate Data-MC comparison plot\n\n  Makes a nice plot with multiple graphs overlayed. Each data graph will be\n  drawn in solid line while each simulation graph in dotted lines. The number\n  of y/ey points should match\n\n  Args:\n    x: x values for points\n    ex: x error bars for points\n    data_y: y values for data points\n    data_ey: y error bars for data points\n    sim_y: y values for simulation points\n    sim_ey: y error bars for simulation points\n    name: filename\n    data_names: names for data graphs\n    mc_names: names for mc graphs\n    x_title: X-axis label\n    y_title: y-axis label\n    lumi: lumi and CM energy\n    log_x: if true, makes x-axis logarithmic\n  '''\n  ROOT.gStyle.SetOptStat(0)\n  x_vals = array('d',x)\n  ex_vals = array('d',ex)\n  data_y_vals = []\n  data_ey_vals = []\n  sim_y_vals = []\n  sim_ey_vals = []\n  graphs = []\n  for idata in range(len(data_y)):\n    data_y_vals.append(array('d',data_y[idata]))\n    data_ey_vals.append(array('d',data_ey[idata]))\n    graphs.append(ROOT.TGraphErrors(len(x),x_vals,data_y_vals[idata],ex_vals,\n                                    data_ey_vals[idata]))\n    graphs[-1].SetTitle(data_names[idata])\n    graphs[-1].SetLineStyle(ROOT.kSolid)\n    graphs[-1].SetLineColor(CMS_COLORS[idata])\n  for isim in range(len(sim_y)):\n    sim_y_vals.append(array('d',sim_y[isim]))\n    sim_ey_vals.append(array('d',sim_ey[isim]))\n    graphs.append(ROOT.TGraphErrors(len(x),x_vals,sim_y_vals[isim],ex_vals,\n                                    sim_ey_vals[isim]))\n    graphs[-1].SetTitle(mc_names[isim])\n    graphs[-1].SetLineStyle(ROOT.kDashed)\n    graphs[-1].SetLineColor(CMS_COLORS[isim])\n  sf_plot = RplPlot()\n  sf_plot.lumi_data = lumi\n  for graph in graphs:\n    sf_plot.plot_graph(graph, graph.GetLineColor())\n  sf_plot.x_title = x_title\n  sf_plot.y_title = y_title\n  sf_plot.log_x = log_x\n  sf_plot.draw(name)",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/rms_sf_analyzer.py",
+    "function_name": "make_data_mc_graph",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 60,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

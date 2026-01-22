@@ -1,0 +1,22 @@
+{
+  "instruction": "Merge K Lists",
+  "output": "    public ListNode mergeKLists(ListNode[] lists) {\n        PriorityQueue<Integer> pq = new PriorityQueue<>();\n        for(ListNode curr : lists){\n            while(curr != null){\n                pq.offer(curr.val);\n                curr = curr.next;\n            }\n        }\n        ListNode res = new ListNode(0);\n        ListNode head = res;\n        while(!pq.isEmpty()){\n            res.next = new ListNode(pq.poll());\n            res = res.next;\n        }\n        return head.next;\n        // 0->1 -> 2-> 2 -> 3 ->3 -> 4\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "ash98ketchum/Leetcode",
+    "repo_created_date": "2024-11-30",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "0023-merge-k-sorted-lists/0023-merge-k-sorted-lists.java",
+    "function_name": "mergeKLists",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 17,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

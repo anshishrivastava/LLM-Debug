@@ -1,0 +1,22 @@
+{
+  "instruction": "Load metrics from JSON file.",
+  "output": "    def load_from_file(cls, filepath: str = None) -> Optional[\"StrategyMetrics\"]:\n        \"\"\"\n        Load metrics from JSON file.\n\n        Args:\n            filepath: Path to load from. Defaults to METRICS_FILE.\n\n        Returns:\n            StrategyMetrics instance if file exists, None otherwise.\n        \"\"\"\n        filepath = filepath or METRICS_FILE\n        try:\n            if os.path.exists(filepath):\n                with open(filepath, 'r') as f:\n                    data = json.load(f)\n                metrics = cls.from_dict(data)\n                last_updated = data.get(\"last_updated\", \"unknown\")\n                logger.info(f\"Loaded strategy metrics from {filepath} (last updated: {last_updated})\")\n                logger.info(f\"  Realized P&L: ${metrics.realized_pnl:.2f}\")\n                logger.info(f\"  Total Premium Collected: ${metrics.total_premium_collected:.2f}\")\n                logger.info(f\"  Trade Count: {metrics.trade_count}, Win Rate: {metrics.win_rate*100:.1f}%\")\n                return metrics\n            else:\n                logger.info(f\"No saved metrics found at {filepath}, starting fresh\")\n                return None\n        except Exception as e:\n            logger.error(f\"Failed to load metrics from {filepath}: {e}\")\n            return None",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/models/metrics.py",
+    "function_name": "load_from_file",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 28,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

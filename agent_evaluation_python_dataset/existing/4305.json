@@ -1,0 +1,4 @@
+{
+  "instruction": "Create a Python function that will optimize a given set of data using the Hill Climbing Algorithm.",
+  "output": "def hill_climbing(data):\n best_solution = data\n best_score = evaluate(data)\n improvement = True\n\n while improvement:\n a, b = get_swapping_indices(best_solution)\n\n new_solution = best_solution.copy()\n new_solution[a], new_solution[b] = new_solution[b], new_solution[a]\n\n new_score = evaluate(new_solution)\n\n if new_score > best_score:\n best_solution = new_solution\n best_score = new_score\n else:\n improvement = False\n\n return best_solution\n\ndef evaluate(solution):\n total_distance = 0\n\n for i in range(len(solution)):\n total_distance += abs(solution[i] - solution[(i+1) % len(solution)])\n\n return total_distance\n\ndef get_swapping_indices(solution):\n a = random.randint(0, len(solution) - 1)\n b = random.randint(0, len(solution) - 1)\n\n while a == b:\n b = random.randint(0, len(solution) - 1)\n\n return a, b"
+}

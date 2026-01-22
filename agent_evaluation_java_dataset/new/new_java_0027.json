@@ -1,0 +1,22 @@
+{
+  "instruction": "Create Body",
+  "output": "\n        private void createBody() {\n            Vector2 playerPos = player.getPosition();\n\n            BodyDef bodyDef = new BodyDef();\n            // Use KinematicBody - it can move but isn't affected by forces,\n            // and will solidly block dynamic bodies (enemies)\n            bodyDef.type = BodyDef.BodyType.KinematicBody;\n            bodyDef.position.set(playerPos.x, playerPos.y);\n            bodyDef.fixedRotation = true;\n\n            body = world.createBody(bodyDef);\n\n            CircleShape shape = new CircleShape();\n            shape.setRadius(size / 2f);\n\n            FixtureDef fixtureDef = new FixtureDef();\n            fixtureDef.shape = shape;\n            fixtureDef.isSensor = false;\n            fixtureDef.density = 1f;\n            fixtureDef.friction = 0.8f;\n            fixtureDef.restitution = 1f; // High restitution to bounce enemies back\n            fixtureDef.filter.categoryBits = CollisionFilter.ABILITY;\n            fixtureDef.filter.maskBits = CollisionFilter.ENEMY | CollisionFilter.PROJECTILE;\n\n            body.createFixture(fixtureDef);\n            shape.dispose();\n        }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "McMaxyy/Toppy",
+    "repo_created_date": "2024-12-09",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "core/src/abilities/AbilityVisual.java",
+    "function_name": "createBody",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 28,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

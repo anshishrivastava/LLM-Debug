@@ -1,0 +1,22 @@
+{
+  "instruction": "Generate Embedding",
+  "output": "def generate_embedding(smiles):\n    model = AutoModel.from_pretrained(\"ibm/MoLFormer-XL-both-10pct\", deterministic_eval=True, trust_remote_code=True)\n    tokenizer = AutoTokenizer.from_pretrained(\"ibm/MoLFormer-XL-both-10pct\", trust_remote_code=True)\n    \n    inputs = tokenizer(smiles, padding=True, return_tensors=\"pt\")\n    with torch.no_grad():\n        outputs = model(**inputs)\n        \n    save_output = outputs.pooler_output\n    \n    return save_output",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "generate_embedding.py",
+    "function_name": "generate_embedding",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 11,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": false,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

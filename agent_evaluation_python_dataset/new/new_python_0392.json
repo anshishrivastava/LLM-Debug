@@ -1,0 +1,22 @@
+{
+  "instruction": "MKT-002: Detect rapid price movements (flash crash/rally).",
+  "output": "    def check_flash_crash_velocity(self) -> Optional[Tuple[float, str]]:\n        \"\"\"\n        MKT-002: Detect rapid price movements (flash crash/rally).\n\n        Checks if price has moved more than threshold in the tracking window.\n        More aggressive than standard ITM check - catches fast moves early.\n\n        Returns:\n            Optional[Tuple[float, str]]: (move_percent, direction) if flash detected, None otherwise\n        \"\"\"\n        if len(self._price_history) < 2:\n            return None  # Not enough data\n\n        # Get oldest and newest prices in window\n        oldest_time, oldest_price = self._price_history[0]\n        newest_time, newest_price = self._price_history[-1]\n\n        # Calculate move percentage\n        if oldest_price <= 0:\n            return None\n\n        move_percent = ((newest_price - oldest_price) / oldest_price) * 100\n        abs_move = abs(move_percent)\n        direction = \"UP\" if move_percent > 0 else \"DOWN\"\n        elapsed_minutes = (newest_time - oldest_time).total_seconds() / 60\n\n        if abs_move >= self._flash_crash_threshold_percent:\n            logger.critical(\"=\" * 70)\n            logger.critical(\"\ud83d\udea8 MKT-002: FLASH MOVE DETECTED \ud83d\udea8\")\n            logger.critical(\"=\" * 70)\n            logger.critical(f\"   Direction: {direction}\")\n            logger.critical(f\"   Move: {abs_move:.2f}% in {elapsed_minutes:.1f} minutes\")\n            logger.critical(f\"   Old price: ${oldest_price:.2f} ({oldest_time.strftime('%H:%M:%S')})\")\n            logger.critical(f\"   New price: ${newest_price:.2f} ({newest_time.strftime('%H:%M:%S')})\")\n            logger.critical(f\"   Threshold: {self._flash_crash_threshold_percent}%\")\n\n            if self.short_strangle:\n                call_strike = self.short_strangle.call_strike if self.short_strangle.call else 0\n                put_strike = self.short_strangle.put_strike if self.short_strangle.put else 0\n                logger.critical(f\"   Short strikes: Call ${call_strike:.0f}, Put ${put_strike:.0f}\")\n\n                # Check which side is threatened\n                if direction == \"UP\" and call_strike > 0:\n                    distance = ((call_strike - newest_price) / newest_price) * 100\n                    logger.critical(f\"   \u26a0\ufe0f Call only {distance:.1f}% away!\")\n                elif direction == \"DOWN\" and put_strike > 0:\n                    distance = ((newest_price - put_strike) / newest_price) * 100\n                    logger.critical(f\"   \u26a0\ufe0f Put only {distance:.1f}% away!\")\n\n            logger.critical(\"=\" * 70)\n\n            # Log safety event\n            if self.trade_logger:\n                self.trade_logger.log_safety_event({\n                    \"timestamp\": datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\"),\n                    \"event_type\": \"FLASH_MOVE_DETECTED\",\n                    \"severity\": \"CRITICAL\",\n                    \"spy_price\": newest_price,\n                    \"vix\": self.current_vix,\n                    \"action_taken\": f\"Detected {direction} {abs_move:.2f}% in {elapsed_minutes:.1f} min\",\n                    \"description\": f\"From ${oldest_price:.2f} to ${newest_price:.2f}\",\n                    \"result\": \"MONITORING\"\n                })\n\n            return (move_percent, direction)\n\n        return None",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "diogodiasgrilo/CALYPSO",
+    "repo_created_date": "2025-01-20",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "bots/delta_neutral/strategy.py",
+    "function_name": "check_flash_crash_velocity",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 67,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}

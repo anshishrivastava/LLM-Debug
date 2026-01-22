@@ -1,0 +1,22 @@
+{
+  "instruction": "Is Character Embed",
+  "output": "def is_character_embed(embed):\n    # Reliable check: Characters have an author name, an image, and NO thumbnail\n    if not embed or not embed.author or not embed.author.name:\n        return False\n    \n    has_image = embed.image and embed.image.url\n    has_thumbnail = embed.thumbnail and embed.thumbnail.url\n\n    return has_image and not has_thumbnail",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "misutesu-desu/MudaRemote",
+    "repo_created_date": "2024-10-12",
+    "repo_stars": 34,
+    "repo_forks": 5,
+    "file_path": "mudae_bot.py",
+    "function_name": "is_character_embed",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "medium",
+    "lines_of_code": 9,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

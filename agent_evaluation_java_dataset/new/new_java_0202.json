@@ -1,0 +1,22 @@
+{
+  "instruction": "Remove Duplicates",
+  "output": "    public String removeDuplicates(String s) {\n        Stack<Character> stack = new Stack<>();\n\n        for(char ch : s.toCharArray()){\n            if(!stack.isEmpty() && stack.peek() == ch){\n                stack.pop();\n            } else {\n                stack.push(ch);\n            }\n        }\n\n        StringBuilder result = new StringBuilder();\n        for(char ch : stack){\n            result.append(ch);\n        }\n        return result.toString();\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "utkrshydv/learningLeetCode",
+    "repo_created_date": "2025-01-15",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "1128-remove-all-adjacent-duplicates-in-string/remove-all-adjacent-duplicates-in-string.java",
+    "function_name": "removeDuplicates",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 17,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": true
+  }
+}

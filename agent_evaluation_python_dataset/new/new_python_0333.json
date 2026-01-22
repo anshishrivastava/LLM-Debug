@@ -1,0 +1,22 @@
+{
+  "instruction": "Wrapping xyz coordinates so that all the atoms fit within",
+  "output": "def wrap_xyz(xyz, cell):\n    \"\"\"\n    Wrapping xyz coordinates so that all the atoms fit within\n     the box dimensions\n    \"\"\"\n    for i, cur in enumerate(xyz):\n        for j, cur_atom in enumerate(cur):\n            # wrap the coordinates into the cell box\n            image = cur_atom // cell.diagonal()\n            cur_atom = cur_atom - cell.diagonal() * image\n            xyz[i][j] = cur_atom\n    return xyz",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "learningmatter-mit/HiTPoly",
+    "repo_created_date": "2025-01-22",
+    "repo_stars": 12,
+    "repo_forks": 3,
+    "file_path": "hitpoly/analysis/trajectory_analysis.py",
+    "function_name": "wrap_xyz",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "high",
+    "lines_of_code": 12,
+    "has_docstring": true,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": false,
+    "has_arithmetic": true,
+    "has_comparisons": false
+  }
+}

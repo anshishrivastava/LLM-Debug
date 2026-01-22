@@ -1,0 +1,22 @@
+{
+  "instruction": "Find Judge",
+  "output": "    public int findJudge(int n, int[][] trust) {\n        if(n==1)    return 1; //trust is empty in this case so necessary \n        int[] cnt=new int[n+1];\n        for(int i=0;i<trust.length;i++){\n            cnt[trust[i][0]]=-1; // trusting others disqualified hence -1\n            cnt[trust[i][1]]++; //get trusted score increases\n        }\n        for(int i=0;i<cnt.length;i++){\n            if(cnt[i]==n-1) return i;\n        }\n        return -1;\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "itsakshitasaxena/Data-Structures-and-Algorithms",
+    "repo_created_date": "2024-11-16",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "1039-find-the-town-judge/find-the-town-judge.java",
+    "function_name": "findJudge",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 12,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

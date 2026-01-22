@@ -1,0 +1,22 @@
+{
+  "instruction": "Model initializer that reutrns a tnp workspace with given signal and background",
+  "output": "def make_signal_background_model(fit_var, ibin, is_pass, add_signal_model, \n                                 add_background_model):\n  '''Model initializer that reutrns a tnp workspace with given signal and background \n  models\n\n  fit_var              RooRealVar representing variable to fit\n  ibin                 int, bin number\n  is_pass              bool, if is passing leg\n  add_signal_model     function that adds signal pdf (pdf_s) to workspace\n  add_background_model function that adds background pdf (pdf_b) to workspace\n  '''\n  workspace = ROOT.RooWorkspace()\n  getattr(workspace,'import')(fit_var)\n\n  nSig = ROOT.RooRealVar('nSig', 'Signal normalization', 0.0, MAX_SIGNAL) \n  nBkg = ROOT.RooRealVar('nBkg', 'Background normalization', 0.0, MAX_BACKGROUND) \n  getattr(workspace,'import')(nSig)\n  getattr(workspace,'import')(nBkg)\n  add_signal_model(workspace, ibin, is_pass)\n  add_background_model(workspace, ibin, is_pass)\n\n  pdf_sb = ROOT.RooAddPdf('pdf_sb', 'pdf_sb', \n      ROOT.RooArgList(workspace.pdf('pdf_s'), workspace.pdf('pdf_b')), \n      ROOT.RooArgList(nSig, nBkg))\n  getattr(workspace,'import')(pdf_sb)\n  return workspace",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mcoshiro/tnp_tools",
+    "repo_created_date": "2024-09-04",
+    "repo_stars": 0,
+    "repo_forks": 1,
+    "file_path": "lib/model_initializers.py",
+    "function_name": "make_signal_background_model",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 26,
+    "has_docstring": true,
+    "has_boolean_logic": true,
+    "has_loops": false,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instruction": "Removeouterparentheses",
+  "output": "    def removeOuterParentheses(self, s: str) -> str:\n        ctr=0\n        result=str()\n        for i in s:\n            if i=='(':\n                if ctr==0:\n                    ctr+=1\n                else:\n                    result+=i\n                    ctr+=1\n            else:\n                if ctr==1:\n                    ctr-=1\n                else:\n                    result+=i\n                    ctr-=1\n        return result",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "Mohammad-Adilkhan3/leetcode",
+    "repo_created_date": "2024-10-15",
+    "repo_stars": 0,
+    "repo_forks": 0,
+    "file_path": "1078-remove-outermost-parentheses/remove-outermost-parentheses.py",
+    "function_name": "removeOuterParentheses",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 17,
+    "has_docstring": false,
+    "has_boolean_logic": false,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": false,
+    "has_comparisons": false
+  }
+}

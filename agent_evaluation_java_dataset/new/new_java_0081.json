@@ -1,0 +1,22 @@
+{
+  "instruction": "Execute Command",
+  "output": "\n    private static void executeCommand(ProcessBuilder pb, String... command) throws IOException, InterruptedException {\n        pb.command(command);\n        Process process = pb.start();\n\n        // Capture output and error\n        BufferedReader stdInput = new BufferedReader(new InputStreamReader(process.getInputStream()));\n        BufferedReader stdError = new BufferedReader(new InputStreamReader(process.getErrorStream()));\n\n        // Read the output\n        String outputLine;\n        StringBuilder output = new StringBuilder();\n        while ((outputLine = stdInput.readLine()) != null) {\n            output.append(outputLine).append(\"\\n\");\n        }\n\n        // Read any errors\n        String errorLine;\n        StringBuilder error = new StringBuilder();\n        while ((errorLine = stdError.readLine()) != null) {\n            error.append(errorLine).append(\"\\n\");\n        }\n\n        // Wait for the command to complete and check exit value\n        int exitCode = process.waitFor();\n        if (exitCode != 0) {\n            System.err.println(\"Command output: \" + output);\n            System.err.println(\"Command error: \" + error);\n            throw new IOException(\"Command failed with exit code: \" + exitCode);\n        }\n    }",
+  "metadata": {
+    "source": "github_post_cutoff",
+    "repo_full_name": "mattbixby123/daily-cat-fact-committer",
+    "repo_created_date": "2025-01-05",
+    "repo_stars": 1,
+    "repo_forks": 0,
+    "file_path": "src/DailyCatFactCommit.java",
+    "function_name": "executeCommand",
+    "scraped_date": "2026-01-22",
+    "confidence_unseen": "very_high",
+    "lines_of_code": 31,
+    "has_docstring": false,
+    "has_boolean_logic": true,
+    "has_loops": true,
+    "has_conditionals": true,
+    "has_arithmetic": true,
+    "has_comparisons": true
+  }
+}
