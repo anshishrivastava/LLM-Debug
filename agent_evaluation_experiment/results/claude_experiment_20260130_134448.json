@@ -1,0 +1,1431 @@
+{
+  "timestamp": "20260130_134448",
+  "model": "claude-sonnet-4-20250514",
+  "sample_size": 100,
+  "python": {
+    "stats": {
+      "total": 86,
+      "correct": 31,
+      "accuracy": 36.05
+    },
+    "results": [
+      {
+        "filename": "739.json",
+        "category": "existing",
+        "actual_line": 18,
+        "predicted_line": 16,
+        "correct": true,
+        "loc": 59
+      },
+      {
+        "filename": "18425.json",
+        "category": "existing",
+        "actual_line": 18,
+        "predicted_line": 97,
+        "correct": false,
+        "loc": 251
+      },
+      {
+        "filename": "15887.json",
+        "category": "existing",
+        "actual_line": 17,
+        "predicted_line": 14,
+        "correct": false,
+        "loc": 63
+      },
+      {
+        "filename": "5049.json",
+        "category": "existing",
+        "actual_line": 18,
+        "predicted_line": 13,
+        "correct": false,
+        "loc": 220
+      },
+      {
+        "filename": "13578.json",
+        "category": "existing",
+        "actual_line": 11,
+        "predicted_line": 13,
+        "correct": true,
+        "loc": 52
+      },
+      {
+        "filename": "13720.json",
+        "category": "existing",
+        "actual_line": 51,
+        "predicted_line": 53,
+        "correct": true,
+        "loc": 174
+      },
+      {
+        "filename": "4518.json",
+        "category": "existing",
+        "actual_line": 25,
+        "predicted_line": 58,
+        "correct": false,
+        "loc": 168
+      },
+      {
+        "filename": "7007.json",
+        "category": "existing",
+        "actual_line": 56,
+        "predicted_line": 49,
+        "correct": false,
+        "loc": 100
+      },
+      {
+        "filename": "new_python_0414.json",
+        "category": "new",
+        "actual_line": 5,
+        "predicted_line": 21,
+        "correct": false,
+        "loc": 28
+      },
+      {
+        "filename": "2595.json",
+        "category": "existing",
+        "actual_line": 30,
+        "predicted_line": 246,
+        "correct": false,
+        "loc": 326
+      },
+      {
+        "filename": "10957.json",
+        "category": "existing",
+        "actual_line": 49,
+        "predicted_line": 17,
+        "correct": false,
+        "loc": 79
+      },
+      {
+        "filename": "3592.json",
+        "category": "existing",
+        "actual_line": 8,
+        "predicted_line": 413,
+        "correct": false,
+        "loc": 463
+      },
+      {
+        "filename": "761.json",
+        "category": "existing",
+        "actual_line": 14,
+        "predicted_line": 14,
+        "correct": true,
+        "loc": 38
+      },
+      {
+        "filename": "new_python_0215.json",
+        "category": "new",
+        "actual_line": 2,
+        "predicted_line": 2,
+        "correct": true,
+        "loc": 15
+      },
+      {
+        "filename": "5084.json",
+        "category": "existing",
+        "actual_line": 5,
+        "predicted_line": 4,
+        "correct": true,
+        "loc": 59
+      },
+      {
+        "filename": "11027.json",
+        "category": "existing",
+        "actual_line": 35,
+        "predicted_line": 64,
+        "correct": false,
+        "loc": 87
+      },
+      {
+        "filename": "new_python_0341.json",
+        "category": "new",
+        "actual_line": 26,
+        "predicted_line": 24,
+        "correct": true,
+        "loc": 98
+      },
+      {
+        "filename": "8871.json",
+        "category": "existing",
+        "actual_line": 13,
+        "predicted_line": 10,
+        "correct": false,
+        "loc": 56
+      },
+      {
+        "filename": "new_python_0161.json",
+        "category": "new",
+        "actual_line": 5,
+        "predicted_line": 4,
+        "correct": true,
+        "loc": 17
+      },
+      {
+        "filename": "15214.json",
+        "category": "existing",
+        "actual_line": 80,
+        "predicted_line": 91,
+        "correct": false,
+        "loc": 304
+      },
+      {
+        "filename": "17119.json",
+        "category": "existing",
+        "actual_line": 53,
+        "predicted_line": 31,
+        "correct": false,
+        "loc": 65
+      },
+      {
+        "filename": "1387.json",
+        "category": "existing",
+        "actual_line": 11,
+        "predicted_line": 17,
+        "correct": false,
+        "loc": 394
+      },
+      {
+        "filename": "new_python_0190.json",
+        "category": "new",
+        "actual_line": 7,
+        "predicted_line": 61,
+        "correct": false,
+        "loc": 60
+      },
+      {
+        "filename": "17503.json",
+        "category": "existing",
+        "actual_line": 38,
+        "predicted_line": 32,
+        "correct": false,
+        "loc": 82
+      },
+      {
+        "filename": "10944.json",
+        "category": "existing",
+        "actual_line": 21,
+        "predicted_line": 46,
+        "correct": false,
+        "loc": 68
+      },
+      {
+        "filename": "new_python_0094.json",
+        "category": "new",
+        "actual_line": 11,
+        "predicted_line": 10,
+        "correct": true,
+        "loc": 20
+      },
+      {
+        "filename": "12852.json",
+        "category": "existing",
+        "actual_line": 143,
+        "predicted_line": 22,
+        "correct": false,
+        "loc": 235
+      },
+      {
+        "filename": "new_python_0158.json",
+        "category": "new",
+        "actual_line": 35,
+        "predicted_line": 25,
+        "correct": false,
+        "loc": 100
+      },
+      {
+        "filename": "8632.json",
+        "category": "existing",
+        "actual_line": 6,
+        "predicted_line": 5,
+        "correct": true,
+        "loc": 38
+      },
+      {
+        "filename": "new_python_0153.json",
+        "category": "new",
+        "actual_line": 25,
+        "predicted_line": 21,
+        "correct": false,
+        "loc": 66
+      },
+      {
+        "filename": "2503.json",
+        "category": "existing",
+        "actual_line": 8,
+        "predicted_line": 20,
+        "correct": false,
+        "loc": 325
+      },
+      {
+        "filename": "2795.json",
+        "category": "existing",
+        "actual_line": 22,
+        "predicted_line": 17,
+        "correct": false,
+        "loc": 98
+      },
+      {
+        "filename": "new_python_0205.json",
+        "category": "new",
+        "actual_line": 10,
+        "predicted_line": 8,
+        "correct": true,
+        "loc": 12
+      },
+      {
+        "filename": "3474.json",
+        "category": "existing",
+        "actual_line": 21,
+        "predicted_line": 90,
+        "correct": false,
+        "loc": 143
+      },
+      {
+        "filename": "new_python_0375.json",
+        "category": "new",
+        "actual_line": 2,
+        "predicted_line": 2,
+        "correct": true,
+        "loc": 7
+      },
+      {
+        "filename": "18248.json",
+        "category": "existing",
+        "actual_line": 30,
+        "predicted_line": 27,
+        "correct": false,
+        "loc": 56
+      },
+      {
+        "filename": "6500.json",
+        "category": "existing",
+        "actual_line": 40,
+        "predicted_line": 32,
+        "correct": false,
+        "loc": 68
+      },
+      {
+        "filename": "new_python_0284.json",
+        "category": "new",
+        "actual_line": 4,
+        "predicted_line": 9,
+        "correct": false,
+        "loc": 11
+      },
+      {
+        "filename": "3429.json",
+        "category": "existing",
+        "actual_line": 13,
+        "predicted_line": 1,
+        "correct": false,
+        "loc": 111
+      },
+      {
+        "filename": "14478.json",
+        "category": "existing",
+        "actual_line": 75,
+        "predicted_line": 56,
+        "correct": false,
+        "loc": 81
+      },
+      {
+        "filename": "17182.json",
+        "category": "existing",
+        "actual_line": 38,
+        "predicted_line": 68,
+        "correct": false,
+        "loc": 294
+      },
+      {
+        "filename": "2213.json",
+        "category": "existing",
+        "actual_line": 14,
+        "predicted_line": 34,
+        "correct": false,
+        "loc": 51
+      },
+      {
+        "filename": "5542.json",
+        "category": "existing",
+        "actual_line": 28,
+        "predicted_line": 12,
+        "correct": false,
+        "loc": 51
+      },
+      {
+        "filename": "new_python_0395.json",
+        "category": "new",
+        "actual_line": 3,
+        "predicted_line": 15,
+        "correct": false,
+        "loc": 42
+      },
+      {
+        "filename": "new_python_0115.json",
+        "category": "new",
+        "actual_line": 3,
+        "predicted_line": 2,
+        "correct": true,
+        "loc": 26
+      },
+      {
+        "filename": "new_python_0085.json",
+        "category": "new",
+        "actual_line": 6,
+        "predicted_line": 26,
+        "correct": false,
+        "loc": 29
+      },
+      {
+        "filename": "new_python_0124.json",
+        "category": "new",
+        "actual_line": 6,
+        "predicted_line": 8,
+        "correct": true,
+        "loc": 19
+      },
+      {
+        "filename": "4425.json",
+        "category": "existing",
+        "actual_line": 26,
+        "predicted_line": 24,
+        "correct": true,
+        "loc": 101
+      },
+      {
+        "filename": "7994.json",
+        "category": "existing",
+        "actual_line": 15,
+        "predicted_line": 44,
+        "correct": false,
+        "loc": 51
+      },
+      {
+        "filename": "11023.json",
+        "category": "existing",
+        "actual_line": 18,
+        "predicted_line": 18,
+        "correct": true,
+        "loc": 182
+      },
+      {
+        "filename": "16700.json",
+        "category": "existing",
+        "actual_line": 10,
+        "predicted_line": 72,
+        "correct": false,
+        "loc": 106
+      },
+      {
+        "filename": "12368.json",
+        "category": "existing",
+        "actual_line": 47,
+        "predicted_line": 46,
+        "correct": true,
+        "loc": 51
+      },
+      {
+        "filename": "new_python_0194.json",
+        "category": "new",
+        "actual_line": 2,
+        "predicted_line": 2,
+        "correct": true,
+        "loc": 22
+      },
+      {
+        "filename": "new_python_0363.json",
+        "category": "new",
+        "actual_line": 4,
+        "predicted_line": 4,
+        "correct": true,
+        "loc": 20
+      },
+      {
+        "filename": "12207.json",
+        "category": "existing",
+        "actual_line": 120,
+        "predicted_line": 93,
+        "correct": false,
+        "loc": 121
+      },
+      {
+        "filename": "14784.json",
+        "category": "existing",
+        "actual_line": 40,
+        "predicted_line": 120,
+        "correct": false,
+        "loc": 258
+      },
+      {
+        "filename": "new_python_0056.json",
+        "category": "new",
+        "actual_line": 6,
+        "predicted_line": 38,
+        "correct": false,
+        "loc": 112
+      },
+      {
+        "filename": "8148.json",
+        "category": "existing",
+        "actual_line": 17,
+        "predicted_line": 15,
+        "correct": true,
+        "loc": 38
+      },
+      {
+        "filename": "new_python_0332.json",
+        "category": "new",
+        "actual_line": 21,
+        "predicted_line": 18,
+        "correct": false,
+        "loc": 70
+      },
+      {
+        "filename": "11846.json",
+        "category": "existing",
+        "actual_line": 8,
+        "predicted_line": 7,
+        "correct": true,
+        "loc": 66
+      },
+      {
+        "filename": "8947.json",
+        "category": "existing",
+        "actual_line": 3,
+        "predicted_line": 17,
+        "correct": false,
+        "loc": 47
+      },
+      {
+        "filename": "15183.json",
+        "category": "existing",
+        "actual_line": 19,
+        "predicted_line": 15,
+        "correct": false,
+        "loc": 41
+      },
+      {
+        "filename": "10801.json",
+        "category": "existing",
+        "actual_line": 23,
+        "predicted_line": 19,
+        "correct": false,
+        "loc": 46
+      },
+      {
+        "filename": "new_python_0231.json",
+        "category": "new",
+        "actual_line": 3,
+        "predicted_line": 3,
+        "correct": true,
+        "loc": 9
+      },
+      {
+        "filename": "new_python_0012.json",
+        "category": "new",
+        "actual_line": 3,
+        "predicted_line": 1,
+        "correct": true,
+        "loc": 22
+      },
+      {
+        "filename": "17606.json",
+        "category": "existing",
+        "actual_line": 12,
+        "predicted_line": 11,
+        "correct": true,
+        "loc": 50
+      },
+      {
+        "filename": "10867.json",
+        "category": "existing",
+        "actual_line": 20,
+        "predicted_line": 17,
+        "correct": false,
+        "loc": 153
+      },
+      {
+        "filename": "7869.json",
+        "category": "existing",
+        "actual_line": 33,
+        "predicted_line": 29,
+        "correct": false,
+        "loc": 60
+      },
+      {
+        "filename": "new_python_0138.json",
+        "category": "new",
+        "actual_line": 16,
+        "predicted_line": 28,
+        "correct": false,
+        "loc": 39
+      },
+      {
+        "filename": "new_python_0007.json",
+        "category": "new",
+        "actual_line": 3,
+        "predicted_line": 18,
+        "correct": false,
+        "loc": 29
+      },
+      {
+        "filename": "new_python_0235.json",
+        "category": "new",
+        "actual_line": 2,
+        "predicted_line": 2,
+        "correct": true,
+        "loc": 13
+      },
+      {
+        "filename": "9824.json",
+        "category": "existing",
+        "actual_line": 4,
+        "predicted_line": 33,
+        "correct": false,
+        "loc": 115
+      },
+      {
+        "filename": "9927.json",
+        "category": "existing",
+        "actual_line": 28,
+        "predicted_line": 134,
+        "correct": false,
+        "loc": 331
+      },
+      {
+        "filename": "851.json",
+        "category": "existing",
+        "actual_line": 37,
+        "predicted_line": 35,
+        "correct": true,
+        "loc": 58
+      },
+      {
+        "filename": "688.json",
+        "category": "existing",
+        "actual_line": 15,
+        "predicted_line": 34,
+        "correct": false,
+        "loc": 79
+      },
+      {
+        "filename": "16501.json",
+        "category": "existing",
+        "actual_line": 43,
+        "predicted_line": 41,
+        "correct": true,
+        "loc": 190
+      },
+      {
+        "filename": "354.json",
+        "category": "existing",
+        "actual_line": 16,
+        "predicted_line": 14,
+        "correct": true,
+        "loc": 67
+      },
+      {
+        "filename": "new_python_0027.json",
+        "category": "new",
+        "actual_line": 4,
+        "predicted_line": 4,
+        "correct": true,
+        "loc": 12
+      },
+      {
+        "filename": "new_python_0089.json",
+        "category": "new",
+        "actual_line": 5,
+        "predicted_line": 99,
+        "correct": false,
+        "loc": 128
+      },
+      {
+        "filename": "new_python_0189.json",
+        "category": "new",
+        "actual_line": 7,
+        "predicted_line": 33,
+        "correct": false,
+        "loc": 46
+      },
+      {
+        "filename": "6976.json",
+        "category": "existing",
+        "actual_line": 73,
+        "predicted_line": 61,
+        "correct": false,
+        "loc": 270
+      },
+      {
+        "filename": "590.json",
+        "category": "existing",
+        "actual_line": 32,
+        "predicted_line": 25,
+        "correct": false,
+        "loc": 41
+      },
+      {
+        "filename": "12366.json",
+        "category": "existing",
+        "actual_line": 13,
+        "predicted_line": 44,
+        "correct": false,
+        "loc": 174
+      },
+      {
+        "filename": "1441.json",
+        "category": "existing",
+        "actual_line": 4,
+        "predicted_line": 5,
+        "correct": true,
+        "loc": 175
+      },
+      {
+        "filename": "new_python_0361.json",
+        "category": "new",
+        "actual_line": 4,
+        "predicted_line": 4,
+        "correct": true,
+        "loc": 20
+      },
+      {
+        "filename": "7746.json",
+        "category": "existing",
+        "actual_line": 37,
+        "predicted_line": 29,
+        "correct": false,
+        "loc": 56
+      }
+    ]
+  },
+  "java": {
+    "stats": {
+      "total": 90,
+      "correct": 39,
+      "accuracy": 43.33
+    },
+    "results": [
+      {
+        "filename": "record_250.json",
+        "category": "existing",
+        "actual_line": 21,
+        "predicted_line": 18,
+        "correct": false,
+        "loc": 53
+      },
+      {
+        "filename": "record_759.json",
+        "category": "existing",
+        "actual_line": 24,
+        "predicted_line": 21,
+        "correct": false,
+        "loc": 352
+      },
+      {
+        "filename": "record_223.json",
+        "category": "existing",
+        "actual_line": 25,
+        "predicted_line": 22,
+        "correct": false,
+        "loc": 292
+      },
+      {
+        "filename": "record_770.json",
+        "category": "existing",
+        "actual_line": 28,
+        "predicted_line": 25,
+        "correct": false,
+        "loc": 133
+      },
+      {
+        "filename": "record_402.json",
+        "category": "existing",
+        "actual_line": 48,
+        "predicted_line": 43,
+        "correct": false,
+        "loc": 170
+      },
+      {
+        "filename": "record_601.json",
+        "category": "existing",
+        "actual_line": 49,
+        "predicted_line": 69,
+        "correct": false,
+        "loc": 127
+      },
+      {
+        "filename": "record_138.json",
+        "category": "existing",
+        "actual_line": 45,
+        "predicted_line": 40,
+        "correct": false,
+        "loc": 165
+      },
+      {
+        "filename": "record_476.json",
+        "category": "existing",
+        "actual_line": 77,
+        "predicted_line": 65,
+        "correct": false,
+        "loc": 459
+      },
+      {
+        "filename": "new_java_0109.json",
+        "category": "new",
+        "actual_line": 2,
+        "predicted_line": 2,
+        "correct": true,
+        "loc": 13
+      },
+      {
+        "filename": "record_276.json",
+        "category": "existing",
+        "actual_line": 139,
+        "predicted_line": 350,
+        "correct": false,
+        "loc": 399
+      },
+      {
+        "filename": "record_124.json",
+        "category": "existing",
+        "actual_line": 37,
+        "predicted_line": 33,
+        "correct": false,
+        "loc": 110
+      },
+      {
+        "filename": "record_765.json",
+        "category": "existing",
+        "actual_line": 30,
+        "predicted_line": 28,
+        "correct": true,
+        "loc": 68
+      },
+      {
+        "filename": "record_443.json",
+        "category": "existing",
+        "actual_line": 38,
+        "predicted_line": 26,
+        "correct": false,
+        "loc": 399
+      },
+      {
+        "filename": "record_463.json",
+        "category": "existing",
+        "actual_line": 51,
+        "predicted_line": 48,
+        "correct": false,
+        "loc": 1398
+      },
+      {
+        "filename": "record_165.json",
+        "category": "existing",
+        "actual_line": 25,
+        "predicted_line": 22,
+        "correct": false,
+        "loc": 106
+      },
+      {
+        "filename": "record_317.json",
+        "category": "existing",
+        "actual_line": 47,
+        "predicted_line": 44,
+        "correct": false,
+        "loc": 1085
+      },
+      {
+        "filename": "new_java_0298.json",
+        "category": "new",
+        "actual_line": 11,
+        "predicted_line": 11,
+        "correct": true,
+        "loc": 16
+      },
+      {
+        "filename": "record_414.json",
+        "category": "existing",
+        "actual_line": 20,
+        "predicted_line": 18,
+        "correct": true,
+        "loc": 140
+      },
+      {
+        "filename": "new_java_0281.json",
+        "category": "new",
+        "actual_line": 7,
+        "predicted_line": 5,
+        "correct": true,
+        "loc": 31
+      },
+      {
+        "filename": "record_8.json",
+        "category": "existing",
+        "actual_line": 90,
+        "predicted_line": 81,
+        "correct": false,
+        "loc": 648
+      },
+      {
+        "filename": "record_485.json",
+        "category": "existing",
+        "actual_line": 75,
+        "predicted_line": -1,
+        "correct": false,
+        "loc": 1197
+      },
+      {
+        "filename": "record_318.json",
+        "category": "existing",
+        "actual_line": 64,
+        "predicted_line": 58,
+        "correct": false,
+        "loc": 163
+      },
+      {
+        "filename": "new_java_0373.json",
+        "category": "new",
+        "actual_line": 4,
+        "predicted_line": 4,
+        "correct": true,
+        "loc": 16
+      },
+      {
+        "filename": "new_java_0138.json",
+        "category": "new",
+        "actual_line": 6,
+        "predicted_line": 6,
+        "correct": true,
+        "loc": 24
+      },
+      {
+        "filename": "record_764.json",
+        "category": "existing",
+        "actual_line": 32,
+        "predicted_line": 30,
+        "correct": true,
+        "loc": 51
+      },
+      {
+        "filename": "record_592.json",
+        "category": "existing",
+        "actual_line": 125,
+        "predicted_line": 115,
+        "correct": false,
+        "loc": 947
+      },
+      {
+        "filename": "record_620.json",
+        "category": "existing",
+        "actual_line": 55,
+        "predicted_line": 341,
+        "correct": false,
+        "loc": 772
+      },
+      {
+        "filename": "new_java_0221.json",
+        "category": "new",
+        "actual_line": 7,
+        "predicted_line": 7,
+        "correct": true,
+        "loc": 33
+      },
+      {
+        "filename": "record_732.json",
+        "category": "existing",
+        "actual_line": 47,
+        "predicted_line": 45,
+        "correct": true,
+        "loc": 657
+      },
+      {
+        "filename": "new_java_0226.json",
+        "category": "new",
+        "actual_line": 3,
+        "predicted_line": 3,
+        "correct": true,
+        "loc": 12
+      },
+      {
+        "filename": "new_java_0362.json",
+        "category": "new",
+        "actual_line": 12,
+        "predicted_line": 11,
+        "correct": true,
+        "loc": 21
+      },
+      {
+        "filename": "record_90.json",
+        "category": "existing",
+        "actual_line": 188,
+        "predicted_line": 425,
+        "correct": false,
+        "loc": 722
+      },
+      {
+        "filename": "record_631.json",
+        "category": "existing",
+        "actual_line": 19,
+        "predicted_line": 18,
+        "correct": true,
+        "loc": 136
+      },
+      {
+        "filename": "new_java_0193.json",
+        "category": "new",
+        "actual_line": 5,
+        "predicted_line": 5,
+        "correct": true,
+        "loc": 9
+      },
+      {
+        "filename": "record_56.json",
+        "category": "existing",
+        "actual_line": 122,
+        "predicted_line": 239,
+        "correct": false,
+        "loc": 359
+      },
+      {
+        "filename": "new_java_0237.json",
+        "category": "new",
+        "actual_line": 6,
+        "predicted_line": 7,
+        "correct": true,
+        "loc": 38
+      },
+      {
+        "filename": "record_611.json",
+        "category": "existing",
+        "actual_line": 23,
+        "predicted_line": 47,
+        "correct": false,
+        "loc": 65
+      },
+      {
+        "filename": "record_64.json",
+        "category": "existing",
+        "actual_line": 31,
+        "predicted_line": -1,
+        "correct": false,
+        "loc": 277
+      },
+      {
+        "filename": "new_java_0288.json",
+        "category": "new",
+        "actual_line": 4,
+        "predicted_line": 4,
+        "correct": true,
+        "loc": 27
+      },
+      {
+        "filename": "record_43.json",
+        "category": "existing",
+        "actual_line": 59,
+        "predicted_line": 55,
+        "correct": false,
+        "loc": 103
+      },
+      {
+        "filename": "record_46.json",
+        "category": "existing",
+        "actual_line": 36,
+        "predicted_line": 32,
+        "correct": false,
+        "loc": 64
+      },
+      {
+        "filename": "record_723.json",
+        "category": "existing",
+        "actual_line": 89,
+        "predicted_line": 49,
+        "correct": false,
+        "loc": 289
+      },
+      {
+        "filename": "record_23.json",
+        "category": "existing",
+        "actual_line": 13,
+        "predicted_line": 11,
+        "correct": true,
+        "loc": 169
+      },
+      {
+        "filename": "record_424.json",
+        "category": "existing",
+        "actual_line": 41,
+        "predicted_line": 33,
+        "correct": false,
+        "loc": 369
+      },
+      {
+        "filename": "record_168.json",
+        "category": "existing",
+        "actual_line": 147,
+        "predicted_line": 809,
+        "correct": false,
+        "loc": 1140
+      },
+      {
+        "filename": "record_323.json",
+        "category": "existing",
+        "actual_line": 78,
+        "predicted_line": 68,
+        "correct": false,
+        "loc": 570
+      },
+      {
+        "filename": "new_java_0042.json",
+        "category": "new",
+        "actual_line": 3,
+        "predicted_line": 2,
+        "correct": true,
+        "loc": 94
+      },
+      {
+        "filename": "new_java_0247.json",
+        "category": "new",
+        "actual_line": 9,
+        "predicted_line": 9,
+        "correct": true,
+        "loc": 19
+      },
+      {
+        "filename": "new_java_0338.json",
+        "category": "new",
+        "actual_line": 6,
+        "predicted_line": 5,
+        "correct": true,
+        "loc": 26
+      },
+      {
+        "filename": "new_java_0174.json",
+        "category": "new",
+        "actual_line": 6,
+        "predicted_line": 7,
+        "correct": true,
+        "loc": 18
+      },
+      {
+        "filename": "record_245.json",
+        "category": "existing",
+        "actual_line": 106,
+        "predicted_line": 108,
+        "correct": true,
+        "loc": 154
+      },
+      {
+        "filename": "record_645.json",
+        "category": "existing",
+        "actual_line": 28,
+        "predicted_line": 57,
+        "correct": false,
+        "loc": 85
+      },
+      {
+        "filename": "record_345.json",
+        "category": "existing",
+        "actual_line": 29,
+        "predicted_line": 30,
+        "correct": true,
+        "loc": 118
+      },
+      {
+        "filename": "record_18.json",
+        "category": "existing",
+        "actual_line": 41,
+        "predicted_line": 37,
+        "correct": false,
+        "loc": 300
+      },
+      {
+        "filename": "record_135.json",
+        "category": "existing",
+        "actual_line": 59,
+        "predicted_line": 270,
+        "correct": false,
+        "loc": 681
+      },
+      {
+        "filename": "new_java_0097.json",
+        "category": "new",
+        "actual_line": 4,
+        "predicted_line": 4,
+        "correct": true,
+        "loc": 8
+      },
+      {
+        "filename": "record_327.json",
+        "category": "existing",
+        "actual_line": 28,
+        "predicted_line": 115,
+        "correct": false,
+        "loc": 147
+      },
+      {
+        "filename": "record_42.json",
+        "category": "existing",
+        "actual_line": 75,
+        "predicted_line": 26,
+        "correct": false,
+        "loc": 658
+      },
+      {
+        "filename": "record_89.json",
+        "category": "existing",
+        "actual_line": 82,
+        "predicted_line": 78,
+        "correct": false,
+        "loc": 280
+      },
+      {
+        "filename": "record_567.json",
+        "category": "existing",
+        "actual_line": 73,
+        "predicted_line": 66,
+        "correct": false,
+        "loc": 881
+      },
+      {
+        "filename": "record_347.json",
+        "category": "existing",
+        "actual_line": 71,
+        "predicted_line": 68,
+        "correct": false,
+        "loc": 832
+      },
+      {
+        "filename": "record_700.json",
+        "category": "existing",
+        "actual_line": 19,
+        "predicted_line": -1,
+        "correct": false,
+        "loc": 125
+      },
+      {
+        "filename": "record_386.json",
+        "category": "existing",
+        "actual_line": 64,
+        "predicted_line": 39,
+        "correct": false,
+        "loc": 431
+      },
+      {
+        "filename": "record_195.json",
+        "category": "existing",
+        "actual_line": 93,
+        "predicted_line": 84,
+        "correct": false,
+        "loc": 744
+      },
+      {
+        "filename": "record_87.json",
+        "category": "existing",
+        "actual_line": 39,
+        "predicted_line": 41,
+        "correct": true,
+        "loc": 1113
+      },
+      {
+        "filename": "record_253.json",
+        "category": "existing",
+        "actual_line": 45,
+        "predicted_line": 43,
+        "correct": true,
+        "loc": 112
+      },
+      {
+        "filename": "new_java_0320.json",
+        "category": "new",
+        "actual_line": 5,
+        "predicted_line": 5,
+        "correct": true,
+        "loc": 30
+      },
+      {
+        "filename": "new_java_0039.json",
+        "category": "new",
+        "actual_line": 9,
+        "predicted_line": 7,
+        "correct": true,
+        "loc": 20
+      },
+      {
+        "filename": "record_302.json",
+        "category": "existing",
+        "actual_line": 74,
+        "predicted_line": 74,
+        "correct": true,
+        "loc": 400
+      },
+      {
+        "filename": "record_757.json",
+        "category": "existing",
+        "actual_line": 142,
+        "predicted_line": 121,
+        "correct": false,
+        "loc": 1756
+      },
+      {
+        "filename": "record_281.json",
+        "category": "existing",
+        "actual_line": 16,
+        "predicted_line": 17,
+        "correct": true,
+        "loc": 82
+      },
+      {
+        "filename": "record_487.json",
+        "category": "existing",
+        "actual_line": 73,
+        "predicted_line": -1,
+        "correct": false,
+        "loc": 961
+      },
+      {
+        "filename": "new_java_0171.json",
+        "category": "new",
+        "actual_line": 5,
+        "predicted_line": 5,
+        "correct": true,
+        "loc": 8
+      },
+      {
+        "filename": "new_java_0217.json",
+        "category": "new",
+        "actual_line": 7,
+        "predicted_line": 8,
+        "correct": true,
+        "loc": 29
+      },
+      {
+        "filename": "record_314.json",
+        "category": "existing",
+        "actual_line": 30,
+        "predicted_line": 31,
+        "correct": true,
+        "loc": 351
+      },
+      {
+        "filename": "new_java_0286.json",
+        "category": "new",
+        "actual_line": 6,
+        "predicted_line": 6,
+        "correct": true,
+        "loc": 17
+      },
+      {
+        "filename": "new_java_0337.json",
+        "category": "new",
+        "actual_line": 3,
+        "predicted_line": 2,
+        "correct": true,
+        "loc": 13
+      },
+      {
+        "filename": "record_122.json",
+        "category": "existing",
+        "actual_line": 55,
+        "predicted_line": 49,
+        "correct": false,
+        "loc": 72
+      },
+      {
+        "filename": "record_559.json",
+        "category": "existing",
+        "actual_line": 358,
+        "predicted_line": -1,
+        "correct": false,
+        "loc": 743
+      },
+      {
+        "filename": "record_745.json",
+        "category": "existing",
+        "actual_line": 54,
+        "predicted_line": -1,
+        "correct": false,
+        "loc": 1511
+      },
+      {
+        "filename": "record_699.json",
+        "category": "existing",
+        "actual_line": 215,
+        "predicted_line": 364,
+        "correct": false,
+        "loc": 707
+      },
+      {
+        "filename": "record_748.json",
+        "category": "existing",
+        "actual_line": 63,
+        "predicted_line": 52,
+        "correct": false,
+        "loc": 116
+      },
+      {
+        "filename": "record_514.json",
+        "category": "existing",
+        "actual_line": 15,
+        "predicted_line": 13,
+        "correct": true,
+        "loc": 187
+      },
+      {
+        "filename": "new_java_0330.json",
+        "category": "new",
+        "actual_line": 3,
+        "predicted_line": 2,
+        "correct": true,
+        "loc": 18
+      },
+      {
+        "filename": "record_110.json",
+        "category": "existing",
+        "actual_line": 47,
+        "predicted_line": 82,
+        "correct": false,
+        "loc": 128
+      },
+      {
+        "filename": "record_714.json",
+        "category": "existing",
+        "actual_line": 166,
+        "predicted_line": 165,
+        "correct": true,
+        "loc": 1940
+      },
+      {
+        "filename": "record_505.json",
+        "category": "existing",
+        "actual_line": 43,
+        "predicted_line": 38,
+        "correct": false,
+        "loc": 219
+      },
+      {
+        "filename": "record_465.json",
+        "category": "existing",
+        "actual_line": 32,
+        "predicted_line": 29,
+        "correct": false,
+        "loc": 74
+      },
+      {
+        "filename": "new_java_0262.json",
+        "category": "new",
+        "actual_line": 4,
+        "predicted_line": 4,
+        "correct": true,
+        "loc": 22
+      },
+      {
+        "filename": "record_524.json",
+        "category": "existing",
+        "actual_line": 68,
+        "predicted_line": 62,
+        "correct": false,
+        "loc": 170
+      }
+    ]
+  }
+}
