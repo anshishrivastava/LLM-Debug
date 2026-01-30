@@ -383,3 +383,11 @@ poetry.toml
 pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,macos,python,java,node
+
+# Generated datasets (can be regenerated)
+agent_evaluation_experiment/buggy_datasets/
+agent_evaluation_experiment/unit_tests/
+agent_evaluation_experiment/evaluation_results/
+__pycache__/
+*.pyc
+.DS_Store
