@@ -1,0 +1,107 @@
+{
+  "experiment_info": {
+    "model": "claude-sonnet-4-20250514",
+    "timestamp": "20260130_134448",
+    "line_tolerance": 2,
+    "methodology": "Operator-swap bug injection with fault localization"
+  },
+  "dataset_summary": {
+    "python": {
+      "total_samples": 1062,
+      "existing": 637,
+      "new": 425,
+      "loc_stats": {
+        "mean": 83.52354048964219,
+        "median": 53.0,
+        "min": 5,
+        "max": 515,
+        "total": 88702
+      },
+      "features": {
+        "has_boolean_logic": 332,
+        "has_loops": 284,
+        "has_conditionals": 357,
+        "has_arithmetic": 177,
+        "has_comparisons": 169
+      }
+    },
+    "java": {
+      "total_samples": 1070,
+      "existing": 670,
+      "new": 400,
+      "loc_stats": {
+        "mean": 389.39158878504674,
+        "median": 112.0,
+        "min": 5,
+        "max": 42328,
+        "total": 416649
+      },
+      "features": {
+        "has_boolean_logic": 224,
+        "has_conditionals": 327,
+        "has_arithmetic": 171,
+        "has_comparisons": 259,
+        "has_loops": 329
+      }
+    }
+  },
+  "experiment_results": {
+    "python": {
+      "overall": {
+        "total": 86,
+        "correct": 31,
+        "accuracy": 36.05
+      },
+      "by_category": {
+        "existing": {
+          "total": 58,
+          "correct": 16,
+          "accuracy": 27.59
+        },
+        "new": {
+          "total": 28,
+          "correct": 15,
+          "accuracy": 53.57
+        }
+      }
+    },
+    "java": {
+      "overall": {
+        "total": 90,
+        "correct": 39,
+        "accuracy": 43.33
+      },
+      "by_category": {
+        "existing": {
+          "total": 66,
+          "correct": 15,
+          "accuracy": 22.73
+        },
+        "new": {
+          "total": 24,
+          "correct": 24,
+          "accuracy": 100.0
+        }
+      }
+    },
+    "combined": {
+      "total": 176,
+      "correct": 70,
+      "accuracy": 39.77
+    }
+  },
+  "key_findings": [
+    {
+      "finding": "Overall accuracy is low",
+      "detail": "Claude achieved 39.77% accuracy on fault localization"
+    },
+    {
+      "finding": "New samples outperform existing",
+      "detail": "Python: 53.6% (new) vs 27.6% (existing), Java: 100% (new) vs 22.7% (existing)"
+    },
+    {
+      "finding": "Potential data contamination",
+      "detail": "Higher accuracy on post-cutoff samples suggests model may have seen existing samples during training"
+    }
+  ]
+}
