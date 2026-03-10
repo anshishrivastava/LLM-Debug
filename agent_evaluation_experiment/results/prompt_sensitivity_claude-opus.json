@@ -1,0 +1,25 @@
+{
+  "model": "claude-opus",
+  "subset_size": 500,
+  "timestamp": "2026-03-10T06:20:19.786884",
+  "prompt_variants_tested": [
+    "detailed",
+    "chain_of_thought"
+  ],
+  "summary": {
+    "detailed": {
+      "total": 500,
+      "correct_tol0": 88,
+      "correct_tol2": 245,
+      "accuracy_tol0": 17.6,
+      "accuracy_tol2": 49.0
+    },
+    "chain_of_thought": {
+      "total": 500,
+      "correct_tol0": 87,
+      "correct_tol2": 255,
+      "accuracy_tol0": 17.4,
+      "accuracy_tol2": 51.0
+    }
+  }
+}

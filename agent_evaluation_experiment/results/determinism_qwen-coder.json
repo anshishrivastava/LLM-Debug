@@ -1,0 +1,910 @@
+{
+  "model": "qwen-coder",
+  "sample_size": 100,
+  "repetitions": 3,
+  "consistency_rate": 1.0,
+  "consistent_count": 100,
+  "details": [
+    {
+      "task_id": "914f91d48cfe",
+      "responses": [
+        145,
+        145,
+        145
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "251697994417",
+      "responses": [
+        21,
+        21,
+        21
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "e0b67bb82897",
+      "responses": [
+        115,
+        115,
+        115
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "dc147053f06f",
+      "responses": [
+        115,
+        115,
+        115
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "f12705a0284b",
+      "responses": [
+        14,
+        14,
+        14
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "eb62921eccdc",
+      "responses": [
+        45,
+        45,
+        45
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "5f0cfc9d293b",
+      "responses": [
+        100,
+        100,
+        100
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "64fca6196b4b",
+      "responses": [
+        120,
+        120,
+        120
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "c7bd030c5dc2",
+      "responses": [
+        120,
+        120,
+        120
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "8c7ee3fb2683",
+      "responses": [
+        105,
+        105,
+        105
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "fc4e22e84a49",
+      "responses": [
+        123,
+        123,
+        123
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "f49959d493cb",
+      "responses": [
+        100,
+        100,
+        100
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "b573a85d40f8",
+      "responses": [
+        34,
+        34,
+        34
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "4aba59e80b0e",
+      "responses": [
+        11,
+        11,
+        11
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "14b1fea7156e",
+      "responses": [
+        41,
+        41,
+        41
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "9747386004ff",
+      "responses": [
+        25,
+        25,
+        25
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "caff327eaf93",
+      "responses": [
+        115,
+        115,
+        115
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "1471c5fcedcb",
+      "responses": [
+        125,
+        125,
+        125
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "00cdf649ca33",
+      "responses": [
+        45,
+        45,
+        45
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "e5f53a859a3c",
+      "responses": [
+        145,
+        145,
+        145
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "75599bf2cb84",
+      "responses": [
+        123,
+        123,
+        123
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "76c4b89e4589",
+      "responses": [
+        120,
+        120,
+        120
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "e0d8c3002737",
+      "responses": [
+        10,
+        10,
+        10
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "29a3be12ef74",
+      "responses": [
+        1234,
+        1234,
+        1234
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "d5a11a2afdf4",
+      "responses": [
+        7,
+        7,
+        7
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "8ddb883dc883",
+      "responses": [
+        5,
+        5,
+        5
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "55d2bc3a4199",
+      "responses": [
+        10,
+        10,
+        10
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "fe73e312a8fe",
+      "responses": [
+        14,
+        14,
+        14
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "9865c19efcdf",
+      "responses": [
+        11,
+        11,
+        11
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "f41a132b588b",
+      "responses": [
+        145,
+        145,
+        145
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "308d19e622db",
+      "responses": [
+        45,
+        45,
+        45
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "f0ab027ddf2d",
+      "responses": [
+        14,
+        14,
+        14
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "751a7daf4487",
+      "responses": [
+        21,
+        21,
+        21
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "31e691962510",
+      "responses": [
+        1234,
+        1234,
+        1234
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "21dc90e3a864",
+      "responses": [
+        120,
+        120,
+        120
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "7a7ba73f14a7",
+      "responses": [
+        14,
+        14,
+        14
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "86559d42f2fd",
+      "responses": [
+        125,
+        125,
+        125
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "939cd5171ecb",
+      "responses": [
+        1234,
+        1234,
+        1234
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "7e396a596c94",
+      "responses": [
+        1,
+        1,
+        1
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "1ef24f3e30ac",
+      "responses": [
+        112,
+        112,
+        112
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "25ef270291b9",
+      "responses": [
+        1234,
+        1234,
+        1234
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "155436e97a9b",
+      "responses": [
+        21,
+        21,
+        21
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "06d1e09b503d",
+      "responses": [
+        101,
+        101,
+        101
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "c3a1fd5defd7",
+      "responses": [
+        10,
+        10,
+        10
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "0d235518d2dd",
+      "responses": [
+        1234,
+        1234,
+        1234
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "ca432e8b1f8e",
+      "responses": [
+        14,
+        14,
+        14
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "1127abcb4227",
+      "responses": [
+        10,
+        10,
+        10
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "d9093c973b47",
+      "responses": [
+        10,
+        10,
+        10
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "08e22df2a863",
+      "responses": [
+        30,
+        30,
+        30
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "484546cb1b4b",
+      "responses": [
+        115,
+        115,
+        115
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "507f0b725f30",
+      "responses": [
+        115,
+        115,
+        115
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "19e105e49d73",
+      "responses": [
+        14,
+        14,
+        14
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "a997b2a27640",
+      "responses": [
+        14,
+        14,
+        14
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "0f7a9072b8eb",
+      "responses": [
+        14,
+        14,
+        14
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "2e7f2f1f083e",
+      "responses": [
+        2,
+        2,
+        2
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "814d8941c651",
+      "responses": [
+        1234,
+        1234,
+        1234
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "9e5db39d1cc7",
+      "responses": [
+        45,
+        45,
+        45
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "e138c0785246",
+      "responses": [
+        1234,
+        1234,
+        1234
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "daad5ebd208a",
+      "responses": [
+        11,
+        11,
+        11
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "a57bba7a1b8e",
+      "responses": [
+        10,
+        10,
+        10
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "351c30e0dd80",
+      "responses": [
+        25,
+        25,
+        25
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "801819e316d0",
+      "responses": [
+        115,
+        115,
+        115
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "a710ddcd5c1e",
+      "responses": [
+        120,
+        120,
+        120
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "dc4630c3bb38",
+      "responses": [
+        14,
+        14,
+        14
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "4eaa7e278ae1",
+      "responses": [
+        10,
+        10,
+        10
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "c9b653054d4f",
+      "responses": [
+        115,
+        115,
+        115
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "d85d2a998afd",
+      "responses": [
+        45,
+        45,
+        45
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "536ea2676780",
+      "responses": [
+        11,
+        11,
+        11
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "6f2fffb31f1e",
+      "responses": [
+        14,
+        14,
+        14
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "f9bb0e9e0a03",
+      "responses": [
+        105,
+        105,
+        105
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "b13305f54153",
+      "responses": [
+        6,
+        6,
+        6
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "c1026f831970",
+      "responses": [
+        110,
+        110,
+        110
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "09d90dabd6dc",
+      "responses": [
+        21,
+        21,
+        21
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "7e2d6b7a3c21",
+      "responses": [
+        30,
+        30,
+        30
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "e2e489c66d1c",
+      "responses": [
+        1234,
+        1234,
+        1234
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "4bf8295e0c01",
+      "responses": [
+        14,
+        14,
+        14
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "253773a8e4a7",
+      "responses": [
+        10,
+        10,
+        10
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "32c19a3cd5bc",
+      "responses": [
+        10,
+        10,
+        10
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "cee549a3cdee",
+      "responses": [
+        115,
+        115,
+        115
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "d4d62fdfc7bc",
+      "responses": [
+        1,
+        1,
+        1
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "d8ad6b6bcf08",
+      "responses": [
+        120,
+        120,
+        120
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "3c626b99e64a",
+      "responses": [
+        110,
+        110,
+        110
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "7b487382f8f8",
+      "responses": [
+        105,
+        105,
+        105
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "5ac28fa2a6e8",
+      "responses": [
+        11,
+        11,
+        11
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "8ba763e6608d",
+      "responses": [
+        1234,
+        1234,
+        1234
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "d67fa94a72dc",
+      "responses": [
+        35,
+        35,
+        35
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "fef931e70892",
+      "responses": [
+        101,
+        101,
+        101
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "b06f71cd235b",
+      "responses": [
+        1234,
+        1234,
+        1234
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "15f1bcb70225",
+      "responses": [
+        25,
+        25,
+        25
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "4b74f45ad1d5",
+      "responses": [
+        123,
+        123,
+        123
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "cacd16004824",
+      "responses": [
+        105,
+        105,
+        105
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "a5a3701ae4ba",
+      "responses": [
+        123,
+        123,
+        123
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "777f9b5c9d21",
+      "responses": [
+        115,
+        115,
+        115
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "01ec2ba7bcb8",
+      "responses": [
+        45,
+        45,
+        45
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "a5708f89a122",
+      "responses": [
+        34,
+        34,
+        34
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "6ded551418db",
+      "responses": [
+        105,
+        105,
+        105
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "4d233e19c0d2",
+      "responses": [
+        120,
+        120,
+        120
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "ddb5e75b0001",
+      "responses": [
+        24,
+        24,
+        24
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "a947e2fcb250",
+      "responses": [
+        1234,
+        1234,
+        1234
+      ],
+      "consistent": true
+    },
+    {
+      "task_id": "45ff45aba353",
+      "responses": [
+        120,
+        120,
+        120
+      ],
+      "consistent": true
+    }
+  ],
+  "recommendation": "single_run"
+}

@@ -391,3 +391,8 @@ agent_evaluation_experiment/evaluation_results/
 __pycache__/
 *.pyc
 .DS_Store
+
+# Experiment large files (generated, too big for git)
+agent_evaluation_experiment/mutated_datasets/
+agent_evaluation_experiment/buggy_datasets/
+agent_evaluation_experiment/results/checkpoints/
